@@ -1,0 +1,146 @@
+﻿<UserControl x:ConnectionId='1'
+    x:Class="YourNoteUWP.NoteContent"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:data="using:YourNoteUWP.Models"
+    xmlns:local="using:YourNoteUWP"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+
+    <UserControl.Resources>
+
+        <DataTemplate x:Key="ShareUser"                       >
+
+            <StackPanel x:ConnectionId='7'>
+                <TextBlock x:ConnectionId='8'
+                    Margin="0,5,0,0"
+                    FontSize="14"
+                    FontWeight="SemiBold"
+                    Foreground="Black"
+                                         />
+                <TextBlock x:ConnectionId='9'
+                    Margin="0,0,0,5"
+                    FontSize="14"
+                    Foreground="Black"
+                                           />
+            </StackPanel>
+
+        </DataTemplate>
+
+        <DataTemplate x:Key="ShareUsers"                       >
+
+            <StackPanel x:ConnectionId='3'
+                Margin="0,5,0,0"
+                BorderBrush="#f5f5f5"
+                BorderThickness="0,0,0,1">
+                <TextBlock x:ConnectionId='4'
+                    Margin="0,5,0,0"
+                    FontSize="14"
+                    FontWeight="SemiBold"
+                    Foreground="Black"
+                                         />
+                <TextBlock x:ConnectionId='5'
+                    Margin="0,0,0,5"
+                    FontSize="14"
+                    Foreground="Black"
+                                           />
+            </StackPanel>
+
+        </DataTemplate>
+
+
+    </UserControl.Resources>
+    <!--
+        NOTE CONTENT
+    -->
+    <Grid x:ConnectionId='10'                                                                                                                                                                  >
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+
+
+        <!--  NOTE CONTENT  -->
+        <RelativePanel>
+
+            <TextBox x:ConnectionId='14'
+                Name="TitleOfNote"
+                Height="50"
+                MaxWidth="500"
+                Margin="15,10,10,10"
+                Padding="0,10,0,0"
+                HorizontalAlignment="Center"
+                FontSize="28"
+                Foreground="Black"
+                HorizontalTextAlignment="Center"
+                                                                        
+                                                                        
+                RelativePanel.AlignHorizontalCenterWithPanel="True"
+                RelativePanel.AlignLeftWithPanel="True"
+                RelativePanel.LeftOf="NoteCloseButton"
+                Style="{StaticResource TitleDisplayStyle}"
+                                                                
+                                                            
+                TextAlignment="Center"
+                                                                           />
+
+            <Button x:ConnectionId='15'
+                Name="NoteCloseButton"
+                Margin="0,10,10,10"
+                Background="Transparent"
+                                                                  
+                Content="&#xE106;"
+                FontFamily="Segoe MDL2 Assets"
+                FontSize="16"
+                Foreground="Black"
+                RelativePanel.AlignRightWithPanel="True"
+                Style="{StaticResource CloseButton}" />
+        </RelativePanel>
+
+        <Border x:ConnectionId='11'
+            Name="NoteMenuOptionsContainer"
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            Background="Transparent"
+            CornerRadius="4">
+            <local:NoteEditOptionsControl x:ConnectionId='13'
+                x:Name="NoteMenuOptions"
+                Margin="5,0,5,5"
+                                                                              
+                                                                             />
+        </Border>
+
+
+
+
+
+        <RichEditBox x:ConnectionId='12'
+            Name="ContentOfNote"
+            Grid.Row="2"
+            Margin="10"
+            Padding="10"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            BorderThickness="0"
+            FontSize="20"
+                                                                      
+                                                                      
+            Style="{StaticResource RichEditStyle}"
+                                                              
+                                                                        
+            TextWrapping="Wrap" />
+
+
+
+
+    </Grid>
+
+
+
+</UserControl>
+

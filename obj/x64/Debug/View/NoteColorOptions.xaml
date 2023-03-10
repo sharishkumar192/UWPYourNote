@@ -1,0 +1,43 @@
+﻿<Page
+    x:Class="YourNoteUWP.View.NoteColorOptions"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:YourNoteUWP.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <DataTemplate x:Key="NoteColorOptions">
+            <StackPanel Orientation="Horizontal">
+                <Button Name="Option1" />
+                <Button Name="Option2" />
+                <Button Name="Option3" />
+                <Button Name="Option4" />
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="FontColorOptions">
+            <StackPanel Orientation="Horizontal">
+                <Button Name="Option1" />
+                <Button Name="Option2" />
+                <Button Name="Option3" />
+                <Button Name="Option4" />
+            </StackPanel>
+        </DataTemplate>
+
+
+    </Page.Resources>
+
+    <Grid>
+        <!--<ListBox Name="StyleOptions" SelectionChanged="{x:Bind StyleOptionsSelectionChanged, Mode=OneWay}">
+            <ListBox.ItemTemplateSelector>
+                --><!--<local:StyleOptionItemTemplateSelector Font="{StaticResource FontColorOptions}" Color="{StaticResource NoteColorOptions}" />--><!--
+
+            </ListBox.ItemTemplateSelector>
+        </ListBox>-->
+
+
+    </Grid>
+</Page>
+

@@ -1,0 +1,24 @@
+﻿<Page
+    x:Class="YourNoteUWP.View.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:YourNoteUWP.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="#ffffff"
+    mc:Ignorable="d">
+
+    <Grid>
+        <Frame x:ConnectionId='2' Name="MFrame">
+            <ImageBrush x:ConnectionId='3'
+                x:Name="ApplicationDropoutImage"
+                ImageSource="/Assets/ZohoSignUpPageBackdrop-Light.png"
+                Stretch="Fill" />
+
+
+
+        </Frame>
+
+    </Grid>
+</Page>
+
