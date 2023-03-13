@@ -10,7 +10,7 @@
   <Identity Name="f370c6dd-350c-4488-8938-3a4de12a2669" Publisher="CN=harish-pt6263" Version="1.0.0.0" ProcessorArchitecture="x64" />
   <mp:PhoneIdentity PhoneProductId="f370c6dd-350c-4488-8938-3a4de12a2669" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>YourNoteUWP</DisplayName>
+    <DisplayName>UWPYourNote</DisplayName>
     <PublisherDisplayName>harish-pt6263</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -25,8 +25,8 @@
     <Resource Language="EN-US" />
   </Resources>
   <Applications>
-    <Application Id="App" Executable="YourNoteUWP.exe" EntryPoint="YourNoteUWP.App">
-      <uap:VisualElements DisplayName="YourNoteUWP" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="YourNoteUWP" BackgroundColor="transparent">
+    <Application Id="App" Executable="YourNoteUWP.exe" EntryPoint="UWPYourNote.App">
+      <uap:VisualElements DisplayName="UWPYourNote" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="UWPYourNote" BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square71x71Logo="Assets\SmallTile.png" Square310x310Logo="Assets\LargeTile.png" />
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>

@@ -16,12 +16,12 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using YourNoteUWP.Models;
+using UWPYourNoteLibrary.Models;
 using static System.Net.Mime.MediaTypeNames;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace YourNoteUWP
+namespace UWPYourNote
 {
     public sealed partial class NotesDataTemplate : UserControl, INotifyPropertyChanged
     {
@@ -123,7 +123,8 @@ namespace YourNoteUWP
             if (this.DataContext != null)
                 NoteContentBackground = GetSolidColorBrush(notesTemplate.noteColor);
         }
-        public Note notesTemplate
+
+        public UWPYourNoteLibrary.Models.Note notesTemplate
         {
 
 
@@ -131,7 +132,7 @@ namespace YourNoteUWP
             {
                 // loadOnce = true;
                 // SetColor();
-                return this.DataContext as Note;
+                return this.DataContext as UWPYourNoteLibrary.Models.Note;
 
 
 

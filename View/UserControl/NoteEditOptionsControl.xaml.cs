@@ -17,12 +17,12 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using YourNoteUWP.Util;
-using YourNoteUWP.ViewModels;
+using UWPYourNoteLibrary.Util;
+using UWPYourNote.ViewModels;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace YourNoteUWP
+namespace UWPYourNote
 {
     public sealed partial class NoteEditOptionsControl : UserControl, INotifyPropertyChanged
     {
@@ -122,8 +122,8 @@ namespace YourNoteUWP
         {
             if (NoteShareButtonVisibility == Visibility.Visible && NoteDeleteButtonVisibility == Visibility.Visible)
             {
-                Style style1 = Application.Current.Resources[NotesUtilities.noteColorStyle[ColorOptionsSelectedIndex]] as Style;
-                Style style2 = Application.Current.Resources[NotesUtilities.noteColorButtonStyle[ColorOptionsSelectedIndex]] as Style;
+                Style style1 = Application.Current.Resources[UWPYourNoteLibrary.Util.NotesUtilities.noteColorStyle[ColorOptionsSelectedIndex]] as Style;
+                Style style2 = Application.Current.Resources[UWPYourNoteLibrary.Util.NotesUtilities.noteColorButtonStyle[ColorOptionsSelectedIndex]] as Style;
                 FontBackground.Style = FontIncrease.Style = FontDecrease.Style = SmallCaps.Style = AllCaps.Style = Strikethrough.Style = NoteShareButton.Style = style1;
                 NoteColor.Style = NoteDeleteButton.Style = style2;
             }
@@ -149,7 +149,7 @@ namespace YourNoteUWP
             ListBox box = (ListBox)sender;
 
             ColorOptionsSelectedIndex = box.SelectedIndex;
-            NoteColorForeground = NotesUtilities.GetSolidColorBrush(box.SelectedIndex);
+            NoteColorForeground = UWPYourNoteLibrary.Util.NotesUtilities.GetSolidColorBrush(box.SelectedIndex);
 
             EditOptions?.Invoke(box.Name);
             ChangeNoteColor();
@@ -165,7 +165,7 @@ namespace YourNoteUWP
         {
             if (UsersToShare == null)
             {
-                UsersToShare = (ObservableCollection<Models.User>)_delPageMethod.DynamicInvoke(null, null);
+                UsersToShare = (ObservableCollection<UWPYourNoteLibrary.Models.User>)_delPageMethod.DynamicInvoke(null, null);
             }
 
             if (UsersToShare != null && UsersToShare.Count == 0)
@@ -183,7 +183,7 @@ namespace YourNoteUWP
             ListView view = (ListView)sender;
             _toShare.DynamicInvoke(view.Name, e);
 
-            int i = UsersToShare.IndexOf((Models.User)e.ClickedItem);
+            int i = UsersToShare.IndexOf((UWPYourNoteLibrary.Models.User)e.ClickedItem);
             UsersToShare.RemoveAt(i);
 
             NoteShared(true);
@@ -195,9 +195,9 @@ namespace YourNoteUWP
             EditOptions?.Invoke(value.ToString());
         }
 
-        private ObservableCollection<Models.User> _usersToShare;
+        private ObservableCollection<UWPYourNoteLibrary.Models.User> _usersToShare;
 
-        public ObservableCollection<Models.User> UsersToShare
+        public ObservableCollection<UWPYourNoteLibrary.Models.User> UsersToShare
         {
             get { return _usersToShare; }
             set

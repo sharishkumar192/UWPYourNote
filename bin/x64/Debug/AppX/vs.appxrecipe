@@ -19,7 +19,7 @@
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
     <LayoutDir>D:\YourNote\UWPYourNote\bin\x64\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>E28993FC6F65D794A33FA989F97A8E3C79E53713F1C4A8F44DC6B139EBE27869</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>89EABCBB1C12DD782515ED04ECA6344A3D72329E44C407489BE185C3CEFAEDB7</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>f370c6dd-350c-4488-8938-3a4de12a2669_1.0.0.0_x64__ekzxxtgcwg1pc</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>f370c6dd-350c-4488-8938-3a4de12a2669_ekzxxtgcwg1pc!App</RegisteredUserModeAppID>
     <RegisteredPackageID>f370c6dd-350c-4488-8938-3a4de12a2669</RegisteredPackageID>
@@ -30,13 +30,13 @@
     <AppXManifest Include="D:\YourNote\UWPYourNote\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-03-10T06:07:07.574</Modified>
+      <Modified>2023-03-13T05:25:55.284</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\YourNoteUWP.exe">
       <PackagePath>entrypoint\YourNoteUWP.exe</PackagePath>
-      <Modified>2023-03-10T06:07:04.648</Modified>
+      <Modified>2023-03-13T05:25:52.595</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\colorcode.core\2.0.6\lib\netstandard1.4\ColorCode.Core.dll">
       <PackagePath>ColorCode.Core.dll</PackagePath>
@@ -49,6 +49,10 @@
     <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.bcl.asyncinterfaces\5.0.0\lib\netstandard2.0\Microsoft.Bcl.AsyncInterfaces.dll">
       <PackagePath>Microsoft.Bcl.AsyncInterfaces.dll</PackagePath>
       <Modified>2020-10-19T18:40:26.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.data.sqlite.core\7.0.3\lib\netstandard2.0\Microsoft.Data.Sqlite.dll">
+      <PackagePath>Microsoft.Data.Sqlite.dll</PackagePath>
+      <Modified>2023-01-13T21:07:40.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.toolkit\7.1.2\lib\netstandard2.0\Microsoft.Toolkit.dll">
       <PackagePath>Microsoft.Toolkit.dll</PackagePath>
@@ -94,29 +98,17 @@
       <PackagePath>System.Runtime.dll</PackagePath>
       <Modified>2022-06-10T16:53:28.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\sqlitepclraw.bundle_green\2.1.2\lib\netstandard2.0\SQLitePCLRaw.batteries_v2.dll">
-      <PackagePath>SQLitePCLRaw.batteries_v2.dll</PackagePath>
-      <Modified>2022-09-18T19:28:44.000</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\sqlitepclraw.core\2.1.2\lib\netstandard2.0\SQLitePCLRaw.core.dll">
+    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\sqlitepclraw.core\2.1.4\lib\netstandard2.0\SQLitePCLRaw.core.dll">
       <PackagePath>SQLitePCLRaw.core.dll</PackagePath>
-      <Modified>2022-09-18T19:26:48.000</Modified>
+      <Modified>2023-01-10T20:18:32.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\sqlitepclraw.lib.e_sqlite3\2.1.2\runtimes\win10-x64\nativeassets\uap10.0\e_sqlite3.dll">
-      <PackagePath>e_sqlite3.dll</PackagePath>
-      <Modified>2022-09-18T19:20:42.000</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\sqlitepclraw.provider.e_sqlite3\2.1.2\lib\netstandard2.0\SQLitePCLRaw.provider.e_sqlite3.dll">
-      <PackagePath>SQLitePCLRaw.provider.e_sqlite3.dll</PackagePath>
-      <Modified>2022-09-18T19:27:06.000</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\stub.system.data.sqlite.core.netstandard\1.0.116\runtimes\win-x64\native\SQLite.Interop.dll">
+    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\stub.system.data.sqlite.core.netstandard\1.0.117\runtimes\win-x64\native\SQLite.Interop.dll">
       <PackagePath>SQLite.Interop.dll</PackagePath>
-      <Modified>2022-06-01T17:35:24.000</Modified>
+      <Modified>2022-11-26T08:39:32.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\stub.system.data.sqlite.core.netstandard\1.0.116\lib\netstandard2.0\System.Data.SQLite.dll">
+    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\stub.system.data.sqlite.core.netstandard\1.0.117\lib\netstandard2.0\System.Data.SQLite.dll">
       <PackagePath>System.Data.SQLite.dll</PackagePath>
-      <Modified>2022-06-01T17:36:00.000</Modified>
+      <Modified>2022-11-26T08:40:08.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\system.runtime.compilerservices.unsafe\5.0.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll">
       <PackagePath>System.Runtime.CompilerServices.Unsafe.dll</PackagePath>
@@ -133,6 +125,10 @@
     <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\win2d.uwp\1.25.0\runtimes\win10-x64\native\Microsoft.Graphics.Canvas.dll">
       <PackagePath>Microsoft.Graphics.Canvas.dll</PackagePath>
       <Modified>2020-04-02T19:46:32.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\YourNote\UWPYourNoteLibrary\bin\x64\Debug\UWPYourNoteLibrary.dll">
+      <PackagePath>UWPYourNoteLibrary.dll</PackagePath>
+      <Modified>2023-03-13T05:19:09.869</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\win2d.uwp\1.25.0\lib\uap10.0\Microsoft.Graphics.Canvas.winmd">
       <PackagePath>Microsoft.Graphics.Canvas.winmd</PackagePath>
@@ -434,47 +430,47 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\YourNoteUWP.xr.xml">
       <PackagePath>YourNoteUWP.xr.xml</PackagePath>
-      <Modified>2023-03-10T06:07:04.242</Modified>
+      <Modified>2023-03-13T05:25:52.330</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2023-03-10T06:07:04.414</Modified>
+      <Modified>2023-03-13T05:25:52.478</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\Dictionary.xbf">
       <PackagePath>Dictionary.xbf</PackagePath>
-      <Modified>2023-03-10T06:07:04.398</Modified>
+      <Modified>2023-03-13T05:25:52.467</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\HomePage.xbf">
       <PackagePath>View\HomePage.xbf</PackagePath>
-      <Modified>2023-03-10T06:07:04.414</Modified>
+      <Modified>2023-03-13T05:25:52.470</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\UserControl\NoteContent.xbf">
       <PackagePath>View\UserControl\NoteContent.xbf</PackagePath>
-      <Modified>2023-03-10T06:07:04.414</Modified>
+      <Modified>2023-03-13T05:25:52.479</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\UserControl\NoteEditOptionsControl.xbf">
       <PackagePath>View\UserControl\NoteEditOptionsControl.xbf</PackagePath>
-      <Modified>2023-03-10T06:07:04.414</Modified>
+      <Modified>2023-03-13T05:25:52.479</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\UserControl\NotesDataTemplate.xbf">
       <PackagePath>View\UserControl\NotesDataTemplate.xbf</PackagePath>
-      <Modified>2023-03-10T06:07:04.414</Modified>
+      <Modified>2023-03-13T05:25:52.479</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\MainPage.xbf">
       <PackagePath>View\MainPage.xbf</PackagePath>
-      <Modified>2023-03-10T06:07:04.414</Modified>
+      <Modified>2023-03-13T05:25:52.480</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\NoteColorOptions.xbf">
       <PackagePath>View\NoteColorOptions.xbf</PackagePath>
-      <Modified>2023-03-10T06:07:04.429</Modified>
+      <Modified>2023-03-13T05:25:52.480</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\SignInPage.xbf">
       <PackagePath>View\SignInPage.xbf</PackagePath>
-      <Modified>2023-03-10T06:07:04.414</Modified>
+      <Modified>2023-03-13T05:25:52.475</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\SignUpPage.xbf">
       <PackagePath>View\SignUpPage.xbf</PackagePath>
-      <Modified>2023-03-10T06:07:04.414</Modified>
+      <Modified>2023-03-13T05:25:52.476</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.19041.0\\redist\Debug\X64\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -486,11 +482,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2023-03-10T06:07:06.131</Modified>
+      <Modified>2023-03-13T05:25:53.568</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\Core\YourNoteUWP.exe">
       <PackagePath>YourNoteUWP.exe</PackagePath>
-      <Modified>2023-03-10T06:07:07.555</Modified>
+      <Modified>2023-03-13T05:25:54.764</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.ui.xaml\2.7.0\buildTransitive\..\lib\uap10.0\Microsoft.UI.Xaml.winmd">
       <PackagePath>Microsoft.UI.Xaml.winmd</PackagePath>

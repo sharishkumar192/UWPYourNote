@@ -13,9 +13,8 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Media;
-using YourNoteUWP.Models;
-using YourNoteUWP.View;
-namespace YourNoteUWP.ViewModels
+using UWPYourNoteLibrary.Models;
+namespace UWPYourNote.ViewModels
 {
     internal class HomePageViewModel
     {
@@ -26,14 +25,15 @@ namespace YourNoteUWP.ViewModels
             DateTimeOffset milli = DateTime.Parse(time);
             return milli.ToUnixTimeMilliseconds();
         }
+        
 
-        private  ObservableCollection<Note> SortByModificationtime(ObservableCollection<Note> notes)
+        private  ObservableCollection<UWPYourNoteLibrary.Models.Note> SortByModificationtime(ObservableCollection<UWPYourNoteLibrary.Models.Note> notes)
         {
-            ObservableCollection<Note> sortedNotes = new ObservableCollection<Note>();
+            ObservableCollection<UWPYourNoteLibrary.Models.Note> sortedNotes = new ObservableCollection<UWPYourNoteLibrary.Models.Note>();
             if (notes != null)
             {
                 var result = notes.OrderByDescending(a => GetMilliSeconds(a.modifiedDay));
-                foreach(Note note in result)
+                foreach(UWPYourNoteLibrary.Models.Note note in result)
                 {
                     sortedNotes.Add(note);
                 }
@@ -42,7 +42,7 @@ namespace YourNoteUWP.ViewModels
             return sortedNotes; 
         }
 
-        public static ObservableCollection<Note> GetPersonalNotes(string userId, bool isSort)
+        public static ObservableCollection<UWPYourNoteLibrary.Models.Note> GetPersonalNotes(string userId, bool isSort)
         {
             HomePageViewModel apvm = new HomePageViewModel();
             var notes = DBFetch.GetPersonalNotes(DBCreation.notesTableName, userId);
@@ -51,7 +51,7 @@ namespace YourNoteUWP.ViewModels
             return notes;
         }
 
-        public static ObservableCollection<Note> GetSharedNotes(string userId, bool isSort)
+        public static ObservableCollection<UWPYourNoteLibrary.Models.Note> GetSharedNotes(string userId, bool isSort)
         {
             HomePageViewModel apvm = new HomePageViewModel();
             var  notes = DBFetch.GetSharedNotes(DBCreation.notesTableName, DBCreation.sharedTableName, userId);
@@ -62,10 +62,10 @@ namespace YourNoteUWP.ViewModels
 
 
 
-        public static ObservableCollection<Note> GetAllNotes(string userId, bool isSort)
+        public static ObservableCollection<UWPYourNoteLibrary.Models.Note> GetAllNotes(string userId, bool isSort)
         {
             HomePageViewModel apvm = new HomePageViewModel();
-            var allNotes = new ObservableCollection<Note>();
+            var allNotes = new ObservableCollection<UWPYourNoteLibrary.Models.Note>();
         
                 var pnotes = GetPersonalNotes(userId, false);
                 var snotes = GetSharedNotes(userId, false);
@@ -86,13 +86,13 @@ namespace YourNoteUWP.ViewModels
             return allNotes;
 
         }
-        public ObservableCollection<Note> GetRecentNotes(string userId)
+        public ObservableCollection<UWPYourNoteLibrary.Models.Note> GetRecentNotes(string userId)
         {
-            ObservableCollection<Note> recentNotes = null;
-            ObservableCollection<Note> personalNotes = GetPersonalNotes(userId, false);
-            ObservableCollection<Note> sharedNotes = GetSharedNotes(userId, false);
+            ObservableCollection<UWPYourNoteLibrary.Models.Note> recentNotes = null;
+            ObservableCollection<UWPYourNoteLibrary.Models.Note> personalNotes = GetPersonalNotes(userId, false);
+            ObservableCollection<UWPYourNoteLibrary.Models.Note> sharedNotes = GetSharedNotes(userId, false);
             if (personalNotes == null)
-                    personalNotes = new ObservableCollection<Note>();
+                    personalNotes = new ObservableCollection<UWPYourNoteLibrary.Models.Note>();
             if (sharedNotes != null)
             {
                 foreach (Note note in sharedNotes)
@@ -104,7 +104,7 @@ namespace YourNoteUWP.ViewModels
                 if (note.searchCount > 0)
                 {
                     if(recentNotes == null)
-                        recentNotes = new ObservableCollection<Note>();  
+                        recentNotes = new ObservableCollection<UWPYourNoteLibrary.Models.Note>();  
                     recentNotes.Add(note);
                 }
                     
@@ -112,7 +112,7 @@ namespace YourNoteUWP.ViewModels
             return recentNotes;
         }
 
-        public ObservableCollection<Note> GetSuggestedNote(string userId, string title)
+        public ObservableCollection<UWPYourNoteLibrary.Models.Note> GetSuggestedNote(string userId, string title)
         {
            return SortByModificationtime(DBFetch.GetSuggestedNotes(DBCreation.notesTableName, userId, title));
         }

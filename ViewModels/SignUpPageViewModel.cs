@@ -10,10 +10,10 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
-using YourNoteUWP.Models;
-using YourNoteUWP.View;
+using UWPYourNoteLibrary.Models;
+using UWPYourNote.View;
 
-namespace YourNoteUWP.ViewModels
+namespace UWPYourNote.ViewModels
 {
     internal class SignUpPageViewModel {
 
@@ -36,7 +36,7 @@ namespace YourNoteUWP.ViewModels
 
         public void InsertNewUser(string name, string email, string password)
         {
-            Models.User newUser = new Models.User(name, email, password);
+            UWPYourNoteLibrary.Models.User newUser = new UWPYourNoteLibrary.Models.User(name, email, password);
             DBUpdation.InsertNewUser(newUser);
 
         }

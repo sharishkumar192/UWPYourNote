@@ -1,11 +1,11 @@
 ﻿<Page x:ConnectionId='1'
-    x:Class="YourNoteUWP.View.SignInPage"
+    x:Class="UWPYourNote.View.SignInPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:data="using:YourNoteUWP.Models"
-    xmlns:local="using:YourNoteUWP.View"
+    xmlns:data="using:UWPYourNoteLibrary.Models"
+    xmlns:local="using:UWPYourNote.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
@@ -17,7 +17,7 @@
 
 
     <Page.Resources>
-        <DataTemplate x:Key="emailIdOfUsers"                       >
+        <DataTemplate x:Key="EmailIdofUsers"                       >
             <StackPanel x:ConnectionId='3'
                 Width="Auto"
                 Height="Auto"
@@ -301,7 +301,7 @@
                         IsItemClickEnabled="True"
                                                                    
                         ItemContainerStyle="{StaticResource LoginListViewItem}"
-                        ItemTemplate="{StaticResource emailIdOfUsers}"
+                        ItemTemplate="{StaticResource EmailIdofUsers}"
                                                                       
                         Style="{StaticResource LoginListView}" />
 

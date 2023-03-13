@@ -536,15 +536,15 @@
       <RootProperty Name="ItemsPanel" />
       <RootEvent Name="ItemClick" />
     </RootType>
-    <RootType FullName="YourNoteUWP.NoteContent">
-      <RootProperty Name="IsTapEnabled" />
+    <RootType FullName="UWPYourNote.NoteContent">
       <RootProperty Name="Width" />
       <RootProperty Name="Height" />
+      <RootProperty Name="IsTapEnabled" />
       <RootEvent Name="Tapped" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.Animation.PopOutThemeAnimation" />
     <RootType FullName="Windows.UI.Xaml.Media.Animation.PopInThemeAnimation" />
-    <RootType FullName="YourNoteUWP.NotesDataTemplate" />
+    <RootType FullName="UWPYourNote.NotesDataTemplate" />
     <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.StaggeredPanel">
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="ColumnSpacing" />
@@ -559,7 +559,7 @@
       <RootProperty Name="Content" />
       <RootProperty Name="VerticalAlignment" />
     </RootType>
-    <RootType FullName="YourNoteUWP.NoteEditOptionsControl">
+    <RootType FullName="UWPYourNote.NoteEditOptionsControl">
       <RootProperty Name="Margin" />
       <RootProperty Name="Visibility" />
       <RootEvent Name="EditOptions" />
@@ -570,7 +570,7 @@
       <RootMethod Name="GetToolTip" />
       <RootMethod Name="SetToolTip" />
     </RootType>
-    <RootType FullName="YourNoteUWP.ItemsDataTemplateSelector">
+    <RootType FullName="UWPYourNoteLibrary.Models.ItemsDataTemplateSelector">
       <RootProperty Name="AllItems" />
       <RootProperty Name="LastItems" />
     </RootType>
@@ -580,7 +580,7 @@
       <RootProperty Name="Margin" />
       <RootProperty Name="Source" />
     </RootType>
-    <RootType FullName="YourNoteUWP.View.HomePage" />
+    <RootType FullName="UWPYourNote.View.HomePage" />
     <RootType FullName="Windows.UI.Xaml.Controls.UserControl">
       <RootProperty Name="Resources" />
       <RootProperty Name="Content" />
@@ -598,9 +598,9 @@
       <RootProperty Name="ImageSource" />
       <RootProperty Name="Stretch" />
     </RootType>
-    <RootType FullName="YourNoteUWP.View.MainPage" />
-    <RootType FullName="YourNoteUWP.View.NoteColorOptions" />
-    <RootType FullName="YourNoteUWP.View.SignInPage" />
-    <RootType FullName="YourNoteUWP.View.SignUpPage" />
+    <RootType FullName="UWPYourNote.View.MainPage" />
+    <RootType FullName="UWPYourNote.View.NoteColorOptions" />
+    <RootType FullName="UWPYourNote.View.SignInPage" />
+    <RootType FullName="UWPYourNote.View.SignUpPage" />
   </Roots.RootTypes>
 </Roots>

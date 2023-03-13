@@ -1,1 +1,2 @@
 D:\YourNote\UWPYourNote\UWPYourNote.csproj;x64
+D:\YourNote\UWPYourNoteLibrary\UWPYourNoteLibrary.csproj;x64

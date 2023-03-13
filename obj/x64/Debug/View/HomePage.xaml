@@ -1,14 +1,14 @@
 ﻿<Page x:ConnectionId='1'
-    x:Class="YourNoteUWP.View.HomePage"
+    x:Class="UWPYourNote.View.HomePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:data="using:YourNoteUWP.Models"
-    xmlns:local="using:YourNoteUWP.View"
+    xmlns:data="using:UWPYourNoteLibrary.Models"
+    xmlns:local="using:UWPYourNote.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:util="using:YourNoteUWP.Util"
-    xmlns:view="using:YourNoteUWP"
+    xmlns:util="using:UWPYourNoteLibrary.Util"
+    xmlns:view="using:UWPYourNote"
     mc:Ignorable="d">
     <Page.Resources>
 
@@ -158,7 +158,7 @@
                                                                                            
                                                                                               >
                                 <ListView.ItemTemplateSelector>
-                                    <view:ItemsDataTemplateSelector AllItems="{StaticResource SearchTitleA}" LastItems="{StaticResource SearchTitleL}" />
+                                    <data:ItemsDataTemplateSelector AllItems="{StaticResource SearchTitleA}" LastItems="{StaticResource SearchTitleL}" />
                                 </ListView.ItemTemplateSelector>
                             </ListView>
 
@@ -172,7 +172,7 @@
                                                                                                
                                                                                               >
                                 <ListView.ItemTemplateSelector>
-                                    <view:ItemsDataTemplateSelector AllItems="{StaticResource SearchTitleA}" LastItems="{StaticResource SearchTitleL}" />
+                                    <data:ItemsDataTemplateSelector AllItems="{StaticResource SearchTitleA}" LastItems="{StaticResource SearchTitleL}" />
                                 </ListView.ItemTemplateSelector>
                             </ListView>
 
@@ -341,16 +341,16 @@
                                                                  >
             <view:NoteContent x:ConnectionId='12'
                 x:Name="NoteContentPopUp"
-                                                                             
-                                                                     
                                                                    
+                                                                     
+                                                                             
                                                                       />
             <Popup.Resources>
                 <Storyboard x:ConnectionId='13' x:Name="PopIn">
-                    <PopInThemeAnimation  Storyboard.TargetName="NoteDisplayPopUp" />
+                    <PopInThemeAnimation Storyboard.TargetName="NoteDisplayPopUp" />
                 </Storyboard>
                 <Storyboard x:ConnectionId='14' x:Name="PopOut">
-                    <PopOutThemeAnimation  Storyboard.TargetName="NoteDisplayPopUp" />
+                    <PopOutThemeAnimation Storyboard.TargetName="NoteDisplayPopUp" />
                 </Storyboard>
             </Popup.Resources>
         </Popup>

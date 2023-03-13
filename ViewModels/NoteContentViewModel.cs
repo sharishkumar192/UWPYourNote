@@ -1,19 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml;
-using YourNoteUWP.Models;
-using System.Runtime.CompilerServices;
-using System.Data.SQLite;
-using Windows.Storage;
+﻿using UWPYourNoteLibrary.Models;
 using System.Collections.ObjectModel;
-
-namespace YourNoteUWP.ViewModels
+namespace UWPYourNote.ViewModels
 {
     internal class NoteContentViewModel  
     {
@@ -43,7 +30,7 @@ namespace YourNoteUWP.ViewModels
 
         public void UpdateCount(long searchCount, long noteId)
         {
-            DBUpdation.UpdateNoteCount(DBCreation.notesTableName, searchCount, noteId);
+          DBUpdation.UpdateNoteCount(DBCreation.notesTableName, searchCount, noteId);
         }
         public  void NoteContentUpdation(string content, long noteId, string modifiedDay)
         {
@@ -77,7 +64,7 @@ namespace YourNoteUWP.ViewModels
         }
 
 
-        public ObservableCollection<Models.User> GetUsersToShare(string userId, long displayNoteId)
+        public ObservableCollection<UWPYourNoteLibrary.Models.User> GetUsersToShare(string userId, long displayNoteId)
         {
             return DBFetch.ValidUsersToShare(DBCreation.userTableName, DBCreation.sharedTableName, DBCreation.notesTableName, userId, displayNoteId);
         }

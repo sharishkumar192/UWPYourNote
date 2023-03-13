@@ -37,6 +37,9 @@
     <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.bcl.asyncinterfaces\5.0.0\lib\netstandard2.0\Microsoft.Bcl.AsyncInterfaces.dll">
       <PackagePath>Microsoft.Bcl.AsyncInterfaces.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.data.sqlite.core\7.0.3\lib\netstandard2.0\Microsoft.Data.Sqlite.dll">
+      <PackagePath>Microsoft.Data.Sqlite.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.toolkit\7.1.2\lib\netstandard2.0\Microsoft.Toolkit.dll">
       <PackagePath>Microsoft.Toolkit.dll</PackagePath>
     </AppxPackagedFile>
@@ -70,22 +73,13 @@
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x64.microsoft.netcore.universalwindowsplatform\6.2.14\runtimes\win10-x64\lib\uap10.0.15138\System.Runtime.dll">
       <PackagePath>System.Runtime.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\sqlitepclraw.bundle_green\2.1.2\lib\netstandard2.0\SQLitePCLRaw.batteries_v2.dll">
-      <PackagePath>SQLitePCLRaw.batteries_v2.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\sqlitepclraw.core\2.1.2\lib\netstandard2.0\SQLitePCLRaw.core.dll">
+    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\sqlitepclraw.core\2.1.4\lib\netstandard2.0\SQLitePCLRaw.core.dll">
       <PackagePath>SQLitePCLRaw.core.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\sqlitepclraw.lib.e_sqlite3\2.1.2\runtimes\win10-x64\nativeassets\uap10.0\e_sqlite3.dll">
-      <PackagePath>e_sqlite3.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\sqlitepclraw.provider.e_sqlite3\2.1.2\lib\netstandard2.0\SQLitePCLRaw.provider.e_sqlite3.dll">
-      <PackagePath>SQLitePCLRaw.provider.e_sqlite3.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\stub.system.data.sqlite.core.netstandard\1.0.116\runtimes\win-x64\native\SQLite.Interop.dll">
+    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\stub.system.data.sqlite.core.netstandard\1.0.117\runtimes\win-x64\native\SQLite.Interop.dll">
       <PackagePath>SQLite.Interop.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\stub.system.data.sqlite.core.netstandard\1.0.116\lib\netstandard2.0\System.Data.SQLite.dll">
+    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\stub.system.data.sqlite.core.netstandard\1.0.117\lib\netstandard2.0\System.Data.SQLite.dll">
       <PackagePath>System.Data.SQLite.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\system.runtime.compilerservices.unsafe\5.0.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll">
@@ -99,6 +93,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\win2d.uwp\1.25.0\runtimes\win10-x64\native\Microsoft.Graphics.Canvas.dll">
       <PackagePath>Microsoft.Graphics.Canvas.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\YourNote\UWPYourNoteLibrary\bin\x64\Debug\UWPYourNoteLibrary.dll">
+      <PackagePath>UWPYourNoteLibrary.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\win2d.uwp\1.25.0\lib\uap10.0\Microsoft.Graphics.Canvas.winmd">
       <PackagePath>Microsoft.Graphics.Canvas.winmd</PackagePath>

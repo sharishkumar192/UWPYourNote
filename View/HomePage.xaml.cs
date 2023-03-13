@@ -16,13 +16,13 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using YourNoteUWP.Models;
-using YourNoteUWP.Util;
-using YourNoteUWP.ViewModels;
+using UWPYourNoteLibrary.Models;
+using UWPYourNoteLibrary.Util;
+using UWPYourNote.ViewModels;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace YourNoteUWP.View
+namespace UWPYourNote.View
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -30,9 +30,9 @@ namespace YourNoteUWP.View
     public sealed partial class HomePage : Page, INotifyPropertyChanged
     {
         private Frame _frame;
-        private Note _selectedNote = null;
+        private UWPYourNoteLibrary.Models.Note _selectedNote = null;
         private HomePageViewModel _homePageViewModel;
-        static Note selectedNoteFromDisplay = null;
+        static UWPYourNoteLibrary.Models.Note selectedNoteFromDisplay = null;
 
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -62,15 +62,15 @@ namespace YourNoteUWP.View
             DelegateIntialize();
 
             NoteEditOptions.NoteDeleteButtonVisibility = NoteEditOptions.NoteShareButtonVisibility = Visibility.Collapsed;
-            Tuple<Frame, Models.User> tuple = (Tuple<Frame, Models.User>)e.Parameter;
+            Tuple<Frame, UWPYourNoteLibrary.Models.User> tuple = (Tuple<Frame, UWPYourNoteLibrary.Models.User>)e.Parameter;
             _frame = tuple.Item1;
             LoggedUser = tuple.Item2;
         }
 
 
-        private Models.User _loggedUser;
+        private UWPYourNoteLibrary.Models.User _loggedUser;
 
-        public Models.User LoggedUser
+        public UWPYourNoteLibrary.Models.User LoggedUser
         {
             get { return _loggedUser; }
             set
@@ -289,8 +289,8 @@ namespace YourNoteUWP.View
 
 
         //----------------------------Search -> Recently Searched List Box ---------------------------------------------------
-        private ObservableCollection<Note> _recentlySearchedItemSource;
-        public ObservableCollection<Note> RecentlySearchedItemSource
+        private ObservableCollection<UWPYourNoteLibrary.Models.Note> _recentlySearchedItemSource;
+        public ObservableCollection<UWPYourNoteLibrary.Models.Note> RecentlySearchedItemSource
         {
             get { return _recentlySearchedItemSource; }
             set
@@ -347,8 +347,8 @@ namespace YourNoteUWP.View
         }
 
 
-        private ObservableCollection<Note> _suggestionContentItemSource;
-        public ObservableCollection<Note> SuggestionContentItemSource
+        private ObservableCollection<UWPYourNoteLibrary.Models.Note> _suggestionContentItemSource;
+        public ObservableCollection<UWPYourNoteLibrary.Models.Note> SuggestionContentItemSource
         {
             get { return _suggestionContentItemSource; }
             set
@@ -513,39 +513,39 @@ namespace YourNoteUWP.View
 
         private void FontBackgroundClick(object sender, RoutedEventArgs e)
         {
-            NotesUtilities.FontBackgroundClick(ContentOfNewNote, null);
+            UWPYourNoteLibrary.Util.NotesUtilities.FontBackgroundClick(ContentOfNewNote, null);
         }
 
         //----Note Font Increase
         private void FontIncreaseClick(object sender, RoutedEventArgs e)
         {
-            NotesUtilities.FontIncreaseClick(ContentOfNewNote, null);
+            UWPYourNoteLibrary.Util.NotesUtilities.FontIncreaseClick(ContentOfNewNote, null);
         }
 
         //----Note Font Decrease
         private void FontDecreaseClick(object sender, RoutedEventArgs e)
         {
-            NotesUtilities.FontDecreaseClick(ContentOfNewNote, null);
+            UWPYourNoteLibrary.Util.NotesUtilities.FontDecreaseClick(ContentOfNewNote, null);
         }
 
 
         //----Note Small Caps
         private void SmallCapsClick(object sender, RoutedEventArgs e)
         {
-            NotesUtilities.SmallCapsClick(ContentOfNewNote, null);
+            UWPYourNoteLibrary.Util.NotesUtilities.SmallCapsClick(ContentOfNewNote, null);
         }
 
 
         //----Note All Caps
         private void AllCapsClick(object sender, RoutedEventArgs e)
         {
-            NotesUtilities.AllCapsClick(ContentOfNewNote, null);
+            UWPYourNoteLibrary.Util.NotesUtilities.AllCapsClick(ContentOfNewNote, null);
         }
 
         //----Note Strikethrough
         private void StrikethroughClick(object sender, RoutedEventArgs e)
         {
-            NotesUtilities.StrikethroughClick(ContentOfNewNote, null);
+            UWPYourNoteLibrary.Util.NotesUtilities.StrikethroughClick(ContentOfNewNote, null);
         }
         //------------Creation/Close Button-------------------------
 
@@ -573,15 +573,15 @@ namespace YourNoteUWP.View
                     return;
 
                 }
-
+                
 
                 string creationDay = DateTime.Now.ToString("MMM/dd/yyyy hh:mm:ss.fff tt");
                 _homePageViewModel = new HomePageViewModel();
-                Note newNote = new Note(LoggedUser.userId, TitleOfNewNoteText, ContentOfNewNoteText, NoteEditOptions.ColorOptionsSelectedIndex, creationDay, creationDay);
+                UWPYourNoteLibrary.Models.Note newNote = new UWPYourNoteLibrary.Models.Note(LoggedUser.userId, TitleOfNewNoteText, ContentOfNewNoteText, NoteEditOptions.ColorOptionsSelectedIndex, creationDay, creationDay);
                 long noteId = _homePageViewModel.CreateNewNote(newNote);
                 if (_notesDataItemSource == null)
                 {
-                    _notesDataItemSource = new ObservableCollection<Note>();
+                    _notesDataItemSource = new ObservableCollection<UWPYourNoteLibrary.Models.Note>();
 
                 }
                 newNote.noteId = noteId;
@@ -603,8 +603,8 @@ namespace YourNoteUWP.View
 
         //----------------------------Note Grid View---------------------------------------------------
 
-        private ObservableCollection<Note> _notesDataItemSource = null;
-        public ObservableCollection<Note> NotesDataItemSource
+        private ObservableCollection<UWPYourNoteLibrary.Models.Note> _notesDataItemSource = null;
+        public ObservableCollection<UWPYourNoteLibrary.Models.Note> NotesDataItemSource
         {
             get { return _notesDataItemSource; }
             set
@@ -617,7 +617,7 @@ namespace YourNoteUWP.View
         public void NotesDataItemClick(object sender, ItemClickEventArgs e)
         {
             NoteDisplayPopUpOpened();
-            selectedNoteFromDisplay = (YourNoteUWP.Models.Note)e.ClickedItem;
+            selectedNoteFromDisplay = (UWPYourNoteLibrary.Models.Note)e.ClickedItem;
             NoteContentPopUp.DisplayContent(LoggedUser.userId, selectedNoteFromDisplay.noteId, selectedNoteFromDisplay.title, selectedNoteFromDisplay.content, selectedNoteFromDisplay.noteColor, selectedNoteFromDisplay.modifiedDay);
 
 

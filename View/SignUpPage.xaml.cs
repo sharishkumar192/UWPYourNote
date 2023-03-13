@@ -15,12 +15,12 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
-using YourNoteUWP.Util;
-using YourNoteUWP.ViewModels;
+using UWPYourNoteLibrary.Util;
+using UWPYourNote.ViewModels;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace YourNoteUWP.View
+namespace UWPYourNote.View
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -51,7 +51,7 @@ namespace YourNoteUWP.View
 
         public string IsNameCheck(string check)
         {
-            string checkNullOrEmpty = UserUtilities.CheckNullOrEmpty(check);
+            string checkNullOrEmpty = UWPYourNoteLibrary.Util.UserUtilities.CheckNullOrEmpty(check);
             if (checkNullOrEmpty != null)
                 return checkNullOrEmpty;
             return null;
@@ -170,12 +170,12 @@ namespace YourNoteUWP.View
         }
         private string IsEmailCheck(string email)
         {
-            string checkNullOrEmpty = UserUtilities.CheckNullOrEmpty(email);
+            string checkNullOrEmpty = UWPYourNoteLibrary.Util.UserUtilities.CheckNullOrEmpty(email);
 
             if (checkNullOrEmpty != null)
                 return checkNullOrEmpty;
 
-            string checkValid = UserUtilities.CheckValidEmail(email);
+            string checkValid = UWPYourNoteLibrary.Util.UserUtilities.CheckValidEmail(email);
 
 
             if (checkValid != null)
@@ -384,7 +384,7 @@ namespace YourNoteUWP.View
 
         public void PasswordBoxLostFocus()
         {
-            string value = UserUtilities.IsPasswordCheck(PasswordBoxPassword);
+            string value = UWPYourNoteLibrary.Util.UserUtilities.IsPasswordCheck(PasswordBoxPassword);
             if (value == null)
             {
                 PasswordToolTipContent = "";
@@ -431,7 +431,7 @@ namespace YourNoteUWP.View
         //------------------------------------------Re Password Box---------------------------------------------------
         public string IsConfirmPasswordCheck(string password, string confirmPassword)
         {
-            string value = UserUtilities.IsPasswordCheck(password);
+            string value = UWPYourNoteLibrary.Util.UserUtilities.IsPasswordCheck(password);
             if (value == null && password != confirmPassword)
             {
                 return "Password and Confirm Password does not match";

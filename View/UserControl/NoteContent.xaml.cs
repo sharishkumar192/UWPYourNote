@@ -18,14 +18,14 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using YourNoteUWP.Models;
-using YourNoteUWP.Util;
-using YourNoteUWP.ViewModels;
+using UWPYourNoteLibrary.Models;
+using UWPYourNoteLibrary.Util;
+using UWPYourNote.ViewModels;
 using static System.Net.Mime.MediaTypeNames;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace YourNoteUWP
+namespace UWPYourNote
 {
     public sealed partial class NoteContent : UserControl, INotifyPropertyChanged
     {
@@ -64,7 +64,7 @@ namespace YourNoteUWP
                 _noteContentViewModel.UpdateCount(_searchCount, _noteId);
         }
 
-        private delegate ObservableCollection<Models.User> NoteContentUserControl(object sender, RoutedEventArgs e);
+        private delegate ObservableCollection<UWPYourNoteLibrary.Models.User> NoteContentUserControl(object sender, RoutedEventArgs e);
 
 
         public NoteContent()
@@ -311,9 +311,9 @@ namespace YourNoteUWP
 
         //----------------------------Note Share Button ---------------------------------------------------
 
-        private ObservableCollection<Models.User> _usersToShare;
+        private ObservableCollection<UWPYourNoteLibrary.Models.User> _usersToShare;
 
-        public ObservableCollection<Models.User> UsersToShare
+        public ObservableCollection<UWPYourNoteLibrary.Models.User> UsersToShare
         {
             get { return _usersToShare; }
             set { _usersToShare = value;
@@ -321,9 +321,9 @@ namespace YourNoteUWP
             }
         }
      
-        public ObservableCollection<Models.User> NoteShareButtonClick(object sender, RoutedEventArgs e)
+        public ObservableCollection<UWPYourNoteLibrary.Models.User> NoteShareButtonClick(object sender, RoutedEventArgs e)
         {
-            ObservableCollection<Models.User> notes = null;
+            ObservableCollection<UWPYourNoteLibrary.Models.User> notes = null;
             _noteContentViewModel = NoteContentViewModel.NoteViewModel;
             if (_noteContentViewModel.IsOwner(_userId, _noteId) == true)
             {
@@ -394,7 +394,7 @@ namespace YourNoteUWP
         private void UsersToShareView_ItemClick(object sender, ItemClickEventArgs e)
         {
             _noteContentViewModel = NoteContentViewModel.NoteViewModel;
-            Models.User selectedUser = (Models.User)e.ClickedItem;
+            UWPYourNoteLibrary.Models.User selectedUser = (UWPYourNoteLibrary.Models.User)e.ClickedItem;
             _noteContentViewModel.ShareNote(selectedUser.userId, _noteId);
 
         }

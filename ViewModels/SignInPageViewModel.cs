@@ -8,13 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml;
-using YourNoteUWP.View;
+using UWPYourNote.View;
 using System.ComponentModel.DataAnnotations;
 using Windows.UI.Xaml.Media.Animation;
-using YourNoteUWP.Models;
+using UWPYourNoteLibrary.Models;
 using Windows.System;
 
-namespace YourNoteUWP.ViewModels
+namespace UWPYourNote.ViewModels
 {
     internal class SignInPageViewModel 
     {

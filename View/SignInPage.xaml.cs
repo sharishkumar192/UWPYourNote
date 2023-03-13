@@ -14,16 +14,16 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using YourNoteUWP.ViewModels;
+using UWPYourNote.ViewModels;
 using System.Collections.ObjectModel;
 using Windows.UI.Xaml.Media.Animation;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using YourNoteUWP.Util;
+using UWPYourNoteLibrary.Util;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace YourNoteUWP.View
+namespace UWPYourNote.View
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -336,7 +336,7 @@ namespace YourNoteUWP.View
         }
 
         //---------------------------------------------- Frequent Users ListView ----------------------------------------------------
-        public ObservableCollection<YourNoteUWP.Models.User> FrequentEmailItemSource
+        public ObservableCollection<UWPYourNoteLibrary.Models.User> FrequentEmailItemSource
         {
             get { return _frequentEmailItemSource; }
 
@@ -345,7 +345,7 @@ namespace YourNoteUWP.View
 
         public void FrequentEmailItemClick(object sender, ItemClickEventArgs e)
         {
-            var frequentUser = (Models.User)e.ClickedItem;
+            var frequentUser = (UWPYourNoteLibrary.Models.User)e.ClickedItem;
 
             EmailBoxContent = frequentUser.userId;
         }
@@ -378,7 +378,7 @@ namespace YourNoteUWP.View
         }
 
 
-        private ObservableCollection<YourNoteUWP.Models.User> _frequentEmailItemSource = Models.User.GetFrequentUsers();
+        private ObservableCollection<UWPYourNoteLibrary.Models.User> _frequentEmailItemSource = UWPYourNoteLibrary.Models.User.GetFrequentUsers();
 
         //------------------------------------------- Navigation Buttons-----------------------------------------
         public void LogInButtonClick()
@@ -388,11 +388,11 @@ namespace YourNoteUWP.View
             if (EmailCheckVisibility == Visibility.Collapsed &&
                 PasswordCheckVisibility == Visibility.Collapsed)
             {
-                Tuple<Models.User, bool> validation = Models.User.ValidateLogInUser(EmailBoxContent, PasswordBoxPassword);
+                Tuple<UWPYourNoteLibrary.Models.User, bool> validation = UWPYourNoteLibrary.Models.User.ValidateLogInUser(EmailBoxContent, PasswordBoxPassword);
                 if (validation.Item2 == true)
                 {
 
-                    Tuple<Frame, Models.User> tuple = new Tuple<Frame, Models.User>(_frame, validation.Item1);
+                    Tuple<Frame, UWPYourNoteLibrary.Models.User> tuple = new Tuple<Frame, UWPYourNoteLibrary.Models.User>(_frame, validation.Item1);
                     _frame.Navigate(typeof(HomePage), tuple);
 
                 }

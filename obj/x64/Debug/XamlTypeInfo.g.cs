@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 
 
-namespace YourNoteUWP
+namespace UWPYourNote
 {
     public partial class App : global::Windows.UI.Xaml.Markup.IXamlMetadataProvider
     {
