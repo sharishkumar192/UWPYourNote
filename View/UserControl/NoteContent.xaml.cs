@@ -44,7 +44,7 @@ namespace UWPYourNote
         private string _userId = "";
         public bool isModified = false;
         public bool isDeleted = false;
-        private NoteContentViewModel _noteContentViewModel;
+        private NoteContentVM _noteContentViewModel;
 
         private bool _gotCount = false;
 
@@ -60,7 +60,7 @@ namespace UWPYourNote
 
         private void UpdateCount()
         {
-                _noteContentViewModel = NoteContentViewModel.NoteViewModel;
+                _noteContentViewModel = NoteContentVM.NoteViewModel;
                 _noteContentViewModel.UpdateCount(_searchCount, _noteId);
         }
 
@@ -183,7 +183,7 @@ namespace UWPYourNote
 
         private void NoteColorChosenChanged()
         {
-            _noteContentViewModel = NoteContentViewModel.NoteViewModel;
+            _noteContentViewModel = NoteContentVM.NoteViewModel;
               _noteColorChosen = NoteMenuOptions.ColorOptionsSelectedIndex;
         isModified = true;
             currentDay = DateTime.Now.ToString("MMM/dd/yyyy hh:mm:ss.fff tt");
@@ -283,7 +283,6 @@ namespace UWPYourNote
 
         public void NoteCloseButtonClick(object sender, RoutedEventArgs e)
         {
-   
             _delPageMethod.DynamicInvoke(null, null);
             
          }
@@ -324,7 +323,7 @@ namespace UWPYourNote
         public ObservableCollection<UWPYourNoteLibrary.Models.User> NoteShareButtonClick(object sender, RoutedEventArgs e)
         {
             ObservableCollection<UWPYourNoteLibrary.Models.User> notes = null;
-            _noteContentViewModel = NoteContentViewModel.NoteViewModel;
+            _noteContentViewModel = NoteContentVM.NoteViewModel;
             if (_noteContentViewModel.IsOwner(_userId, _noteId) == true)
             {
           notes = _noteContentViewModel.GetUsersToShare(_userId, _noteId);
@@ -343,7 +342,7 @@ namespace UWPYourNote
         {
             
             
-            _noteContentViewModel = NoteContentViewModel.NoteViewModel;
+            _noteContentViewModel = NoteContentVM.NoteViewModel;
             _noteContentViewModel.DeleteNote(_noteId);
             isDeleted = true;
             _delPageMethod.DynamicInvoke(null, null);
@@ -393,7 +392,7 @@ namespace UWPYourNote
         delegate void ToShareView(object sender, ItemClickEventArgs e);
         private void UsersToShareView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            _noteContentViewModel = NoteContentViewModel.NoteViewModel;
+            _noteContentViewModel = NoteContentVM.NoteViewModel;
             UWPYourNoteLibrary.Models.User selectedUser = (UWPYourNoteLibrary.Models.User)e.ClickedItem;
             _noteContentViewModel.ShareNote(selectedUser.userId, _noteId);
 
@@ -458,7 +457,7 @@ namespace UWPYourNote
                 _oldTitle = TitleOfNoteText;
                currentDay = DateTime.Now.ToString("MMM/dd/yyyy hh:mm:ss.fff tt");
 
-                _noteContentViewModel = NoteContentViewModel.NoteViewModel;
+                _noteContentViewModel = NoteContentVM.NoteViewModel;
                 _noteContentViewModel.NoteUpdation(TitleOfNoteText, ContentOfNoteText, _noteId, currentDay);
                 isModified = true;
             }
@@ -468,7 +467,7 @@ namespace UWPYourNote
                 {
                     currentDay = DateTime.Now.ToString("MMM/dd/yyyy hh:mm:ss.fff tt");
                     _oldContent = ContentOfNoteText;
-                    _noteContentViewModel = NoteContentViewModel.NoteViewModel;
+                    _noteContentViewModel = NoteContentVM.NoteViewModel;
                     _noteContentViewModel.NoteContentUpdation(ContentOfNoteText, _noteId, currentDay);
                     isModified = true;
                 }
@@ -476,7 +475,7 @@ namespace UWPYourNote
                 {
                     currentDay = DateTime.Now.ToString("MMM/dd/yyyy hh:mm:ss.fff tt");
                     _oldTitle = TitleOfNoteText;
-                    _noteContentViewModel = NoteContentViewModel.NoteViewModel;
+                    _noteContentViewModel = NoteContentVM.NoteViewModel;
                     _noteContentViewModel.NoteTitleUpdation(TitleOfNoteText, _noteId, currentDay);
                     isModified = true;
                 }

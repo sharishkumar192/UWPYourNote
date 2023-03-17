@@ -31,7 +31,7 @@ namespace UWPYourNote.View
     {
         private Frame _frame;
         private UWPYourNoteLibrary.Models.Note _selectedNote = null;
-        private HomePageViewModel _homePageViewModel;
+        private HomePageVM _homePageViewModel;
         static UWPYourNoteLibrary.Models.Note selectedNoteFromDisplay = null;
 
 
@@ -178,7 +178,7 @@ namespace UWPYourNote.View
                 TitleText = "My Personal Notes";
 
                 if (_notesDataItemSource == null)
-                    _notesDataItemSource = HomePageViewModel.GetPersonalNotes(LoggedUser.userId, true);
+                    _notesDataItemSource = HomePageVM.GetPersonalNotes(LoggedUser.userId, true);
 
 
                 NotesDataItemSource = _notesDataItemSource;
@@ -196,7 +196,7 @@ namespace UWPYourNote.View
                 PersonalNotesIsSelected = AllNotesIsSelected = false;
 
                 if (_notesDataItemSource == null)
-                    _notesDataItemSource = HomePageViewModel.GetSharedNotes(LoggedUser.userId, true);
+                    _notesDataItemSource = HomePageVM.GetSharedNotes(LoggedUser.userId, true);
 
                 NotesDataItemSource = _notesDataItemSource;
 
@@ -209,7 +209,7 @@ namespace UWPYourNote.View
                 _notesDataItemSource = null;
                 TitleText = "All Notes";
                 if (_notesDataItemSource == null)
-                    _notesDataItemSource = HomePageViewModel.GetAllNotes(LoggedUser.userId, true);
+                    _notesDataItemSource = HomePageVM.GetAllNotes(LoggedUser.userId, true);
                 NotesDataItemSource = _notesDataItemSource;
             }
         }
@@ -244,7 +244,7 @@ namespace UWPYourNote.View
                 {
                     SearchPopupIsOpen = true;
                     TextBox contentOfTextBox = (TextBox)sender;
-                    _homePageViewModel = new HomePageViewModel();
+                    _homePageViewModel = new HomePageVM();
                     if (contentOfTextBox.Text.Length <= 2)
                     {
                         RecentlySearchedVisibility = Visibility.Visible;
@@ -402,11 +402,16 @@ namespace UWPYourNote.View
         {
             string text;
             box.Document.GetText(Windows.UI.Text.TextGetOptions.FormatRtf, out text);
+
+
             Windows.UI.Text.ITextRange range = box.Document.GetRange(0, text.Length - 1);
             if (range.Text == "\r")
                 return "";
             return text;
             //return range.Text;
+
+
+          
         }
 
 
@@ -576,7 +581,7 @@ namespace UWPYourNote.View
                 
 
                 string creationDay = DateTime.Now.ToString("MMM/dd/yyyy hh:mm:ss.fff tt");
-                _homePageViewModel = new HomePageViewModel();
+                _homePageViewModel = new HomePageVM();
                 UWPYourNoteLibrary.Models.Note newNote = new UWPYourNoteLibrary.Models.Note(LoggedUser.userId, TitleOfNewNoteText, ContentOfNewNoteText, NoteEditOptions.ColorOptionsSelectedIndex, creationDay, creationDay);
                 long noteId = _homePageViewModel.CreateNewNote(newNote);
                 if (_notesDataItemSource == null)

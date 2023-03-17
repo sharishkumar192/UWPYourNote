@@ -220,6 +220,8 @@
                 FontWeight="SemiBold"
                 Foreground="Black"
                                                        />
+            
+            
             <controls:DropShadowPanel
                 Width="500"
                 HorizontalAlignment="Center"

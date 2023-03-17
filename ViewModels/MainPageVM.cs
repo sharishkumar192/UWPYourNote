@@ -9,16 +9,16 @@ using Windows.UI.Xaml.Controls;
 
 namespace UWPYourNote.ViewModels
 {
-    internal class MainPageViewModel 
+    internal class MainPageVM 
     {
        
        static Frame _mainFrame;
-        public MainPageViewModel(Frame frame)
+        public MainPageVM(Frame frame)
         {
             _mainFrame = frame;
 
         }
-        public MainPageViewModel()
+        public MainPageVM()
         {
             //_mainFrame = frame;
 

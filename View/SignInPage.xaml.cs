@@ -76,7 +76,7 @@ namespace UWPYourNote.View
 
         public static string CheckAlreadyExistingEmail(string email)
         {
-            SignInPageViewModel _signInPageViewModel = SignInPageViewModel.SignInPVM;
+            SignInPageVM _signInPageViewModel = SignInPageVM.SignInPVM;
             if (_signInPageViewModel.IsExistingEmail(email) == true)
                 return "An account already exists for this email address";
             return null;
@@ -388,7 +388,8 @@ namespace UWPYourNote.View
             if (EmailCheckVisibility == Visibility.Collapsed &&
                 PasswordCheckVisibility == Visibility.Collapsed)
             {
-                Tuple<UWPYourNoteLibrary.Models.User, bool> validation = UWPYourNoteLibrary.Models.User.ValidateLogInUser(EmailBoxContent, PasswordBoxPassword);
+                SignInPageVM signInPageViewModel = new SignInPageVM();    
+                Tuple<UWPYourNoteLibrary.Models.User, bool> validation = signInPageViewModel.ValidateLogInUser(EmailBoxContent, PasswordBoxPassword);
                 if (validation.Item2 == true)
                 {
 

@@ -16,7 +16,12 @@ using Windows.UI.Xaml.Media;
 using UWPYourNoteLibrary.Models;
 namespace UWPYourNote.ViewModels
 {
-    internal class HomePageViewModel
+    public class CallBackPresenter
+    {
+
+    }
+
+    internal class HomePageVM
     {
        
      
@@ -44,7 +49,7 @@ namespace UWPYourNote.ViewModels
 
         public static ObservableCollection<UWPYourNoteLibrary.Models.Note> GetPersonalNotes(string userId, bool isSort)
         {
-            HomePageViewModel apvm = new HomePageViewModel();
+            HomePageVM apvm = new HomePageVM();
             var notes = DBFetch.GetPersonalNotes(DBCreation.notesTableName, userId);
             if (isSort == true)
                 return apvm.SortByModificationtime(notes);
@@ -53,7 +58,7 @@ namespace UWPYourNote.ViewModels
 
         public static ObservableCollection<UWPYourNoteLibrary.Models.Note> GetSharedNotes(string userId, bool isSort)
         {
-            HomePageViewModel apvm = new HomePageViewModel();
+            HomePageVM apvm = new HomePageVM();
             var  notes = DBFetch.GetSharedNotes(DBCreation.notesTableName, DBCreation.sharedTableName, userId);
             if (isSort == true)
                return apvm.SortByModificationtime(notes);
@@ -64,7 +69,7 @@ namespace UWPYourNote.ViewModels
 
         public static ObservableCollection<UWPYourNoteLibrary.Models.Note> GetAllNotes(string userId, bool isSort)
         {
-            HomePageViewModel apvm = new HomePageViewModel();
+            HomePageVM apvm = new HomePageVM();
             var allNotes = new ObservableCollection<UWPYourNoteLibrary.Models.Note>();
         
                 var pnotes = GetPersonalNotes(userId, false);
@@ -120,7 +125,11 @@ namespace UWPYourNote.ViewModels
         {
           return DBUpdation.InsertNewNote(DBCreation.notesTableName, newNote);
         }
-    }
 
+
+
+        
+    }
+  
 
 }

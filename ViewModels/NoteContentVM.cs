@@ -2,23 +2,23 @@
 using System.Collections.ObjectModel;
 namespace UWPYourNote.ViewModels
 {
-    internal class NoteContentViewModel  
+    internal class NoteContentVM  
     {
 
-        private NoteContentViewModel()
+        private NoteContentVM()
         {
 
         }
 
-        private static NoteContentViewModel _noteViewModel;
+        private static NoteContentVM _noteViewModel;
 
-        public static NoteContentViewModel NoteViewModel
+        public static NoteContentVM NoteViewModel
         {
             get
             {
                 if (_noteViewModel == null)
                 {
-                    _noteViewModel = new NoteContentViewModel();
+                    _noteViewModel = new NoteContentVM();
                 }
                 return _noteViewModel;
             }

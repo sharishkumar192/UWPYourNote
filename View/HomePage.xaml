@@ -220,6 +220,8 @@
                 FontWeight="SemiBold"
                 Foreground="Black"
                 Text="{x:Bind TitleText, Mode=OneWay}" />
+            
+            
             <controls:DropShadowPanel
                 Width="500"
                 HorizontalAlignment="Center"

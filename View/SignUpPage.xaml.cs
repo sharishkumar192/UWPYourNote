@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 using UWPYourNoteLibrary.Util;
 using UWPYourNote.ViewModels;
+using YourNoteUWP.ViewModels;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,16 +26,22 @@ namespace UWPYourNote.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class SignUpPage : Page, INotifyPropertyChanged
+    public sealed partial class SignUpPage : Page, IView, INotifyPropertyChanged
     {
-        private SignUpPageViewModel _signUpPageViewModel;
+        private SignUpPageVM _signUpPageViewModel;
         private Frame _frame;
-
         public SignUpPage()
         {
             this.InitializeComponent();
-        }
 
+        }
+        public void NavigateToSignInPage()
+        {
+            _ = Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Low, () =>
+            {
+                _frame.Navigate(typeof(SignInPage), _frame);
+            });
+        }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             _frame = e.Parameter as Frame;
@@ -163,7 +170,7 @@ namespace UWPYourNote.View
 
         public static string CheckAlreadyExistingEmail(string email)
         {
-            SignInPageViewModel _signInPageViewModel = SignInPageViewModel.SignInPVM;
+            SignInPageVM _signInPageViewModel = SignInPageVM.SignInPVM;
             if (_signInPageViewModel.IsExistingEmail(email) == true)
                 return "An account already exists for this email address";
             return null;
@@ -568,18 +575,26 @@ namespace UWPYourNote.View
                 PasswordCheckVisibility == Visibility.Collapsed &&
                 ConfirmPasswordCheckVisibility == Visibility.Collapsed)
             {
-                _signUpPageViewModel = SignUpPageViewModel.SignUpPVM;
+                _signUpPageViewModel = new SignUpPageVM();
+                _signUpPageViewModel.View = this;
                 _signUpPageViewModel.InsertNewUser(NameBoxContent, EmailBoxContent, PasswordBoxPassword);
-                   _frame.Navigate(typeof(SignInPage), _frame);
+
 
             }
         }
+
+
         public void NavigateToSignInClick()
         {
 
             _frame.Navigate(typeof(SignInPage), _frame, new SlideNavigationTransitionInfo() { Effect = SlideNavigationTransitionEffect.FromRight });
 
 
+        }
+
+        public void NavigateTo()
+        {
+            NavigateToSignInPage();
         }
     }
 }
