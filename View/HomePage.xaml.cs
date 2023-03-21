@@ -19,6 +19,7 @@ using Windows.UI.Xaml.Navigation;
 using UWPYourNoteLibrary.Models;
 using UWPYourNoteLibrary.Util;
 using UWPYourNote.ViewModels;
+using UWPYourNote.ViewModels.Contract;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -27,13 +28,13 @@ namespace UWPYourNote.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class HomePage : Page, INotifyPropertyChanged
+    public sealed partial class HomePage : Page, IHomePageView, INotifyPropertyChanged
     {
         private Frame _frame;
         private UWPYourNoteLibrary.Models.Note _selectedNote = null;
         private HomePageVM _homePageViewModel;
         static UWPYourNoteLibrary.Models.Note selectedNoteFromDisplay = null;
-
+        private HomePageVM pageVM;
 
         public event PropertyChangedEventHandler PropertyChanged;
         void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -60,7 +61,7 @@ namespace UWPYourNote.View
         {
 
             DelegateIntialize();
-
+            pageVM = HomePageVM.HomePVM;
             NoteEditOptions.NoteDeleteButtonVisibility = NoteEditOptions.NoteShareButtonVisibility = Visibility.Collapsed;
             Tuple<Frame, UWPYourNoteLibrary.Models.User> tuple = (Tuple<Frame, UWPYourNoteLibrary.Models.User>)e.Parameter;
             _frame = tuple.Item1;
@@ -105,7 +106,14 @@ namespace UWPYourNote.View
             var result = await showDialog.ShowAsync();
         }
 
+     
+        public void GetNotes(string type)
+        {
+            pageVM.homePageView = this;
+            pageVM.GetNotes(LoggedUser.userId, true, type);
 
+        }
+      
 
         //----------------------------Main Menu List Box---------------------------------------------------
 
@@ -167,22 +175,17 @@ namespace UWPYourNote.View
         {
             TitleOfNewNoteVisibility = NoteStyleOptionsVisibility = Visibility.Collapsed;
             ListBox box = (ListBox)sender;
-
+            ListBoxItem item = (ListBoxItem)box.SelectedItem;
             MainMenuOptionsSelectedIndex = box.SelectedIndex;
 
 
             if (PersonalNotesIsSelected == true)
             {
-                _notesDataItemSource = null;
+                
                 SharedNotesIsSelected = AllNotesIsSelected = false;
+          
                 TitleText = "My Personal Notes";
-
-                if (_notesDataItemSource == null)
-                    _notesDataItemSource = HomePageVM.GetPersonalNotes(LoggedUser.userId, true);
-
-
-                NotesDataItemSource = _notesDataItemSource;
-
+                GetNotes(item.Content.ToString());
                 SearchTextBoxText = "";
                 _selectedNote = new Note("", "", "", 0);
                 SearchPopupIsOpen = false;
@@ -190,27 +193,18 @@ namespace UWPYourNote.View
             }
             else if (SharedNotesIsSelected == true)
             {
-                _notesDataItemSource = null;
+              
                 TitleText = "My Shared Notes";
-
                 PersonalNotesIsSelected = AllNotesIsSelected = false;
-
-                if (_notesDataItemSource == null)
-                    _notesDataItemSource = HomePageVM.GetSharedNotes(LoggedUser.userId, true);
-
-                NotesDataItemSource = _notesDataItemSource;
-
+               GetNotes(item.Content.ToString());
                 _selectedNote = new Note("", "", "", 0);
                 SearchTextBoxText = "";
                 SearchPopupIsOpen = false;
             }
             else if (AllNotesIsSelected == true)
             {
-                _notesDataItemSource = null;
                 TitleText = "All Notes";
-                if (_notesDataItemSource == null)
-                    _notesDataItemSource = HomePageVM.GetAllNotes(LoggedUser.userId, true);
-                NotesDataItemSource = _notesDataItemSource;
+                GetNotes(item.Content.ToString());
             }
         }
 
@@ -244,24 +238,9 @@ namespace UWPYourNote.View
                 {
                     SearchPopupIsOpen = true;
                     TextBox contentOfTextBox = (TextBox)sender;
-                    _homePageViewModel = new HomePageVM();
-                    if (contentOfTextBox.Text.Length <= 2)
-                    {
-                        RecentlySearchedVisibility = Visibility.Visible;
-                        SuggestionContentVisibility = Visibility.Collapsed;
-                        RecentlySearchedItemSource = _homePageViewModel.GetRecentNotes(LoggedUser.userId); 
-                    }
-
-                    else
-                    {
-                       
-                        RecentlySearchedVisibility = Visibility.Collapsed;
-                        SuggestionContentVisibility = Visibility.Visible;
-                        var lowerText = contentOfTextBox.Text.ToLower();
-                        SuggestionContentItemSource = _homePageViewModel.GetSuggestedNote(LoggedUser.userId, lowerText);
-
-                    }
-
+                    var lowerText = contentOfTextBox.Text.ToLower();
+                        pageVM.homePageView = this;
+                        pageVM.GetSuggestedAndRecentNotes(LoggedUser.userId, lowerText);
                 }
             }
             catch (Exception m)
@@ -300,16 +279,7 @@ namespace UWPYourNote.View
             }
         }
 
-        public void RecentlySearchedItemClick(object sender, ItemClickEventArgs e)
-        {
-            selectedNoteFromDisplay = (Note)e.ClickedItem;
-            selectedNoteFromDisplay.searchCount++;
-            NoteContentPopUp.DisplayContent(LoggedUser.userId, selectedNoteFromDisplay.noteId, selectedNoteFromDisplay.title, selectedNoteFromDisplay.content, selectedNoteFromDisplay.searchCount, selectedNoteFromDisplay.noteColor, selectedNoteFromDisplay.modifiedDay);
-            SearchPopupIsOpen = false;
-            NoteDisplayPopUpOpened();
 
-
-        }
 
 
 
@@ -333,7 +303,7 @@ namespace UWPYourNote.View
 
 
 
-        //----------------------------Search -> Suggestion List View ---------------------------------------------------
+        //----------------------------Search -> Suggestion List homePageView ---------------------------------------------------
 
         public void SuggestionContainerItemClick(object sender, ItemClickEventArgs e)
         {
@@ -347,17 +317,7 @@ namespace UWPYourNote.View
         }
 
 
-        private ObservableCollection<UWPYourNoteLibrary.Models.Note> _suggestionContentItemSource;
-        public ObservableCollection<UWPYourNoteLibrary.Models.Note> SuggestionContentItemSource
-        {
-            get { return _suggestionContentItemSource; }
-            set
-            {
-                _suggestionContentItemSource = value;
-                OnPropertyChanged();
-
-            }
-        }
+       
 
 
 
@@ -606,7 +566,7 @@ namespace UWPYourNote.View
 
         }
 
-        //----------------------------Note Grid View---------------------------------------------------
+        //----------------------------Note Grid homePageView---------------------------------------------------
 
         private ObservableCollection<UWPYourNoteLibrary.Models.Note> _notesDataItemSource = null;
         public ObservableCollection<UWPYourNoteLibrary.Models.Note> NotesDataItemSource

@@ -97,17 +97,17 @@
                                                                                         
                 SelectionMode="Single"
                 Style="{StaticResource MainMenuStyle}">
-                <ListBoxItem x:ConnectionId='32'
+                <ListBoxItem x:ConnectionId='31'
                     Name="PersonalNotes"
                     Content="Personal"
                                                                                />
 
-                <ListBoxItem x:ConnectionId='33'
+                <ListBoxItem x:ConnectionId='32'
                     Name="SharedNotes"
                     Content="Shared"
                                                                              />
 
-                <ListBoxItem x:ConnectionId='34'
+                <ListBoxItem x:ConnectionId='33'
                     Name="AllNotes"
                     Content="All Notes"
                                                                           />
@@ -149,27 +149,27 @@
                             Width="Auto"
                             CornerRadius="4">
 
-                            <ListView x:ConnectionId='30'
+                            <!--<ListView
                                 Name="RecentlySearched"
                                 Width="325"
                                 Background="White"
                                 CornerRadius="4"
                                 IsItemClickEnabled="True"
-                                                                                           
-                                                                                              >
+                                ItemClick="{x:Bind RecentlySearchedItemClick, Mode=OneWay}"
+                                ItemsSource="{x:Bind RecentlySearchedItemSource, Mode=OneWay}">
                                 <ListView.ItemTemplateSelector>
                                     <data:ItemsDataTemplateSelector AllItems="{StaticResource SearchTitleA}" LastItems="{StaticResource SearchTitleL}" />
                                 </ListView.ItemTemplateSelector>
-                            </ListView>
+                            </ListView>-->
 
-                            <ListView x:ConnectionId='31'
+                            <ListView x:ConnectionId='30'
                                 Name="Suggestion"
                                 Width="325"
                                 Background="White"
                                 IsItemClickEnabled="True"
                                                                                               
                                 ItemContainerStyle="{StaticResource SearchContainerItemStyle}"
-                                                                                               
+                                                                                                      
                                                                                               >
                                 <ListView.ItemTemplateSelector>
                                     <data:ItemsDataTemplateSelector AllItems="{StaticResource SearchTitleA}" LastItems="{StaticResource SearchTitleL}" />
@@ -313,7 +313,7 @@
             IsItemClickEnabled="True"
                                                                 
             ItemContainerStyle="{StaticResource GridViewItemStyle}"
-                                                                   >
+                                                                          >
             <GridView.ItemTemplate>
                 <DataTemplate                       >
                     <Border CornerRadius="4">

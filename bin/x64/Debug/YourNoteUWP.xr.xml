@@ -231,11 +231,11 @@
       <RootProperty Name="ItemTemplateSelector" />
       <RootProperty Name="Name" />
       <RootProperty Name="Width" />
-      <RootProperty Name="CornerRadius" />
       <RootProperty Name="ItemsSource" />
       <RootProperty Name="Visibility" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="CornerRadius" />
       <RootProperty Name="Height" />
       <RootProperty Name="Style" />
       <RootEvent Name="ItemClick" />

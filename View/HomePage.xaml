@@ -149,7 +149,7 @@
                             Width="Auto"
                             CornerRadius="4">
 
-                            <ListView
+                            <!--<ListView
                                 Name="RecentlySearched"
                                 Width="325"
                                 Background="White"
@@ -160,7 +160,7 @@
                                 <ListView.ItemTemplateSelector>
                                     <data:ItemsDataTemplateSelector AllItems="{StaticResource SearchTitleA}" LastItems="{StaticResource SearchTitleL}" />
                                 </ListView.ItemTemplateSelector>
-                            </ListView>
+                            </ListView>-->
 
                             <ListView
                                 Name="Suggestion"
@@ -169,7 +169,7 @@
                                 IsItemClickEnabled="True"
                                 ItemClick="{x:Bind SuggestionContainerItemClick, Mode=OneWay}"
                                 ItemContainerStyle="{StaticResource SearchContainerItemStyle}"
-                                ItemsSource="{x:Bind SuggestionContentItemSource, Mode=OneWay}"
+                                ItemsSource="{x:Bind pageVM.SuggestionContentItemSource, Mode=OneWay}"
                                 Visibility="{x:Bind SuggestionContentVisibility, Mode=OneWay}">
                                 <ListView.ItemTemplateSelector>
                                     <data:ItemsDataTemplateSelector AllItems="{StaticResource SearchTitleA}" LastItems="{StaticResource SearchTitleL}" />
@@ -313,7 +313,7 @@
             IsItemClickEnabled="True"
             ItemClick="{x:Bind NotesDataItemClick, Mode=OneWay}"
             ItemContainerStyle="{StaticResource GridViewItemStyle}"
-            ItemsSource="{x:Bind NotesDataItemSource, Mode=OneWay}">
+            ItemsSource="{x:Bind pageVM.NotesDataItemSource, Mode=OneWay}">
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="data:Note">
                     <Border CornerRadius="4">
