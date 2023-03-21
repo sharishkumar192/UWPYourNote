@@ -17,8 +17,7 @@ using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 using UWPYourNoteLibrary.Util;
 using UWPYourNote.ViewModels;
-using YourNoteUWP.ViewModels;
-
+using UWPYourNote.ViewModels.Contract;
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace UWPYourNote.View
@@ -26,7 +25,7 @@ namespace UWPYourNote.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class SignUpPage : Page, IView, INotifyPropertyChanged
+    public sealed partial class SignUpPage : Page, IView, ICheckExistingUser, INotifyPropertyChanged
     {
         private SignUpPageVM _signUpPageViewModel;
         private Frame _frame;
@@ -168,12 +167,34 @@ namespace UWPYourNote.View
 
         //------------------------------------------Email TextBox---------------------------------------------------
 
-        public static string CheckAlreadyExistingEmail(string email)
+        public void CheckExistingUser(string result)
         {
-            SignInPageVM _signInPageViewModel = SignInPageVM.SignInPVM;
-            if (_signInPageViewModel.IsExistingEmail(email) == true)
-                return "An account already exists for this email address";
-            return null;
+            //   string value = null;
+            //  if(result)
+            //        value = "An account already exists for this email address";
+            _ = Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Low, () =>
+            {
+                if (result == null)
+                {
+                    EmailToolTipContent = "";
+                    EmailCheckVisibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    EmailToolTipContent = result;
+                    EmailCheckVisibility = Visibility.Visible;
+
+                }
+
+            });
+           
+        }
+        public  void CheckAlreadyExistingEmail(string email)
+        {
+            SignUpPageVM _signUpPageViewModel = SignUpPageVM.SignUpPVM;
+            _signUpPageViewModel.check = this;
+            _signUpPageViewModel.IsExistingEmail(email);
+       
         }
         private string IsEmailCheck(string email)
         {
@@ -184,17 +205,9 @@ namespace UWPYourNote.View
 
             string checkValid = UWPYourNoteLibrary.Util.UserUtilities.CheckValidEmail(email);
 
-
+            CheckAlreadyExistingEmail(email);
             if (checkValid != null)
                 return checkValid;
-
-            string existedMail = CheckAlreadyExistingEmail(email);
-
-
-            if (existedMail != null)
-                return existedMail;
-
-
             return null;
         }
         //Text Box
@@ -577,6 +590,7 @@ namespace UWPYourNote.View
             {
                 _signUpPageViewModel = new SignUpPageVM();
                 _signUpPageViewModel.View = this;
+                _signUpPageViewModel.check = this;
                 _signUpPageViewModel.InsertNewUser(NameBoxContent, EmailBoxContent, PasswordBoxPassword);
 
 
@@ -596,5 +610,7 @@ namespace UWPYourNote.View
         {
             NavigateToSignInPage();
         }
+
+        
     }
 }

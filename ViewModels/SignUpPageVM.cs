@@ -15,14 +15,17 @@ using UWPYourNoteLibrary.Domain;
 using UWPYourNoteLibrary;
 using UWPYourNote.View;
 using System.Diagnostics;
-using YourNoteUWP.ViewModels;
+using UWPYourNote.ViewModels;
+using UWPYourNoteLibrary.Domain.Contract;
 using System.ServiceModel.Dispatcher;
+using static UWPYourNote.ViewModels.SignUpPageVM;
+using UWPYourNote.ViewModels.Contract;
+
 namespace UWPYourNote.ViewModels
 {
     internal class SignUpPageVM
     {
-        private IView _View;
-
+        
         public SignUpPageVM()
         { 
         }
@@ -41,38 +44,65 @@ namespace UWPYourNote.ViewModels
         }
 
         public IView View { get; internal set; }
-
-        public bool IsExistingEmail(string email)
-        {
-            return DBFetch.CheckValidEmail(DBCreation.userTableName, email);
-        }
+        public ICheckExistingUser check { get; internal set; }
+       
 
         public void InsertNewUser(string name, string email, string password)
         {
-      
-            UCAccountCreationRequest uCAccountCreationRequest = new UCAccountCreationRequest(name, email, password);
-            UCAccountCreation uCAccountCreation = new UCAccountCreation(uCAccountCreationRequest, new SignUpPageVMPresenterCallBack(this));
+            CreateAccountUseCaseRequest uCAccountCreationRequest = new CreateAccountUseCaseRequest(name, email, password);
+            CreateAccountUseCase uCAccountCreation = new CreateAccountUseCase(uCAccountCreationRequest, new InsertNewUserCallBack(this));
             uCAccountCreation.Execute();
-            //DBUpdation.InsertNewUser(newUser);
+        }
+
+        public void IsExistingEmail(string email)
+        {
+            UWPYourNote.ViewModels.Util.UserUtilities.CheckIfUsersExists(email, new IsExistingEmailCallBack(this));
+            // return DBFetch.CheckValidEmail(DBCreation.userTableName, email);
 
         }
 
-        public sealed class SignUpPageVMPresenterCallBack : IPresenterCallback
+
+
+
+        public sealed class InsertNewUserCallBack : ICallback<CreateAccountUseCaseResponse>
         {
 
             private SignUpPageVM SignUpPageVM { get; set; }
-            public SignUpPageVMPresenterCallBack(SignUpPageVM signUpPageVM)
+            public InsertNewUserCallBack(SignUpPageVM signUpPageVM)
             {
                 SignUpPageVM = signUpPageVM;
             }
-            public void onFailure()
-            {
-               
-            }
-
-            public void onSuccess()
+            public void onSuccess(CreateAccountUseCaseResponse result)
             {
                 SignUpPageVM?.View?.NavigateTo();
+            }
+
+            public void onFailure(CreateAccountUseCaseResponse result)
+            {
+                
+            }
+        }
+
+
+        public sealed class IsExistingEmailCallBack : ICallback<CheckIfUserExistsUseCaseResponse>
+        {
+            string value = null;
+            private SignUpPageVM SignUpPageVM { get; set; }
+            public IsExistingEmailCallBack(SignUpPageVM signUpPageVM)
+            {
+                SignUpPageVM = signUpPageVM;
+            }
+            public void onSuccess(CheckIfUserExistsUseCaseResponse result)
+            {
+                value = "An account already exists for this email address"; 
+                SignUpPageVM?.check?.CheckExistingUser(value);
+            }
+
+            public void onFailure(CheckIfUserExistsUseCaseResponse result)
+            {
+                value = null;
+                SignUpPageVM?.check?.CheckExistingUser(value);
+
             }
         }
     }

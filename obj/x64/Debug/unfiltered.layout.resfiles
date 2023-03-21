@@ -59,8 +59,8 @@ View\MainPage.xbf
 View\NoteColorOptions.xbf
 View\SignInPage.xbf
 View\SignUpPage.xbf
-View\UserControl\NoteContent.xbf
-View\UserControl\NoteEditOptionsControl.xbf
-View\UserControl\NotesDataTemplate.xbf
+View\usercontrol\NoteContent.xbf
+View\usercontrol\NoteEditOptionsControl.xbf
+View\usercontrol\NotesDataTemplate.xbf
 YourNoteUWP.xr.xml
 Properties\Default.rd.xml

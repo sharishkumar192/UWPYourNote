@@ -7,8 +7,8 @@
     xmlns:data="using:UWPYourNoteLibrary.Models"
     xmlns:local="using:UWPYourNote.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:usercontrol="using:UWPYourNote.View.usercontrol"
     xmlns:util="using:UWPYourNoteLibrary.Util"
-    xmlns:view="using:UWPYourNote"
     mc:Ignorable="d">
     <Page.Resources>
 
@@ -220,8 +220,8 @@
                 FontWeight="SemiBold"
                 Foreground="Black"
                                                        />
-            
-            
+
+
             <controls:DropShadowPanel
                 Width="500"
                 HorizontalAlignment="Center"
@@ -279,12 +279,12 @@
 
                         </Grid.ColumnDefinitions>
 
-
-
-                        <view:NoteEditOptionsControl x:ConnectionId='22'
+                        <usercontrol:NoteEditOptionsControl x:ConnectionId='22'
                             x:Name="NoteEditOptions"
                             Grid.Column="0"
                                                                       />
+
+
 
                         <Button x:ConnectionId='23'
                             Name="CreationButton"
@@ -317,7 +317,7 @@
             <GridView.ItemTemplate>
                 <DataTemplate                       >
                     <Border CornerRadius="4">
-                        <view:NotesDataTemplate />
+                        <usercontrol:NotesDataTemplate />
                     </Border>
                 </DataTemplate>
             </GridView.ItemTemplate>
@@ -341,7 +341,7 @@
                                                                                
             LightDismissOverlayMode="On"
                                                                  >
-            <view:NoteContent x:ConnectionId='12'
+            <usercontrol:NoteContent x:ConnectionId='12'
                 x:Name="NoteContentPopUp"
                                                                    
                                                                      

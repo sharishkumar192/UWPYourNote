@@ -1,12 +1,12 @@
 ﻿<UserControl x:ConnectionId='1'
-    x:Class="UWPYourNote.NoteContent"
+    x:Class="UWPYourNote.View.usercontrol.NoteContent"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:data="using:UWPYourNoteLibrary.Models"
-    xmlns:local="using:UWPYourNote"
+    xmlns:local="UWPYourNote.View.usercontrols.NoteEditOptionsControl"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:usercontrol="using:UWPYourNote.View"
+    xmlns:usercontrol="using:UWPYourNote.View.usercontrol"
     xmlns:uwpyournote="using:UWPYourNote"
     mc:Ignorable="d">
 
@@ -113,7 +113,9 @@
             HorizontalAlignment="Center"
             Background="Transparent"
             CornerRadius="4">
-            <local:NoteEditOptionsControl x:ConnectionId='13'
+
+
+            <usercontrol:NoteEditOptionsControl x:ConnectionId='13'
                  x:Name="NoteMenuOptions"
                 Margin="5,0,5,5"
                                                                               

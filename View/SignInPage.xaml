@@ -268,7 +268,7 @@
                     Grid.Column="1"
                     Width="1"
                     Background="#a1a1a1"
-                    Visibility="{x:Bind ColumnDividerVisibility, Mode=OneWay}" />
+                    Visibility="{x:Bind signInPageVM.ColumnDividerVisibility, Mode=OneWay}" />
 
                 <!--<Email list>-->
 
@@ -280,7 +280,7 @@
                     BorderBrush="Black"
                     BorderThickness="0"
                     CornerRadius="4"
-                    Visibility="{x:Bind FrequentEmailBoxVisibility, Mode=OneWay}">
+                    Visibility="{x:Bind signInPageVM.FrequentEmailBoxVisibility, Mode=OneWay}">
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition />
@@ -302,7 +302,7 @@
                         ItemClick="{x:Bind FrequentEmailItemClick}"
                         ItemContainerStyle="{StaticResource LoginListViewItem}"
                         ItemTemplate="{StaticResource EmailIdofUsers}"
-                        ItemsSource="{x:Bind FrequentEmailItemSource}"
+                        ItemsSource="{x:Bind signInPageVM.FrequentEmailItemSource, Mode=OneWay}"
                         Style="{StaticResource LoginListView}" />
 
 

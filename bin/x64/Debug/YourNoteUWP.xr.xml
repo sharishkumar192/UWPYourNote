@@ -536,7 +536,7 @@
       <RootProperty Name="ItemsPanel" />
       <RootEvent Name="ItemClick" />
     </RootType>
-    <RootType FullName="UWPYourNote.NoteContent">
+    <RootType FullName="UWPYourNote.View.usercontrol.NoteContent">
       <RootProperty Name="Width" />
       <RootProperty Name="Height" />
       <RootProperty Name="IsTapEnabled" />
@@ -544,7 +544,7 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.Animation.PopOutThemeAnimation" />
     <RootType FullName="Windows.UI.Xaml.Media.Animation.PopInThemeAnimation" />
-    <RootType FullName="UWPYourNote.NotesDataTemplate" />
+    <RootType FullName="UWPYourNote.View.usercontrol.NotesDataTemplate" />
     <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.StaggeredPanel">
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="ColumnSpacing" />
@@ -559,7 +559,7 @@
       <RootProperty Name="Content" />
       <RootProperty Name="VerticalAlignment" />
     </RootType>
-    <RootType FullName="UWPYourNote.NoteEditOptionsControl">
+    <RootType FullName="UWPYourNote.View.usercontrol.NoteEditOptionsControl">
       <RootProperty Name="Margin" />
       <RootProperty Name="Visibility" />
       <RootEvent Name="EditOptions" />

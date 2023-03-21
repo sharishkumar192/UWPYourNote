@@ -345,14 +345,14 @@
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\HomePage.xbf">
       <PackagePath>View\HomePage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\UserControl\NoteContent.xbf">
-      <PackagePath>View\UserControl\NoteContent.xbf</PackagePath>
+    <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\usercontrol\NoteContent.xbf">
+      <PackagePath>View\usercontrol\NoteContent.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\UserControl\NoteEditOptionsControl.xbf">
-      <PackagePath>View\UserControl\NoteEditOptionsControl.xbf</PackagePath>
+    <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\usercontrol\NoteEditOptionsControl.xbf">
+      <PackagePath>View\usercontrol\NoteEditOptionsControl.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\UserControl\NotesDataTemplate.xbf">
-      <PackagePath>View\UserControl\NotesDataTemplate.xbf</PackagePath>
+    <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\usercontrol\NotesDataTemplate.xbf">
+      <PackagePath>View\usercontrol\NotesDataTemplate.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\MainPage.xbf">
       <PackagePath>View\MainPage.xbf</PackagePath>

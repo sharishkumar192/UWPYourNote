@@ -25,7 +25,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace UWPYourNote
+namespace UWPYourNote.View.usercontrol
 {
     public sealed partial class NoteContent : UserControl, INotifyPropertyChanged
     {

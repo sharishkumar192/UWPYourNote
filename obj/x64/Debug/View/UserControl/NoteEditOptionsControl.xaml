@@ -1,8 +1,7 @@
 ﻿<UserControl x:ConnectionId='1'
-    x:Class="UWPYourNote.NoteEditOptionsControl"
+    x:Class="UWPYourNote.View.usercontrol.NoteEditOptionsControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:Models="using:UWPYourNoteLibrary"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:UWPYourNoteLibrary.Models"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"

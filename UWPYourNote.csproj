@@ -119,17 +119,20 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\IView.cs" />
+    <Compile Include="ViewModels\Contract\ISignInPageView.cs" />
+    <Compile Include="ViewModels\Contract\ICheckExistingUser.cs" />
+    <Compile Include="ViewModels\Contract\IView.cs" />
+    <Compile Include="ViewModels\Util\UserUtilities.cs" />
     <Compile Include="View\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControl\NoteContent.xaml.cs">
+    <Compile Include="View\usercontrol\NoteContent.xaml.cs">
       <DependentUpon>NoteContent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControl\NoteEditOptionsControl.xaml.cs">
+    <Compile Include="View\usercontrol\NoteEditOptionsControl.xaml.cs">
       <DependentUpon>NoteEditOptionsControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControl\NotesDataTemplate.xaml.cs">
+    <Compile Include="View\usercontrol\NotesDataTemplate.xaml.cs">
       <DependentUpon>NotesDataTemplate.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -225,15 +228,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControl\NoteContent.xaml">
+    <Page Include="View\usercontrol\NoteContent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControl\NoteEditOptionsControl.xaml">
+    <Page Include="View\usercontrol\NoteEditOptionsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControl\NotesDataTemplate.xaml">
+    <Page Include="View\usercontrol\NotesDataTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

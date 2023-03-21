@@ -1,5 +1,5 @@
 ﻿<UserControl x:ConnectionId='1'
-    x:Class="UWPYourNote.NotesDataTemplate"
+    x:Class="UWPYourNote.View.usercontrol.NotesDataTemplate"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"

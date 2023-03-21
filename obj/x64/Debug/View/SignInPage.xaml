@@ -268,7 +268,7 @@
                     Grid.Column="1"
                     Width="1"
                     Background="#a1a1a1"
-                                                                               />
+                                                                                            />
 
                 <!--<Email list>-->
 
@@ -280,7 +280,7 @@
                     BorderBrush="Black"
                     BorderThickness="0"
                     CornerRadius="4"
-                                                                                 >
+                                                                                              >
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition />
@@ -302,7 +302,7 @@
                                                                    
                         ItemContainerStyle="{StaticResource LoginListViewItem}"
                         ItemTemplate="{StaticResource EmailIdofUsers}"
-                                                                      
+                                                                                                
                         Style="{StaticResource LoginListView}" />
 
 

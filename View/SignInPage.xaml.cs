@@ -20,7 +20,9 @@ using Windows.UI.Xaml.Media.Animation;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using UWPYourNoteLibrary.Util;
-
+using UWPYourNote.ViewModels;
+using UWPYourNoteLibrary.Models;
+using UWPYourNote.ViewModels.Contract;
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace UWPYourNote.View
@@ -28,27 +30,29 @@ namespace UWPYourNote.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class SignInPage : Page, INotifyPropertyChanged
+    public sealed partial class SignInPage : Page, ISignInPageView, ICheckExistingUser, INotifyPropertyChanged
     {
         private Frame _frame;
+        SignInPageVM signInPageVM;
         public SignInPage()
         {
             this.InitializeComponent();
-
+            signInPageVM = SignInPageVM.SignInPVM;
+            signInPageVM.signInPageView = this;
         }
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+
+            _ = Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Low, () =>
+            {
+
+            });
+
+
             _frame = e.Parameter as Frame;
-            if (FrequentEmailItemSource == null || FrequentEmailItemSource.Count == 0)
-            {
-                FrequentEmailBoxVisibility = Visibility.Collapsed;
-            }
-            else
-            {
-                FrequentEmailBoxVisibility = Visibility.Visible;
-            }
-
-
+            signInPageVM = SignInPageVM.SignInPVM;
+            signInPageVM.GetRecentLogInUsers();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -57,29 +61,38 @@ namespace UWPYourNote.View
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        //----------------------------Column Divider---------------------------------------------------
-
-        private Visibility _columnDividerVisibility = Visibility.Collapsed;
-
-        public Visibility ColumnDividerVisibility
-        {
-            get { return _columnDividerVisibility; }
-            set
-            {
-                _columnDividerVisibility = value;
-                OnPropertyChanged();
-            }
-        }
 
 
         //------------------------------------------Email TextBox---------------------------------------------------
 
-        public static string CheckAlreadyExistingEmail(string email)
+        public void CheckExistingUser(string result)
         {
-            SignInPageVM _signInPageViewModel = SignInPageVM.SignInPVM;
-            if (_signInPageViewModel.IsExistingEmail(email) == true)
-                return "An account already exists for this email address";
-            return null;
+            //       value = "An account already exists for this email address";
+            _ = Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Low, () =>
+            {
+                if (result == null)
+                {
+                    EmailToolTipContent = "";
+                    EmailCheckVisibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    EmailToolTipContent = result;
+                    EmailCheckVisibility = Visibility.Visible;
+
+                }
+            });
+       
+        }
+        public  void CheckAlreadyExistingEmail(string email)
+        {
+            //SignInPageVM _signInPageViewModel = SignInPageVM.SignInPVM;
+            SignInPageVM _signInPageViewModel = new SignInPageVM();
+            _signInPageViewModel.check = this;
+            _signInPageViewModel.IsExistingUser(email);
+            //if (_signInPageViewModel.IsExistingUser(email) == true)
+            //  return "An account already exists for this` email address";
+     
         }
 
         public string IsEmailCheck(string email)
@@ -91,10 +104,10 @@ namespace UWPYourNote.View
 
             string checkValid = UserUtilities.CheckValidEmail(email);
 
-
             if (checkValid != null)
                 return checkValid;
 
+            CheckAlreadyExistingEmail(email);
             return null;
         }
 
@@ -336,11 +349,9 @@ namespace UWPYourNote.View
         }
 
         //---------------------------------------------- Frequent Users ListView ----------------------------------------------------
-        public ObservableCollection<UWPYourNoteLibrary.Models.User> FrequentEmailItemSource
-        {
-            get { return _frequentEmailItemSource; }
 
-        }
+        
+        
 
 
         public void FrequentEmailItemClick(object sender, ItemClickEventArgs e)
@@ -351,35 +362,12 @@ namespace UWPYourNote.View
         }
 
 
-        private Visibility _frequentEmailBoxVisibility = Visibility.Collapsed;
+ 
 
-        public Visibility FrequentEmailBoxVisibility
-        {
-            get { return _frequentEmailBoxVisibility; }
-            set
-            {
-                _frequentEmailBoxVisibility = value;
-                ShowColumnDivider();
-                OnPropertyChanged();
-
-            }
-        }
-
-        public void ShowColumnDivider()
-        {
-            if (FrequentEmailBoxVisibility == Visibility.Collapsed)
-            {
-                ColumnDividerVisibility = Visibility.Collapsed;
-            }
-            else
-            {
-                ColumnDividerVisibility = Visibility.Visible;
-            }
-        }
+      
 
 
-        private ObservableCollection<UWPYourNoteLibrary.Models.User> _frequentEmailItemSource = UWPYourNoteLibrary.Models.User.GetFrequentUsers();
-
+       
         //------------------------------------------- Navigation Buttons-----------------------------------------
         public void LogInButtonClick()
         {
@@ -388,32 +376,57 @@ namespace UWPYourNote.View
             if (EmailCheckVisibility == Visibility.Collapsed &&
                 PasswordCheckVisibility == Visibility.Collapsed)
             {
-                SignInPageVM signInPageViewModel = new SignInPageVM();    
-                Tuple<UWPYourNoteLibrary.Models.User, bool> validation = signInPageViewModel.ValidateLogInUser(EmailBoxContent, PasswordBoxPassword);
-                if (validation.Item2 == true)
-                {
+                SignInPageVM signInPageViewModel = SignInPageVM.SignInPVM;
+                signInPageViewModel.signInPageView = this;
+                signInPageViewModel.ValidateLogInUser(EmailBoxContent, PasswordBoxPassword);
 
-                    Tuple<Frame, UWPYourNoteLibrary.Models.User> tuple = new Tuple<Frame, UWPYourNoteLibrary.Models.User>(_frame, validation.Item1);
-                    _frame.Navigate(typeof(HomePage), tuple);
-
-                }
-                else
-                {
-                    PasswordToolTipContent = "Incorrect Email address or password";
-                    PasswordCheckVisibility = Visibility.Visible;
-
-                }
 
             }
 
         }
 
-
-
         public void NavigateToSignUpClick()
+        {
+            //   _frame.Navigate(typeof(SignUpPage), _frame, new SlideNavigationTransitionInfo() { Effect = SlideNavigationTransitionEffect.FromLeft });
+            NavigateToSignUpPage();
+        }
+
+        public void NavigateToSignUpPage()
         {
             _frame.Navigate(typeof(SignUpPage), _frame, new SlideNavigationTransitionInfo() { Effect = SlideNavigationTransitionEffect.FromLeft });
         }
 
+        public void NavigateToHomePage(User loggedUser)
+        {
+            _ = Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Low, () =>
+            {
+                Tuple<Frame, UWPYourNoteLibrary.Models.User> tuple = new Tuple<Frame, UWPYourNoteLibrary.Models.User>(_frame, loggedUser);
+                _frame.Navigate(typeof(HomePage), tuple);
+            });
+        }
+        public void NavigateToSignInPage()
+        {
+            _ = Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Low, () =>
+            {
+            if (EmailToolTipContent.Equals("") == true)
+            {
+                
+                     EmailToolTipContent = "";
+                EmailCheckVisibility = Visibility.Collapsed;
+                
+            }
+            PasswordToolTipContent = "Incorrect Email address or password";
+            PasswordCheckVisibility = Visibility.Visible;
+            });
+        }
+
+        public void NavigateToOnFailure()
+        {
+            NavigateToSignInPage();
+        }
+        public void NavigateToOnSuccess(User loggedUser)
+        {
+            NavigateToHomePage(loggedUser);
+        }
     }
 }

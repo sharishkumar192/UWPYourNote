@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace YourNoteUWP.ViewModels
+namespace UWPYourNote.ViewModels.Contract
 {
     internal interface IView
     {

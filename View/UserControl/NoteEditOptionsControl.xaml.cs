@@ -22,7 +22,7 @@ using UWPYourNote.ViewModels;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace UWPYourNote
+namespace UWPYourNote.View.usercontrol
 {
     public sealed partial class NoteEditOptionsControl : UserControl, INotifyPropertyChanged
     {
@@ -33,7 +33,7 @@ namespace UWPYourNote
             this.InitializeComponent();
         }
 
-      
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -107,7 +107,7 @@ namespace UWPYourNote
 
         //----Note Color Button
 
-        private SolidColorBrush _noteColorForeground ;
+        private SolidColorBrush _noteColorForeground;
         public SolidColorBrush NoteColorForeground
         {
             get { return _noteColorForeground; }
@@ -124,6 +124,7 @@ namespace UWPYourNote
             {
                 Style style1 = Application.Current.Resources[UWPYourNoteLibrary.Util.NotesUtilities.noteColorStyle[ColorOptionsSelectedIndex]] as Style;
                 Style style2 = Application.Current.Resources[UWPYourNoteLibrary.Util.NotesUtilities.noteColorButtonStyle[ColorOptionsSelectedIndex]] as Style;
+              
                 FontBackground.Style = FontIncrease.Style = FontDecrease.Style = SmallCaps.Style = AllCaps.Style = Strikethrough.Style = NoteShareButton.Style = style1;
                 NoteColor.Style = NoteDeleteButton.Style = style2;
             }
@@ -153,12 +154,12 @@ namespace UWPYourNote
 
             EditOptions?.Invoke(box.Name);
             ChangeNoteColor();
-          
+
         }
-        
+
 
         public void NoteDeleteButtonClick(object sender, RoutedEventArgs e)
-        { 
+        {
             EditOptions?.Invoke(ReturnNameOfButton(sender));
         }
         public void NoteShareButtonClick(object sender, RoutedEventArgs e)
@@ -172,7 +173,7 @@ namespace UWPYourNote
                 NoValidUsers();
         }
 
-        private  void NoValidUsers()
+        private void NoValidUsers()
         {
             EditOptions?.Invoke("NoValidUsers");
         }
@@ -190,7 +191,7 @@ namespace UWPYourNote
             //EditOptions?.Invoke(view.name,e);
         }
 
-        private  void NoteShared(bool value)
+        private void NoteShared(bool value)
         {
             EditOptions?.Invoke(value.ToString());
         }
