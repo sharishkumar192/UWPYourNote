@@ -37,8 +37,7 @@ namespace UWPYourNote.View
         public SignInPage()
         {
             this.InitializeComponent();
-            signInPageVM = SignInPageVM.SignInPVM;
-            signInPageVM.signInPageView = this;
+
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
@@ -51,7 +50,7 @@ namespace UWPYourNote.View
 
 
             _frame = e.Parameter as Frame;
-            signInPageVM = SignInPageVM.SignInPVM;
+            signInPageVM = SignInPageVM.Singleton;
             signInPageVM.GetRecentLogInUsers();
         }
 
@@ -86,12 +85,10 @@ namespace UWPYourNote.View
         }
         public  void CheckAlreadyExistingEmail(string email)
         {
-            //SignInPageVM _signInPageViewModel = SignInPageVM.SignInPVM;
-            SignInPageVM _signInPageViewModel = new SignInPageVM();
-            _signInPageViewModel.check = this;
-            _signInPageViewModel.IsExistingUser(email);
-            //if (_signInPageViewModel.IsExistingUser(email) == true)
-            //  return "An account already exists for this` email address";
+
+            signInPageVM.check = this;
+            signInPageVM.IsExistingUser(email);
+       
      
         }
 
@@ -376,9 +373,9 @@ namespace UWPYourNote.View
             if (EmailCheckVisibility == Visibility.Collapsed &&
                 PasswordCheckVisibility == Visibility.Collapsed)
             {
-                SignInPageVM signInPageViewModel = SignInPageVM.SignInPVM;
-                signInPageViewModel.signInPageView = this;
-                signInPageViewModel.ValidateLogInUser(EmailBoxContent, PasswordBoxPassword);
+             
+                signInPageVM.signInPageView = this;
+                signInPageVM.ValidateLogInUser(EmailBoxContent, PasswordBoxPassword);
 
 
             }

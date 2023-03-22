@@ -23,7 +23,7 @@ namespace UWPYourNote.ViewModels
     internal class SignInPageVM : INotifyPropertyChanged
     {
         private static SignInPageVM _signInPageViewModel = null;
-        public static SignInPageVM SignInPVM
+        public static SignInPageVM Singleton
         {
             get
             {

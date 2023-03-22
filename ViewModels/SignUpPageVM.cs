@@ -31,7 +31,7 @@ namespace UWPYourNote.ViewModels
         }
 
         private static SignUpPageVM _signUpPageViewModel = null;
-        public static SignUpPageVM SignUpPVM
+        public static SignUpPageVM Singleton
         {
             get
             {

@@ -12,7 +12,7 @@ namespace UWPYourNote.ViewModels
 
         private static NoteContentVM _noteViewModel;
 
-        public static NoteContentVM NoteViewModel
+        public static NoteContentVM Singleton
         {
             get
             {

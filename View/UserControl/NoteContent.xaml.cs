@@ -60,7 +60,7 @@ namespace UWPYourNote.View.usercontrol
 
         private void UpdateCount()
         {
-                _noteContentViewModel = NoteContentVM.NoteViewModel;
+                _noteContentViewModel = NoteContentVM.Singleton;
                 _noteContentViewModel.UpdateCount(_searchCount, _noteId);
         }
 
@@ -183,7 +183,7 @@ namespace UWPYourNote.View.usercontrol
 
         private void NoteColorChosenChanged()
         {
-            _noteContentViewModel = NoteContentVM.NoteViewModel;
+            _noteContentViewModel = NoteContentVM.Singleton;
               _noteColorChosen = NoteMenuOptions.ColorOptionsSelectedIndex;
         isModified = true;
             currentDay = DateTime.Now.ToString("MMM/dd/yyyy hh:mm:ss.fff tt");
@@ -323,7 +323,7 @@ namespace UWPYourNote.View.usercontrol
         public ObservableCollection<UWPYourNoteLibrary.Models.User> NoteShareButtonClick(object sender, RoutedEventArgs e)
         {
             ObservableCollection<UWPYourNoteLibrary.Models.User> notes = null;
-            _noteContentViewModel = NoteContentVM.NoteViewModel;
+            _noteContentViewModel = NoteContentVM.Singleton;
             if (_noteContentViewModel.IsOwner(_userId, _noteId) == true)
             {
           notes = _noteContentViewModel.GetUsersToShare(_userId, _noteId);
@@ -342,7 +342,7 @@ namespace UWPYourNote.View.usercontrol
         {
             
             
-            _noteContentViewModel = NoteContentVM.NoteViewModel;
+            _noteContentViewModel = NoteContentVM.Singleton;
             _noteContentViewModel.DeleteNote(_noteId);
             isDeleted = true;
             _delPageMethod.DynamicInvoke(null, null);
@@ -392,7 +392,7 @@ namespace UWPYourNote.View.usercontrol
         delegate void ToShareView(object sender, ItemClickEventArgs e);
         private void UsersToShareView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            _noteContentViewModel = NoteContentVM.NoteViewModel;
+            _noteContentViewModel = NoteContentVM.Singleton;
             UWPYourNoteLibrary.Models.User selectedUser = (UWPYourNoteLibrary.Models.User)e.ClickedItem;
             _noteContentViewModel.ShareNote(selectedUser.userId, _noteId);
 
@@ -457,7 +457,7 @@ namespace UWPYourNote.View.usercontrol
                 _oldTitle = TitleOfNoteText;
                currentDay = DateTime.Now.ToString("MMM/dd/yyyy hh:mm:ss.fff tt");
 
-                _noteContentViewModel = NoteContentVM.NoteViewModel;
+                _noteContentViewModel = NoteContentVM.Singleton;
                 _noteContentViewModel.NoteUpdation(TitleOfNoteText, ContentOfNoteText, _noteId, currentDay);
                 isModified = true;
             }
@@ -467,7 +467,7 @@ namespace UWPYourNote.View.usercontrol
                 {
                     currentDay = DateTime.Now.ToString("MMM/dd/yyyy hh:mm:ss.fff tt");
                     _oldContent = ContentOfNoteText;
-                    _noteContentViewModel = NoteContentVM.NoteViewModel;
+                    _noteContentViewModel = NoteContentVM.Singleton;
                     _noteContentViewModel.NoteContentUpdation(ContentOfNoteText, _noteId, currentDay);
                     isModified = true;
                 }
@@ -475,7 +475,7 @@ namespace UWPYourNote.View.usercontrol
                 {
                     currentDay = DateTime.Now.ToString("MMM/dd/yyyy hh:mm:ss.fff tt");
                     _oldTitle = TitleOfNoteText;
-                    _noteContentViewModel = NoteContentVM.NoteViewModel;
+                    _noteContentViewModel = NoteContentVM.Singleton;
                     _noteContentViewModel.NoteTitleUpdation(TitleOfNoteText, _noteId, currentDay);
                     isModified = true;
                 }

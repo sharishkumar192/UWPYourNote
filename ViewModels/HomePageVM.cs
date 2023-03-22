@@ -19,6 +19,7 @@ using UWPYourNoteLibrary.Domain.Contract;
 using UWPYourNoteLibrary.Domain.UseCase;
 using Windows.UI.Xaml.Automation.Peers;
 using UWPYourNote.View;
+using static UWPYourNoteLibrary.Util.NotesUtilities;
 
 namespace UWPYourNote.ViewModels
 {
@@ -35,7 +36,7 @@ namespace UWPYourNote.ViewModels
         }
 
         private static HomePageVM homePageVM;
-        public static HomePageVM HomePVM
+        public static HomePageVM Singleton
         {
             get
             {
@@ -68,7 +69,7 @@ namespace UWPYourNote.ViewModels
         }
 
         //-------------------------------------------- DISPLAYING NOTES IN GRID VIEW ------------------------------------------------
-        public void GetNotes(string userId, bool isSort, string type)
+        public void GetNotes(string userId, bool isSort, TypeOfNote type)
         {
             GetNotesUseCaseRequest request = new GetNotesUseCaseRequest();
             request.UserId = userId;

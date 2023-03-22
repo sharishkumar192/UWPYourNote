@@ -20,6 +20,7 @@ using UWPYourNoteLibrary.Models;
 using UWPYourNoteLibrary.Util;
 using UWPYourNote.ViewModels;
 using UWPYourNote.ViewModels.Contract;
+using static UWPYourNoteLibrary.Util.NotesUtilities;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -34,7 +35,7 @@ namespace UWPYourNote.View
         private UWPYourNoteLibrary.Models.Note _selectedNote = null;
         private HomePageVM _homePageViewModel;
         static UWPYourNoteLibrary.Models.Note selectedNoteFromDisplay = null;
-        private HomePageVM pageVM;
+        private HomePageVM homePageVM;
 
         public event PropertyChangedEventHandler PropertyChanged;
         void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -61,7 +62,7 @@ namespace UWPYourNote.View
         {
 
             DelegateIntialize();
-            pageVM = HomePageVM.HomePVM;
+            homePageVM = HomePageVM.Singleton;
             NoteEditOptions.NoteDeleteButtonVisibility = NoteEditOptions.NoteShareButtonVisibility = Visibility.Collapsed;
             Tuple<Frame, UWPYourNoteLibrary.Models.User> tuple = (Tuple<Frame, UWPYourNoteLibrary.Models.User>)e.Parameter;
             _frame = tuple.Item1;
@@ -107,10 +108,10 @@ namespace UWPYourNote.View
         }
 
      
-        public void GetNotes(string type)
+        public void GetNotes(TypeOfNote type)
         {
-            pageVM.homePageView = this;
-            pageVM.GetNotes(LoggedUser.userId, true, type);
+            homePageVM.homePageView = this;
+            homePageVM.GetNotes(LoggedUser.userId, true, type);
 
         }
       
@@ -177,15 +178,16 @@ namespace UWPYourNote.View
             ListBox box = (ListBox)sender;
             ListBoxItem item = (ListBoxItem)box.SelectedItem;
             MainMenuOptionsSelectedIndex = box.SelectedIndex;
-
+            TypeOfNote typeOfNote;
 
             if (PersonalNotesIsSelected == true)
             {
                 
+                
                 SharedNotesIsSelected = AllNotesIsSelected = false;
-          
-                TitleText = "My Personal Notes";
-                GetNotes(item.Content.ToString());
+                typeOfNote = TypeOfNote.PersonalNotes;
+                TitleText = typeOfNote.ToString();
+                GetNotes(typeOfNote);
                 SearchTextBoxText = "";
                 _selectedNote = new Note("", "", "", 0);
                 SearchPopupIsOpen = false;
@@ -194,17 +196,20 @@ namespace UWPYourNote.View
             else if (SharedNotesIsSelected == true)
             {
               
-                TitleText = "My Shared Notes";
                 PersonalNotesIsSelected = AllNotesIsSelected = false;
-               GetNotes(item.Content.ToString());
+                typeOfNote = TypeOfNote.SharedNotes;
+                TitleText = typeOfNote.ToString();
+                GetNotes(typeOfNote);
                 _selectedNote = new Note("", "", "", 0);
                 SearchTextBoxText = "";
                 SearchPopupIsOpen = false;
             }
             else if (AllNotesIsSelected == true)
             {
-                TitleText = "All Notes";
-                GetNotes(item.Content.ToString());
+                PersonalNotesIsSelected = SharedNotesIsSelected = false;
+                typeOfNote = TypeOfNote.AllNotes;
+                TitleText = typeOfNote.ToString();
+                GetNotes(typeOfNote);
             }
         }
 
@@ -239,8 +244,8 @@ namespace UWPYourNote.View
                     SearchPopupIsOpen = true;
                     TextBox contentOfTextBox = (TextBox)sender;
                     var lowerText = contentOfTextBox.Text.ToLower();
-                        pageVM.homePageView = this;
-                        pageVM.GetSuggestedAndRecentNotes(LoggedUser.userId, lowerText);
+                        homePageVM.homePageView = this;
+                        homePageVM.GetSuggestedAndRecentNotes(LoggedUser.userId, lowerText);
                 }
             }
             catch (Exception m)
@@ -734,8 +739,7 @@ namespace UWPYourNote.View
 
         }
 
-
-
+        
 
         private bool _noteContentPopUpIsTapped = true;
 

@@ -27,7 +27,7 @@ namespace UWPYourNote.View
     /// </summary>
     public sealed partial class SignUpPage : Page, IView, ICheckExistingUser, INotifyPropertyChanged
     {
-        private SignUpPageVM _signUpPageViewModel;
+        private SignUpPageVM signUpPageVM;
         private Frame _frame;
         public SignUpPage()
         {
@@ -44,6 +44,7 @@ namespace UWPYourNote.View
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             _frame = e.Parameter as Frame;
+            signUpPageVM = SignUpPageVM.Singleton;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -191,9 +192,8 @@ namespace UWPYourNote.View
         }
         public  void CheckAlreadyExistingEmail(string email)
         {
-            SignUpPageVM _signUpPageViewModel = SignUpPageVM.SignUpPVM;
-            _signUpPageViewModel.check = this;
-            _signUpPageViewModel.IsExistingEmail(email);
+            signUpPageVM.check = this;
+            signUpPageVM.IsExistingEmail(email);
        
         }
         private string IsEmailCheck(string email)
@@ -588,10 +588,10 @@ namespace UWPYourNote.View
                 PasswordCheckVisibility == Visibility.Collapsed &&
                 ConfirmPasswordCheckVisibility == Visibility.Collapsed)
             {
-                _signUpPageViewModel = new SignUpPageVM();
-                _signUpPageViewModel.View = this;
-                _signUpPageViewModel.check = this;
-                _signUpPageViewModel.InsertNewUser(NameBoxContent, EmailBoxContent, PasswordBoxPassword);
+             
+                signUpPageVM.View = this;
+                signUpPageVM.check = this;
+                signUpPageVM.InsertNewUser(NameBoxContent, EmailBoxContent, PasswordBoxPassword);
 
 
             }
