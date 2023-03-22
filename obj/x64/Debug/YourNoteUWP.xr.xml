@@ -99,11 +99,11 @@
       <RootProperty Name="Visibility" />
       <RootProperty Name="Name" />
       <RootProperty Name="Width" />
-      <RootProperty Name="Background" />
       <RootProperty Name="Content" />
       <RootProperty Name="CornerRadius" />
       <RootProperty Name="Foreground" />
       <RootProperty Name="Height" />
+      <RootProperty Name="Background" />
       <RootProperty Name="FontFamily" />
       <RootProperty Name="Flyout" />
       <RootEvent Name="Click" />

@@ -41,16 +41,9 @@ namespace UWPYourNote.View
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
-        {
-
-            _ = Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Low, () =>
-            {
-
-            });
-
-
-            _frame = e.Parameter as Frame;
+        {   _frame = e.Parameter as Frame;
             signInPageVM = SignInPageVM.Singleton;
+            signInPageVM.signInPageView = this; 
             signInPageVM.GetRecentLogInUsers();
         }
 

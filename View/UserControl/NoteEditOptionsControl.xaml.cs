@@ -120,14 +120,12 @@ namespace UWPYourNote.View.usercontrol
 
         private void ChangeNoteColor()
         {
-            if (NoteShareButtonVisibility == Visibility.Visible && NoteDeleteButtonVisibility == Visibility.Visible)
-            {
+         //   if (NoteShareButtonVisibility == Visibility.Visible && NoteDeleteButtonVisibility == Visibility.Visible)
                 Style style1 = Application.Current.Resources[UWPYourNoteLibrary.Util.NotesUtilities.noteColorStyle[ColorOptionsSelectedIndex]] as Style;
                 Style style2 = Application.Current.Resources[UWPYourNoteLibrary.Util.NotesUtilities.noteColorButtonStyle[ColorOptionsSelectedIndex]] as Style;
               
                 FontBackground.Style = FontIncrease.Style = FontDecrease.Style = SmallCaps.Style = AllCaps.Style = Strikethrough.Style = NoteShareButton.Style = style1;
                 NoteColor.Style = NoteDeleteButton.Style = style2;
-            }
         }
 
 

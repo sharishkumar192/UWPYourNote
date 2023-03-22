@@ -20,6 +20,7 @@ using UWPYourNoteLibrary.Domain.UseCase;
 using Windows.UI.Xaml.Automation.Peers;
 using UWPYourNote.View;
 using static UWPYourNoteLibrary.Util.NotesUtilities;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace UWPYourNote.ViewModels
 {
@@ -131,10 +132,7 @@ namespace UWPYourNote.ViewModels
         }
 
        
-        public long CreateNewNote(Note newNote)
-        {
-            return DBUpdation.InsertNewNote(DBCreation.notesTableName, newNote);
-        }
+      
 
 
 
@@ -196,7 +194,28 @@ namespace UWPYourNote.ViewModels
             }
         }
 
-    
+        //------------------------------- CREATING NEW NOTE-----------------------------------------------------
+        public void CreateNewNote(Note newNote)
+        {
+            NotesDataItemSource.Insert(0,newNote);   
+            CreateNewNoteUseCaseRequest request = new CreateNewNoteUseCaseRequest();
+            request.NewNote = newNote;  
+            CreateNewNoteUseCase usecase = new CreateNewNoteUseCase(request, new CreateNewNotePresenterCallBack(this));
+            usecase.Execute();
+        }
+
+        //---------------------------- UPDATION OF NOTE------------------------------------------
+        public void NoteUpdation(Note updatedNote, string title, string content, string modifiedDate, long noteColor)
+        {
+            int i = NotesDataItemSource.IndexOf(updatedNote);
+            Note note = NotesDataItemSource[i];
+            NotesDataItemSource.RemoveAt(i);
+            note.content = content;
+            note.title = title;
+            note.modifiedDay = modifiedDate;
+            note.noteColor = noteColor;
+            NotesDataItemSource.Insert(0, note);
+        }
 
 
         // PRESENTER CALLBACK 
@@ -242,6 +261,27 @@ namespace UWPYourNote.ViewModels
             {
                 Presenter?.AssignSuggestedNotes(result.List);
 
+            }
+        }
+        private class CreateNewNotePresenterCallBack : ICallback<CreateNewNoteUseCaseResponse>
+        {
+            private HomePageVM Presenter;
+            public CreateNewNotePresenterCallBack(HomePageVM presenter)
+            {
+                Presenter = presenter;
+            }
+
+            public void onFailure(CreateNewNoteUseCaseResponse result)
+            {
+            }
+
+            public void onSuccess(CreateNewNoteUseCaseResponse result)
+            {
+                Page page = (Page)Presenter?.homePageView;
+                _ = page?.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Low, () =>
+                {
+                    homePageVM.NotesDataItemSource[0].noteId = result.NoteId;
+                });
             }
         }
 

@@ -22,16 +22,18 @@ using UWPYourNoteLibrary.Models;
 using UWPYourNoteLibrary.Util;
 using UWPYourNote.ViewModels;
 using static System.Net.Mime.MediaTypeNames;
+using YourNoteUWP.ViewModels.Contract;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
 namespace UWPYourNote.View.usercontrol
 {
-    public sealed partial class NoteContent : UserControl, INotifyPropertyChanged
+    public sealed partial class NoteContent : UserControl,INoteContentView, INotifyPropertyChanged
     {
         //  private Type _parentPage;
         public event PropertyChangedEventHandler PropertyChanged;
         public DispatcherTimer _dispatcherTimer = null;
+        private NoteContentVM noteContentVM;
         void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -71,7 +73,8 @@ namespace UWPYourNote.View.usercontrol
         {
             this.InitializeComponent();
 
-
+            noteContentVM = NoteContentVM.Singleton;
+            noteContentVM.noteContentView = this;
             TitleOfNote.AddHandler(TappedEvent, new TappedEventHandler(TitleOfNoteTapped), TitleOfNoteIsTapped);
               ContentOfNote.AddHandler(TappedEvent, new TappedEventHandler(ContentOfNoteTapped), ContentOfNoteIsTapped);
 
@@ -447,36 +450,35 @@ namespace UWPYourNote.View.usercontrol
             dispatcherTimer.Stop();
             dispatcherTimer = null;
         }
+
+      
        public void DispatcherTimer_Tick(object sender, object e)
        {
             bool contentChange = IsChanged(_oldContent, ContentOfNoteText);
             bool titleChange = IsChanged(_oldTitle, TitleOfNoteText);
+            string modifiedDay = DateTime.Now.ToString("MMM/dd/yyyy hh:mm:ss.fff tt");
+            Note updateNote = new Note(_noteId, TitleOfNoteText, ContentOfNoteText, modifiedDay);
+
+            noteContentVM = NoteContentVM.Singleton;
+            noteContentVM.noteContentView = this;
+
+            noteContentVM.UpdateNote(updateNote, titleChange, contentChange);
             if (contentChange && titleChange)
             {
                 _oldContent = ContentOfNoteText;
                 _oldTitle = TitleOfNoteText;
-               currentDay = DateTime.Now.ToString("MMM/dd/yyyy hh:mm:ss.fff tt");
-
-                _noteContentViewModel = NoteContentVM.Singleton;
-                _noteContentViewModel.NoteUpdation(TitleOfNoteText, ContentOfNoteText, _noteId, currentDay);
                 isModified = true;
             }
             else
             {
                 if (contentChange)
                 {
-                    currentDay = DateTime.Now.ToString("MMM/dd/yyyy hh:mm:ss.fff tt");
                     _oldContent = ContentOfNoteText;
-                    _noteContentViewModel = NoteContentVM.Singleton;
-                    _noteContentViewModel.NoteContentUpdation(ContentOfNoteText, _noteId, currentDay);
                     isModified = true;
                 }
                 if (titleChange)
                 {
-                    currentDay = DateTime.Now.ToString("MMM/dd/yyyy hh:mm:ss.fff tt");
                     _oldTitle = TitleOfNoteText;
-                    _noteContentViewModel = NoteContentVM.Singleton;
-                    _noteContentViewModel.NoteTitleUpdation(TitleOfNoteText, _noteId, currentDay);
                     isModified = true;
                 }
             }

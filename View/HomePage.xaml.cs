@@ -395,6 +395,18 @@ namespace UWPYourNote.View
         }
 
         //-----------New Note Container
+        private SolidColorBrush _newNoteBackground = NotesUtilities.GetSolidColorBrush(0);
+
+        public SolidColorBrush NewNoteBackground
+        {
+            get { return _newNoteBackground ; }
+            set 
+            { 
+                _newNoteBackground = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         private Visibility _newNoteVisibility;
 
@@ -483,39 +495,39 @@ namespace UWPYourNote.View
 
         private void FontBackgroundClick(object sender, RoutedEventArgs e)
         {
-            UWPYourNoteLibrary.Util.NotesUtilities.FontBackgroundClick(ContentOfNewNote, null);
+            NotesUtilities.FontBackgroundClick(ContentOfNewNote, null);
         }
 
         //----Note Font Increase
         private void FontIncreaseClick(object sender, RoutedEventArgs e)
         {
-            UWPYourNoteLibrary.Util.NotesUtilities.FontIncreaseClick(ContentOfNewNote, null);
+          NotesUtilities.FontIncreaseClick(ContentOfNewNote, null);
         }
 
         //----Note Font Decrease
         private void FontDecreaseClick(object sender, RoutedEventArgs e)
         {
-            UWPYourNoteLibrary.Util.NotesUtilities.FontDecreaseClick(ContentOfNewNote, null);
+            NotesUtilities.FontDecreaseClick(ContentOfNewNote, null);
         }
 
 
         //----Note Small Caps
         private void SmallCapsClick(object sender, RoutedEventArgs e)
         {
-            UWPYourNoteLibrary.Util.NotesUtilities.SmallCapsClick(ContentOfNewNote, null);
+            NotesUtilities.SmallCapsClick(ContentOfNewNote, null);
         }
 
 
         //----Note All Caps
         private void AllCapsClick(object sender, RoutedEventArgs e)
         {
-            UWPYourNoteLibrary.Util.NotesUtilities.AllCapsClick(ContentOfNewNote, null);
+            NotesUtilities.AllCapsClick(ContentOfNewNote, null);
         }
 
         //----Note Strikethrough
         private void StrikethroughClick(object sender, RoutedEventArgs e)
         {
-            UWPYourNoteLibrary.Util.NotesUtilities.StrikethroughClick(ContentOfNewNote, null);
+            NotesUtilities.StrikethroughClick(ContentOfNewNote, null);
         }
         //------------Creation/Close Button-------------------------
 
@@ -530,7 +542,13 @@ namespace UWPYourNote.View
             }
         }
 
-
+        private void CreateNewNote()
+        {
+            string creationDay = DateTime.Now.ToString("MMM/dd/yyyy hh:mm:ss.fff tt");
+            UWPYourNoteLibrary.Models.Note newNote = new UWPYourNoteLibrary.Models.Note(LoggedUser.userId, TitleOfNewNoteText, ContentOfNewNoteText, NoteEditOptions.ColorOptionsSelectedIndex, creationDay, creationDay);
+            homePageVM.homePageView = this;
+            homePageVM.CreateNewNote(newNote);
+        }
         private void CreationButtonClick()
         {
             if (CreationButtonContent == "Save")
@@ -543,21 +561,8 @@ namespace UWPYourNote.View
                     return;
 
                 }
-                
 
-                string creationDay = DateTime.Now.ToString("MMM/dd/yyyy hh:mm:ss.fff tt");
-                _homePageViewModel = new HomePageVM();
-                UWPYourNoteLibrary.Models.Note newNote = new UWPYourNoteLibrary.Models.Note(LoggedUser.userId, TitleOfNewNoteText, ContentOfNewNoteText, NoteEditOptions.ColorOptionsSelectedIndex, creationDay, creationDay);
-                long noteId = _homePageViewModel.CreateNewNote(newNote);
-                if (_notesDataItemSource == null)
-                {
-                    _notesDataItemSource = new ObservableCollection<UWPYourNoteLibrary.Models.Note>();
-
-                }
-                newNote.noteId = noteId;
-                //  newNote.noteId = _homePageViewModel.GetNoteId(newNote.noteId, newNote.userId);
-                _notesDataItemSource.Insert(0, newNote);
-                NotesDataItemSource = _notesDataItemSource;
+                CreateNewNote();
                 ContentOfNewNoteText = "";
                 TitleOfNewNoteText = "";
                 ContentOfNewNote.Document.SetText(Windows.UI.Text.TextSetOptions.None, "");
@@ -698,10 +703,9 @@ namespace UWPYourNote.View
 
         private void NoteDisplayPopUpClosed(object sender, object e)
         {
-            //PopIn.Stop();
             NoteContentPopUp.ChangesOnClosing();
-
             NoteContentPopUp.UsersToShare = null;
+            
             if (NoteContentPopUp._dispatcherTimer != null)
             {
                 if (NoteContentPopUp.isDeleted)
@@ -723,17 +727,7 @@ namespace UWPYourNote.View
             }
             if (NoteContentPopUp.isDeleted == false && NoteContentPopUp.isModified)
             {
-
-                int i = NotesDataItemSource.IndexOf(selectedNoteFromDisplay);
-                Note note = NotesDataItemSource[i];
-                NotesDataItemSource.RemoveAt(i);
-                note.content = NoteContentPopUp.ContentOfNoteText;
-                note.title = NoteContentPopUp.TitleOfNoteText;
-                note.modifiedDay = NoteContentPopUp.currentDay;
-                note.noteColor = NoteContentPopUp.GetNoteColor();
-
-
-                NotesDataItemSource.Insert(0, note);
+                homePageVM.NoteUpdation(selectedNoteFromDisplay, NoteContentPopUp.TitleOfNoteText, NoteContentPopUp.ContentOfNoteText, NoteContentPopUp.currentDay, NoteContentPopUp.GetNoteColor());
             }
             NoteDisplayPopUpIsOpen = false;
 
@@ -762,10 +756,14 @@ namespace UWPYourNote.View
             }
                 
         }
+        private void NoteBackgroundColor()
+        {
+            NewNoteBackground = NoteEditOptions.NoteColorForeground;
+
+        }
 
 
-
-        private void NoteEditOptions_EditOptions(string btnName)
+        private void NoteEditOptionsEditOptions(string btnName)
         {
 
             switch (btnName)
@@ -776,6 +774,7 @@ namespace UWPYourNote.View
                 case "SmallCaps": SmallCapsClick(null, null); break;
                 case "AllCaps": AllCapsClick(null, null); break;
                 case "Strikethrough": StrikethroughClick(null, null); break;
+                case "ColorOptions": NoteBackgroundColor(); break;
                 default: return;
             }
 

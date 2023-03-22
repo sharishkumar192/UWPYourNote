@@ -1,5 +1,10 @@
 ﻿using UWPYourNoteLibrary.Models;
 using System.Collections.ObjectModel;
+using YourNoteUWP.ViewModels.Contract;
+using UWPYourNoteLibrary.Domain.Contract;
+using UWPYourNoteLibrary.Domain.UseCase;
+using Windows.System;
+
 namespace UWPYourNote.ViewModels
 {
     internal class NoteContentVM  
@@ -25,33 +30,30 @@ namespace UWPYourNote.ViewModels
         }
 
 
-    
+        public INoteContentView noteContentView;
 
+
+        public void UpdateNote(Note noteToUpdate, bool titleChange, bool contentChange)
+        {
+            UpdateNoteUseCaseRequest request = new UpdateNoteUseCaseRequest();
+            request.NoteToUpdate = noteToUpdate;
+            request.IsTitleChanged = titleChange;
+            request.IsContentChanged = contentChange;
+            UpdateNoteUseCase usecase = new UpdateNoteUseCase(request, new UpdateNotePresenterCallBack(this));
+            usecase.Action();
+
+        }
 
         public void UpdateCount(long searchCount, long noteId)
         {
           DBUpdation.UpdateNoteCount(DBCreation.notesTableName, searchCount, noteId);
         }
-        public  void NoteContentUpdation(string content, long noteId, string modifiedDay)
-        {
-            DBUpdation.UpdateNoteContent(DBCreation.notesTableName, content, noteId, modifiedDay);
-        }
 
-        public void NoteUpdation(string title, string content, long noteId, string modifiedDay)
-        {
-            DBUpdation.UpdateNote(DBCreation.notesTableName, title, content, noteId, modifiedDay);
-        }
-        public void NoteTitleUpdation(string title, long noteId, string modifiedDay)
-        {
-            DBUpdation.UpdateNoteTitle(DBCreation.notesTableName, title, noteId, modifiedDay);
-        }
 
         public  void DeleteNote(long noteId)
         {
             DBUpdation.DeleteNote(DBCreation.notesTableName, DBCreation.sharedTableName, noteId);
         }
-
-
         public bool IsOwner(string userId, long noteId)
         {
             return DBFetch.CanShareNote(DBCreation.notesTableName, userId, noteId);
@@ -73,6 +75,30 @@ namespace UWPYourNote.ViewModels
         {
             DBUpdation.UpdateNoteColor(DBCreation.notesTableName, noteId, noteColor, modifiedDay);
 
+        }
+
+
+
+
+        //-----------------------------------------PRESENTER CALLBACK-----------------------------------------------------------
+
+        private class UpdateNotePresenterCallBack : ICallback<UpdateNoteUseCaseResponse>
+        {
+            private NoteContentVM Presenter;
+            public UpdateNotePresenterCallBack(NoteContentVM presenter)
+            {
+                Presenter = presenter;
+            }
+
+            public void onFailure(UpdateNoteUseCaseResponse result)
+            {
+            }
+
+            public void onSuccess(UpdateNoteUseCaseResponse result)
+            {
+
+          
+            }
         }
 
 

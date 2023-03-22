@@ -120,6 +120,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\Contract\IHomePageView.cs" />
+    <Compile Include="ViewModels\Contract\INoteContentView.cs" />
     <Compile Include="ViewModels\Contract\ISignInPageView.cs" />
     <Compile Include="ViewModels\Contract\ICheckExistingUser.cs" />
     <Compile Include="ViewModels\Contract\IView.cs" />

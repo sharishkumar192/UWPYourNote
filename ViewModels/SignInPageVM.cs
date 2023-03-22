@@ -63,23 +63,32 @@ namespace UWPYourNote.ViewModels
             set
             {
                 _frequentEmailItemSource = value;
-
                 OnPropertyChanged();
-                IsChangeInRecentLogInUsersList();
+                
             }
 
         }
 
-        public void IsChangeInRecentLogInUsersList()
+        public void IsChangeInRecentLogInUsersList(RecentLogInUseCaseResponse result)
         {
-            if (FrequentEmailItemSource == null || FrequentEmailItemSource.Count == 0)
+            Page page = (Page)signInPageView;
+
+            _ = page?.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Low, () =>
             {
-                FrequentEmailBoxVisibility = Visibility.Collapsed;
-            }
-            else
-            {
-                FrequentEmailBoxVisibility = Visibility.Visible;
-            }
+                        FrequentEmailItemSource = result.List;
+
+                if (FrequentEmailItemSource == null || FrequentEmailItemSource.Count == 0)
+                {
+                    FrequentEmailBoxVisibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    FrequentEmailBoxVisibility = Visibility.Visible;
+                }
+
+
+            });
+
         }
         public void GetRecentLogInUsers()
         {
@@ -185,40 +194,21 @@ namespace UWPYourNote.ViewModels
 
         private class RecentLogInUseCasePresenterCallBack : ICallback<RecentLogInUseCaseResponse>
         {
-            private SignInPageVM _signInPageVM;
-            public RecentLogInUseCasePresenterCallBack(SignInPageVM signInPageVM)
+            private SignInPageVM Presenter;
+            public RecentLogInUseCasePresenterCallBack(SignInPageVM presenter)
             {
-                _signInPageVM = signInPageVM;
+                Presenter = presenter;
             }
 
 
             public void onSuccess(RecentLogInUseCaseResponse result)
             {
-                Page page = (Page)(_signInPageVM?.signInPageView);
-
-                _ = page?.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Low, () =>
-                {
-                    if (_signInPageVM != null)
-                        _signInPageVM.FrequentEmailItemSource = result.List;
-
-                });
-
-  
-
+                Presenter?.IsChangeInRecentLogInUsersList(result);
             }
 
             public void onFailure(RecentLogInUseCaseResponse result)
             {
-                Page page = (Page)(_signInPageVM?.signInPageView);
-
-                _ = page?.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Low, () =>
-                {
-                    if (_signInPageVM != null)
-                        _signInPageVM.FrequentEmailItemSource = result.List;
-
-                });
-
-              
+                Presenter?.IsChangeInRecentLogInUsersList(result);
             }
 
         }
