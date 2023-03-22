@@ -17,6 +17,10 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using UWPYourNoteLibrary.Models;
+using System.Data.SqlClient;
+using UWPYourNoteLibrary.Data.Handler.Contract;
+using UWPYourNoteLibrary.Data.Handler;
+
 
 namespace UWPYourNote
 {
@@ -40,18 +44,21 @@ namespace UWPYourNote
         /// will be used such as when the application is launched to open a specific file.
         /// </summary>
         /// <param name="e">Details about the launch request and process.</param>
-        
+        /// 
+        private void DBIntializer()
+        {
+          //  IUserDBHandler userHandler = UserDBHandler.Singleton;
+             UserDBHandler.CreateUserTable();
+            //User details Table
+             NoteDBHandler.CreateNotesTable();
+            NoteDBHandler.SharedNotesTableCreation();
+
+
+        }
+
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-            //User details Table
-            DBCreation.CreateUserTable();
-
-            //Notes details Table
-            DBCreation.NotesTableCreation();
-
-            //Shared Notes
-            DBCreation.SharedNotesTableCreation();
-
+       
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,

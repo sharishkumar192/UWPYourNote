@@ -130,7 +130,7 @@ namespace UWPYourNote.ViewModels
         public void IsExistingUser(string email)
         {
             UWPYourNote.ViewModels.Util.UserUtilities.CheckIfUsersExists(email, new IsExistingUserPresenterCallBack(this));
-            // return DBFetch.CheckValidEmail(DBCreation.userTableName, email);
+            // return DBFetch.CheckValidEmail(UserUtilities.userTableName, email);
 
         }
 
@@ -140,7 +140,7 @@ namespace UWPYourNote.ViewModels
             ValidateCredentialsUseCaseRequest request = new ValidateCredentialsUseCaseRequest(userId, password);
             ValidateCredentialsUseCase usecase = new ValidateCredentialsUseCase(request, new ValidateCredentialsPresenterCallBack(this));
             usecase.Execute();
-          // DBFetch.ValidateUser(DBCreation.userTableName, userId, password);
+          // DBFetch.ValidateUser(UserUtilities.userTableName, userId, password);
         }
 
 

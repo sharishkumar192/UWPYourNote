@@ -57,7 +57,7 @@ namespace UWPYourNote.ViewModels
         public void IsExistingEmail(string email)
         {
             UWPYourNote.ViewModels.Util.UserUtilities.CheckIfUsersExists(email, new IsExistingEmailCallBack(this));
-            // return DBFetch.CheckValidEmail(DBCreation.userTableName, email);
+            // return DBFetch.CheckValidEmail(UserUtilities.userTableName, email);
 
         }
 

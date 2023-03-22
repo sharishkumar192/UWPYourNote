@@ -721,9 +721,7 @@ namespace UWPYourNote.View
             }
             if (NoteContentPopUp.isDeleted)
             {
-                int i = NotesDataItemSource.IndexOf(selectedNoteFromDisplay);
-                if (i != -1)
-                    NotesDataItemSource.RemoveAt(i);
+                homePageVM.NoteDeletion(selectedNoteFromDisplay);
             }
             if (NoteContentPopUp.isDeleted == false && NoteContentPopUp.isModified)
             {

@@ -72,8 +72,7 @@ namespace UWPYourNote.View.usercontrol
         public NoteContent()
         {
             this.InitializeComponent();
-
-            noteContentVM = NoteContentVM.Singleton;
+            noteContentVM = NoteContentVM.Singleton;    
             noteContentVM.noteContentView = this;
             TitleOfNote.AddHandler(TappedEvent, new TappedEventHandler(TitleOfNoteTapped), TitleOfNoteIsTapped);
               ContentOfNote.AddHandler(TappedEvent, new TappedEventHandler(ContentOfNoteTapped), ContentOfNoteIsTapped);
@@ -334,7 +333,8 @@ namespace UWPYourNote.View.usercontrol
             }
             else
             {
-                NoteShared(false);
+                noteContentVM = NoteContentVM.Singleton;
+                noteContentVM.IsNoteShared(false);
             }
 
             return notes;
@@ -343,10 +343,9 @@ namespace UWPYourNote.View.usercontrol
         //----------------------------Note Delete Button ---------------------------------------------------
         public void NoteDeleteButtonClick(object sender, RoutedEventArgs e)
         {
-            
-            
-            _noteContentViewModel = NoteContentVM.Singleton;
-            _noteContentViewModel.DeleteNote(_noteId);
+
+            noteContentVM = NoteContentVM.Singleton;
+            noteContentVM.DeleteNote(_noteId);
             isDeleted = true;
             _delPageMethod.DynamicInvoke(null, null);
         }
@@ -395,9 +394,9 @@ namespace UWPYourNote.View.usercontrol
         delegate void ToShareView(object sender, ItemClickEventArgs e);
         private void UsersToShareView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            _noteContentViewModel = NoteContentVM.Singleton;
+            noteContentVM.noteContentView = this;
             UWPYourNoteLibrary.Models.User selectedUser = (UWPYourNoteLibrary.Models.User)e.ClickedItem;
-            _noteContentViewModel.ShareNote(selectedUser.userId, _noteId);
+            noteContentVM.ShareNote(selectedUser.userId, _noteId);
 
         }
 
@@ -459,7 +458,6 @@ namespace UWPYourNote.View.usercontrol
             string modifiedDay = DateTime.Now.ToString("MMM/dd/yyyy hh:mm:ss.fff tt");
             Note updateNote = new Note(_noteId, TitleOfNoteText, ContentOfNoteText, modifiedDay);
 
-            noteContentVM = NoteContentVM.Singleton;
             noteContentVM.noteContentView = this;
 
             noteContentVM.UpdateNote(updateNote, titleChange, contentChange);
@@ -542,9 +540,9 @@ namespace UWPYourNote.View.usercontrol
                 case "False":
                     {
                         if ("True" == name)
-                            NoteShared(true);
+                            noteContentVM.IsNoteShared(true);
                         else
-                            NoteShared(false);
+                            noteContentVM.IsNoteShared(false);
                         break;
 
                     }

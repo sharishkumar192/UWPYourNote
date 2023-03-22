@@ -4,7 +4,12 @@ using YourNoteUWP.ViewModels.Contract;
 using UWPYourNoteLibrary.Domain.Contract;
 using UWPYourNoteLibrary.Domain.UseCase;
 using Windows.System;
-
+using Windows.ApplicationModel.Contacts;
+using Windows.UI.Popups;
+using System;
+using UWPYourNote.ViewModels.Contract;
+using Windows.UI.Xaml.Controls;
+using UWPYourNoteLibrary.Util;
 namespace UWPYourNote.ViewModels
 {
     internal class NoteContentVM  
@@ -46,34 +51,59 @@ namespace UWPYourNote.ViewModels
 
         public void UpdateCount(long searchCount, long noteId)
         {
-          DBUpdation.UpdateNoteCount(DBCreation.notesTableName, searchCount, noteId);
+          DBUpdation.UpdateNoteCount(NotesUtilities.notesTableName, searchCount, noteId);
         }
 
 
-        public  void DeleteNote(long noteId)
+   
+
+        public void DeleteNote(long noteId)
         {
-            DBUpdation.DeleteNote(DBCreation.notesTableName, DBCreation.sharedTableName, noteId);
+            DeleteNoteUseCaseRequest request = new DeleteNoteUseCaseRequest();
+            request.NoteId = noteId;
+            DeleteNoteUseCase usecase = new DeleteNoteUseCase(request, new DeleteNotePresenterCallBack(this));
+            usecase.Action();
         }
         public bool IsOwner(string userId, long noteId)
         {
-            return DBFetch.CanShareNote(DBCreation.notesTableName, userId, noteId);
+            return DBFetch.CanShareNote(NotesUtilities.notesTableName, userId, noteId);
         }
 
 
         public void ShareNote(string sharedUserId, long noteId)
         {
-            DBUpdation.InsertSharedNote(DBCreation.sharedTableName, sharedUserId, noteId);
+            ShareNoteUseCaseRequest request = new ShareNoteUseCaseRequest();
+            request.NoteId = noteId;
+            request.SharedUserID = sharedUserId;
+            ShareNoteUseCase usecase = new ShareNoteUseCase(request, new ShareNotePresenterCallBack(this));
+            usecase.Action();
+
+          
+        }
+        public async void IsNoteShared(bool value)
+        {
+            MessageDialog showDialog;
+            if (value == true)
+                showDialog = new MessageDialog("Note has been shared!");
+            else
+                showDialog = new MessageDialog("You cant share this note, as your not the owner!");
+            showDialog.Commands.Add(new UICommand("Ok")
+            {
+                Id = 0
+            });
+            showDialog.DefaultCommandIndex = 0;
+            var result = await showDialog.ShowAsync();
         }
 
 
         public ObservableCollection<UWPYourNoteLibrary.Models.User> GetUsersToShare(string userId, long displayNoteId)
         {
-            return DBFetch.ValidUsersToShare(DBCreation.userTableName, DBCreation.sharedTableName, DBCreation.notesTableName, userId, displayNoteId);
+            return DBFetch.ValidUsersToShare(UserUtilities.userTableName, NotesUtilities.sharedTableName, NotesUtilities.notesTableName, userId, displayNoteId);
         }
 
         public void ChangeNoteColor(long noteId, long noteColor, string modifiedDay)
         {
-            DBUpdation.UpdateNoteColor(DBCreation.notesTableName, noteId, noteColor, modifiedDay);
+            DBUpdation.UpdateNoteColor(NotesUtilities.notesTableName, noteId, noteColor, modifiedDay);
 
         }
 
@@ -98,6 +128,47 @@ namespace UWPYourNote.ViewModels
             {
 
           
+            }
+        }
+
+        private class ShareNotePresenterCallBack : ICallback<ShareNoteUseCaseResponse>
+        {
+            private NoteContentVM Presenter;
+            public ShareNotePresenterCallBack(NoteContentVM presenter)
+            {
+                Presenter = presenter;
+            }
+
+            public void onFailure(ShareNoteUseCaseResponse response)
+            {
+                Presenter?.IsNoteShared(response.Result);
+            }
+
+            public void onSuccess(ShareNoteUseCaseResponse response)
+            {
+                Presenter?.IsNoteShared(response.Result);
+
+            }
+        }
+
+
+        private class DeleteNotePresenterCallBack : ICallback<DeleteNoteUseCaseResponse>
+        {
+            private NoteContentVM Presenter;
+            public DeleteNotePresenterCallBack(NoteContentVM presenter)
+            {
+                Presenter = presenter;
+            }
+
+            public void onFailure(DeleteNoteUseCaseResponse response)
+            {
+               
+            }
+
+            public void onSuccess(DeleteNoteUseCaseResponse response)
+            {
+                
+
             }
         }
 

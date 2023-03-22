@@ -205,9 +205,9 @@ namespace UWPYourNote.ViewModels
         }
 
         //---------------------------- UPDATION OF NOTE------------------------------------------
-        public void NoteUpdation(Note updatedNote, string title, string content, string modifiedDate, long noteColor)
+        public void NoteUpdation(Note selectedNote, string title, string content, string modifiedDate, long noteColor)
         {
-            int i = NotesDataItemSource.IndexOf(updatedNote);
+            int i = NotesDataItemSource.IndexOf(selectedNote);
             Note note = NotesDataItemSource[i];
             NotesDataItemSource.RemoveAt(i);
             note.content = content;
@@ -215,6 +215,14 @@ namespace UWPYourNote.ViewModels
             note.modifiedDay = modifiedDate;
             note.noteColor = noteColor;
             NotesDataItemSource.Insert(0, note);
+        }
+
+        //-------------------------------DELETION OF NOTE--------------------------------------------------
+        public void NoteDeletion(Note selectedNote)
+        {
+            int i = NotesDataItemSource.IndexOf(selectedNote);
+            if (i != -1)
+                NotesDataItemSource.RemoveAt(i);
         }
 
 
