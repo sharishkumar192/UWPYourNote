@@ -144,3 +144,9 @@ D:\YourNote\UWPYourNote\obj\x64\Debug\resources.en.resfiles.intermediate
 D:\YourNote\UWPYourNote\obj\x64\Debug\ProjectArchitectures.txt
 D:\YourNote\UWPYourNote\obj\x64\Debug\.winmd_cache\$Microsoft.Graphics.Canvas.winmd_637214534760000000.json
 D:\YourNote\UWPYourNote\obj\x64\Debug\.winmd_cache\$Microsoft.UI.Xaml.Markup.winmd_637424617200000000.json
+D:\YourNote\UWPYourNote\bin\x64\Debug\Color.xbf
+D:\YourNote\UWPYourNote\obj\x64\Debug\Color.xaml
+D:\YourNote\UWPYourNote\obj\x64\Debug\Color.xbf
+D:\YourNote\UWPYourNote\bin\x64\Debug\NoteColorBackground.xbf
+D:\YourNote\UWPYourNote\obj\x64\Debug\NoteColorBackground.xaml
+D:\YourNote\UWPYourNote\obj\x64\Debug\NoteColorBackground.xbf

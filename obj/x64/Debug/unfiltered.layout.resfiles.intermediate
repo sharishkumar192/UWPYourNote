@@ -53,7 +53,9 @@ Assets\Wide310x150Logo.scale-150.png
 Assets\Wide310x150Logo.scale-200.png
 Assets\Wide310x150Logo.scale-400.png
 App.xbf
+Color.xbf
 Dictionary.xbf
+NoteColorBackground.xbf
 View\HomePage.xbf
 View\MainPage.xbf
 View\NoteColorOptions.xbf

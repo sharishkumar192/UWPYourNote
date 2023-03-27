@@ -340,12 +340,14 @@
                                                                                
             LightDismissOverlayMode="On"
                                                                  >
-            <usercontrol:NoteContent x:ConnectionId='12'
-                x:Name="NoteContentPopUp"
-                                                                   
-                                                                     
-                                                                             
-                                                                      />
+            <Border CornerRadius="4">
+                <usercontrol:NoteContent x:ConnectionId='12'
+                    x:Name="NoteContentPopUp"
+                                                                       
+                                                                         
+                                                                                 
+                                                                          />
+            </Border>
             <Popup.Resources>
                 <Storyboard x:ConnectionId='13' x:Name="PopIn">
                     <PopInThemeAnimation Storyboard.TargetName="NoteDisplayPopUp" />

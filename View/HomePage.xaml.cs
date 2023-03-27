@@ -665,7 +665,7 @@ namespace UWPYourNote.View
 
         private void NoteDisplayPopUpLayoutUpdated(object sender, object e)
         {
-            NoteContentPopUpHeight = Window.Current.Bounds.Height;
+            NoteContentPopUpHeight = Window.Current.Bounds.Height * 1.5 / 2;
             NoteContentPopUpWidth = Window.Current.Bounds.Width/2;
             if (NoteContentPopUp.ActualWidth == 0 && NoteContentPopUp.ActualHeight == 0)
             {

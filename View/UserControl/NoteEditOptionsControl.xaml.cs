@@ -33,6 +33,7 @@ namespace UWPYourNote.View.usercontrol
             this.InitializeComponent();
         }
 
+     
 
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -58,6 +59,11 @@ namespace UWPYourNote.View.usercontrol
         {
             Button button = sender as Button;
             return button.Name;
+        }
+       
+        public SolidColorBrush ChangeDataSeparatorColor(string name)
+        {
+            return NotesUtilities.GetSolidColorBrush(NotesUtilities.noteShareBackgroundStyle[ColorOptionsSelectedIndex]);
         }
 
         //private string ReturnNameOfButton(object sender)
@@ -126,6 +132,13 @@ namespace UWPYourNote.View.usercontrol
               
                 FontBackground.Style = FontIncrease.Style = FontDecrease.Style = SmallCaps.Style = AllCaps.Style = Strikethrough.Style = NoteShareButton.Style = style1;
                 NoteColor.Style = NoteDeleteButton.Style = style2;
+
+            UsersToShareView.Background = NotesUtilities.GetSolidColorBrush(NotesUtilities.noteShareBackgroundStyle[ColorOptionsSelectedIndex]);
+            // NotesUtilities.NoteBackgroundColor(ColorOptionsSelectedIndex);
+            // SolidColorBrush bgColor = NotesUtilities.GetSolidColorBrush(NotesUtilities.noteShareBackgroundStyle[ColorOptionsSelectedIndex]);
+
+            //   UsersToShareViewBackground = bgColor;
+
         }
 
 
@@ -175,6 +188,15 @@ namespace UWPYourNote.View.usercontrol
         {
             EditOptions?.Invoke("NoValidUsers");
         }
+
+        //private SolidColorBrush _usersToShareViewBackground;// = NotesUtilities.GetSolidColorBrush(NotesUtilities.noteShareBackgroundStyle[0]);
+
+        //public SolidColorBrush UsersToShareViewBackground
+        //{
+        //    get { return _usersToShareViewBackground; }
+        //    set { _usersToShareViewBackground = value; }
+        //}
+
 
 
         private void UsersToShareView_ItemClick(object sender, ItemClickEventArgs e)

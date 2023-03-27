@@ -340,12 +340,14 @@
             LayoutUpdated="{x:Bind NoteDisplayPopUpLayoutUpdated, Mode=OneWay}"
             LightDismissOverlayMode="On"
             Opened="{x:Bind NoteDisplayPopUpOpened, Mode=OneWay}">
-            <usercontrol:NoteContent
-                x:Name="NoteContentPopUp"
-                Width="{x:Bind NoteContentPopUpWidth, Mode=OneWay}"
-                Height="{x:Bind NoteContentPopUpHeight, Mode=OneWay}"
-                IsTapEnabled="{x:Bind NoteContentPopUpIsTapped, Mode=OneWay}"
-                Tapped="{x:Bind NoteContentPopUpTapped, Mode=OneWay}" />
+            <Border CornerRadius="4">
+                <usercontrol:NoteContent
+                    x:Name="NoteContentPopUp"
+                    Width="{x:Bind NoteContentPopUpWidth, Mode=OneWay}"
+                    Height="{x:Bind NoteContentPopUpHeight, Mode=OneWay}"
+                    IsTapEnabled="{x:Bind NoteContentPopUpIsTapped, Mode=OneWay}"
+                    Tapped="{x:Bind NoteContentPopUpTapped, Mode=OneWay}" />
+            </Border>
             <Popup.Resources>
                 <Storyboard x:Name="PopIn">
                     <PopInThemeAnimation Storyboard.TargetName="NoteDisplayPopUp" />

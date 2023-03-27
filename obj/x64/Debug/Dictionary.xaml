@@ -6264,5 +6264,11 @@
 
 
 
+    <SolidColorBrush x:Key="BackgroundBlue">#9bbaca</SolidColorBrush>
+    <SolidColorBrush x:Key="BackgroundPink">#c4969c</SolidColorBrush>
+    <SolidColorBrush x:Key="BackgroundYellow">#cabe8a</SolidColorBrush>
+    <SolidColorBrush x:Key="BackgroundGreen">#9ab48e</SolidColorBrush>
+
+
 </ResourceDictionary>
 
