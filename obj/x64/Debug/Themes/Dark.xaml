@@ -1,0 +1,67 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="PageBgColorDefault">#1a1a1a</Color>
+    <Color x:Key="PrimaryButtonBgColorDefault">#0073cf</Color>
+    <Color x:Key="PrimaryButtonFgColorDefault">#ffffff</Color>
+    <Color x:Key="SecondaryButtonBgColorDefault">#333333</Color>
+    <Color x:Key="SecondaryButtonFgColorDefault">#ffffff</Color>
+
+
+    <Color x:Key="PrimaryButtonBgColorOnHoverDefault">#338fd8</Color>
+    <Color x:Key="SecondaryButtonBgColorOnHoverDefault">#e6e6e6</Color>
+
+    <Color x:Key="PrimaryButtonBgColorOnClickDefault">#66abe2</Color>
+    <Color x:Key="SecondaryButtonBgColorOnClickDefault">#737373</Color>
+
+
+    <Color x:Key="TextBoxBgColorDefault">#000000</Color>
+    <Color x:Key="TextBoxFgColorDefault">#ffffff</Color>
+    <Color x:Key="TextBoxBorderColorDefault">#747474</Color>
+
+    <Color x:Key="TextBoxBorderColorOnHoverDefault">#9b9b9b</Color>
+    <Color x:Key="TextBoxBorderColorOnClickDefault">#0073cf</Color>
+
+    <Color x:Key="TextBoxClearButtonFgColorOnClickDefault">#7eb8e7</Color>
+    <Color x:Key="TextBoxClearButtonFgColorDefault">#232323</Color>
+
+    <Color x:Key="TextBoxPlaceHolderTextFgColorDefault">#9a9a9a</Color>
+    <Color x:Key="TextBoxTextFgColorDefault">#1a1a1a</Color>
+
+    <BitmapImage x:Key="ApplicationDropoutImage" UriSource="/Assets/AppBackdrop-Dark.png" />
+
+    <Color x:Key="ListViewSelectedItemColorDefault">#00457c</Color>
+    <Color x:Key="ListViewSelectedItemColorOnHoverDefault">#005ca5</Color>
+    <Color x:Key="ListViewItemColorOnHoverDefault">#1d1d1d</Color>
+    <Color x:Key="ListViewSelectedItemColorOnClickDefault">#0067ba</Color>
+
+
+
+    <StaticResource x:Key="PageBg" ResourceKey="PageBgColorBrushD" />
+    <StaticResource x:Key="PrimaryButtonBg" ResourceKey="PrimaryButtonBgColorBrushBrushD" />
+    <StaticResource x:Key="PrimaryButtonFg" ResourceKey="PrimaryButtonFgColorBrushD" />
+    <StaticResource x:Key="SecondaryButtonBg" ResourceKey="SecondaryButtonBgColorBrushD" />
+    <StaticResource x:Key="SecondaryButtonFg" ResourceKey="SecondaryButtonFgColorBrushD" />
+    <StaticResource x:Key="PrimaryButtonBgOnHover" ResourceKey="PrimaryButtonBgColorOnHoverBrushD" />
+    <StaticResource x:Key="SecondaryButtonBgOnHover" ResourceKey="SecondaryButtonBgColorOnHoverBrushD" />
+    <StaticResource x:Key="PrimaryButtonBgOnClick" ResourceKey="PrimaryButtonBgColorOnClickBrushD" />
+    <StaticResource x:Key="SecondaryButtonBgOnClick" ResourceKey="SecondaryButtonBgColorOnClickBrushD" />
+    <StaticResource x:Key="TextBoxBg" ResourceKey="TextBoxBgColorBrushD" />
+    <StaticResource x:Key="TextBoxFg" ResourceKey="TextBoxFgColorBrushD" />
+    <StaticResource x:Key="TextBoxBorder" ResourceKey="TextBoxBorderColorBrushD" />
+    <StaticResource x:Key="TextBoxBorderOnHover" ResourceKey="TextBoxBorderColorOnHoverBrushD" />
+    <StaticResource x:Key="TextBoxBorderOnClick" ResourceKey="TextBoxBorderColorOnClickBrushD" />
+    <StaticResource x:Key="TextBoxClearButtonFgOnClick" ResourceKey="TextBoxClearButtonFgColorOnClickBrushD" />
+    <StaticResource x:Key="TextBoxClearButtonFg" ResourceKey="TextBoxClearButtonFgColorBrushD" />
+    <StaticResource x:Key="TextBoxPlaceHolderTextFg" ResourceKey="TextBoxPlaceHolderTextFgColorBrushD" />
+    <StaticResource x:Key="TextBoxTextFg" ResourceKey="TextBoxTextFgColorBrushD" />
+
+
+
+
+    <StaticResource x:Key="ListViewSelectedItemColor" ResourceKey="ListViewSelectedItemBrushD" />
+    <StaticResource x:Key="ListViewSelectedItemColorOnHover" ResourceKey="ListViewSelectedItemOnHoverBrushD" />
+    <StaticResource x:Key="ListViewItemColorOnHover" ResourceKey="ListViewItemOnHoverBrushD" />
+    <StaticResource x:Key="ListViewSelectedItemColorOnClick" ResourceKey="ListViewSelectedItemOnClickBrushD" />
+
+</ResourceDictionary>
+

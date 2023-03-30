@@ -20,7 +20,7 @@ using UWPYourNoteLibrary.Models;
 using System.Data.SqlClient;
 using UWPYourNoteLibrary.Data.Handler.Contract;
 using UWPYourNoteLibrary.Data.Handler;
-
+using UWPYourNoteLibrary.Util;
 
 namespace UWPYourNote
 {
@@ -37,6 +37,13 @@ namespace UWPYourNote
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            string preferredTheme = SaveAppSettings.LoadPreferences();
+            switch(preferredTheme)
+            {
+                case "Dark": this.RequestedTheme = ApplicationTheme.Dark; break;
+                case "Light": 
+                default : this.RequestedTheme = ApplicationTheme.Light ;  break;
+            }
         }
 
         /// <summary>

@@ -53,6 +53,21 @@ namespace UWPYourNote.View
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var currentTheme = Window.Current.Content as FrameworkElement;
+            if (currentTheme.ActualTheme == ElementTheme.Dark)
+            {
+                currentTheme.RequestedTheme = ElementTheme.Light;
+                SaveAppSettings.SavePreferences("Light");
+            }
+            else
+            {
+                currentTheme.RequestedTheme = ElementTheme.Dark;
+                SaveAppSettings.SavePreferences("Dark");
+            }
+
+        }
 
         //------------------------------------------Name TextBox---------------------------------------------------
 

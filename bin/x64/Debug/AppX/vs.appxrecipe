@@ -30,13 +30,13 @@
     <AppXManifest Include="D:\YourNote\UWPYourNote\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-03-27T05:32:16.718</Modified>
+      <Modified>2023-03-30T10:24:27.586</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\YourNoteUWP.exe">
       <PackagePath>entrypoint\YourNoteUWP.exe</PackagePath>
-      <Modified>2023-03-27T05:32:16.004</Modified>
+      <Modified>2023-03-30T10:24:26.724</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\colorcode.core\2.0.6\lib\netstandard1.4\ColorCode.Core.dll">
       <PackagePath>ColorCode.Core.dll</PackagePath>
@@ -128,7 +128,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNoteLibrary\bin\x64\Debug\UWPYourNoteLibrary.dll">
       <PackagePath>UWPYourNoteLibrary.dll</PackagePath>
-      <Modified>2023-03-24T10:22:17.297</Modified>
+      <Modified>2023-03-30T06:19:57.414</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\win2d.uwp\1.25.0\lib\uap10.0\Microsoft.Graphics.Canvas.winmd">
       <PackagePath>Microsoft.Graphics.Canvas.winmd</PackagePath>
@@ -161,6 +161,10 @@
     <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.toolkit.uwp.ui.controls.media\7.1.3\lib\uap10.0.17763\Microsoft.Toolkit.Uwp.UI.Controls.Media\Microsoft.Toolkit.Uwp.UI.Controls.Media.xr.xml">
       <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls.Media\Microsoft.Toolkit.Uwp.UI.Controls.Media.xr.xml</PackagePath>
       <Modified>2022-11-01T17:20:24.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\YourNote\UWPYourNote\Assets\AppBackdrop-Dark.png">
+      <PackagePath>Assets\AppBackdrop-Dark.png</PackagePath>
+      <Modified>2023-03-28T07:58:00.606</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\Assets\download.png">
       <PackagePath>Assets\download.png</PackagePath>
@@ -430,55 +434,59 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\YourNoteUWP.xr.xml">
       <PackagePath>YourNoteUWP.xr.xml</PackagePath>
-      <Modified>2023-03-27T05:32:15.745</Modified>
+      <Modified>2023-03-30T10:20:02.414</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2023-03-27T05:32:15.886</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\Color.xbf">
-      <PackagePath>Color.xbf</PackagePath>
-      <Modified>2023-03-27T05:32:15.757</Modified>
+      <Modified>2023-03-30T10:24:26.588</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\Dictionary.xbf">
       <PackagePath>Dictionary.xbf</PackagePath>
-      <Modified>2023-03-27T05:32:15.873</Modified>
+      <Modified>2023-03-30T10:24:26.585</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\NoteColorBackground.xbf">
       <PackagePath>NoteColorBackground.xbf</PackagePath>
-      <Modified>2023-03-27T05:32:15.886</Modified>
+      <Modified>2023-03-30T10:24:26.600</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\Themes\Light.xbf">
+      <PackagePath>Themes\Light.xbf</PackagePath>
+      <Modified>2023-03-30T10:24:26.586</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\Themes\Dark.xbf">
+      <PackagePath>Themes\Dark.xbf</PackagePath>
+      <Modified>2023-03-30T10:24:26.587</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\HomePage.xbf">
       <PackagePath>View\HomePage.xbf</PackagePath>
-      <Modified>2023-03-27T05:32:15.877</Modified>
+      <Modified>2023-03-30T10:24:26.591</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\usercontrol\NoteContent.xbf">
       <PackagePath>View\usercontrol\NoteContent.xbf</PackagePath>
-      <Modified>2023-03-27T05:32:15.887</Modified>
+      <Modified>2023-03-30T10:24:26.602</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\usercontrol\NoteEditOptionsControl.xbf">
       <PackagePath>View\usercontrol\NoteEditOptionsControl.xbf</PackagePath>
-      <Modified>2023-03-27T05:32:15.887</Modified>
+      <Modified>2023-03-30T10:24:26.602</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\usercontrol\NotesDataTemplate.xbf">
       <PackagePath>View\usercontrol\NotesDataTemplate.xbf</PackagePath>
-      <Modified>2023-03-27T05:32:15.887</Modified>
+      <Modified>2023-03-30T10:24:26.602</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\MainPage.xbf">
       <PackagePath>View\MainPage.xbf</PackagePath>
-      <Modified>2023-03-27T05:32:15.888</Modified>
+      <Modified>2023-03-30T10:24:26.603</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\NoteColorOptions.xbf">
       <PackagePath>View\NoteColorOptions.xbf</PackagePath>
-      <Modified>2023-03-27T05:32:15.888</Modified>
+      <Modified>2023-03-30T10:24:26.603</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\SignInPage.xbf">
       <PackagePath>View\SignInPage.xbf</PackagePath>
-      <Modified>2023-03-27T05:32:15.882</Modified>
+      <Modified>2023-03-30T10:24:26.597</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\SignUpPage.xbf">
       <PackagePath>View\SignUpPage.xbf</PackagePath>
-      <Modified>2023-03-27T05:32:15.884</Modified>
+      <Modified>2023-03-30T10:24:26.599</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.19041.0\\redist\Debug\X64\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -490,11 +498,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2023-03-24T10:01:21.708</Modified>
+      <Modified>2023-03-30T06:20:03.528</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\Core\YourNoteUWP.exe">
       <PackagePath>YourNoteUWP.exe</PackagePath>
-      <Modified>2023-03-27T05:32:16.713</Modified>
+      <Modified>2023-03-30T10:24:27.581</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.ui.xaml\2.7.0\buildTransitive\..\lib\uap10.0\Microsoft.UI.Xaml.winmd">
       <PackagePath>Microsoft.UI.Xaml.winmd</PackagePath>

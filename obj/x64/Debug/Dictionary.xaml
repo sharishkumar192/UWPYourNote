@@ -71,9 +71,18 @@
         TintOpacity="1" />
 
 
+    <Style x:Key="GridBackground" TargetType="Grid">
+        <Setter Property="Background" Value="{ThemeResource PageBg}" />
+        <Setter Property="BorderBrush" Value="{ThemeResource PageBg}" />
+    </Style>
 
+
+    <Style x:Key="StackBackground" TargetType="StackPanel">
+        <Setter Property="Background" Value="{ThemeResource PageBg}" />
+    </Style>
 
     <Style x:Key="BaseTextBlockStyle" TargetType="TextBlock">
+
         <Setter Property="FontFamily" Value="XamlAutoFontFamily" />
         <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="FontSize" Value="14" />
@@ -87,7 +96,7 @@
         <Setter Property="Width" Value="auto" />
         <Setter Property="Height" Value="40" />
         <Setter Property="Margin" Value="-15,0,0,0" />
-        <Setter Property="Background" Value="#ffffff" />
+        <Setter Property="Background" Value="{ThemeResource PageBg}" />
         <Setter Property="CornerRadius" Value="4" />
     </Style>
 
@@ -190,9 +199,9 @@
     <!--<SignUp Page Styles>-->
 
     <Style x:Key="TextBoxStyle" TargetType="TextBox">
-        <Setter Property="Foreground" Value="Black" />
-        <Setter Property="Background" Value="{ThemeResource TextControlBackground}" />
-        <Setter Property="BorderBrush" Value="{ThemeResource TextControlBorderBrush}" />
+        <Setter Property="Foreground" Value="{ThemeResource TextBoxFg}" />
+        <Setter Property="Background" Value="{ThemeResource TextBoxBg}" />
+        <Setter Property="BorderBrush" Value="{ThemeResource TextBoxBorder}" />
         <Setter Property="SelectionHighlightColor" Value="{ThemeResource TextControlSelectionHighlightColor}" />
         <Setter Property="BorderThickness" Value="{ThemeResource TextControlBorderThemeThickness}" />
         <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}" />
@@ -345,7 +354,7 @@
                             Grid.ColumnSpan="2"
                             Margin="{TemplateBinding BorderThickness}"
                             Padding="5"
-                            Foreground="{Binding PlaceholderForeground, RelativeSource={RelativeSource TemplatedParent}, TargetNullValue={ThemeResource TextControlPlaceholderForeground}}"
+                            Foreground="{ThemeResource TextBoxFg}"
                             IsHitTestVisible="False"
                             Text="{TemplateBinding PlaceholderText}"
                             TextAlignment="{TemplateBinding TextAlignment}"
@@ -379,13 +388,13 @@
                                     <Storyboard>
 
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PlaceholderTextContentPresenter" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#adb5bd" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxPlaceHolderTextFg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderElement" Storyboard.TargetProperty="Background">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#f8f8f8" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxBg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderElement" Storyboard.TargetProperty="BorderBrush">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#e4e4e4" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxBorder}" />
                                         </ObjectAnimationUsingKeyFrames>
 
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="HeaderContentPresenter" Storyboard.TargetProperty="Foreground">
@@ -398,16 +407,16 @@
 
                                     <Storyboard>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PlaceholderTextContentPresenter" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#adb5bd" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxPlaceHolderTextFg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderElement" Storyboard.TargetProperty="Background">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#f8f8f8" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxBg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderElement" Storyboard.TargetProperty="BorderBrush">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#e4e4e4" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxBorderOnHover}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentElement" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Black" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxFg}" />
                                         </ObjectAnimationUsingKeyFrames>
 
                                     </Storyboard>
@@ -416,16 +425,16 @@
 
                                     <Storyboard>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PlaceholderTextContentPresenter" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#adb5bd" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxPlaceHolderTextFg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderElement" Storyboard.TargetProperty="Background">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#f8f8f8" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlBackgroundFocused}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderElement" Storyboard.TargetProperty="BorderBrush">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#e4e4e4" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlBorderBrushFocused}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentElement" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Black" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxTextFg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -500,13 +509,13 @@
 
                                     <Storyboard>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#cccccc" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxBg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#cccccc" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxBorder}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#000000" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxFg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter" />
                                     </Storyboard>
@@ -516,13 +525,13 @@
 
                                     <Storyboard>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#cccccc" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxBg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#cccccc" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxBorder}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#000000" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxFg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter" />
                                     </Storyboard>
@@ -653,7 +662,7 @@
     </Style>
 
     <Style x:Key="PasswordBoxStyle" TargetType="PasswordBox">
-        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="Foreground" Value="{ThemeResource TextBoxFg}" />
         <Setter Property="Background" Value="{ThemeResource TextControlBackground}" />
         <Setter Property="BorderBrush" Value="{ThemeResource TextControlBorderBrush}" />
         <Setter Property="SelectionHighlightColor" Value="{ThemeResource Dark1}" />
@@ -806,18 +815,21 @@
 
                                 <VisualState x:Name="Normal">
                                     <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="HeaderContentPresenter" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Black" />
-                                        </ObjectAnimationUsingKeyFrames>
+
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PlaceholderTextContentPresenter" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#adb5bd" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxPlaceHolderTextFg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderElement" Storyboard.TargetProperty="Background">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#f8f8f8" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxBg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderElement" Storyboard.TargetProperty="BorderBrush">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#e4e4e4" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxBorder}" />
                                         </ObjectAnimationUsingKeyFrames>
+
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="HeaderContentPresenter" Storyboard.TargetProperty="Foreground">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlHeaderForegroundDisabled}" />
+                                        </ObjectAnimationUsingKeyFrames>
+
                                     </Storyboard>
                                 </VisualState>
 
@@ -825,37 +837,35 @@
 
                                     <Storyboard>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PlaceholderTextContentPresenter" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#adb5bd" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxPlaceHolderTextFg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderElement" Storyboard.TargetProperty="Background">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#f8f8f8" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxBg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderElement" Storyboard.TargetProperty="BorderBrush">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#e4e4e4" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxBorderOnHover}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentElement" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Black" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxFg}" />
                                         </ObjectAnimationUsingKeyFrames>
 
                                     </Storyboard>
                                 </VisualState>
 
                                 <VisualState x:Name="Focused">
-
                                     <Storyboard>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PlaceholderTextContentPresenter" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#adb5bd" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxPlaceHolderTextFg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderElement" Storyboard.TargetProperty="Background">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#f8f8f8" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlBackgroundFocused}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderElement" Storyboard.TargetProperty="BorderBrush">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#e4e4e4" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextControlBorderBrushFocused}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentElement" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Black" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxTextFg}" />
                                         </ObjectAnimationUsingKeyFrames>
-
                                     </Storyboard>
                                 </VisualState>
 
@@ -895,7 +905,7 @@
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="{TemplateBinding CornerRadius}">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="15" />
+                            <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
@@ -925,7 +935,8 @@
                         <ContentPresenter
                             x:Name="ContentPresenter"
                             Grid.Column="1"
-                            Margin="{TemplateBinding Padding}"
+                            Margin="5,0,0,0"
+                            Padding="0,4,0,0"
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                             AutomationProperties.AccessibilityView="Raw"
@@ -941,10 +952,10 @@
 
                                     <Storyboard>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#adb5bd" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxFg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#ffffff" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource PageBg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="BorderBrush">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="#e4e4e4" />
@@ -953,10 +964,10 @@
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="#e4e4e4" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="NormalRectangle" Storyboard.TargetProperty="Fill">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#ffffff" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxBg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CheckGlyph" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Black" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxFg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -964,10 +975,10 @@
 
                                     <Storyboard>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#adb5bd" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxFg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#ffffff" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource PageBg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="BorderBrush">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="#e4e4e4" />
@@ -976,10 +987,10 @@
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="#e4e4e4" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="NormalRectangle" Storyboard.TargetProperty="Fill">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#ffffff" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxBg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CheckGlyph" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Black" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxFg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -987,10 +998,10 @@
 
                                     <Storyboard>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#adb5bd" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxFg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#ffffff" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource PageBg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="BorderBrush">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="#e4e4e4" />
@@ -999,10 +1010,10 @@
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="#e4e4e4" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="NormalRectangle" Storyboard.TargetProperty="Fill">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#ffffff" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxBg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CheckGlyph" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Black" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxFg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -1033,22 +1044,22 @@
 
                                     <Storyboard>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#adb5bd" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxFg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#ffffff" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource PageBg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="BorderBrush">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Black" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource PageBg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="NormalRectangle" Storyboard.TargetProperty="Stroke">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="#e4e4e4" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="NormalRectangle" Storyboard.TargetProperty="Fill">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#ffffff" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxBg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CheckGlyph" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Black" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxFg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <DoubleAnimation
                                             Storyboard.TargetName="CheckGlyph"
@@ -1061,22 +1072,22 @@
 
                                     <Storyboard>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#adb5bd" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxFg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#ffffff" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource PageBg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="BorderBrush">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Black" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource PageBg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="NormalRectangle" Storyboard.TargetProperty="Stroke">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="#e4e4e4" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="NormalRectangle" Storyboard.TargetProperty="Fill">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#ffffff" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxBg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CheckGlyph" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Black" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxFg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <DoubleAnimation
                                             Storyboard.TargetName="CheckGlyph"
@@ -1089,22 +1100,22 @@
 
                                     <Storyboard>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#adb5bd" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxFg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#ffffff" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource PageBg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="BorderBrush">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Black" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource PageBg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="NormalRectangle" Storyboard.TargetProperty="Stroke">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="#e4e4e4" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="NormalRectangle" Storyboard.TargetProperty="Fill">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#ffffff" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxBg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CheckGlyph" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Black" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TextBoxFg}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <DoubleAnimation
                                             Storyboard.TargetName="CheckGlyph"
@@ -1479,17 +1490,9 @@
     <Style x:Key="LoginListView" TargetType="ListView">
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="TabNavigation" Value="Once" />
+        <Setter Property="MinHeight" Value="300"/>
         <Setter Property="IsSwipeEnabled" Value="True" />
-        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
-        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
-        <Setter Property="ScrollViewer.HorizontalScrollMode" Value="Disabled" />
-        <Setter Property="ScrollViewer.IsHorizontalRailEnabled" Value="False" />
-        <Setter Property="ScrollViewer.VerticalScrollMode" Value="Enabled" />
-        <Setter Property="ScrollViewer.IsVerticalRailEnabled" Value="True" />
-        <Setter Property="ScrollViewer.ZoomMode" Value="Disabled" />
-        <Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="False" />
-        <Setter Property="ScrollViewer.BringIntoViewOnFocusChange" Value="True" />
-        <Setter Property="UseSystemFocusVisuals" Value="False" />
+     
         <Setter Property="ItemContainerTransitions">
             <Setter.Value>
                 <TransitionCollection>
@@ -1512,7 +1515,7 @@
                 <ControlTemplate TargetType="ListView">
                     <Border
                         Margin="15,10,0,0"
-                        Background="#ffffff"
+         
                         CornerRadius="5">
                         <ScrollViewer
                             x:Name="ScrollViewer"
@@ -1547,8 +1550,8 @@
 
     <Style x:Key="LoginListViewItem" TargetType="ListViewItem">
         <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}" />
-        <Setter Property="Background" Value="{ThemeResource ListViewItemBackground}" />
-        <Setter Property="Foreground" Value="#adb5bd" />
+        <Setter Property="Background" Value="{ThemeResource PageBg}" />
+        <Setter Property="Foreground" Value="{ThemeResource TextBoxFg}" />
         <Setter Property="TabNavigation" Value="Local" />
         <Setter Property="IsHoldingEnabled" Value="True" />
         <Setter Property="BorderThickness" Value="0" />
@@ -1566,12 +1569,10 @@
                         x:Name="Root"
                         Height="Auto"
                         Margin="2"
-                        Background="Wheat"
-                        BorderBrush="Black"
                         BorderThickness="2"
                         Control.IsTemplateFocusTarget="False"
                         CornerRadius="4"
-                        SelectedForeground="#000000" />
+                        SelectedForeground="{ThemeResource ListViewItemSelectedBackgroundThemeBrush}" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -1581,7 +1582,6 @@
     <Style x:Key="NavigationLinks" TargetType="HyperlinkButton">
         <Setter Property="Background" Value="{ThemeResource HyperlinkButtonBackground}" />
         <Setter Property="BackgroundSizing" Value="OuterBorderEdge" />
-        <Setter Property="Foreground" Value="Blue" />
         <Setter Property="BorderBrush" Value="{ThemeResource HyperlinkButtonBorderBrush}" />
         <Setter Property="BorderThickness" Value="{ThemeResource HyperlinkButtonBorderThemeThickness}" />
         <Setter Property="Padding" Value="{StaticResource HyperlinkButtonPadding}" />
@@ -1615,13 +1615,13 @@
 
                                     <Storyboard>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Blue" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource HyperlinkButtonForegroundPointerOver}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource HyperlinkButtonBackgroundPressed}" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource HyperlinkButtonBackgroundPointerOver}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Blue" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource HyperlinkButtonBorderBrushPointerOver}" />
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -1630,17 +1630,16 @@
 
                                     <Storyboard>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Blue" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource HyperlinkButtonForegroundPressed}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource HyperlinkButtonBackgroundPressed}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Blue" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource HyperlinkButtonBorderBrushPressed}" />
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
-
                                 <VisualState x:Name="Disabled">
 
                                     <Storyboard>
@@ -6268,6 +6267,15 @@
     <SolidColorBrush x:Key="BackgroundPink">#c4969c</SolidColorBrush>
     <SolidColorBrush x:Key="BackgroundYellow">#cabe8a</SolidColorBrush>
     <SolidColorBrush x:Key="BackgroundGreen">#9ab48e</SolidColorBrush>
+
+
+    <Style x:Key="ListViewLists" TargetType="StackPanel">
+        <Setter Property="Background" Value="{ThemeResource PageBg}" />
+        <Setter Property="BorderBrush" Value="{ThemeResource TextBoxFg}" />
+    </Style>
+
+
+
 
 
 </ResourceDictionary>

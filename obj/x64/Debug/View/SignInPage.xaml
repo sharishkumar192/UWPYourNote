@@ -10,7 +10,7 @@
     mc:Ignorable="d">
 
     <Page.Background>
-        <ImageBrush ImageSource="/Assets/AppBackdrop-Light.png" />
+        <ImageBrush ImageSource="{ThemeResource ApplicationDropoutImage}" />
     </Page.Background>
 
 
@@ -18,14 +18,36 @@
 
     <Page.Resources>
         <DataTemplate x:Key="EmailIdofUsers"                       >
+            <StackPanel x:ConnectionId='7'
+                Width="Auto"
+                Height="Auto"
+                Margin="0"
+                BorderThickness="0,0,0,1"
+                Orientation="Horizontal"
+                Style="{StaticResource ListViewLists}">
+
+                <Image
+                    Width="40"
+                    Height="40"
+                    Margin="0,0,10,0"
+                    Source="/Assets/LockScreenLogo.scale-200.png" />
+                <StackPanel>
+                    <TextBlock x:ConnectionId='8' Style="{StaticResource SignUpTextBlocks}"                      />
+                    <TextBlock x:ConnectionId='9' Style="{StaticResource SignUpTextBlocks}"                        />
+                </StackPanel>
+
+            </StackPanel>
+
+
+        </DataTemplate>
+
+        <DataTemplate x:Key="EmailIdofUser"                       >
             <StackPanel x:ConnectionId='3'
                 Width="Auto"
                 Height="Auto"
                 Margin="0"
-                Background="#ffffff"
-                BorderBrush="#2c2c2c"
-                BorderThickness="0,0,0,1"
-                Orientation="Horizontal">
+                Orientation="Horizontal"
+                Style="{StaticResource ListViewLists}">
 
                 <Image
                     Width="40"
@@ -45,277 +67,313 @@
     </Page.Resources>
 
 
-    <ScrollViewer x:ConnectionId='6'
-        Name="LogInPageScrollViewer"
-        HorizontalAlignment="Stretch"
-        VerticalAlignment="Stretch"
-        HorizontalScrollBarVisibility="Auto"
-        VerticalScrollBarVisibility="Auto">
-        <!--<Login fields>-->
-        <controls:DropShadowPanel
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            BlurRadius="10"
-            Color="Gray">
+    <!--<ScrollViewer Name="LogInPageScrollViewer" VerticalScrollBarVisibility="Auto">-->
+    <!--<Login fields>-->
+    <controls:DropShadowPanel
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        BlurRadius="10"
+        Color="Gray">
+        <Grid x:ConnectionId='10'
+            Name="Something"
+            Padding="20,20,20,20"
+            CornerRadius="4"
+            Style="{StaticResource GridBackground}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Button x:ConnectionId='11'                     >THEME</Button>
+
             <Grid
-                Padding="20,20,20,20"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Background="#ffffff"
+                Grid.Column="0"
+                Padding="20,0,40,0"
+                BorderBrush="{StaticResource WindowBrushA}"
+                BorderThickness="1,1,0,1"
                 CornerRadius="4">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
 
+                </Grid.RowDefinitions>
 
-                <Grid
-                    Grid.Column="0"
-                    Padding="20,0,40,0"
-                    Background="#ffffff"
-                    BorderBrush="{StaticResource WindowBrushA}"
-                    BorderThickness="1,1,0,1"
-                    CornerRadius="4">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
+                <!--<Title>-->
+                <StackPanel x:ConnectionId='15'
+                    Name="Title"
+                    Grid.Row="0"
+                    Margin="0,5,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    CornerRadius="4"
+                    Style="{StaticResource StackBackground}">
 
-                    </Grid.RowDefinitions>
-
-
-                    <!--<Title>-->
-                    <StackPanel
-                        Grid.Row="0"
-                        Margin="0,5,0,0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Background="#ffffff"
-                        CornerRadius="4">
-
-                        <StackPanel Margin="15,0,0,0" Orientation="Horizontal">
-                            <Image
-                                Width="30"
-                                Height="30"
-                                Margin="0,0,10,10"
-                                Source="/Assets/StoreLogo.scale-100.png" />
-
-                            <TextBlock
-                                FontSize="20"
-                                Foreground="Black"
-                                Text="Notebook" />
-                        </StackPanel>
-                        <TextBlock
-                            Margin="15,5,5,1"
-                            FontSize="16"
-                            FontWeight="SemiBold"
-                            Foreground="Black"
-                            Text="Sign in" />
+                    <StackPanel Margin="15,0,0,0" Orientation="Horizontal">
+                        <Image
+                            Width="30"
+                            Height="30"
+                            Margin="0,0,10,10"
+                            Source="/Assets/StoreLogo.scale-100.png" />
 
                         <TextBlock
-                            Margin="15,1"
-                            FontSize="14"
-                            Foreground="Black"
-                            Text="to access Notebook" />
+                            FontSize="20"
+                            Foreground="{ThemeResource TextBoxFg}"
+                            Text="Notebook" />
                     </StackPanel>
+                    <TextBlock
+                        Margin="15,5,5,1"
+                        FontSize="16"
+                        FontWeight="SemiBold"
+                        Foreground="{ThemeResource TextBoxFg}"
+                        Text="Sign in" />
+
+                    <TextBlock
+                        Margin="15,1"
+                        FontSize="14"
+                        Foreground="{ThemeResource TextBoxFg}"
+                        Text="to access Notebook" />
+                </StackPanel>
 
 
-                    <!--<Email Field>-->
-                    <TextBox x:ConnectionId='10'
-                        Name="EmailBox"
-                        Grid.Row="2"
-                        HorizontalAlignment="Center"
-                                                                                       
-                        Style="{StaticResource TextBoxStyle}"
-                                                                                                   
+
+
+                <!--<Email Field>-->
+                <TextBox x:ConnectionId='16'
+                    Name="EmailBox"
+                    Grid.Row="2"
+                    HorizontalAlignment="Center"
+                                                                                   
+                    Style="{StaticResource TextBoxStyle}"
+                                                                                               
+                                                                            />
+
+
+                <RelativePanel Grid.Row="2" Margin="0,15,0,0">
+                    <Border x:ConnectionId='25'
+                        Name="EmailFontBorderStyle"
+                        Width="Auto"
+                        Margin="-10,0,-30,0"
+                        RelativePanel.AlignRightWithPanel="True"
+                        Style="{StaticResource FontBorderStyle}">
+                        <FontIcon x:ConnectionId='26'
+                            Name="EmailCheck"
+                            HorizontalAlignment="Left"
+                            Style="{StaticResource FontIconStyle}"
+                                                                                    />
+                        <ToolTipService.ToolTip>
+                            <TextBlock x:ConnectionId='27'
+                                Name="EmailToolTip"
+                                                                                
+                                                                                          />
+                        </ToolTipService.ToolTip>
+                    </Border>
+                </RelativePanel>
+
+                <!--<Password Field>-->
+                <PasswordBox x:ConnectionId='17'
+                    Name="PasswordBox"
+                    Grid.Row="3"
+                                                                                                       
+                                                                                  
+                                                                                    
+                                                                                      
+                    Style="{StaticResource PasswordBoxStyle}" />
+
+                <RelativePanel Grid.Row="3" Margin="0,15,0,0">
+
+                    <Border x:ConnectionId='22'
+                        Name="PasswordFontBorderStyle"
+                        Margin="-10,0,-30,0"
+                        RelativePanel.AlignRightWithPanel="True"
+                        Style="{StaticResource FontBorderStyle}">
+
+                        <FontIcon x:ConnectionId='23'
+                            Name="PasswordCheck"
+                            HorizontalAlignment="Left"
+                            Style="{StaticResource FontIconStyle}"
+                                                                                       />
+
+                        <ToolTipService.ToolTip>
+                            <TextBlock x:ConnectionId='24'
+                                Name="PasswordToolTip"
+                                                                                   
+                                                                                             />
+                        </ToolTipService.ToolTip>
+
+                    </Border>
+                </RelativePanel>
+
+
+                <!--<Show Password>-->
+
+                <CheckBox x:ConnectionId='18'
+                    Name="RevealModeCheckBox"
+                    Grid.Row="4"
+                    Margin="15,15,15,2"
+                                                                             
+                                                                                 
+                    Style="{StaticResource ValidateCheckBox}"
                                                                                 />
 
+                <!--<Buttons>-->
 
-                    <RelativePanel Grid.Row="2" Margin="0,15,0,0">
-                        <Border x:ConnectionId='18'
-                            Name="EmailFontBorderStyle"
-                            Width="Auto"
-                            Margin="-10,0,-30,0"
-                            RelativePanel.AlignRightWithPanel="True"
-                            Style="{StaticResource FontBorderStyle}">
-                            <FontIcon x:ConnectionId='19'
-                                Name="EmailCheck"
-                                HorizontalAlignment="Left"
-                                Style="{StaticResource FontIconStyle}"
-                                                                                        />
-                            <ToolTipService.ToolTip>
-                                <TextBlock x:ConnectionId='20'
-                                    Name="EmailToolTip"
-                                                                                    
-                                                                                              />
-                            </ToolTipService.ToolTip>
-                        </Border>
-                    </RelativePanel>
-
-                    <!--<Password Field>-->
-                    <PasswordBox x:ConnectionId='11'
-                        Name="PasswordBox"
-                        Grid.Row="3"
-                                                                                                           
-                                                                                      
-                                                                                        
-                                                                                          
-                        Style="{StaticResource PasswordBoxStyle}" />
-
-                    <RelativePanel Grid.Row="3" Margin="0,15,0,0">
-
-                        <Border x:ConnectionId='15'
-                            Name="PasswordFontBorderStyle"
-                            Margin="-10,0,-30,0"
-                            RelativePanel.AlignRightWithPanel="True"
-                            Style="{StaticResource FontBorderStyle}">
-
-                            <FontIcon x:ConnectionId='16'
-                                Name="PasswordCheck"
-                                HorizontalAlignment="Left"
-                                Style="{StaticResource FontIconStyle}"
-                                                                                           />
-
-                            <ToolTipService.ToolTip>
-                                <TextBlock x:ConnectionId='17'
-                                    Name="PasswordToolTip"
-                                                                                       
-                                                                                                 />
-                            </ToolTipService.ToolTip>
-
-                        </Border>
-                    </RelativePanel>
-
-
-                    <!--<Show Password>-->
-
-                    <CheckBox x:ConnectionId='12'
-                        Name="RevealModeCheckBox"
-                        Grid.Row="4"
-                        Margin="15,15,15,2"
-                                                                                 
-                                                                                     
-                        Style="{StaticResource ValidateCheckBox}"
-                                                                                    />
-
-                    <!--<Buttons>-->
-
-                    <RelativePanel Grid.Row="4" Margin="0,15,5,0">
-                        <Button x:ConnectionId='14'
-                            Name="LogInButton"
-                            Width="70"
-                            Margin="0,0,10,0"
-                                                                          
-                            Content="Log In"
-                            RelativePanel.AlignRightWithPanel="True"
-                            Style="{StaticResource SignUpButtonStyle}" />
-
-                        <!--<Button
-                        Name="LogInBackButton"
+                <RelativePanel Grid.Row="4" Margin="0,15,5,0">
+                    <Button x:ConnectionId='21'
+                        Name="LogInButton"
+                        Width="70"
                         Margin="0,0,10,0"
-                        Click="{x:Bind LogInBackButtonClick, Mode=OneWay}"
-                        Content="Back"
-                        RelativePanel.LeftOf="LogInButton"
-                        Style="{StaticResource BackButtonStyle}" />-->
+                                                                      
+                        Content="Log In"
+                        RelativePanel.AlignRightWithPanel="True"
+                        Style="{StaticResource SignUpButtonStyle}" />
 
-                    </RelativePanel>
-
-
-
-                    <StackPanel
-                        Grid.Row="5"
-                        Margin="15"
-                        HorizontalAlignment="Center"
-                        Orientation="Horizontal">
-                        <TextBlock
-                            Margin="0,0,2,0"
-                            FontSize="14"
-                            Foreground="Black"
-                            Text="New User? Start your journey with us by creating an" />
-
-                        <HyperlinkButton x:ConnectionId='13'
-                            x:Name="NavigateToSignUp"
-                                                                               
-                            Content="account"
-                            FontSize="14"
-                            Style="{StaticResource NavigationLinks}" />
-                    </StackPanel>
+                </RelativePanel>
 
 
 
-
-
-
-
-
-
-                </Grid>
-
-
-
-
-
-
-                <!--<Column Spacer>-->
-
-                <Grid x:ConnectionId='7'
-                    Name="ColumnDivider"
-                    Grid.Column="1"
-                    Width="1"
-                    Background="#a1a1a1"
-                                                                                            />
-
-                <!--<Email list>-->
-
-                <Grid x:ConnectionId='8'
-                    Name="FrequentEmailBox"
-                    Grid.Column="2"
-                    Padding="35,0,33,10"
-                    Background="#ffffff"
-                    BorderBrush="Black"
-                    BorderThickness="0"
-                    CornerRadius="4"
-                                                                                              >
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
+                <StackPanel x:ConnectionId='19'
+                    Name="NavigationLink"
+                    Grid.Row="5"
+                    Margin="15"
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
                     <TextBlock
-                        Grid.Row="0"
-                        HorizontalAlignment="Center"
-                        FontSize="16"
-                        Foreground="Black"
-                        Text="Choose an account" />
+                        Margin="0,0,2,0"
+                        FontSize="14"
+                        Foreground="{ThemeResource TextBoxFg}"
+                        Text="New User? Start your journey with us by creating an" />
 
-
-                    <ListView x:ConnectionId='9'
-                        Name="FrequentEmail"
-                        Grid.Row="1"
-                        Width="300"
-                        Height="300"
-                        IsItemClickEnabled="True"
-                                                                   
-                        ItemContainerStyle="{StaticResource LoginListViewItem}"
-                        ItemTemplate="{StaticResource EmailIdofUsers}"
-                                                                                                
-                        Style="{StaticResource LoginListView}" />
-
-
-
-
-                </Grid>
+                    <HyperlinkButton x:ConnectionId='20'
+                        x:Name="NavigateToSignUp"
+                                                                           
+                        Content="account"
+                        FontSize="14"
+                        Style="{StaticResource NavigationLinks}" />
+                </StackPanel>
 
 
 
             </Grid>
-        </controls:DropShadowPanel>
+            <!--<Column Spacer>-->
 
-    </ScrollViewer>
+            <Grid x:ConnectionId='12'
+                Name="ColumnDivider"
+                Grid.Column="1"
+                Width="1"
+                Background="#a1a1a1"
+                                                                                        />
+
+            <!--<Email list>-->
+
+            <Grid x:ConnectionId='13'
+                Name="FrequentEmailBox"
+                Grid.Column="2"
+                Padding="35,0,33,10"
+                BorderThickness="0"
+                CornerRadius="4"
+                Style="{StaticResource GridBackground}"
+                                                                                          >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <TextBlock
+                    Grid.Row="0"
+                    HorizontalAlignment="Center"
+                    FontSize="16"
+                    Foreground="{ThemeResource TextBoxFg}"
+                    Text="Choose an account" />
+
+
+                <ListView x:ConnectionId='14'
+                    Name="FrequentEmail"
+                    Grid.Row="1"
+                    Width="300"
+                    Height="300"
+                    IsItemClickEnabled="True"
+                                                               
+                    ItemContainerStyle="{StaticResource LoginListViewItem}"
+                                                                                            
+                    Style="{StaticResource LoginListView}">
+                    <ListView.ItemTemplateSelector>
+                        <data:ItemsDataTemplateSelector AllItems="{StaticResource EmailIdofUsers}" LastItems="{StaticResource EmailIdofUser}" />
+                    </ListView.ItemTemplateSelector>
+
+                </ListView>
+
+            </Grid>
+
+
+        </Grid>
+
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+
+
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="FrequentEmailBox.Visibility" Value="Collapsed" />
+                        <Setter Target="ColumnDivider.Visibility" Value="Collapsed" />
+
+                    </VisualState.Setters>
+                </VisualState>
+
+                <!--<VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="10" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+
+                        <Setter Target="FrequentEmailBox.Visibility" Value="Collapsed" />
+
+
+                    </VisualState.Setters>
+                </VisualState>-->
+
+
+
+
+                <VisualState>
+
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="900" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="FrequentEmailBox.Visibility" Value="Visible" />
+                        <Setter Target="ColumnDivider.Visibility" Value="Visible" />
+
+
+                    </VisualState.Setters>
+                </VisualState>
+
+
+
+                <VisualState>
+
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="370" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="NavigationLink.Visibility" Value="Visible" />
+                    
+                    </VisualState.Setters>
+                </VisualState>
+
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </controls:DropShadowPanel>
+
+    <!--</ScrollViewer>-->
 
 </Page>
 

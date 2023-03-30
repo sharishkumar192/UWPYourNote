@@ -121,6 +121,9 @@
     <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.toolkit.uwp.ui.controls.media\7.1.3\lib\uap10.0.17763\Microsoft.Toolkit.Uwp.UI.Controls.Media\Microsoft.Toolkit.Uwp.UI.Controls.Media.xr.xml">
       <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls.Media\Microsoft.Toolkit.Uwp.UI.Controls.Media.xr.xml</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\YourNote\UWPYourNote\Assets\AppBackdrop-Dark.png">
+      <PackagePath>Assets\AppBackdrop-Dark.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\Assets\download.png">
       <PackagePath>Assets\download.png</PackagePath>
     </AppxPackagedFile>
@@ -339,14 +342,17 @@
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\Color.xbf">
-      <PackagePath>Color.xbf</PackagePath>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\Dictionary.xbf">
       <PackagePath>Dictionary.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\NoteColorBackground.xbf">
       <PackagePath>NoteColorBackground.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\Themes\Light.xbf">
+      <PackagePath>Themes\Light.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\Themes\Dark.xbf">
+      <PackagePath>Themes\Dark.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\HomePage.xbf">
       <PackagePath>View\HomePage.xbf</PackagePath>

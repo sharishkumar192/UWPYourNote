@@ -9,17 +9,8 @@
     mc:Ignorable="d">
 
     <Grid>
-        <Frame Name="MFrame">
-            <ImageBrush
-                x:Name="ApplicationDropoutImage"
-                ImageSource="/Assets/ZohoSignUpPageBackdrop-Light.png"
-                Stretch="Fill" />
-
-
-
-        </Frame>
-
 
        
-    </Grid>
+        <Frame Name="MFrame"  />
+        </Grid>
 </Page>

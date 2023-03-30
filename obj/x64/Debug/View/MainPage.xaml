@@ -9,18 +9,9 @@
     mc:Ignorable="d">
 
     <Grid>
-        <Frame x:ConnectionId='2' Name="MFrame">
-            <ImageBrush x:ConnectionId='3'
-                x:Name="ApplicationDropoutImage"
-                ImageSource="/Assets/ZohoSignUpPageBackdrop-Light.png"
-                Stretch="Fill" />
-
-
-
-        </Frame>
-
 
        
-    </Grid>
+        <Frame x:ConnectionId='2' Name="MFrame"  />
+        </Grid>
 </Page>
 

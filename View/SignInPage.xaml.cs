@@ -383,7 +383,9 @@ namespace UWPYourNote.View
 
         public void NavigateToSignUpPage()
         {
-            _frame.Navigate(typeof(SignUpPage), _frame, new SlideNavigationTransitionInfo() { Effect = SlideNavigationTransitionEffect.FromLeft });
+            _frame.Navigate(typeof(SignUpPage), _frame, null);
+
+//            _frame.Navigate(typeof(SignUpPage), _frame, new SlideNavigationTransitionInfo() { Effect = SlideNavigationTransitionEffect.FromLeft });
         }
 
         public void NavigateToHomePage(User loggedUser)
@@ -417,6 +419,22 @@ namespace UWPYourNote.View
         public void NavigateToOnSuccess(User loggedUser)
         {
             NavigateToHomePage(loggedUser);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var currentTheme = Window.Current.Content as FrameworkElement;
+            if (currentTheme.ActualTheme == ElementTheme.Dark)
+            {
+                currentTheme.RequestedTheme = ElementTheme.Light;
+                SaveAppSettings.SavePreferences("Light");
+            }
+            else
+            {
+                currentTheme.RequestedTheme = ElementTheme.Dark;
+                SaveAppSettings.SavePreferences("Dark");
+            }
+
         }
     }
 }

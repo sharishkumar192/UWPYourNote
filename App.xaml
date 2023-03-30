@@ -7,9 +7,73 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Dictionary.xaml" />
+
             </ResourceDictionary.MergedDictionaries>
 
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary
+                    x:Key="Light"
+                    x:Name="asdad"
+                    Source="Themes/Light.xaml" />
+                <ResourceDictionary x:Key="Dark" Source="Themes/Dark.xaml" />
 
+
+            </ResourceDictionary.ThemeDictionaries>
+
+            <SolidColorBrush x:Key="PageBgColorBrushL" Color="{ThemeResource PageBgColorDefault}" />
+            <SolidColorBrush x:Key="PrimaryButtonBgColorBrushL" Color="{ThemeResource PrimaryButtonBgColorDefault}" />
+            <SolidColorBrush x:Key="PrimaryButtonFgColorBrushL" Color="{ThemeResource PrimaryButtonFgColorDefault}" />
+            <SolidColorBrush x:Key="SecondaryButtonBgColorBrushL" Color="{ThemeResource SecondaryButtonBgColorDefault}" />
+            <SolidColorBrush x:Key="SecondaryButtonFgColorBrushL" Color="{ThemeResource SecondaryButtonFgColorDefault}" />
+            <SolidColorBrush x:Key="PrimaryButtonBgColorOnHoverBrushL" Color="{ThemeResource PrimaryButtonBgColorOnHoverDefault}" />
+            <SolidColorBrush x:Key="SecondaryButtonBgColorOnHoverBrushL" Color="{ThemeResource SecondaryButtonBgColorOnHoverDefault}" />
+            <SolidColorBrush x:Key="PrimaryButtonBgColorOnClickBrushL" Color="{ThemeResource PrimaryButtonBgColorOnClickDefault}" />
+            <SolidColorBrush x:Key="SecondaryButtonBgColorOnClickBrushL" Color="{ThemeResource SecondaryButtonBgColorOnClickDefault}" />
+            <SolidColorBrush x:Key="TextBoxBgColorBrushL" Color="{ThemeResource TextBoxBgColorDefault}" />
+            <SolidColorBrush x:Key="TextBoxFgColorBrushL" Color="{ThemeResource TextBoxFgColorDefault}" />
+            <SolidColorBrush x:Key="TextBoxBorderColorBrushL" Color="{ThemeResource TextBoxBorderColorDefault}" />
+            <SolidColorBrush x:Key="TextBoxBorderColorOnHoverBrushL" Color="{ThemeResource TextBoxBorderColorOnHoverDefault}" />
+            <SolidColorBrush x:Key="TextBoxBorderColorOnClickBrushL" Color="{ThemeResource TextBoxBorderColorOnClickDefault}" />
+            <SolidColorBrush x:Key="TextBoxClearButtonFgColorOnClickBrushL" Color="{ThemeResource TextBoxClearButtonFgColorOnClickDefault}" />
+            <SolidColorBrush x:Key="TextBoxClearButtonFgColorBrushL" Color="{ThemeResource TextBoxClearButtonFgColorDefault}" />
+            <SolidColorBrush x:Key="TextBoxPlaceHolderTextFgColorBrushL" Color="{ThemeResource TextBoxPlaceHolderTextFgColorDefault}" />
+            <SolidColorBrush x:Key="TextBoxTextFgColorBrushL" Color="{ThemeResource TextBoxTextFgColorDefault}" />
+
+
+
+            <SolidColorBrush x:Key="ListViewSelectedItemBrushL" Color="{ThemeResource ListViewSelectedItemColorDefault}" />
+            <SolidColorBrush x:Key="ListViewSelectedItemOnHoverBrushL" Color="{ThemeResource ListViewSelectedItemColorOnHoverDefault}" />
+            <SolidColorBrush x:Key="ListViewItemOnHoverBrushL" Color="{ThemeResource ListViewItemColorOnHoverDefault}" />
+            <SolidColorBrush x:Key="ListViewSelectedItemOnClickBrushL" Color="{ThemeResource ListViewSelectedItemColorOnClickDefault}" />
+
+
+
+
+            <SolidColorBrush x:Key="PageBgColorBrushD" Color="{ThemeResource PageBgColorDefault}" />
+            <SolidColorBrush x:Key="PrimaryButtonBgColorBrushD" Color="{ThemeResource PrimaryButtonBgColorDefault}" />
+            <SolidColorBrush x:Key="PrimaryButtonFgColorBrushD" Color="{ThemeResource PrimaryButtonFgColorDefault}" />
+            <SolidColorBrush x:Key="SecondaryButtonBgColorBrushD" Color="{ThemeResource SecondaryButtonBgColorDefault}" />
+            <SolidColorBrush x:Key="SecondaryButtonFgColorBrushD" Color="{ThemeResource SecondaryButtonFgColorDefault}" />
+            <SolidColorBrush x:Key="PrimaryButtonBgColorOnHoverBrushD" Color="{ThemeResource PrimaryButtonBgColorOnHoverDefault}" />
+            <SolidColorBrush x:Key="SecondaryButtonBgColorOnHoverBrushD" Color="{ThemeResource SecondaryButtonBgColorOnHoverDefault}" />
+            <SolidColorBrush x:Key="PrimaryButtonBgColorOnClickBrushD" Color="{ThemeResource PrimaryButtonBgColorOnClickDefault}" />
+            <SolidColorBrush x:Key="SecondaryButtonBgColorOnClickBrushD" Color="{ThemeResource SecondaryButtonBgColorOnClickDefault}" />
+            <SolidColorBrush x:Key="TextBoxBgColorBrushD" Color="{ThemeResource TextBoxBgColorDefault}" />
+            <SolidColorBrush x:Key="TextBoxFgColorBrushD" Color="{ThemeResource TextBoxFgColorDefault}" />
+            <SolidColorBrush x:Key="TextBoxBorderColorBrushD" Color="{ThemeResource TextBoxBorderColorDefault}" />
+            <SolidColorBrush x:Key="TextBoxBorderColorOnHoverBrushD" Color="{ThemeResource TextBoxBorderColorOnHoverDefault}" />
+            <SolidColorBrush x:Key="TextBoxBorderColorOnClickBrushD" Color="{ThemeResource TextBoxBorderColorOnClickDefault}" />
+            <SolidColorBrush x:Key="TextBoxClearButtonFgColorOnClickBrushD" Color="{ThemeResource TextBoxClearButtonFgColorOnClickDefault}" />
+            <SolidColorBrush x:Key="TextBoxClearButtonFgColorBrushD" Color="{ThemeResource TextBoxClearButtonFgColorDefault}" />
+            <SolidColorBrush x:Key="TextBoxPlaceHolderTextFgColorBrushD" Color="{ThemeResource TextBoxPlaceHolderTextFgColorDefault}" />
+            <SolidColorBrush x:Key="TextBoxTextFgColorBrushD" Color="{ThemeResource TextBoxTextFgColorDefault}" />
+
+
+
+            <SolidColorBrush x:Key="ListViewSelectedItemBrushD" Color="{ThemeResource ListViewSelectedItemColorDefault}" />
+            <SolidColorBrush x:Key="ListViewSelectedItemOnHoverBrushD" Color="{ThemeResource ListViewSelectedItemColorOnHoverDefault}" />
+            <SolidColorBrush x:Key="ListViewItemOnHoverBrushD" Color="{ThemeResource ListViewItemColorOnHoverDefault}" />
+            <SolidColorBrush x:Key="ListViewSelectedItemOnClickBrushD" Color="{ThemeResource ListViewSelectedItemColorOnClickDefault}" />
 
 
 
