@@ -38,11 +38,11 @@
       <RootProperty Name="Height" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Padding" />
+      <RootProperty Name="Style" />
       <RootProperty Name="Name" />
       <RootProperty Name="Visibility" />
       <RootProperty Name="IsTapEnabled" />
-      <RootProperty Name="Padding" />
-      <RootProperty Name="Style" />
       <RootEvent Name="Tapped" />
       <RootMethod Name="GetRow" />
       <RootMethod Name="SetRow" />
@@ -149,14 +149,14 @@
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="BorderThickness" />
       <RootProperty Name="FontSize" />
+      <RootProperty Name="Foreground" />
       <RootProperty Name="IsTabStop" />
       <RootProperty Name="Style" />
       <RootProperty Name="Visibility" />
+      <RootProperty Name="Content" />
       <RootProperty Name="Name" />
       <RootProperty Name="Width" />
-      <RootProperty Name="Content" />
       <RootProperty Name="CornerRadius" />
-      <RootProperty Name="Foreground" />
       <RootProperty Name="Height" />
       <RootProperty Name="Background" />
       <RootProperty Name="FontFamily" />
@@ -506,10 +506,10 @@
       <RootProperty Name="Style" />
       <RootProperty Name="Visibility" />
     </RootType>
-    <RootType FullName="Windows.UI.Color" />
     <RootType FullName="Windows.UI.Xaml.Media.Imaging.BitmapImage">
       <RootProperty Name="UriSource" />
     </RootType>
+    <RootType FullName="Windows.UI.Color" />
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="Resources" />
       <RootProperty Name="Content" />
@@ -543,6 +543,8 @@
     <RootType FullName="Windows.UI.Xaml.Controls.GridView">
       <RootProperty Name="Name" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="CornerRadius" />
       <RootProperty Name="IsItemClickEnabled" />
       <RootProperty Name="ItemContainerStyle" />
       <RootProperty Name="ItemsSource" />

@@ -55,8 +55,7 @@
 
 
     </Page.Resources>
-    <Grid>
-
+    <Grid Background="{ThemeResource PageBg}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -64,7 +63,7 @@
         </Grid.RowDefinitions>
 
 
-        <RelativePanel VerticalAlignment="Center" Background="#ffffff">
+        <RelativePanel VerticalAlignment="Center" Background="{ThemeResource Pagebackground}">
 
             <StackPanel
                 Margin="10,5,0,0"
@@ -82,7 +81,7 @@
                 <TextBlock
                     Margin="0,5,0,0"
                     FontSize="20"
-                    Foreground="Black"
+                    Foreground="{ThemeResource TextBoxFg}"
                     Text="Notebook" />
             </StackPanel>
 
@@ -210,7 +209,12 @@
 
 
 
-        <Grid Grid.Row="1" Margin="10,20,0,15">
+        <Grid
+            Grid.Row="1"
+            Margin="10,2,0,15"
+            Padding="0,10"
+            CornerRadius="4"
+            Style="{StaticResource GridBackground}">
             <TextBlock
                 Name="Title"
                 Margin="0,0,0,10"
@@ -218,10 +222,11 @@
                 VerticalAlignment="Top"
                 FontSize="18"
                 FontWeight="SemiBold"
-                Foreground="Black"
+                Foreground="{ThemeResource TextBoxFg}"
                 Text="{x:Bind TitleText, Mode=OneWay}" />
 
-
+            <Button Click="Button_Click">THEME</Button>
+            <Button Margin="80,0,0,0" Click="Button_Click1">ACCENT COLOR</Button>
             <controls:DropShadowPanel
                 Width="500"
                 HorizontalAlignment="Center"
@@ -309,6 +314,8 @@
             Name="NotesData"
             Grid.Row="2"
             Margin="10,0,10,5"
+            Background="{ThemeResource PageBg}"
+            CornerRadius="4"
             IsItemClickEnabled="True"
             ItemClick="{x:Bind NotesDataItemClick, Mode=OneWay}"
             ItemContainerStyle="{StaticResource GridViewItemStyle}"
@@ -357,12 +364,145 @@
                 </Storyboard>
             </Popup.Resources>
         </Popup>
+        <!--<VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+
+
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SearchBoxContainer.Background" Value="Red" />
+
+                    </VisualState.Setters>
+                </VisualState>
+
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="100" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SearchBoxContainer.Background" Value="Blue" />
+
+                    </VisualState.Setters>
+                </VisualState>
+
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="200" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SearchBoxContainer.Background" Value="Green" />
+
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="300" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SearchBoxContainer.Background" Value="Yellow" />
+
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="400" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SearchBoxContainer.Background" Value="Orange" />
+
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="500" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SearchBoxContainer.Background" Value="Black" />
+
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SearchBoxContainer.Background" Value="Pink" />
+                        <Setter Target="SearchBoxContainer.Width" Value="100"/>
+                    </VisualState.Setters>
+                </VisualState>
+
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="700" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SearchBoxContainer.Background" Value="Wheat" />
+                        <Setter Target="SearchBoxContainer.Width" Value="275"/>
+                    </VisualState.Setters>
+                </VisualState>
+
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="800" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SearchBoxContainer.Background" Value="Black" />
+                        <Setter Target="SearchBoxContainer.Width" Value="285"/>
+                    </VisualState.Setters>
+                </VisualState>
 
 
 
 
 
 
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="900" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SearchBoxContainer.Background" Value="LightBlue" />
+                        <Setter Target="SearchBoxContainer.Width" Value="295"/>
+                    </VisualState.Setters>
+                </VisualState>
+
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1000" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SearchBoxContainer.Background" Value="LightGreen" />
+                        <Setter Target="SearchBoxContainer.Width" Value="315"/>
+                    </VisualState.Setters>
+                </VisualState>
+
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1100" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SearchBoxContainer.Background" Value="White" />
+                        <Setter Target="SearchBoxContainer.Width" Value="325"/>
+                    </VisualState.Setters>
+                </VisualState>
+
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>-->
     </Grid>
 
 

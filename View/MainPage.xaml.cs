@@ -28,16 +28,25 @@ namespace UWPYourNote.View
         public MainPage()
         {
             this.InitializeComponent();
-            ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
+            var titleBar = ApplicationView.GetForCurrentView().TitleBar;
+            var currentTheme = Window.Current.Content as FrameworkElement;
 
-            titleBar.InactiveBackgroundColor = titleBar.BackgroundColor = Windows.UI.Colors.White;
-            titleBar.InactiveForegroundColor = titleBar.ForegroundColor = Windows.UI.Colors.Black;
+            switch (currentTheme.ActualTheme)
+            {
+                case ElementTheme.Default:
+                    titleBar.BackgroundColor = Colors.White;
+                    titleBar.ForegroundColor = Colors.White; break;
+                case ElementTheme.Dark:
+                    titleBar.BackgroundColor = Colors.Black;
+                    titleBar.ForegroundColor = Colors.White; break;
+                case ElementTheme.Light:
+                    titleBar.BackgroundColor = Colors.White;
+                    titleBar.ForegroundColor = Colors.Black; break;
+            }
 
-            titleBar.ButtonPressedBackgroundColor = titleBar.ButtonHoverBackgroundColor = titleBar.ButtonInactiveBackgroundColor = titleBar.ButtonBackgroundColor = Windows.UI.Colors.White;
-            titleBar.ButtonPressedForegroundColor = titleBar.ButtonHoverForegroundColor = 
-                titleBar.ButtonInactiveForegroundColor = titleBar.ButtonForegroundColor = Windows.UI.Colors.Black;
-            
+
             MFrame.Navigate(typeof(SignInPage), MFrame);
+
 
         }
     }

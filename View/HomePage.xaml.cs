@@ -21,6 +21,8 @@ using UWPYourNoteLibrary.Util;
 using UWPYourNote.ViewModels;
 using UWPYourNote.ViewModels.Contract;
 using static UWPYourNoteLibrary.Util.NotesUtilities;
+using Windows.UI.ViewManagement;
+using Windows.UI;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -778,6 +780,52 @@ namespace UWPYourNote.View
 
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var currentTheme = Window.Current.Content as FrameworkElement;
+            if (currentTheme.ActualTheme == ElementTheme.Dark)
+            {
+                currentTheme.RequestedTheme = ElementTheme.Light;
+                SaveAppSettings.SavePreferences("Light");
+            }
+            else
+            {
+                currentTheme.RequestedTheme = ElementTheme.Dark;
+                SaveAppSettings.SavePreferences("Dark");
+            }
 
+            var titleBar = ApplicationView.GetForCurrentView().TitleBar;
+            switch (currentTheme.ActualTheme)
+            {
+                case ElementTheme.Default:
+                    titleBar.BackgroundColor = Colors.Red;
+                    titleBar.ForegroundColor = Colors.White; break;
+                case ElementTheme.Dark:
+                    titleBar.BackgroundColor = Colors.Black;
+                    titleBar.ForegroundColor = Colors.White; break;
+                case ElementTheme.Light:
+                    titleBar.BackgroundColor = Colors.White;
+                    titleBar.ForegroundColor = Colors.Black; break;
+            }
+
+
+
+        }
+        private void Button_Click1(object sender, RoutedEventArgs e)
+        {
+          
+             ChangeThemeAndAccentColor.ChangeAccent();
+            //var currentTheme = Window.Current.Content as FrameworkElement;
+            //if (currentTheme.ActualTheme == ElementTheme.Dark)
+            //{
+            //    currentTheme.RequestedTheme = ElementTheme.Light;
+            //    SaveAppSettings.SavePreferences("Light");
+            //}
+            //else
+            //{
+            //    currentTheme.RequestedTheme = ElementTheme.Dark;
+            //    SaveAppSettings.SavePreferences("Dark");
+            //}
+        }
     }
 }

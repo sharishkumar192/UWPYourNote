@@ -20,7 +20,6 @@ using Windows.UI.Xaml.Media.Animation;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using UWPYourNoteLibrary.Util;
-using UWPYourNote.ViewModels;
 using UWPYourNoteLibrary.Models;
 using UWPYourNote.ViewModels.Contract;
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -434,7 +433,7 @@ namespace UWPYourNote.View
                 currentTheme.RequestedTheme = ElementTheme.Dark;
                 SaveAppSettings.SavePreferences("Dark");
             }
-
+            //ChangeThemeAndAccentColor.ChangeTheme(Window.Current);
         }
     }
 }

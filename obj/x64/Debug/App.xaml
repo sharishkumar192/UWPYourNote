@@ -20,6 +20,7 @@
 
             </ResourceDictionary.ThemeDictionaries>
 
+            <SolidColorBrush x:Key="PagebackgroundBrushL" Color="{ThemeResource Pagebackground}" />
             <SolidColorBrush x:Key="PageBgColorBrushL" Color="{ThemeResource PageBgColorDefault}" />
             <SolidColorBrush x:Key="PrimaryButtonBgColorBrushL" Color="{ThemeResource PrimaryButtonBgColorDefault}" />
             <SolidColorBrush x:Key="PrimaryButtonFgColorBrushL" Color="{ThemeResource PrimaryButtonFgColorDefault}" />
@@ -48,7 +49,7 @@
 
 
 
-
+            <SolidColorBrush x:Key="PagebackgroundBrushD" Color="{ThemeResource Pagebackground}" />
             <SolidColorBrush x:Key="PageBgColorBrushD" Color="{ThemeResource PageBgColorDefault}" />
             <SolidColorBrush x:Key="PrimaryButtonBgColorBrushD" Color="{ThemeResource PrimaryButtonBgColorDefault}" />
             <SolidColorBrush x:Key="PrimaryButtonFgColorBrushD" Color="{ThemeResource PrimaryButtonFgColorDefault}" />

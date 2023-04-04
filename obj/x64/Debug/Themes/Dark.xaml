@@ -1,4 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Color x:Key="Pagebackground">#212121</Color>
 
     <Color x:Key="PageBgColorDefault">#1a1a1a</Color>
     <Color x:Key="PrimaryButtonBgColorDefault">#0073cf</Color>
@@ -36,8 +37,95 @@
 
 
 
+    <!--  LAVENDAR VARIANTS  -->
+    <Color x:Key="PrimaryButtonBgColorLavendar">#8961cc</Color>
+    <Color x:Key="PrimaryButtonFgColorLavendar">#ffffff</Color>
+    <Color x:Key="SecondaryButtonBgColorLavendar">#64576b</Color>
+    <Color x:Key="SecondaryButtonFgColorLavendar">#f3f2f4</Color>
+
+
+    <Color x:Key="PrimaryButtonBgColorOnHoverLavendar">#7555ae</Color>
+    <Color x:Key="SecondaryButtonBgColorOnHoverLavendar">#3b3c4c</Color>
+
+    <Color x:Key="PrimaryButtonBgColorOnClickLavendar">#614a90</Color>
+    <Color x:Key="SecondaryButtonBgColorOnClickLavendar">#8d8193</Color>
+
+
+    <Color x:Key="TextBoxBgColorLavendar">#000000</Color>
+    <Color x:Key="TextBoxFgColorLavendar">#ffffff</Color>
+    <Color x:Key="TextBoxBorderColorLavendar">#b6aabc</Color>
+    <Color x:Key="TextBoxPlaceHolderTextFgColorLavendar">#9a9a9a</Color>
+    <Color x:Key="TextBoxTextFgColorLavendar">#1a1a1a</Color>
+
+    <Color x:Key="TextBoxBorderColorOnHoverLavendar">#cbbfd0</Color>
+    <Color x:Key="TextBoxBorderColorOnClickLavendar">#8961cc</Color>
+
+    <Color x:Key="TextBoxClearButtonFgColorOnClickLavendar">#936fd0</Color>
+    <Color x:Key="TextBoxClearButtonFgColorLavendar">#8961cc</Color>
+
+
+
+
+
+    <!--  FOREST VARIANTS  -->
+    <Color x:Key="PrimaryButtonBgColorForest">#34854d</Color>
+    <Color x:Key="PrimaryButtonFgColorForest">#ffffff</Color>
+    <Color x:Key="SecondaryButtonBgColorForest">#784834</Color>
+    <Color x:Key="SecondaryButtonFgColorForest">#ffffff</Color>
+
+
+    <Color x:Key="PrimaryButtonBgColorOnHoverForest">#347542</Color>
+    <Color x:Key="SecondaryButtonBgColorOnHoverForest">#494c30</Color>
+
+    <Color x:Key="PrimaryButtonBgColorOnClickForest">#346538</Color>
+    <Color x:Key="SecondaryButtonBgColorOnClickForest">#9e7564</Color>
+
+
+    <Color x:Key="TextBoxBorderColorForest">#c5a294</Color>
+    <Color x:Key="TextBoxBorderColorOnHoverForest">#d8b8ac</Color>
+    <Color x:Key="TextBoxBorderColorOnClickForest">#34854d</Color>
+    <Color x:Key="TextBoxClearButtonFgColorOnClickForest">#232323</Color>
+    <Color x:Key="TextBoxClearButtonFgColorForest">#f9fbf9</Color>
+    <Color x:Key="TextBoxBgColorForest">#000000</Color>
+    <Color x:Key="TextBoxFgColorForest">#ffffff</Color>
+    <Color x:Key="TextBoxPlaceHolderTextFgColorForest">#9a9a9a</Color>
+    <Color x:Key="TextBoxTextFgColorForest">#1a1a1a</Color>
+
+
+    <!--  NIGHTTIME VARIANTS  -->
+    <Color x:Key="PrimaryButtonBgColorNighttime">#cc4d11</Color>
+    <Color x:Key="PrimaryButtonFgColorNighttime">#ffffff</Color>
+    <Color x:Key="SecondaryButtonBgColorNighttime">#2f7bad</Color>
+    <Color x:Key="SecondaryButtonFgColorNighttime">#ffffff</Color>
+
+
+    <Color x:Key="PrimaryButtonBgColorOnHoverNighttime">#a6451b</Color>
+    <Color x:Key="SecondaryButtonBgColorOnHoverNighttime">#253b56</Color>
+
+    <Color x:Key="PrimaryButtonBgColorOnClickNighttime">#7f3d25</Color>
+    <Color x:Key="SecondaryButtonBgColorOnClickNighttime">#5e9dc6</Color>
+
+
+    <Color x:Key="TextBoxBorderColorNighttime">#8dbfdf</Color>
+
+    <Color x:Key="TextBoxBorderColorOnHoverNighttime">#a5d0ec</Color>
+    <Color x:Key="TextBoxBorderColorOnClickNighttime">#fdf9f7</Color>
+
+    <Color x:Key="TextBoxClearButtonFgColorOnClickNighttime">#232323</Color>
+    <Color x:Key="TextBoxClearButtonFgColorNighttime">#d15f29</Color>
+    <Color x:Key="TextBoxBgColorNighttime">#000000</Color>
+    <Color x:Key="TextBoxFgColorNighttime">#ffffff</Color>
+    <Color x:Key="TextBoxPlaceHolderTextFgColorNighttime">#9a9a9a</Color>
+    <Color x:Key="TextBoxTextFgColorNighttime">#1a1a1a</Color>
+
+
+
+
+
+
+    <StaticResource x:Key="PageBackground" ResourceKey="PagebackgroundBrushD" />
     <StaticResource x:Key="PageBg" ResourceKey="PageBgColorBrushD" />
-    <StaticResource x:Key="PrimaryButtonBg" ResourceKey="PrimaryButtonBgColorBrushBrushD" />
+    <StaticResource x:Key="PrimaryButtonBg" ResourceKey="PrimaryButtonBgColorBrushD" />
     <StaticResource x:Key="PrimaryButtonFg" ResourceKey="PrimaryButtonFgColorBrushD" />
     <StaticResource x:Key="SecondaryButtonBg" ResourceKey="SecondaryButtonBgColorBrushD" />
     <StaticResource x:Key="SecondaryButtonFg" ResourceKey="SecondaryButtonFgColorBrushD" />
