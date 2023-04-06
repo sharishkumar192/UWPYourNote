@@ -18,6 +18,7 @@ using Windows.UI.Xaml.Navigation;
 using UWPYourNoteLibrary.Util;
 using UWPYourNote.ViewModels;
 using UWPYourNote.ViewModels.Contract;
+using Windows.UI.ViewManagement;
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace UWPYourNote.View
@@ -52,21 +53,6 @@ namespace UWPYourNote.View
         void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var currentTheme = Window.Current.Content as FrameworkElement;
-            if (currentTheme.ActualTheme == ElementTheme.Dark)
-            {
-                currentTheme.RequestedTheme = ElementTheme.Light;
-                SaveAppSettings.SavePreferences("Light");
-            }
-            else
-            {
-                currentTheme.RequestedTheme = ElementTheme.Dark;
-                SaveAppSettings.SavePreferences("Dark");
-            }
-
         }
 
         //------------------------------------------Name TextBox---------------------------------------------------

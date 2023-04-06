@@ -32,6 +32,20 @@ namespace UWPYourNote.View.usercontrol
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+
+
+        public Note notesTemplate
+        {
+            get { return (Note)GetValue(NoteItemProperty); }
+            set { SetValue(NoteItemProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for notesTemplate.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty NoteItemProperty =
+            DependencyProperty.Register("notesTemplate", typeof(Note), typeof(NotesDataTemplate), new PropertyMetadata(0));
+
+
+
         public static string NotePreview(string title, string content)
         {
             string text = "";
@@ -124,34 +138,25 @@ namespace UWPYourNote.View.usercontrol
                 NoteContentBackground = GetSolidColorBrush(notesTemplate.noteColor);
         }
 
-        public UWPYourNoteLibrary.Models.Note notesTemplate
-        {
+        //public UWPYourNoteLibrary.Models.Note notesTemplate
+        //{
 
 
-            get
-            {
-                // loadOnce = true;
-                // SetColor();
-                return this.DataContext as UWPYourNoteLibrary.Models.Note;
+        //    get
+        //    {
+        //        // loadOnce = true;
+        //        // SetColor();
+        //        return this.DataContext as UWPYourNoteLibrary.Models.Note;
 
 
 
-            }
-        }
+        //    }
+        //}
 
 
         public NotesDataTemplate()
         {
             this.InitializeComponent();
-
-            //if (notesTemplate != null)
-            //{
-            //          
-            //}
-
-
-
-
             this.DataContextChanged += NotesDataTemplate_DataContextChanged;
             //if (loadOnce == true)
             //{

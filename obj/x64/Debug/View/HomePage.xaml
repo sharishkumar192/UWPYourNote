@@ -14,7 +14,6 @@
 
         <DataTemplate x:Key="SearchTitleA"                       >
             <StackPanel x:ConnectionId='7'
-                Width="300"
                 Margin="0,10,0,0"
                 BorderBrush="#f1f1f1"
                 BorderThickness="0,0,0,1"
@@ -28,16 +27,14 @@
                     HorizontalAlignment="Left"
                     FontSize="14"
                     Foreground="Black"
-                                          />
+                                         
+                    TextTrimming="CharacterEllipsis" />
             </StackPanel>
 
         </DataTemplate>
 
         <DataTemplate x:Key="SearchTitleL"                       >
-            <StackPanel x:ConnectionId='3'
-                Width="300"
-                Margin="0,10,0,10"
-                Orientation="Horizontal">
+            <StackPanel x:ConnectionId='3' Margin="0,10,0,10" Orientation="Horizontal">
                 <Rectangle x:ConnectionId='4'
                     Width="35"
                     Height="35"
@@ -48,7 +45,8 @@
                     HorizontalAlignment="Left"
                     FontSize="14"
                     Foreground="Black"
-                                          />
+                                         
+                    TextTrimming="CharacterEllipsis" />
 
             </StackPanel>
         </DataTemplate>
@@ -86,7 +84,7 @@
             </StackPanel>
 
             <!--  MAIN MENU OPTIONS  -->
-            <ListBox x:ConnectionId='26'
+            <ListBox x:ConnectionId='24'
                 Name="MainMenuOptions"
                 ItemContainerStyle="{StaticResource MainMenuItemStyle}"
                 RelativePanel.AlignBottomWithPanel="True"
@@ -96,17 +94,17 @@
                                                                                         
                 SelectionMode="Single"
                 Style="{StaticResource MainMenuStyle}">
-                <ListBoxItem x:ConnectionId='33'
+                <ListBoxItem x:ConnectionId='41'
                     Name="PersonalNotes"
                     Content="Personal"
                                                                                />
 
-                <ListBoxItem x:ConnectionId='34'
+                <ListBoxItem x:ConnectionId='42'
                     Name="SharedNotes"
                     Content="Shared"
                                                                              />
 
-                <ListBoxItem x:ConnectionId='35'
+                <ListBoxItem x:ConnectionId='43'
                     Name="AllNotes"
                     Content="All Notes"
                                                                           />
@@ -115,15 +113,16 @@
 
 
             <!--  SEARCH BOX  -->
-            <StackPanel x:ConnectionId='27'
+            <StackPanel x:ConnectionId='25'
                 Name="SearchBoxContainer"
-                Width="325"
+                MinWidth="325"
+                MaxWidth="325"
                 Margin="0,7,5,0"
                                                                              
                 RelativePanel.AlignBottomWithPanel="True"
                 RelativePanel.AlignTopWithPanel="True"
-                RelativePanel.LeftOf="Logout">
-                <TextBox x:ConnectionId='29'
+                RelativePanel.LeftOf="Settings">
+                <TextBox x:ConnectionId='37'
                     Name="SearchTextBox"
                     Background="#f8f8f8"
                     CornerRadius="4"
@@ -133,7 +132,7 @@
                                                                   
                                                                                  />
 
-                <Popup x:ConnectionId='30'
+                <Popup x:ConnectionId='38'
                     Name="SearchPopup"
                     MaxHeight="100"
                     Margin="0,4,0,0"
@@ -143,7 +142,7 @@
 
                     <controls:DropShadowPanel BlurRadius="10" Color="Gray">
 
-                        <Grid x:ConnectionId='31'
+                        <Grid x:ConnectionId='39'
                             Name="PopUpContainer"
                             Width="Auto"
                             CornerRadius="4">
@@ -161,7 +160,7 @@
                                 </ListView.ItemTemplateSelector>
                             </ListView>-->
 
-                            <ListView x:ConnectionId='32'
+                            <ListView x:ConnectionId='40'
                                 Name="Suggestion"
                                 Width="325"
                                 Background="White"
@@ -186,16 +185,15 @@
             </StackPanel>
 
 
-            <!--  SIGN OUT  -->
-            <Button x:ConnectionId='28'
-                Name="Logout"
+            <!--  SETTINGS  -->
+            <Button x:ConnectionId='26'
+                Name="Settings"
                 Width="35"
                 Height="31"
                 Margin="0,0,10,0"
-                Background="Red"
-                                                                 
-                Content="&#xF3B1;"
+                Content="&#xE713;"
                 CornerRadius="4"
+               
                 FontFamily="Segoe MDL2 Assets"
                 FontSize="14"
                 Foreground="White"
@@ -204,7 +202,166 @@
                 RelativePanel.AlignTopWithPanel="True"
                 Style="{StaticResource SignOutButtonStyle}"
                 ToolTipService.Placement="Bottom"
-                ToolTipService.ToolTip="Sign Out" />
+                ToolTipService.ToolTip="Settings">
+                <Button.Flyout>
+                    <Flyout FlyoutPresenterStyle="{StaticResource SettingsFlyout}" Placement="BottomEdgeAlignedRight">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <TextBlock
+                                Grid.Row="0"
+                                Margin="10"
+                                Text="Theme" />
+                            <ListBox x:ConnectionId='27'
+                                Name="ChooseTheme"
+                                Grid.Row="1"
+                                Margin="10"
+                                                                                              
+                                ItemContainerStyle="{StaticResource MainMenuItemStyle}"
+                                                                                       
+                                SelectionMode="Single"
+                                Style="{StaticResource SettingsStyle}">
+                                <ListBoxItem x:ConnectionId='34'
+                                    Name="Light"
+                                    Margin="0,0,10,0"
+                                                                                      >
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <FontIcon
+                                            Margin="0,0,10,0"
+                                            FontFamily="Segoe MDL2 Assets"
+                                            FontSize="14"
+                                            Glyph="&#xE793;" />
+                                        <TextBlock Text="Light" />
+                                    </StackPanel>
+
+                                </ListBoxItem>
+
+                                <ListBoxItem x:ConnectionId='35'
+                                    Name="Dark"
+                                    Margin="0,0,10,0"
+                                                                                     >
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <FontIcon
+                                            Margin="0,0,10,0"
+                                            FontFamily="Segoe MDL2 Assets"
+                                            FontSize="14"
+                                            Glyph="" />
+                                        <TextBlock Text="Dark" />
+                                    </StackPanel>
+
+                                </ListBoxItem>
+
+                                <ListBoxItem x:ConnectionId='36'
+                                    Name="System"
+                                    Margin="0,0,10,0"
+                                                                                       >
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <FontIcon
+                                            Margin="0,0,10,0"
+                                            FontFamily="Segoe MDL2 Assets"
+                                            FontSize="14"
+                                            Glyph="&#xE7F4;" />
+                                        <TextBlock Text="Default" />
+                                    </StackPanel>
+
+                                </ListBoxItem>
+                            </ListBox>
+                            <TextBlock
+                                Grid.Row="2"
+                                Margin="10"
+                                Text="Accent" />
+                            <ListBox x:ConnectionId='28'
+                                Name="ChooseAccent"
+                                Grid.Row="3"
+                                                                                                   
+                                Margin="10"
+                                Background="Transparent"
+                                                                                                     
+                                SelectionMode="Single"
+                                Style="{StaticResource SettingsStyle}">
+
+                                <ListBoxItem x:ConnectionId='30' Name="Default"                                                     >
+                                    <Border
+                                        BorderBrush="#000000"
+                                        BorderThickness="1"
+                                        CornerRadius="20">
+                                        <Rectangle
+                                            Width="14"
+                                            Height="14"
+                                            Fill="#0073CF"
+                                            RadiusX="20"
+                                            RadiusY="20" />
+                                    </Border>
+                                </ListBoxItem>
+
+
+                                <ListBoxItem x:ConnectionId='31' Name="Lavendar"                                                      >
+                                    <Border
+                                        BorderBrush="#000000"
+                                        BorderThickness="1"
+                                        CornerRadius="20">
+                                        <Rectangle
+                                            Width="14"
+                                            Height="14"
+                                            Fill="#8961CC"
+                                            RadiusX="20"
+                                            RadiusY="20" />
+                                    </Border>
+                                </ListBoxItem>
+
+
+                                <ListBoxItem x:ConnectionId='32' Name="Forest"                                                    >
+                                    <Border
+                                        BorderBrush="#000000"
+                                        BorderThickness="1"
+                                        CornerRadius="20">
+                                        <Rectangle
+                                            Width="14"
+                                            Height="14"
+                                            Fill="#34854D"
+                                            RadiusX="20"
+                                            RadiusY="20" />
+                                    </Border>
+                                </ListBoxItem>
+
+
+                                <ListBoxItem x:ConnectionId='33' Name="Nighttime"                                                       >
+                                    <Border
+                                        BorderBrush="#000000"
+                                        BorderThickness="1"
+                                        CornerRadius="20">
+                                        <Rectangle
+                                            Width="14"
+                                            Height="14"
+                                            Fill="#CC4D11"
+                                            RadiusX="20"
+                                            RadiusY="20" />
+                                    </Border>
+                                </ListBoxItem>
+                            </ListBox>
+                            <Button x:ConnectionId='29'
+                                Grid.Row="4"
+                                                                                 
+                                CornerRadius="4">
+                                <StackPanel Orientation="Horizontal">
+                                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xF3B1;" />
+                                    <TextBlock Text="Logout" />
+                                </StackPanel>
+                            </Button>
+                        </Grid>
+                    </Flyout>
+
+                </Button.Flyout>
+            </Button>
+
         </RelativePanel>
 
 
@@ -225,14 +382,12 @@
                 Foreground="{ThemeResource TextBoxFg}"
                                                        />
 
-            <Button x:ConnectionId='18'                     >THEME</Button>
-            <Button x:ConnectionId='19' Margin="80,0,0,0"                      >ACCENT COLOR</Button>
             <controls:DropShadowPanel
                 Width="500"
                 HorizontalAlignment="Center"
                 BlurRadius="10"
                 Color="Gray">
-                <Grid x:ConnectionId='20'
+                <Grid x:ConnectionId='18'
                     Name="NewNote"
                                                                         
                     CornerRadius="7"
@@ -244,7 +399,7 @@
                     </Grid.RowDefinitions>
 
 
-                    <TextBox x:ConnectionId='21'
+                    <TextBox x:ConnectionId='19'
                         Name="TitleOfNewNote"
                         Grid.Row="0"
                         Width="470"
@@ -261,7 +416,7 @@
                                                                                     />
 
 
-                    <RichEditBox x:ConnectionId='22'
+                    <RichEditBox x:ConnectionId='20'
                         Name="ContentOfNewNote"
                         Grid.Row="1"
                         Margin="10"
@@ -273,7 +428,7 @@
 
 
 
-                    <Grid x:ConnectionId='23'
+                    <Grid x:ConnectionId='21'
                         Name="NoteStyleOptions"
                         Grid.Row="2"
                         Margin="12,0,10,10"
@@ -284,14 +439,14 @@
 
                         </Grid.ColumnDefinitions>
 
-                        <usercontrol:NoteEditOptionsControl x:ConnectionId='24'
+                        <usercontrol:NoteEditOptionsControl x:ConnectionId='22'
                             x:Name="NoteEditOptions"
                             Grid.Column="0"
                                                                                            />
 
 
 
-                        <Button x:ConnectionId='25'
+                        <Button x:ConnectionId='23'
                             Name="CreationButton"
                             Grid.Column="1"
                             Width="60"
@@ -323,7 +478,7 @@
             <GridView.ItemTemplate>
                 <DataTemplate                       >
                     <Border CornerRadius="4">
-                        <usercontrol:NotesDataTemplate />
+                        <usercontrol:NotesDataTemplate notesTemplate="{Binding}" />
                     </Border>
                 </DataTemplate>
             </GridView.ItemTemplate>
@@ -437,7 +592,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="SearchBoxContainer.Background" Value="Pink" />
-                        <Setter Target="SearchBoxContainer.Width" Value="100"/>
+                        <Setter Target="SearchBoxContainer.Width" Value="165" />
                     </VisualState.Setters>
                 </VisualState>
 
@@ -448,7 +603,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="SearchBoxContainer.Background" Value="Wheat" />
-                        <Setter Target="SearchBoxContainer.Width" Value="275"/>
+                        <Setter Target="SearchBoxContainer.Width" Value="165" />
                     </VisualState.Setters>
                 </VisualState>
 
@@ -459,7 +614,9 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="SearchBoxContainer.Background" Value="Black" />
-                        <Setter Target="SearchBoxContainer.Width" Value="285"/>
+                        <Setter Target="SearchBoxContainer.Width" Value="165" />
+
+
                     </VisualState.Setters>
                 </VisualState>
 
@@ -475,18 +632,30 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="SearchBoxContainer.Background" Value="LightBlue" />
-                        <Setter Target="SearchBoxContainer.Width" Value="295"/>
+                        <Setter Target="SearchBoxContainer.Width" Value="165" />
+                        <Setter Target="Suggestion.Width" Value="305" />
                     </VisualState.Setters>
                 </VisualState>
-
 
                 <VisualState>
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="1000" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
+                        <Setter Target="SearchBoxContainer.Background" Value="Red" />
+                        <Setter Target="SearchBoxContainer.Width" Value="165" />
+                        <Setter Target="Suggestion.Width" Value="165" />
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1050" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
                         <Setter Target="SearchBoxContainer.Background" Value="LightGreen" />
-                        <Setter Target="SearchBoxContainer.Width" Value="315"/>
+                        <Setter Target="SearchBoxContainer.Width" Value="165" />
+                        <Setter Target="Suggestion.Width" Value="165" />
                     </VisualState.Setters>
                 </VisualState>
 
@@ -497,9 +666,89 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="SearchBoxContainer.Background" Value="White" />
-                        <Setter Target="SearchBoxContainer.Width" Value="325"/>
+                        <Setter Target="SearchBoxContainer.Width" Value="185" />
+                        <Setter Target="Suggestion.Width" Value="185" />
                     </VisualState.Setters>
                 </VisualState>
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1200" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SearchBoxContainer.Background" Value="Red" />
+                        <Setter Target="SearchBoxContainer.Width" Value="205" />
+                        <Setter Target="Suggestion.Width" Value="205" />
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1300" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SearchBoxContainer.Background" Value="Red" />
+                        <Setter Target="SearchBoxContainer.Width" Value="225" />
+                        <Setter Target="Suggestion.Width" Value="225" />
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1400" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SearchBoxContainer.Background" Value="Red" />
+                        <Setter Target="SearchBoxContainer.Width" Value="245" />
+                        <Setter Target="Suggestion.Width" Value="245" />
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1500" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SearchBoxContainer.Background" Value="Red" />
+                        <Setter Target="SearchBoxContainer.Width" Value="265" />
+                        <Setter Target="Suggestion.Width" Value="265" />
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1600" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SearchBoxContainer.Background" Value="Red" />
+                        <Setter Target="SearchBoxContainer.Width" Value="285" />
+                        <Setter Target="Suggestion.Width" Value="285" />
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1700" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SearchBoxContainer.Background" Value="Red" />
+                        <Setter Target="SearchBoxContainer.Width" Value="305" />
+                        <Setter Target="Suggestion.Width" Value="305" />
+                    </VisualState.Setters>
+                </VisualState>
+
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1800" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SearchBoxContainer.Background" Value="Red" />
+                        <Setter Target="SearchBoxContainer.Width" Value="325" />
+                        <Setter Target="Suggestion.Width" Value="325" />
+                    </VisualState.Setters>
+                </VisualState>
+
 
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>-->

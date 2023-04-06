@@ -113,6 +113,8 @@ namespace UWPYourNote.View.usercontrol
         public void DisplayContent(string userId, long noteId, string title, string content, long noteColor, string modifiedDay)
         {
             try { 
+
+                
             _noteId = noteId;
             _userId = userId;
             TitleOfNoteText = title;

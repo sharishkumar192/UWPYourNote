@@ -12,7 +12,7 @@
     <Grid
         MaxHeight="500"
         Background="{x:Bind NoteContentBackground, Mode=OneWay}"
-        BorderBrush="Red">
+        >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition />

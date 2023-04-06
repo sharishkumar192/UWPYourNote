@@ -360,6 +360,7 @@ namespace UWPYourNote.View
         //------------------------------------------- Navigation Buttons-----------------------------------------
         public void LogInButtonClick()
         {
+            var x = this.RequestedTheme;
             EmailBoxLostFocus();
             PasswordBoxLostFocus();
             if (EmailCheckVisibility == Visibility.Collapsed &&
@@ -420,20 +421,6 @@ namespace UWPYourNote.View
             NavigateToHomePage(loggedUser);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var currentTheme = Window.Current.Content as FrameworkElement;
-            if (currentTheme.ActualTheme == ElementTheme.Dark)
-            {
-                currentTheme.RequestedTheme = ElementTheme.Light;
-                SaveAppSettings.SavePreferences("Light");
-            }
-            else
-            {
-                currentTheme.RequestedTheme = ElementTheme.Dark;
-                SaveAppSettings.SavePreferences("Dark");
-            }
-            //ChangeThemeAndAccentColor.ChangeTheme(Window.Current);
-        }
+      
     }
 }

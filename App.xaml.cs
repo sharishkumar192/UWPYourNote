@@ -21,6 +21,7 @@ using System.Data.SqlClient;
 using UWPYourNoteLibrary.Data.Handler.Contract;
 using UWPYourNoteLibrary.Data.Handler;
 using UWPYourNoteLibrary.Util;
+using Windows.Storage;
 
 namespace UWPYourNote
 {
@@ -37,13 +38,6 @@ namespace UWPYourNote
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
-            string preferredTheme = SaveAppSettings.LoadPreferences();
-            switch(preferredTheme)
-            {
-                case "Dark": this.RequestedTheme = ApplicationTheme.Dark; break;
-                case "Light": 
-                default : this.RequestedTheme = ApplicationTheme.Light ;  break;
-            }
         }
 
         /// <summary>
@@ -54,19 +48,42 @@ namespace UWPYourNote
         /// 
         private void DBIntializer()
         {
-          //  IUserDBHandler userHandler = UserDBHandler.Singleton;
-             UserDBHandler.CreateUserTable();
-            //User details Table
-             NoteDBHandler.CreateNotesTable();
-            NoteDBHandler.SharedNotesTableCreation();
-
-
+            bool isDBIntialized = SaveAppSettings.CheckDBIntialization();
+            if (!isDBIntialized)
+            {
+                UserDBHandler.CreateUserTable();
+                NoteDBHandler.CreateNotesTable();
+                NoteDBHandler.SharedNotesTableCreation();
+            }
+            
         }
+        private void LoadPreferences()
+        {
+            ChangeAccentColor.Themes preferredTheme = SaveAppSettings.LoadThemePreferences();
+            var currentTheme = Window.Current.Content as FrameworkElement;
+            switch (preferredTheme)
+            {
+                case ChangeAccentColor.Themes.System: currentTheme.RequestedTheme = ElementTheme.Default; break;
+                case ChangeAccentColor.Themes.Dark: currentTheme.RequestedTheme = ElementTheme.Dark; break;
+                case ChangeAccentColor.Themes.Light: currentTheme.RequestedTheme = ElementTheme.Light; break;
+                default:
+                    
+                    break;
+            }
+
+            ChangeAccentColor.ColorType prefferedAccentColor = SaveAppSettings.LoadAccentColorPreferences();
+            
+            ChangeAccentColor.ChangeAccent(prefferedAccentColor);
+
+
+        
+    }
 
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-       
+            
             Frame rootFrame = Window.Current.Content as Frame;
+
 
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
@@ -98,6 +115,8 @@ namespace UWPYourNote
                 // Ensure the current window is active
                 Window.Current.Activate();
             }
+            DBIntializer();
+            LoadPreferences();
         }
 
         /// <summary>

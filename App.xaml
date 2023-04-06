@@ -20,6 +20,16 @@
 
             </ResourceDictionary.ThemeDictionaries>
 
+            <!--<SolidColorBrush
+                x:Key="FlyoutBackBrushL"
+                Opacity="0.8"
+                Color="{ThemeResource FlyoutBgBrush}" />
+
+
+            <SolidColorBrush
+                x:Key="FlyoutBackBrushD"
+                Opacity="0.8"
+                Color="{ThemeResource FlyoutBgBrush}" />-->
             <SolidColorBrush x:Key="PagebackgroundBrushL" Color="{ThemeResource Pagebackground}" />
             <SolidColorBrush x:Key="PageBgColorBrushL" Color="{ThemeResource PageBgColorDefault}" />
             <SolidColorBrush x:Key="PrimaryButtonBgColorBrushL" Color="{ThemeResource PrimaryButtonBgColorDefault}" />

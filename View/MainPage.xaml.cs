@@ -30,19 +30,18 @@ namespace UWPYourNote.View
             this.InitializeComponent();
             var titleBar = ApplicationView.GetForCurrentView().TitleBar;
             var currentTheme = Window.Current.Content as FrameworkElement;
-
-            switch (currentTheme.ActualTheme)
-            {
-                case ElementTheme.Default:
-                    titleBar.BackgroundColor = Colors.White;
-                    titleBar.ForegroundColor = Colors.White; break;
-                case ElementTheme.Dark:
-                    titleBar.BackgroundColor = Colors.Black;
-                    titleBar.ForegroundColor = Colors.White; break;
-                case ElementTheme.Light:
-                    titleBar.BackgroundColor = Colors.White;
-                    titleBar.ForegroundColor = Colors.Black; break;
-            }
+            //switch (currentTheme.ActualTheme)
+            //{
+            //    case ElementTheme.Default:
+            //        titleBar.BackgroundColor = Colors.White;
+            //        titleBar.ForegroundColor = Colors.White; break;
+            //    case ElementTheme.Dark:
+            //        titleBar.BackgroundColor = Colors.Black;
+            //        titleBar.ForegroundColor = Colors.White; break;
+            //    case ElementTheme.Light:
+            //        titleBar.BackgroundColor = Colors.White;
+            //        titleBar.ForegroundColor = Colors.Black; break;
+            //}
 
 
             MFrame.Navigate(typeof(SignInPage), MFrame);

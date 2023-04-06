@@ -58,16 +58,18 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
       <RootProperty Name="BorderBrush" />
-      <RootProperty Name="Width" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Orientation" />
       <RootProperty Name="Children" />
       <RootProperty Name="BorderThickness" />
       <RootProperty Name="Name" />
+      <RootProperty Name="MinWidth" />
+      <RootProperty Name="MaxWidth" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Padding" />
       <RootProperty Name="CornerRadius" />
+      <RootProperty Name="Width" />
       <RootProperty Name="Height" />
       <RootProperty Name="Style" />
       <RootProperty Name="Background" />
@@ -103,6 +105,8 @@
       <RootProperty Name="BorderThickness" />
       <RootProperty Name="Height" />
       <RootProperty Name="Child" />
+      <RootProperty Name="Padding" />
+      <RootProperty Name="BackgroundSizing" />
       <RootProperty Name="Margin" />
       <RootProperty Name="MaxWidth" />
       <RootProperty Name="MaxHeight" />
@@ -129,6 +133,7 @@
       <RootProperty Name="FontSize" />
       <RootProperty Name="Foreground" />
       <RootProperty Name="Opacity" />
+      <RootProperty Name="Margin" />
       <RootProperty Name="Style" />
       <RootProperty Name="Name" />
       <RootProperty Name="HorizontalAlignment" />
@@ -153,14 +158,14 @@
       <RootProperty Name="IsTabStop" />
       <RootProperty Name="Style" />
       <RootProperty Name="Visibility" />
-      <RootProperty Name="Content" />
       <RootProperty Name="Name" />
       <RootProperty Name="Width" />
+      <RootProperty Name="Content" />
       <RootProperty Name="CornerRadius" />
       <RootProperty Name="Height" />
-      <RootProperty Name="Background" />
       <RootProperty Name="FontFamily" />
       <RootProperty Name="Flyout" />
+      <RootProperty Name="Background" />
       <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Control">
@@ -312,8 +317,9 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ListBoxItem">
       <RootProperty Name="Name" />
-      <RootProperty Name="Content" />
       <RootProperty Name="IsSelected" />
+      <RootProperty Name="Content" />
+      <RootProperty Name="Margin" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ListBox">
       <RootProperty Name="Name" />
@@ -322,6 +328,8 @@
       <RootProperty Name="SelectionMode" />
       <RootProperty Name="Style" />
       <RootProperty Name="Items" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Background" />
       <RootProperty Name="Height" />
       <RootEvent Name="SelectionChanged" />
     </RootType>
@@ -514,6 +522,8 @@
       <RootProperty Name="Resources" />
       <RootProperty Name="Content" />
       <RootProperty Name="Background" />
+      <RootProperty Name="MinWidth" />
+      <RootProperty Name="MinHeight" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
       <RootProperty Name="Template" />
@@ -560,7 +570,9 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.Animation.PopOutThemeAnimation" />
     <RootType FullName="Windows.UI.Xaml.Media.Animation.PopInThemeAnimation" />
-    <RootType FullName="UWPYourNote.View.usercontrol.NotesDataTemplate" />
+    <RootType FullName="UWPYourNote.View.usercontrol.NotesDataTemplate">
+      <RootProperty Name="notesTemplate" />
+    </RootType>
     <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.StaggeredPanel">
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="ColumnSpacing" />
@@ -586,6 +598,11 @@
       <RootMethod Name="GetToolTip" />
       <RootMethod Name="SetToolTip" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Flyout">
+      <RootProperty Name="FlyoutPresenterStyle" />
+      <RootProperty Name="Placement" />
+      <RootProperty Name="Content" />
+    </RootType>
     <RootType FullName="UWPYourNoteLibrary.Models.ItemsDataTemplateSelector">
       <RootProperty Name="AllItems" />
       <RootProperty Name="LastItems" />
@@ -601,11 +618,6 @@
       <RootProperty Name="Resources" />
       <RootProperty Name="Content" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.Flyout">
-      <RootProperty Name="FlyoutPresenterStyle" />
-      <RootProperty Name="Placement" />
-      <RootProperty Name="Content" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Frame">
       <RootProperty Name="Name" />
     </RootType>
@@ -615,8 +627,8 @@
       <RootProperty Name="ImageSource" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.AdaptiveTrigger">
-      <RootProperty Name="MinWindowHeight" />
       <RootProperty Name="MinWindowWidth" />
+      <RootProperty Name="MinWindowHeight" />
     </RootType>
     <RootType FullName="UWPYourNote.View.SignInPage" />
     <RootType FullName="UWPYourNote.View.SignUpPage" />

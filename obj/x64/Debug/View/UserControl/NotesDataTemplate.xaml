@@ -12,7 +12,7 @@
     <Grid x:ConnectionId='2'
         MaxHeight="500"
                                                                 
-        BorderBrush="Red">
+        >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition />

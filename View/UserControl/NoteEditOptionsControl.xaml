@@ -145,18 +145,27 @@
                         SelectionChanged="{x:Bind ColorOptionsSelectionChanged, Mode=OneWay}"
                         SelectionMode="Single"
                         Style="{StaticResource NoteColorOptionStyle}">
-                        <FontIcon Foreground="#f8bec5" Style="{StaticResource ColorIcons}" />
-
                         <ListBoxItem>
-                            <FontIcon Foreground="#c6e8b7" Style="{StaticResource ColorIcons}" />
+                            <Border Background="Black" CornerRadius="20">
+                                <FontIcon Foreground="#f8bec5" Style="{StaticResource ColorIcons}" />
+                            </Border>
+                        </ListBoxItem>
+                        <ListBoxItem>
+                            <Border Background="Black" CornerRadius="20">
+                                <FontIcon Foreground="#c6e8b7" Style="{StaticResource ColorIcons}" />
+                            </Border>
                         </ListBoxItem>
 
                         <ListBoxItem>
-                            <FontIcon Foreground="#fdefad" Style="{StaticResource ColorIcons}" />
+                            <Border Background="Black" CornerRadius="20">
+                                <FontIcon Foreground="#fdefad" Style="{StaticResource ColorIcons}" />
+                            </Border>
                         </ListBoxItem>
 
                         <ListBoxItem>
-                            <FontIcon Foreground="#c3e9fd" Style="{StaticResource ColorIcons}" />
+                            <Border Background="Black" CornerRadius="20">
+                                <FontIcon Foreground="#c3e9fd" Style="{StaticResource ColorIcons}" />
+                            </Border>
                         </ListBoxItem>
 
                     </ListBox>

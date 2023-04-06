@@ -7,6 +7,8 @@
     xmlns:data="using:UWPYourNoteLibrary.Models"
     xmlns:local="using:UWPYourNote.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    MinWidth="0"
+    MinHeight="0"
     mc:Ignorable="d">
 
     <Page.Background>
@@ -84,14 +86,8 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Button x:ConnectionId='11'                     >THEME</Button>
 
-            <Grid
-                Grid.Column="0"
-                Padding="20,0,40,0"
-                BorderBrush="{StaticResource WindowBrushA}"
-                BorderThickness="1,1,0,1"
-                CornerRadius="4">
+            <Grid Grid.Column="0" Padding="20,0,40,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -104,7 +100,7 @@
                 </Grid.RowDefinitions>
 
                 <!--<Title>-->
-                <StackPanel x:ConnectionId='15'
+                <StackPanel x:ConnectionId='14'
                     Name="Title"
                     Grid.Row="0"
                     Margin="0,5,0,0"
@@ -143,7 +139,7 @@
 
 
                 <!--<Email Field>-->
-                <TextBox x:ConnectionId='16'
+                <TextBox x:ConnectionId='15'
                     Name="EmailBox"
                     Grid.Row="2"
                     HorizontalAlignment="Center"
@@ -154,19 +150,19 @@
 
 
                 <RelativePanel Grid.Row="2" Margin="0,15,0,0">
-                    <Border x:ConnectionId='25'
+                    <Border x:ConnectionId='24'
                         Name="EmailFontBorderStyle"
                         Width="Auto"
                         Margin="-10,0,-30,0"
                         RelativePanel.AlignRightWithPanel="True"
                         Style="{StaticResource FontBorderStyle}">
-                        <FontIcon x:ConnectionId='26'
+                        <FontIcon x:ConnectionId='25'
                             Name="EmailCheck"
                             HorizontalAlignment="Left"
                             Style="{StaticResource FontIconStyle}"
                                                                                     />
                         <ToolTipService.ToolTip>
-                            <TextBlock x:ConnectionId='27'
+                            <TextBlock x:ConnectionId='26'
                                 Name="EmailToolTip"
                                                                                 
                                                                                           />
@@ -175,7 +171,7 @@
                 </RelativePanel>
 
                 <!--<Password Field>-->
-                <PasswordBox x:ConnectionId='17'
+                <PasswordBox x:ConnectionId='16'
                     Name="PasswordBox"
                     Grid.Row="3"
                                                                                                        
@@ -186,20 +182,20 @@
 
                 <RelativePanel Grid.Row="3" Margin="0,15,0,0">
 
-                    <Border x:ConnectionId='22'
+                    <Border x:ConnectionId='21'
                         Name="PasswordFontBorderStyle"
                         Margin="-10,0,-30,0"
                         RelativePanel.AlignRightWithPanel="True"
                         Style="{StaticResource FontBorderStyle}">
 
-                        <FontIcon x:ConnectionId='23'
+                        <FontIcon x:ConnectionId='22'
                             Name="PasswordCheck"
                             HorizontalAlignment="Left"
                             Style="{StaticResource FontIconStyle}"
                                                                                        />
 
                         <ToolTipService.ToolTip>
-                            <TextBlock x:ConnectionId='24'
+                            <TextBlock x:ConnectionId='23'
                                 Name="PasswordToolTip"
                                                                                    
                                                                                              />
@@ -211,7 +207,7 @@
 
                 <!--<Show Password>-->
 
-                <CheckBox x:ConnectionId='18'
+                <CheckBox x:ConnectionId='17'
                     Name="RevealModeCheckBox"
                     Grid.Row="4"
                     Margin="15,15,15,2"
@@ -223,7 +219,7 @@
                 <!--<Buttons>-->
 
                 <RelativePanel Grid.Row="4" Margin="0,15,5,0">
-                    <Button x:ConnectionId='21'
+                    <Button x:ConnectionId='20'
                         Name="LogInButton"
                         Width="70"
                         Margin="0,0,10,0"
@@ -236,7 +232,7 @@
 
 
 
-                <StackPanel x:ConnectionId='19'
+                <StackPanel x:ConnectionId='18'
                     Name="NavigationLink"
                     Grid.Row="5"
                     Margin="15"
@@ -248,7 +244,7 @@
                         Foreground="{ThemeResource TextBoxFg}"
                         Text="New User? Start your journey with us by creating an" />
 
-                    <HyperlinkButton x:ConnectionId='20'
+                    <HyperlinkButton x:ConnectionId='19'
                         x:Name="NavigateToSignUp"
                                                                            
                         Content="account"
@@ -261,7 +257,7 @@
             </Grid>
             <!--<Column Spacer>-->
 
-            <Grid x:ConnectionId='12'
+            <Grid x:ConnectionId='11'
                 Name="ColumnDivider"
                 Grid.Column="1"
                 Width="1"
@@ -270,7 +266,7 @@
 
             <!--<Email list>-->
 
-            <Grid x:ConnectionId='13'
+            <Grid x:ConnectionId='12'
                 Name="FrequentEmailBox"
                 Grid.Column="2"
                 Padding="35,0,33,10"
@@ -290,7 +286,7 @@
                     Text="Choose an account" />
 
 
-                <ListView x:ConnectionId='14'
+                <ListView x:ConnectionId='13'
                     Name="FrequentEmail"
                     Grid.Row="1"
                     Width="300"
@@ -315,7 +311,27 @@
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
 
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="NavigationLink.Visibility" Value="Collapsed" />
 
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="300" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="NavigationLink.Visibility" Value="Visible" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+
+            <VisualStateGroup>
 
                 <VisualState>
                     <VisualState.StateTriggers>
@@ -328,48 +344,18 @@
                     </VisualState.Setters>
                 </VisualState>
 
-                <!--<VisualState>
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowHeight="10" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-
-                        <Setter Target="FrequentEmailBox.Visibility" Value="Collapsed" />
-
-
-                    </VisualState.Setters>
-                </VisualState>-->
-
-
-
-
                 <VisualState>
-
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="900" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="FrequentEmailBox.Visibility" Value="Visible" />
                         <Setter Target="ColumnDivider.Visibility" Value="Visible" />
-
-
                     </VisualState.Setters>
                 </VisualState>
-
-
-
-                <VisualState>
-
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowHeight="370" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="NavigationLink.Visibility" Value="Visible" />
-                    
-                    </VisualState.Setters>
-                </VisualState>
-
             </VisualStateGroup>
+
+
         </VisualStateManager.VisualStateGroups>
     </controls:DropShadowPanel>
 

@@ -7,6 +7,8 @@
     xmlns:data="using:UWPYourNoteLibrary.Models"
     xmlns:local="using:UWPYourNote.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    MinWidth="0"
+    MinHeight="0"
     mc:Ignorable="d">
 
     <Page.Background>
@@ -84,14 +86,8 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Button Click="Button_Click">THEME</Button>
 
-            <Grid
-                Grid.Column="0"
-                Padding="20,0,40,0"
-                BorderBrush="{StaticResource WindowBrushA}"
-                BorderThickness="1,1,0,1"
-                CornerRadius="4">
+            <Grid Grid.Column="0" Padding="20,0,40,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -315,7 +311,27 @@
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
 
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="NavigationLink.Visibility" Value="Collapsed" />
 
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="300" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="NavigationLink.Visibility" Value="Visible" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+
+            <VisualStateGroup>
 
                 <VisualState>
                     <VisualState.StateTriggers>
@@ -328,48 +344,18 @@
                     </VisualState.Setters>
                 </VisualState>
 
-                <!--<VisualState>
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowHeight="10" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-
-                        <Setter Target="FrequentEmailBox.Visibility" Value="Collapsed" />
-
-
-                    </VisualState.Setters>
-                </VisualState>-->
-
-
-
-
                 <VisualState>
-
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="900" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="FrequentEmailBox.Visibility" Value="Visible" />
                         <Setter Target="ColumnDivider.Visibility" Value="Visible" />
-
-
                     </VisualState.Setters>
                 </VisualState>
-
-
-
-                <VisualState>
-
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowHeight="370" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="NavigationLink.Visibility" Value="Visible" />
-                    
-                    </VisualState.Setters>
-                </VisualState>
-
             </VisualStateGroup>
+
+
         </VisualStateManager.VisualStateGroups>
     </controls:DropShadowPanel>
 

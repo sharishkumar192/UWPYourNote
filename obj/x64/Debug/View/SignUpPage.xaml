@@ -94,16 +94,16 @@
                                                                            />
 
                 <RelativePanel Grid.Row="0" Margin="0,15,0,0">
-                    <Border x:ConnectionId='21'
+                    <Border x:ConnectionId='20'
                         Name="NameCheckBorder"
                         RelativePanel.AlignRightWithPanel="True"
                         Style="{StaticResource FontBorderStyle}">
-                        <FontIcon x:ConnectionId='22'
+                        <FontIcon x:ConnectionId='21'
                             Name="NameCheck"
                             Style="{StaticResource FontIconStyle}"
                                                                                    />
                         <ToolTipService.ToolTip>
-                            <TextBlock x:ConnectionId='23'
+                            <TextBlock x:ConnectionId='22'
                                 Name="NameToolTip"
                                                                                
                                                                                          />
@@ -125,16 +125,16 @@
                 <RelativePanel Grid.Row="1" Margin="0,15,0,0">
 
 
-                    <Border x:ConnectionId='18'
+                    <Border x:ConnectionId='17'
                         Name="EmailCheckBorder"
                         RelativePanel.AlignRightWithPanel="True"
                         Style="{StaticResource FontBorderStyle}">
-                        <FontIcon x:ConnectionId='19'
+                        <FontIcon x:ConnectionId='18'
                             Name="EmailCheck"
                             Style="{StaticResource FontIconStyle}"
                                                                                     />
                         <ToolTipService.ToolTip>
-                            <TextBlock x:ConnectionId='20'
+                            <TextBlock x:ConnectionId='19'
                                 Name="EmailToolTip"
                                                                                 
                                                                                           />
@@ -156,18 +156,18 @@
 
 
                 <RelativePanel Grid.Row="2" Margin="0,15,0,0">
-                    <Border x:ConnectionId='15'
+                    <Border x:ConnectionId='14'
                         Name="PasswordCheckBorder"
                         RelativePanel.AlignRightWithPanel="True"
                         Style="{StaticResource FontBorderStyle}">
 
-                        <FontIcon x:ConnectionId='16'
+                        <FontIcon x:ConnectionId='15'
                             Name="PasswordCheck"
                             Style="{StaticResource FontIconStyle}"
                                                                                        />
 
                         <ToolTipService.ToolTip>
-                            <TextBlock x:ConnectionId='17'
+                            <TextBlock x:ConnectionId='16'
                                 Name="PasswordToolTip"
                                                                                    
                                                                                              />
@@ -201,17 +201,17 @@
 
                 <RelativePanel Grid.Row="4" Margin="0,15,0,0">
 
-                    <Border x:ConnectionId='12'
+                    <Border x:ConnectionId='11'
                         Name="ConfirmPasswordCheckBorder"
                         RelativePanel.AlignRightWithPanel="True"
                         Style="{StaticResource FontBorderStyle}">
-                        <FontIcon x:ConnectionId='13'
+                        <FontIcon x:ConnectionId='12'
                             Name="ConfirmPasswordCheck"
                             Style="{StaticResource FontIconStyle}"
                                                                                               />
 
                         <ToolTipService.ToolTip>
-                            <TextBlock x:ConnectionId='14'
+                            <TextBlock x:ConnectionId='13'
                                 Name="ConfirmPasswordToolTip"
                                                                                           
                                                                                                     />
@@ -230,9 +230,8 @@
                         Content="Back"
                         RelativePanel.LeftOf="LogInButton"
                         Style="{StaticResource BackButtonStyle}" />-->
-                    <Button x:ConnectionId='10'                     >THEME</Button>
 
-                    <Button x:ConnectionId='11'
+                    <Button x:ConnectionId='10'
                         Name="CreateAccount"
                         Width="150"
                                                                         
@@ -271,7 +270,7 @@
 
             <VisualStateManager.VisualStateGroups>
                 <VisualStateGroup>
-                    <VisualState x:ConnectionId='24' x:Name="NarrowLayout">
+                    <VisualState x:ConnectionId='23' x:Name="NarrowLayout">
                         <VisualState.StateTriggers>
                             <AdaptiveTrigger MinWindowWidth="0" />
                         </VisualState.StateTriggers>
@@ -280,7 +279,7 @@
                             <!--<Setter Target="LayoutGrid.Background" Value="Blue" />-->
                         </VisualState.Setters>
                     </VisualState>
-                    <VisualState x:ConnectionId='25' x:Name="WideLayout">
+                    <VisualState x:ConnectionId='24' x:Name="WideLayout">
                         <VisualState.StateTriggers>
                             <AdaptiveTrigger MinWindowWidth="1000" />
                         </VisualState.StateTriggers>

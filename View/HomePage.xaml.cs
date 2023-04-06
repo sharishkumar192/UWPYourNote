@@ -38,6 +38,8 @@ namespace UWPYourNote.View
         private HomePageVM _homePageViewModel;
         static UWPYourNoteLibrary.Models.Note selectedNoteFromDisplay = null;
         private HomePageVM homePageVM;
+        bool themeCheck;
+        bool accentCheck;
 
         public event PropertyChangedEventHandler PropertyChanged;
         void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -48,8 +50,14 @@ namespace UWPYourNote.View
 
         public HomePage()
         {
+         
+            themeCheck = accentCheck = false;
             this.InitializeComponent();
+     
         }
+               
+            
+       
 
 
         private delegate void DelUserControlMethod(object sender, object e);
@@ -161,6 +169,95 @@ namespace UWPYourNote.View
             }
         }
 
+
+        private bool _lightIsSelected = false;
+        public bool LightIsSelected
+        {
+            get { return _lightIsSelected; }
+            set
+            {
+                _lightIsSelected = value;
+                OnPropertyChanged();
+
+            }
+        }
+
+
+
+
+
+        private bool _darkIsSelected = false;
+        public bool DarkIsSelected
+        {
+            get { return _darkIsSelected; }
+            set
+            {
+                _darkIsSelected = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+
+
+        private bool _systemIsSelected = false;
+        public bool SystemIsSelected
+        {
+            get { return _systemIsSelected; }
+            set
+            {
+                _systemIsSelected = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _defaultIsSelected = false;
+        public bool DefaultIsSelected
+        {
+            get { return _defaultIsSelected; }
+            set
+            {
+                _defaultIsSelected = value;
+                OnPropertyChanged();
+
+            }
+        }
+
+        private bool _lavendarIsSelected = false;
+        public bool LavendarIsSelected
+        {
+            get { return _lavendarIsSelected; }
+            set
+            {
+                _lavendarIsSelected = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _forestIsSelected = false;
+        public bool ForestIsSelected
+        {
+            get { return _forestIsSelected; }
+            set
+            {
+                _forestIsSelected = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+
+        private bool _nighttimeIsSelected = false;
+        public bool NighttimeIsSelected
+        {
+            get { return _nighttimeIsSelected; }
+            set
+            {
+                _nighttimeIsSelected = value;
+                OnPropertyChanged();
+            }
+        }
+
         private int _mainMenuOptionsSelectedIndex = 0;
 
         public int MainMenuOptionsSelectedIndex
@@ -173,8 +270,146 @@ namespace UWPYourNote.View
             }
         }
 
+        private int GetPrefferencedAccentColor()
+        {
+            var currentAccentColor = SaveAppSettings.LoadAccentColorPreferences();
+         
+            switch (currentAccentColor)
+            {
+                case ChangeAccentColor.ColorType.Default: DefaultIsSelected = true; break;
+                case ChangeAccentColor.ColorType.Lavendar: LavendarIsSelected = true; break;
+                case ChangeAccentColor.ColorType.Forest: ForestIsSelected = true; break;
+                case ChangeAccentColor.ColorType.Nighttime: NighttimeIsSelected = true; break;
+                default: break;
+            }
 
-        public void MainMenuOptionsSelectionChanged(object sender, SelectionChangedEventArgs e)
+            return (int)currentAccentColor;
+        }
+
+        private int GetPrefferencedTheme()
+        {
+            var currentTheme = SaveAppSettings.LoadThemePreferences();
+            switch (currentTheme)
+            {
+                case ChangeAccentColor.Themes.System: SystemIsSelected = true; break;
+                case ChangeAccentColor.Themes.Dark: DarkIsSelected = true; break;
+                case ChangeAccentColor.Themes.Light:
+                    LightIsSelected = true;
+                    break;
+                default: break;
+
+            }
+            return (int)currentTheme;
+        }
+        private int _chooseAccentSelectedIndex;
+
+        public int ChooseAccentSelectedIndex
+        {
+            get 
+            {
+                return _chooseAccentSelectedIndex;
+            }
+            set
+            {
+                _chooseAccentSelectedIndex = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+        private int _chooseThemeSelectedIndex;
+
+        public int ChooseThemeSelectedIndex
+        {
+            get 
+            { 
+                return _chooseThemeSelectedIndex;
+            
+            }
+            set
+            {
+                _chooseThemeSelectedIndex = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+
+        public void ChooseAccentSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListBox box = (ListBox)sender;
+            ListBoxItem item = box.SelectedItem as ListBoxItem;
+         
+            var currentTheme = Window.Current.Content as FrameworkElement;
+            var titleBar = ApplicationView.GetForCurrentView().TitleBar;
+
+            if (ChooseAccentSelectedIndex == 0 && accentCheck == false)
+            {
+                ChooseAccentSelectedIndex = GetPrefferencedAccentColor();
+                accentCheck = true;
+            }
+            ChangeAccentColor.ColorType accentToChange = (ChangeAccentColor.ColorType)ChooseAccentSelectedIndex;
+            
+            if (DefaultIsSelected == true)
+            {
+                LavendarIsSelected =
+                ForestIsSelected =
+                NighttimeIsSelected = false;
+            }
+            else if (LavendarIsSelected == true)
+            {
+                DefaultIsSelected =
+                ForestIsSelected = 
+                NighttimeIsSelected = false;
+            }
+            else if (ForestIsSelected == true)
+            {
+                DefaultIsSelected =
+                LavendarIsSelected =
+                NighttimeIsSelected = false;
+            }
+            else
+            {
+                DefaultIsSelected =
+                LavendarIsSelected =
+                ForestIsSelected = false;
+            }
+            ChangeAccentColor.ChangeAccent(accentToChange);
+
+        }
+
+        public void ChooseThemeSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+          
+            var currentTheme = Window.Current.Content as FrameworkElement;
+            var titleBar = ApplicationView.GetForCurrentView().TitleBar;
+
+            if (ChooseThemeSelectedIndex == 0 && themeCheck == false)
+            {
+                ChooseThemeSelectedIndex = GetPrefferencedTheme();
+                themeCheck = true;
+            }
+            ChangeAccentColor.Themes themeToChange = (ChangeAccentColor.Themes)ChooseThemeSelectedIndex;
+            if (LightIsSelected == true)
+            {
+                DarkIsSelected = SystemIsSelected = false;
+            }
+            else if (DarkIsSelected == true)
+            {
+                SystemIsSelected = LightIsSelected = false;
+            }
+            else
+            {
+                DarkIsSelected = LightIsSelected = false;
+            }
+            //    if(themeToChange == Elem)
+            var value = this.ActualTheme;
+            ChangeAccentColor.ChangeTheme(titleBar, currentTheme, themeToChange);
+
+        }
+
+            public void MainMenuOptionsSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             TitleOfNewNoteVisibility = NoteStyleOptionsVisibility = Visibility.Collapsed;
             ListBox box = (ListBox)sender;
@@ -184,7 +419,7 @@ namespace UWPYourNote.View
 
             if (PersonalNotesIsSelected == true)
             {
-                
+                  
                 
                 SharedNotesIsSelected = AllNotesIsSelected = false;
                 typeOfNote = TypeOfNote.PersonalNotes;
@@ -780,52 +1015,6 @@ namespace UWPYourNote.View
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var currentTheme = Window.Current.Content as FrameworkElement;
-            if (currentTheme.ActualTheme == ElementTheme.Dark)
-            {
-                currentTheme.RequestedTheme = ElementTheme.Light;
-                SaveAppSettings.SavePreferences("Light");
-            }
-            else
-            {
-                currentTheme.RequestedTheme = ElementTheme.Dark;
-                SaveAppSettings.SavePreferences("Dark");
-            }
-
-            var titleBar = ApplicationView.GetForCurrentView().TitleBar;
-            switch (currentTheme.ActualTheme)
-            {
-                case ElementTheme.Default:
-                    titleBar.BackgroundColor = Colors.Red;
-                    titleBar.ForegroundColor = Colors.White; break;
-                case ElementTheme.Dark:
-                    titleBar.BackgroundColor = Colors.Black;
-                    titleBar.ForegroundColor = Colors.White; break;
-                case ElementTheme.Light:
-                    titleBar.BackgroundColor = Colors.White;
-                    titleBar.ForegroundColor = Colors.Black; break;
-            }
-
-
-
-        }
-        private void Button_Click1(object sender, RoutedEventArgs e)
-        {
-          
-             ChangeThemeAndAccentColor.ChangeAccent();
-            //var currentTheme = Window.Current.Content as FrameworkElement;
-            //if (currentTheme.ActualTheme == ElementTheme.Dark)
-            //{
-            //    currentTheme.RequestedTheme = ElementTheme.Light;
-            //    SaveAppSettings.SavePreferences("Light");
-            //}
-            //else
-            //{
-            //    currentTheme.RequestedTheme = ElementTheme.Dark;
-            //    SaveAppSettings.SavePreferences("Dark");
-            //}
-        }
+       
     }
 }
