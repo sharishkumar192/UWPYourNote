@@ -20,50 +20,51 @@
 
     <Page.Resources>
         <DataTemplate x:Key="EmailIdofUsers"                       >
+            
             <StackPanel x:ConnectionId='7'
                 Width="Auto"
                 Height="Auto"
-                Margin="0"
+                Margin="2,0,0,0"
                 BorderThickness="0,0,0,1"
+                BorderBrush="#a1a1a1"
                 Orientation="Horizontal"
                 Style="{StaticResource ListViewLists}">
-
                 <Image
                     Width="40"
                     Height="40"
                     Margin="0,0,10,0"
                     Source="/Assets/LockScreenLogo.scale-200.png" />
-                <StackPanel>
+                
+                    <StackPanel>
                     <TextBlock x:ConnectionId='8' Style="{StaticResource SignUpTextBlocks}"                      />
                     <TextBlock x:ConnectionId='9' Style="{StaticResource SignUpTextBlocks}"                        />
                 </StackPanel>
 
             </StackPanel>
-
+           
 
         </DataTemplate>
 
         <DataTemplate x:Key="EmailIdofUser"                       >
-            <StackPanel x:ConnectionId='3'
+           
+                <StackPanel x:ConnectionId='3'
                 Width="Auto"
                 Height="Auto"
-                Margin="0"
+               Margin="2,0,0,0"
                 Orientation="Horizontal"
                 Style="{StaticResource ListViewLists}">
 
-                <Image
+                    <Image
                     Width="40"
                     Height="40"
                     Margin="0,0,10,0"
                     Source="/Assets/LockScreenLogo.scale-200.png" />
-                <StackPanel>
-                    <TextBlock x:ConnectionId='4' Style="{StaticResource SignUpTextBlocks}"                      />
-                    <TextBlock x:ConnectionId='5' Style="{StaticResource SignUpTextBlocks}"                        />
+                    <StackPanel>
+                        <TextBlock x:ConnectionId='4' Style="{StaticResource SignUpTextBlocks}"                      />
+                        <TextBlock x:ConnectionId='5' Style="{StaticResource SignUpTextBlocks}"                        />
+                    </StackPanel>
+
                 </StackPanel>
-
-            </StackPanel>
-
-
         </DataTemplate>
 
     </Page.Resources>
@@ -295,7 +296,8 @@
                                                                
                     ItemContainerStyle="{StaticResource LoginListViewItem}"
                                                                                             
-                    Style="{StaticResource LoginListView}">
+                    Style="{StaticResource LoginListView}"
+                    >
                     <ListView.ItemTemplateSelector>
                         <data:ItemsDataTemplateSelector AllItems="{StaticResource EmailIdofUsers}" LastItems="{StaticResource EmailIdofUser}" />
                     </ListView.ItemTemplateSelector>

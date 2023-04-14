@@ -58,6 +58,7 @@ Dictionary.xbf
 NoteColorBackground.xbf
 Themes\Dark.xbf
 Themes\Light.xbf
+View\Appearence.xbf
 View\HomePage.xbf
 View\MainPage.xbf
 View\NoteColorOptions.xbf
@@ -66,5 +67,7 @@ View\SignUpPage.xbf
 View\usercontrol\NoteContent.xbf
 View\usercontrol\NoteEditOptionsControl.xbf
 View\usercontrol\NotesDataTemplate.xbf
+View\usercontrol\NoteTitleSearchBox.xbf
+View\usercontrol\ThemeToggle.xbf
 YourNoteUWP.xr.xml
 Properties\Default.rd.xml

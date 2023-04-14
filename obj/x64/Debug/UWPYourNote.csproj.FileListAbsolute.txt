@@ -9,6 +9,7 @@ D:\YourNote\UWPYourNote\bin\x64\Debug\Dictionary.xbf
 D:\YourNote\UWPYourNote\bin\x64\Debug\NoteColorBackground.xbf
 D:\YourNote\UWPYourNote\bin\x64\Debug\Themes\Light.xbf
 D:\YourNote\UWPYourNote\bin\x64\Debug\Themes\Dark.xbf
+D:\YourNote\UWPYourNote\bin\x64\Debug\View\Appearence.xbf
 D:\YourNote\UWPYourNote\bin\x64\Debug\View\HomePage.xbf
 D:\YourNote\UWPYourNote\bin\x64\Debug\View\usercontrol\NoteContent.xbf
 D:\YourNote\UWPYourNote\bin\x64\Debug\View\usercontrol\NoteEditOptionsControl.xbf
@@ -17,6 +18,8 @@ D:\YourNote\UWPYourNote\bin\x64\Debug\View\MainPage.xbf
 D:\YourNote\UWPYourNote\bin\x64\Debug\View\NoteColorOptions.xbf
 D:\YourNote\UWPYourNote\bin\x64\Debug\View\SignInPage.xbf
 D:\YourNote\UWPYourNote\bin\x64\Debug\View\SignUpPage.xbf
+D:\YourNote\UWPYourNote\bin\x64\Debug\View\usercontrol\NoteTitleSearchBox.xbf
+D:\YourNote\UWPYourNote\bin\x64\Debug\View\usercontrol\ThemeToggle.xbf
 D:\YourNote\UWPYourNote\bin\x64\Debug\YourNoteUWP.xr.xml
 D:\YourNote\UWPYourNote\bin\x64\Debug\YourNoteUWP.exe
 D:\YourNote\UWPYourNote\bin\x64\Debug\YourNoteUWP.pdb
@@ -67,6 +70,8 @@ D:\YourNote\UWPYourNote\bin\x64\Debug\UWPYourNoteLibrary.pri
 D:\YourNote\UWPYourNote\obj\x64\Debug\UWPYourNote.csproj.AssemblyReference.cache
 D:\YourNote\UWPYourNote\obj\x64\Debug\App.g.i.cs
 D:\YourNote\UWPYourNote\obj\x64\Debug\App.g.cs
+D:\YourNote\UWPYourNote\obj\x64\Debug\View\Appearence.g.i.cs
+D:\YourNote\UWPYourNote\obj\x64\Debug\View\Appearence.g.cs
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\HomePage.g.i.cs
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\HomePage.g.cs
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\usercontrol\NoteContent.g.i.cs
@@ -83,12 +88,17 @@ D:\YourNote\UWPYourNote\obj\x64\Debug\View\SignInPage.g.i.cs
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\SignInPage.g.cs
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\SignUpPage.g.i.cs
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\SignUpPage.g.cs
+D:\YourNote\UWPYourNote\obj\x64\Debug\View\usercontrol\NoteTitleSearchBox.g.i.cs
+D:\YourNote\UWPYourNote\obj\x64\Debug\View\usercontrol\NoteTitleSearchBox.g.cs
+D:\YourNote\UWPYourNote\obj\x64\Debug\View\usercontrol\ThemeToggle.g.i.cs
+D:\YourNote\UWPYourNote\obj\x64\Debug\View\usercontrol\ThemeToggle.g.cs
 D:\YourNote\UWPYourNote\obj\x64\Debug\XamlTypeInfo.g.cs
 D:\YourNote\UWPYourNote\obj\x64\Debug\App.xaml
 D:\YourNote\UWPYourNote\obj\x64\Debug\Dictionary.xaml
 D:\YourNote\UWPYourNote\obj\x64\Debug\NoteColorBackground.xaml
 D:\YourNote\UWPYourNote\obj\x64\Debug\Themes\Light.xaml
 D:\YourNote\UWPYourNote\obj\x64\Debug\Themes\Dark.xaml
+D:\YourNote\UWPYourNote\obj\x64\Debug\View\Appearence.xaml
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\HomePage.xaml
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\usercontrol\NoteContent.xaml
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\usercontrol\NoteEditOptionsControl.xaml
@@ -97,11 +107,14 @@ D:\YourNote\UWPYourNote\obj\x64\Debug\View\MainPage.xaml
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\NoteColorOptions.xaml
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\SignInPage.xaml
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\SignUpPage.xaml
+D:\YourNote\UWPYourNote\obj\x64\Debug\View\usercontrol\NoteTitleSearchBox.xaml
+D:\YourNote\UWPYourNote\obj\x64\Debug\View\usercontrol\ThemeToggle.xaml
 D:\YourNote\UWPYourNote\obj\x64\Debug\App.xbf
 D:\YourNote\UWPYourNote\obj\x64\Debug\Dictionary.xbf
 D:\YourNote\UWPYourNote\obj\x64\Debug\NoteColorBackground.xbf
 D:\YourNote\UWPYourNote\obj\x64\Debug\Themes\Light.xbf
 D:\YourNote\UWPYourNote\obj\x64\Debug\Themes\Dark.xbf
+D:\YourNote\UWPYourNote\obj\x64\Debug\View\Appearence.xbf
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\HomePage.xbf
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\usercontrol\NoteContent.xbf
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\usercontrol\NoteEditOptionsControl.xbf
@@ -110,6 +123,8 @@ D:\YourNote\UWPYourNote\obj\x64\Debug\View\MainPage.xbf
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\NoteColorOptions.xbf
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\SignInPage.xbf
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\SignUpPage.xbf
+D:\YourNote\UWPYourNote\obj\x64\Debug\View\usercontrol\NoteTitleSearchBox.xbf
+D:\YourNote\UWPYourNote\obj\x64\Debug\View\usercontrol\ThemeToggle.xbf
 D:\YourNote\UWPYourNote\obj\x64\Debug\XamlSaveStateFile.xml
 D:\YourNote\UWPYourNote\obj\x64\Debug\UWPYourNote.csproj.CoreCompileInputs.cache
 D:\YourNote\UWPYourNote\obj\x64\Debug\UWPYourNote.csproj.CopyComplete

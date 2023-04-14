@@ -75,7 +75,7 @@
     <Color x:Key="SecondaryButtonFgColorForest">#ffffff</Color>
 
 
-    <Color x:Key="PrimaryButtonBgColorOnHoverForest">#347542</Color>
+    <Color x:Key="PrimaryButtonBgColorOnHoverForest">#494c30</Color>
     <Color x:Key="SecondaryButtonBgColorOnHoverForest">#494c30</Color>
 
     <Color x:Key="PrimaryButtonBgColorOnClickForest">#346538</Color>

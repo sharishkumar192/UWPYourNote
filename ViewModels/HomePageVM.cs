@@ -26,7 +26,7 @@ namespace UWPYourNote.ViewModels
 {
 
 
-    internal class HomePageVM : INotifyPropertyChanged
+    public class HomePageVM : INotifyPropertyChanged
     {
 
 
@@ -93,43 +93,6 @@ namespace UWPYourNote.ViewModels
             });
         }
 
-
-        //--------------------------------------------- SEARCH NOTES BASED ON THE TEXT/ RECENT SEARCHES-----------------------------------
-
-        void AssignSuggestedNotes(ObservableCollection<Note> notes)
-        {
-            Page page = (Page)homePageView;
-            _ = page?.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Low, () =>
-            {
-
-                    homePageVM.SuggestionContentItemSource = notes;
-
-
-            });
-        }
-
-
-
-        private ObservableCollection<UWPYourNoteLibrary.Models.Note> _suggestionContentItemSource;
-        public ObservableCollection<UWPYourNoteLibrary.Models.Note> SuggestionContentItemSource
-        {
-            get { return _suggestionContentItemSource; }
-            set
-            {
-                _suggestionContentItemSource = value;
-                OnPropertyChanged();
-
-            }
-        }
-
-        public void GetSuggestedAndRecentNotes(string userId, string text)
-        {
-            GetSuggestedAndRecentNotesUseCaseRequest request = new GetSuggestedAndRecentNotesUseCaseRequest();
-            request.UserId = userId;
-            request.Text = text;
-            GetSuggestedAndRecentNotesUseCase usecase = new GetSuggestedAndRecentNotesUseCase(request, new GetSuggestedAndRecentNotesPresenterCallBack(this));
-            usecase.Execute();
-        }
 
        
       
@@ -249,28 +212,7 @@ namespace UWPYourNote.ViewModels
                     Presenter?.AssignNotes(result.List, result.IsSort);
             }
         }
-        private class GetSuggestedAndRecentNotesPresenterCallBack : ICallback<GetSuggestedAndRecentNotesUseCaseResponse>
-        {
-            private HomePageVM Presenter;
-            public GetSuggestedAndRecentNotesPresenterCallBack(HomePageVM presenter)
-            {
-                Presenter = presenter;
-            }
-
-            public void onFailure(GetSuggestedAndRecentNotesUseCaseResponse result)
-            {
-
-                Presenter?.AssignSuggestedNotes(result.List);
-
-
-            }
-
-            public void onSuccess(GetSuggestedAndRecentNotesUseCaseResponse result)
-            {
-                Presenter?.AssignSuggestedNotes(result.List);
-
-            }
-        }
+      
         private class CreateNewNotePresenterCallBack : ICallback<CreateNewNoteUseCaseResponse>
         {
             private HomePageVM Presenter;

@@ -121,10 +121,15 @@
     </Compile>
     <Compile Include="ViewModels\Contract\IHomePageView.cs" />
     <Compile Include="ViewModels\Contract\INoteContentView.cs" />
+    <Compile Include="ViewModels\Contract\INoteTitleSearchBox.cs" />
     <Compile Include="ViewModels\Contract\ISignInPageView.cs" />
     <Compile Include="ViewModels\Contract\ICheckExistingUser.cs" />
     <Compile Include="ViewModels\Contract\IView.cs" />
+    <Compile Include="ViewModels\usercontrol\NoteTitleSearchVM.cs" />
     <Compile Include="ViewModels\Util\UserUtilities.cs" />
+    <Compile Include="View\Appearence.xaml.cs">
+      <DependentUpon>Appearence.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
@@ -154,6 +159,12 @@
     </Compile>
     <Compile Include="View\SignUpPage.xaml.cs">
       <DependentUpon>SignUpPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\usercontrol\NoteTitleSearchBox.xaml.cs">
+      <DependentUpon>NoteTitleSearchBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\usercontrol\ThemeToggle.xaml.cs">
+      <DependentUpon>ThemeToggle.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -239,6 +250,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Appearence.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\HomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -268,6 +283,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\SignUpPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\usercontrol\NoteTitleSearchBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\usercontrol\ThemeToggle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

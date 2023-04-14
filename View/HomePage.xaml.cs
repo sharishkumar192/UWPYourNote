@@ -20,9 +20,18 @@ using UWPYourNoteLibrary.Models;
 using UWPYourNoteLibrary.Util;
 using UWPYourNote.ViewModels;
 using UWPYourNote.ViewModels.Contract;
+using UWPYourNote.ViewModels.usercontrol;
 using static UWPYourNoteLibrary.Util.NotesUtilities;
 using Windows.UI.ViewManagement;
 using Windows.UI;
+using Windows.ApplicationModel.Core;
+using Windows.UI.Core;
+using UWPYourNote.View.usercontrol;
+using YourNoteUWP.View;
+using Windows.UI.WindowManagement;
+using Windows.UI.Xaml.Hosting;
+using System.Reflection;
+using YourNoteUWP.ViewModels.Contract;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -31,13 +40,13 @@ namespace UWPYourNote.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class HomePage : Page, IHomePageView, INotifyPropertyChanged
+    public sealed partial class HomePage : Page, IHomePageView, INotifyPropertyChanged, INoteContentView
     {
         private Frame _frame;
         private UWPYourNoteLibrary.Models.Note _selectedNote = null;
-        private HomePageVM _homePageViewModel;
         static UWPYourNoteLibrary.Models.Note selectedNoteFromDisplay = null;
         private HomePageVM homePageVM;
+        private NoteTitleSearchVM noteTitleSearchVM;
         bool themeCheck;
         bool accentCheck;
 
@@ -50,22 +59,22 @@ namespace UWPYourNote.View
 
         public HomePage()
         {
-         
+
             themeCheck = accentCheck = false;
             this.InitializeComponent();
-     
         }
-               
-            
-       
+
+
+
 
 
         private delegate void DelUserControlMethod(object sender, object e);
-
+        private delegate void AccentChange(object sender, object e);
         private void DelegateIntialize()
         {
             DelUserControlMethod delUserControlMethod = new DelUserControlMethod(NoteDisplayPopUpClosed);
             NoteContentPopUp.CallingPageMethod = delUserControlMethod;
+
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -88,20 +97,13 @@ namespace UWPYourNote.View
             set
             {
                 _loggedUser = value;
+            //    TitleSearchBox.LoggedUser = value;
                 OnPropertyChanged();
             }
 
         }
 
-        bool ChangeVar()
-        {
-            if (_selectedNote != null)
-            {
-                _selectedNote = null;
-                return false;
-            }
-            return true;
-        }
+     
 
 
         private async void NoTitle()
@@ -117,16 +119,35 @@ namespace UWPYourNote.View
             var result = await showDialog.ShowAsync();
         }
 
-     
+
         public void GetNotes(TypeOfNote type)
         {
             homePageVM.homePageView = this;
             homePageVM.GetNotes(LoggedUser.userId, true, type);
 
         }
-      
+
+ 
+
+
+   
+
 
         //----------------------------Main Menu List Box---------------------------------------------------
+
+        private string _welcomeText = "Welcome, ";
+
+        public string WelcomeText
+        {
+            get { return _welcomeText + LoggedUser.name; }
+            set
+            {
+                _welcomeText = value;
+
+                OnPropertyChanged();
+            }
+        }
+
 
         private bool _personalNotesIsSelected = true;
         public bool PersonalNotesIsSelected
@@ -170,94 +191,6 @@ namespace UWPYourNote.View
         }
 
 
-        private bool _lightIsSelected = false;
-        public bool LightIsSelected
-        {
-            get { return _lightIsSelected; }
-            set
-            {
-                _lightIsSelected = value;
-                OnPropertyChanged();
-
-            }
-        }
-
-
-
-
-
-        private bool _darkIsSelected = false;
-        public bool DarkIsSelected
-        {
-            get { return _darkIsSelected; }
-            set
-            {
-                _darkIsSelected = value;
-                OnPropertyChanged();
-            }
-        }
-
-
-
-
-        private bool _systemIsSelected = false;
-        public bool SystemIsSelected
-        {
-            get { return _systemIsSelected; }
-            set
-            {
-                _systemIsSelected = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private bool _defaultIsSelected = false;
-        public bool DefaultIsSelected
-        {
-            get { return _defaultIsSelected; }
-            set
-            {
-                _defaultIsSelected = value;
-                OnPropertyChanged();
-
-            }
-        }
-
-        private bool _lavendarIsSelected = false;
-        public bool LavendarIsSelected
-        {
-            get { return _lavendarIsSelected; }
-            set
-            {
-                _lavendarIsSelected = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private bool _forestIsSelected = false;
-        public bool ForestIsSelected
-        {
-            get { return _forestIsSelected; }
-            set
-            {
-                _forestIsSelected = value;
-                OnPropertyChanged();
-            }
-        }
-
-
-
-        private bool _nighttimeIsSelected = false;
-        public bool NighttimeIsSelected
-        {
-            get { return _nighttimeIsSelected; }
-            set
-            {
-                _nighttimeIsSelected = value;
-                OnPropertyChanged();
-            }
-        }
-
         private int _mainMenuOptionsSelectedIndex = 0;
 
         public int MainMenuOptionsSelectedIndex
@@ -270,176 +203,42 @@ namespace UWPYourNote.View
             }
         }
 
-        private int GetPrefferencedAccentColor()
-        {
-            var currentAccentColor = SaveAppSettings.LoadAccentColorPreferences();
-         
-            switch (currentAccentColor)
-            {
-                case ChangeAccentColor.ColorType.Default: DefaultIsSelected = true; break;
-                case ChangeAccentColor.ColorType.Lavendar: LavendarIsSelected = true; break;
-                case ChangeAccentColor.ColorType.Forest: ForestIsSelected = true; break;
-                case ChangeAccentColor.ColorType.Nighttime: NighttimeIsSelected = true; break;
-                default: break;
-            }
-
-            return (int)currentAccentColor;
-        }
-
-        private int GetPrefferencedTheme()
-        {
-            var currentTheme = SaveAppSettings.LoadThemePreferences();
-            switch (currentTheme)
-            {
-                case ChangeAccentColor.Themes.System: SystemIsSelected = true; break;
-                case ChangeAccentColor.Themes.Dark: DarkIsSelected = true; break;
-                case ChangeAccentColor.Themes.Light:
-                    LightIsSelected = true;
-                    break;
-                default: break;
-
-            }
-            return (int)currentTheme;
-        }
-        private int _chooseAccentSelectedIndex;
-
-        public int ChooseAccentSelectedIndex
-        {
-            get 
-            {
-                return _chooseAccentSelectedIndex;
-            }
-            set
-            {
-                _chooseAccentSelectedIndex = value;
-                OnPropertyChanged();
-            }
-        }
-
-
-        private int _chooseThemeSelectedIndex;
-
-        public int ChooseThemeSelectedIndex
-        {
-            get 
-            { 
-                return _chooseThemeSelectedIndex;
-            
-            }
-            set
-            {
-                _chooseThemeSelectedIndex = value;
-                OnPropertyChanged();
-            }
-        }
 
 
 
-        public void ChooseAccentSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ListBox box = (ListBox)sender;
-            ListBoxItem item = box.SelectedItem as ListBoxItem;
-         
-            var currentTheme = Window.Current.Content as FrameworkElement;
-            var titleBar = ApplicationView.GetForCurrentView().TitleBar;
 
-            if (ChooseAccentSelectedIndex == 0 && accentCheck == false)
-            {
-                ChooseAccentSelectedIndex = GetPrefferencedAccentColor();
-                accentCheck = true;
-            }
-            ChangeAccentColor.ColorType accentToChange = (ChangeAccentColor.ColorType)ChooseAccentSelectedIndex;
-            
-            if (DefaultIsSelected == true)
-            {
-                LavendarIsSelected =
-                ForestIsSelected =
-                NighttimeIsSelected = false;
-            }
-            else if (LavendarIsSelected == true)
-            {
-                DefaultIsSelected =
-                ForestIsSelected = 
-                NighttimeIsSelected = false;
-            }
-            else if (ForestIsSelected == true)
-            {
-                DefaultIsSelected =
-                LavendarIsSelected =
-                NighttimeIsSelected = false;
-            }
-            else
-            {
-                DefaultIsSelected =
-                LavendarIsSelected =
-                ForestIsSelected = false;
-            }
-            ChangeAccentColor.ChangeAccent(accentToChange);
-
-        }
-
-        public void ChooseThemeSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            
-          
-            var currentTheme = Window.Current.Content as FrameworkElement;
-            var titleBar = ApplicationView.GetForCurrentView().TitleBar;
-
-            if (ChooseThemeSelectedIndex == 0 && themeCheck == false)
-            {
-                ChooseThemeSelectedIndex = GetPrefferencedTheme();
-                themeCheck = true;
-            }
-            ChangeAccentColor.Themes themeToChange = (ChangeAccentColor.Themes)ChooseThemeSelectedIndex;
-            if (LightIsSelected == true)
-            {
-                DarkIsSelected = SystemIsSelected = false;
-            }
-            else if (DarkIsSelected == true)
-            {
-                SystemIsSelected = LightIsSelected = false;
-            }
-            else
-            {
-                DarkIsSelected = LightIsSelected = false;
-            }
-            //    if(themeToChange == Elem)
-            var value = this.ActualTheme;
-            ChangeAccentColor.ChangeTheme(titleBar, currentTheme, themeToChange);
-
-        }
-
-            public void MainMenuOptionsSelectionChanged(object sender, SelectionChangedEventArgs e)
+        public void MainMenuOptionsSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             TitleOfNewNoteVisibility = NoteStyleOptionsVisibility = Visibility.Collapsed;
             ListBox box = (ListBox)sender;
             ListBoxItem item = (ListBoxItem)box.SelectedItem;
             MainMenuOptionsSelectedIndex = box.SelectedIndex;
             TypeOfNote typeOfNote;
+            TitleSearchBox.SearchTextBoxText = "";
+            TitleSearchBox.SearchPopupIsOpen = false;
 
             if (PersonalNotesIsSelected == true)
             {
-                  
-                
+
+
                 SharedNotesIsSelected = AllNotesIsSelected = false;
                 typeOfNote = TypeOfNote.PersonalNotes;
                 TitleText = typeOfNote.ToString();
                 GetNotes(typeOfNote);
-                SearchTextBoxText = "";
-                _selectedNote = new Note("", "", "", 0);
-                SearchPopupIsOpen = false;
+
+
+                TitleSearchBox._selectedNote = new Note("", "", "", 0);
 
             }
             else if (SharedNotesIsSelected == true)
             {
-              
+
                 PersonalNotesIsSelected = AllNotesIsSelected = false;
                 typeOfNote = TypeOfNote.SharedNotes;
                 TitleText = typeOfNote.ToString();
                 GetNotes(typeOfNote);
-                _selectedNote = new Note("", "", "", 0);
-                SearchTextBoxText = "";
-                SearchPopupIsOpen = false;
+                TitleSearchBox._selectedNote = new Note("", "", "", 0);
+             
             }
             else if (AllNotesIsSelected == true)
             {
@@ -448,64 +247,18 @@ namespace UWPYourNote.View
                 TitleText = typeOfNote.ToString();
                 GetNotes(typeOfNote);
             }
+
         }
 
         //----------------------------Search Text Box---------------------------------------------------
         public void SearchBoxContainerLostFocus()
         {
-            SearchPopupIsOpen = false;
+            TitleSearchBox.SearchPopupIsOpen = false;
         }
 
 
 
-        private string _searchTextBoxText;
-        public string SearchTextBoxText
-        {
-            get { return _searchTextBoxText; }
-            set
-            {
-                _searchTextBoxText = value;
-
-                OnPropertyChanged();
-            }
-        }
-
-
-        public void SearchTextBoxTextChanged(object sender, TextChangedEventArgs e)
-        {
-            try
-            {
-                //    throw new Exception();
-                if (ChangeVar())
-                {
-                    SearchPopupIsOpen = true;
-                    TextBox contentOfTextBox = (TextBox)sender;
-                    var lowerText = contentOfTextBox.Text.ToLower();
-                        homePageVM.homePageView = this;
-                        homePageVM.GetSuggestedAndRecentNotes(LoggedUser.userId, lowerText);
-                }
-            }
-            catch (Exception m)
-            {
-                TextBox contentOfTextBox = (TextBox)sender;
-                Logger.WriteLog(m.Message);
-            }
-
-        }
-
-        //----------------------------Search Popup---------------------------------------------------
-
-        private bool _searchPopupIsOpen = false;
-        public bool SearchPopupIsOpen
-        {
-            get { return _searchPopupIsOpen; }
-            set
-            {
-                _searchPopupIsOpen = value;
-
-                OnPropertyChanged();
-            }
-        }
+  
 
 
 
@@ -547,36 +300,9 @@ namespace UWPYourNote.View
 
         //----------------------------Search -> Suggestion List homePageView ---------------------------------------------------
 
-        public void SuggestionContainerItemClick(object sender, ItemClickEventArgs e)
-        {
-            selectedNoteFromDisplay = (Note)e.ClickedItem;
-            selectedNoteFromDisplay.searchCount++;
-            NoteContentPopUp.DisplayContent(LoggedUser.userId, selectedNoteFromDisplay.noteId, selectedNoteFromDisplay.title, selectedNoteFromDisplay.content, selectedNoteFromDisplay.searchCount, selectedNoteFromDisplay.noteColor, selectedNoteFromDisplay.modifiedDay);
-            SearchPopupIsOpen = false;
-            NoteDisplayPopUpOpened();
-
-
-        }
 
 
        
-
-
-
-
-
-
-
-        private Visibility _suggestionContentVisibility = Visibility.Visible;
-        public Visibility SuggestionContentVisibility
-        {
-            get { return _suggestionContentVisibility; }
-            set
-            {
-                _suggestionContentVisibility = value;
-                OnPropertyChanged();
-            }
-        }
 
 
         //----------------------------Sign Out Button---------------------------------------------------
@@ -613,7 +339,7 @@ namespace UWPYourNote.View
             //return range.Text;
 
 
-          
+
         }
 
 
@@ -636,9 +362,9 @@ namespace UWPYourNote.View
 
         public SolidColorBrush NewNoteBackground
         {
-            get { return _newNoteBackground ; }
-            set 
-            { 
+            get { return _newNoteBackground; }
+            set
+            {
                 _newNoteBackground = value;
                 OnPropertyChanged();
             }
@@ -738,7 +464,7 @@ namespace UWPYourNote.View
         //----Note Font Increase
         private void FontIncreaseClick(object sender, RoutedEventArgs e)
         {
-          NotesUtilities.FontIncreaseClick(ContentOfNewNote, null);
+            NotesUtilities.FontIncreaseClick(ContentOfNewNote, null);
         }
 
         //----Note Font Decrease
@@ -903,7 +629,7 @@ namespace UWPYourNote.View
         private void NoteDisplayPopUpLayoutUpdated(object sender, object e)
         {
             NoteContentPopUpHeight = Window.Current.Bounds.Height * 1.5 / 2;
-            NoteContentPopUpWidth = Window.Current.Bounds.Width/2;
+            NoteContentPopUpWidth = Window.Current.Bounds.Width / 2;
             if (NoteContentPopUp.ActualWidth == 0 && NoteContentPopUp.ActualHeight == 0)
             {
                 return;
@@ -928,12 +654,12 @@ namespace UWPYourNote.View
         public void NoteDisplayPopUpOpened()
         {
             // PopOut.Stop();
-             if (!NoteDisplayPopUpIsOpen)
+            if (!NoteDisplayPopUpIsOpen)
             {
                 NoteContentPopUpIsTapped = true;
 
                 NoteDisplayPopUpIsOpen = true;
-              //  PopIn.Begin();
+                //  PopIn.Begin();
             }
         }
 
@@ -942,7 +668,7 @@ namespace UWPYourNote.View
         {
             NoteContentPopUp.ChangesOnClosing();
             NoteContentPopUp.UsersToShare = null;
-            
+
             if (NoteContentPopUp._dispatcherTimer != null)
             {
                 if (NoteContentPopUp.isDeleted)
@@ -968,7 +694,7 @@ namespace UWPYourNote.View
 
         }
 
-        
+
 
         private bool _noteContentPopUpIsTapped = true;
 
@@ -989,7 +715,7 @@ namespace UWPYourNote.View
                 NoteContentPopUpIsTapped = false;
                 NoteContentPopUp.EditModeEnabled();
             }
-                
+
         }
         private void NoteBackgroundColor()
         {
@@ -1015,6 +741,31 @@ namespace UWPYourNote.View
 
         }
 
+        
+        private async void AppearenceClick(object sender, RoutedEventArgs e)
+        {
+            AppWindow appWindow = await AppWindow.TryCreateAsync();
+            Frame appWindowContentFrame = new Frame();
+            appWindowContentFrame.Navigate(typeof(Appearence));
+            ElementCompositionPreview.SetAppWindowContent(appWindow, appWindowContentFrame);
+            await appWindow.TryShowAsync();
+            var id = ApplicationView.GetForCurrentView().Id;
+           
+            
+            
+        }
+
+        private void ThemeToggleButtonClick()
+        {
+            Hello123.Hide();
+        }
+
+   
        
+        private void TitleSearchBoxDisplaySelectedNote(Note selectedNote)
+        {
+            NoteContentPopUp.DisplayContent(LoggedUser.userId, selectedNote.noteId, selectedNote.title, selectedNote.content, selectedNote.searchCount, selectedNote.noteColor, selectedNote.modifiedDay);
+            NoteDisplayPopUpOpened();
+        }
     }
 }

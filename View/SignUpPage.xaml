@@ -117,6 +117,7 @@
                     Name="EmailBox"
                     Grid.Row="1"
                     HorizontalAlignment="Center"
+                    IsSpellCheckEnabled="False"
                     PlaceholderText="{x:Bind EmailBoxPlaceHolderText, Mode=OneWay}"
                     Style="{StaticResource TextBoxStyle}"
                     Text="{x:Bind EmailBoxContent, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"

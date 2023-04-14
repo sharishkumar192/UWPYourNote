@@ -20,50 +20,51 @@
 
     <Page.Resources>
         <DataTemplate x:Key="EmailIdofUsers" x:DataType="data:User">
+            
             <StackPanel
                 Width="Auto"
                 Height="Auto"
-                Margin="0"
+                Margin="2,0,0,0"
                 BorderThickness="0,0,0,1"
+                BorderBrush="#a1a1a1"
                 Orientation="Horizontal"
                 Style="{StaticResource ListViewLists}">
-
                 <Image
                     Width="40"
                     Height="40"
                     Margin="0,0,10,0"
                     Source="/Assets/LockScreenLogo.scale-200.png" />
-                <StackPanel>
+                
+                    <StackPanel>
                     <TextBlock Style="{StaticResource SignUpTextBlocks}" Text="{x:Bind name}" />
                     <TextBlock Style="{StaticResource SignUpTextBlocks}" Text="{x:Bind userId}" />
                 </StackPanel>
 
             </StackPanel>
-
+           
 
         </DataTemplate>
 
         <DataTemplate x:Key="EmailIdofUser" x:DataType="data:User">
-            <StackPanel
+           
+                <StackPanel
                 Width="Auto"
                 Height="Auto"
-                Margin="0"
+               Margin="2,0,0,0"
                 Orientation="Horizontal"
                 Style="{StaticResource ListViewLists}">
 
-                <Image
+                    <Image
                     Width="40"
                     Height="40"
                     Margin="0,0,10,0"
                     Source="/Assets/LockScreenLogo.scale-200.png" />
-                <StackPanel>
-                    <TextBlock Style="{StaticResource SignUpTextBlocks}" Text="{x:Bind name}" />
-                    <TextBlock Style="{StaticResource SignUpTextBlocks}" Text="{x:Bind userId}" />
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource SignUpTextBlocks}" Text="{x:Bind name}" />
+                        <TextBlock Style="{StaticResource SignUpTextBlocks}" Text="{x:Bind userId}" />
+                    </StackPanel>
+
                 </StackPanel>
-
-            </StackPanel>
-
-
         </DataTemplate>
 
     </Page.Resources>
@@ -295,7 +296,8 @@
                     ItemClick="{x:Bind FrequentEmailItemClick}"
                     ItemContainerStyle="{StaticResource LoginListViewItem}"
                     ItemsSource="{x:Bind signInPageVM.FrequentEmailItemSource, Mode=OneWay}"
-                    Style="{StaticResource LoginListView}">
+                    Style="{StaticResource LoginListView}"
+                    >
                     <ListView.ItemTemplateSelector>
                         <data:ItemsDataTemplateSelector AllItems="{StaticResource EmailIdofUsers}" LastItems="{StaticResource EmailIdofUser}" />
                     </ListView.ItemTemplateSelector>

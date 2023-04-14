@@ -9,10 +9,7 @@
     xmlns:ui="using:Microsoft.Toolkit.Uwp.UI"
     mc:Ignorable="d">
 
-    <Grid
-        MaxHeight="500"
-        Background="{x:Bind NoteContentBackground, Mode=OneWay}"
-        >
+    <Grid MaxHeight="500" Background="{x:Bind NoteContentBackground, Mode=OneWay}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition />
@@ -31,18 +28,18 @@
                 Name="Contents"
                 Margin="15"
                 FontSize="14"
-
                 HorizontalTextAlignment="Left"
                 Style="{StaticResource NotesDataRichEdit}"
                 TextWrapping="Wrap" />
         </ScrollViewer>
-        <TextBlock
+        <Border
             Grid.Row="2"
-            Margin="10,0,0,10"
-            Foreground="#000000"
-         
-            Text="{x:Bind ShowModifiedTime(notesTemplate.modifiedDay)}" />
-
+            Margin="5,0,5,5"
+            BorderBrush="Black"
+            BorderThickness="0,1,0,0"
+            CornerRadius="4">
+            <TextBlock Foreground="#000000" Text="{x:Bind ShowModifiedTime(notesTemplate.modifiedDay)}" />
+        </Border>
     </Grid>
 
 

@@ -117,6 +117,7 @@
                     Name="EmailBox"
                     Grid.Row="1"
                     HorizontalAlignment="Center"
+                    IsSpellCheckEnabled="False"
                                                                                    
                     Style="{StaticResource TextBoxStyle}"
                                                                                                

@@ -106,7 +106,7 @@ namespace UWPYourNote.View.usercontrol
                         }
                         else
                         {
-                            value = modifiedDetail.ToString("hh:mm tt");
+                            value = "Today, " + modifiedDetail.ToString("hh:mm tt");
 
                         }
                     }
@@ -114,19 +114,19 @@ namespace UWPYourNote.View.usercontrol
                     {
                         string date = modifiedDetail.DayOfWeek.ToString();
                         value = date.Substring(0, 3);
-                        value += " " + modifiedDetail.ToString("MMM") + " " + modifiedDetail.ToString("dd");
+                        value += ", " + modifiedDetail.ToString("MMM") + " " + modifiedDetail.ToString("dd");
                     }
                 }
                 else
                 {
                     string date = modifiedDetail.DayOfWeek.ToString();
                     value = date.Substring(0, 3);
-                    value += " " + modifiedDetail.ToString("MMM") + " " + modifiedDetail.ToString("dd");
+                    value += ", " + modifiedDetail.ToString("MMM") + " " + modifiedDetail.ToString("dd");
                 }
             }
             else
             {
-                value = modifiedDetail.ToString("MMM") + " " + modifiedDetail.ToString("dd") + ", " + modifiedDetail.Year;
+                value = modifiedDetail.ToString("MMM") + ", " + modifiedDetail.ToString("dd") + ", " + modifiedDetail.Year;
             }
 
 

@@ -354,6 +354,9 @@
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\Themes\Dark.xbf">
       <PackagePath>Themes\Dark.xbf</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\Appearence.xbf">
+      <PackagePath>View\Appearence.xbf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\HomePage.xbf">
       <PackagePath>View\HomePage.xbf</PackagePath>
     </AppxPackagedFile>
@@ -377,6 +380,12 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\SignUpPage.xbf">
       <PackagePath>View\SignUpPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\usercontrol\NoteTitleSearchBox.xbf">
+      <PackagePath>View\usercontrol\NoteTitleSearchBox.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\usercontrol\ThemeToggle.xbf">
+      <PackagePath>View\usercontrol\ThemeToggle.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.19041.0\\redist\Debug\X64\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UWPYourNote.ViewModels.Contract
 {
-    internal interface IHomePageView
+    public interface IHomePageView
     {
     }
 }

@@ -27,7 +27,7 @@ namespace UWPYourNote.View.usercontrol
     public sealed partial class NoteEditOptionsControl : UserControl, INotifyPropertyChanged
     {
         public event Action<string> EditOptions;
-
+    
         public NoteEditOptionsControl()
         {
             this.InitializeComponent();
