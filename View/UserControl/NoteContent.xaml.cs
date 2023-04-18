@@ -85,6 +85,9 @@ namespace UWPYourNote.View.usercontrol
             NoteMenuOptions.ToShare = itemClick;
 
         }
+
+
+
         public void ChangesOnClosing()
         {
             ContentOfNoteIsReadOnly = false;
@@ -121,8 +124,6 @@ namespace UWPYourNote.View.usercontrol
             ContentOfNoteText = content;
             currentDay = modifiedDay;
                 _noteColorChosen = noteColor;
-
-             
              ContentOfNote.Document.SetText(Windows.UI.Text.TextSetOptions.FormatRtf, ContentOfNoteText);
                 TakeNoteColor(noteColor);
                 ToEnableEditMode();

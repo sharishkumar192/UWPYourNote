@@ -62,6 +62,7 @@ View\Appearence.xbf
 View\HomePage.xbf
 View\MainPage.xbf
 View\NoteColorOptions.xbf
+View\NoteDisplayApplicationView.xbf
 View\SignInPage.xbf
 View\SignUpPage.xbf
 View\usercontrol\NoteContent.xbf

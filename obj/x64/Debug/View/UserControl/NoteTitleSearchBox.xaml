@@ -68,7 +68,7 @@
             Name="SearchPopup"
             MaxHeight="100"
             Margin="0,4,0,0"
-            IsLightDismissEnabled="True"
+            IsLightDismissEnabled="False"
             IsOpen="True"
             KeyTipPlacementMode="Bottom">
 
@@ -78,7 +78,6 @@
                     Name="PopUpContainer"
                     Width="Auto"
                     Height="Auto"
-                    Background="Red"
                     CornerRadius="4">
                     <ListView x:ConnectionId='13'
                         Name="Suggestion"

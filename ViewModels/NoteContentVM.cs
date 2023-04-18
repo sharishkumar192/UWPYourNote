@@ -10,6 +10,8 @@ using System;
 using UWPYourNote.ViewModels.Contract;
 using Windows.UI.Xaml.Controls;
 using UWPYourNoteLibrary.Util;
+using System.Diagnostics;
+
 namespace UWPYourNote.ViewModels
 {
     internal class NoteContentVM  
@@ -114,20 +116,28 @@ namespace UWPYourNote.ViewModels
 
         private class UpdateNotePresenterCallBack : ICallback<UpdateNoteUseCaseResponse>
         {
+            Stopwatch stopwatch = new Stopwatch();
             private NoteContentVM Presenter;
             public UpdateNotePresenterCallBack(NoteContentVM presenter)
             {
+                stopwatch.Start();
+             
                 Presenter = presenter;
             }
 
             public void onFailure(UpdateNoteUseCaseResponse result)
             {
+                stopwatch.Stop();
+                Debug.WriteLine(stopwatch.ElapsedMilliseconds);
+                stopwatch = null;
             }
 
             public void onSuccess(UpdateNoteUseCaseResponse result)
             {
-
-          
+                stopwatch.Stop();
+            
+                Debug.WriteLine(stopwatch.ElapsedMilliseconds);
+                stopwatch = null;
             }
         }
 

@@ -87,7 +87,7 @@ namespace UWPYourNote.View.usercontrol
                 //    throw new Exception();
                 if (ChangeVar())
                 {
-                    SearchPopupIsOpen = true;
+                  //  SearchPopupIsOpen = true;
                     TextBox contentOfTextBox = (TextBox)sender;
                     var lowerText = contentOfTextBox.Text.ToLower();
                     var user = LoggedUser.userId;
@@ -108,7 +108,7 @@ namespace UWPYourNote.View.usercontrol
         {
             selectedNoteFromDisplay = (Note)e.ClickedItem;
             selectedNoteFromDisplay.searchCount++;
-            SearchPopupIsOpen = false;
+            //SearchPopupIsOpen = false;
             DisplaySelectedNote?.Invoke(selectedNoteFromDisplay);
             
 
@@ -135,27 +135,27 @@ namespace UWPYourNote.View.usercontrol
         //----------------------------Search Popup---------------------------------------------------
 
 
-        private bool _searchPopupIsOpen = true;
-        public bool SearchPopupIsOpen
-        {
-            get { return _searchPopupIsOpen; }
-            set
-            {
-                _searchPopupIsOpen = value;
-                OnPropertyChanged();
-            }
-        }
+        //private bool _searchPopupIsOpen = false;
+        //public bool SearchPopupIsOpen
+        //{
+        //    get { return _searchPopupIsOpen; }
+        //    set
+        //    {
+        //        _searchPopupIsOpen = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
 
-        private Visibility _suggestionContentVisibility = Visibility.Visible;
-        public Visibility SuggestionContentVisibility
-        {
-            get { return _suggestionContentVisibility; }
-            set
-            {
-                _suggestionContentVisibility = value;
-                OnPropertyChanged();
-            }
-        }
+        //private Visibility _suggestionContentVisibility = Visibility.Visible;
+        //public Visibility SuggestionContentVisibility
+        //{
+        //    get { return _suggestionContentVisibility; }
+        //    set
+        //    {
+        //        _suggestionContentVisibility = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
      
 
        

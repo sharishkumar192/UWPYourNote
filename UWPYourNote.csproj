@@ -125,6 +125,7 @@
     <Compile Include="ViewModels\Contract\ISignInPageView.cs" />
     <Compile Include="ViewModels\Contract\ICheckExistingUser.cs" />
     <Compile Include="ViewModels\Contract\IView.cs" />
+    <Compile Include="ViewModels\NoteDisplayApplicationViewVM.cs" />
     <Compile Include="ViewModels\usercontrol\NoteTitleSearchVM.cs" />
     <Compile Include="ViewModels\Util\UserUtilities.cs" />
     <Compile Include="View\Appearence.xaml.cs">
@@ -132,6 +133,9 @@
     </Compile>
     <Compile Include="View\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\NoteDisplayApplicationView.xaml.cs">
+      <DependentUpon>NoteDisplayApplicationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\usercontrol\NoteContent.xaml.cs">
       <DependentUpon>NoteContent.xaml</DependentUpon>
@@ -255,6 +259,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\HomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NoteDisplayApplicationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

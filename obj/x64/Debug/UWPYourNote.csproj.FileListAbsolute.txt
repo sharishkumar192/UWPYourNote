@@ -11,6 +11,7 @@ D:\YourNote\UWPYourNote\bin\x64\Debug\Themes\Light.xbf
 D:\YourNote\UWPYourNote\bin\x64\Debug\Themes\Dark.xbf
 D:\YourNote\UWPYourNote\bin\x64\Debug\View\Appearence.xbf
 D:\YourNote\UWPYourNote\bin\x64\Debug\View\HomePage.xbf
+D:\YourNote\UWPYourNote\bin\x64\Debug\View\NoteDisplayApplicationView.xbf
 D:\YourNote\UWPYourNote\bin\x64\Debug\View\usercontrol\NoteContent.xbf
 D:\YourNote\UWPYourNote\bin\x64\Debug\View\usercontrol\NoteEditOptionsControl.xbf
 D:\YourNote\UWPYourNote\bin\x64\Debug\View\usercontrol\NotesDataTemplate.xbf
@@ -74,6 +75,8 @@ D:\YourNote\UWPYourNote\obj\x64\Debug\View\Appearence.g.i.cs
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\Appearence.g.cs
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\HomePage.g.i.cs
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\HomePage.g.cs
+D:\YourNote\UWPYourNote\obj\x64\Debug\View\NoteDisplayApplicationView.g.i.cs
+D:\YourNote\UWPYourNote\obj\x64\Debug\View\NoteDisplayApplicationView.g.cs
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\usercontrol\NoteContent.g.i.cs
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\usercontrol\NoteContent.g.cs
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\usercontrol\NoteEditOptionsControl.g.i.cs
@@ -100,6 +103,7 @@ D:\YourNote\UWPYourNote\obj\x64\Debug\Themes\Light.xaml
 D:\YourNote\UWPYourNote\obj\x64\Debug\Themes\Dark.xaml
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\Appearence.xaml
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\HomePage.xaml
+D:\YourNote\UWPYourNote\obj\x64\Debug\View\NoteDisplayApplicationView.xaml
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\usercontrol\NoteContent.xaml
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\usercontrol\NoteEditOptionsControl.xaml
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\usercontrol\NotesDataTemplate.xaml
@@ -116,6 +120,7 @@ D:\YourNote\UWPYourNote\obj\x64\Debug\Themes\Light.xbf
 D:\YourNote\UWPYourNote\obj\x64\Debug\Themes\Dark.xbf
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\Appearence.xbf
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\HomePage.xbf
+D:\YourNote\UWPYourNote\obj\x64\Debug\View\NoteDisplayApplicationView.xbf
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\usercontrol\NoteContent.xbf
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\usercontrol\NoteEditOptionsControl.xbf
 D:\YourNote\UWPYourNote\obj\x64\Debug\View\usercontrol\NotesDataTemplate.xbf

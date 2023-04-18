@@ -7,7 +7,6 @@
     xmlns:local="UWPYourNote.View.usercontrols.NoteEditOptionsControl"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:usercontrol="using:UWPYourNote.View.usercontrol"
-    xmlns:uwpyournote="using:UWPYourNote"
     mc:Ignorable="d">
 
 

@@ -20,7 +20,6 @@ using UWPYourNoteLibrary.Domain.UseCase;
 using Windows.UI.Xaml.Automation.Peers;
 using UWPYourNote.View;
 using static UWPYourNoteLibrary.Util.NotesUtilities;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace UWPYourNote.ViewModels
 {

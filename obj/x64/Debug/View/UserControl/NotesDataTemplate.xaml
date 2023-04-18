@@ -8,23 +8,37 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="using:Microsoft.Toolkit.Uwp.UI"
     mc:Ignorable="d">
-
-    <Grid x:ConnectionId='2' MaxHeight="500"                                                         >
+    <!--   -->
+    <Grid x:ConnectionId='2'
+        MaxHeight="500"
+                                                                 
+                                            
+                                          >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <TextBlock x:ConnectionId='3'
-            Name="Titles"
-            Margin="10,10,0,0"
-            FontSize="18"
-            FontWeight="SemiBold"
-            Foreground="Black"
-                                                            
-            TextTrimming="CharacterEllipsis" />
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock x:ConnectionId='5'
+                Name="Titles"
+                Margin="10,10,0,0"
+                FontSize="18"
+                FontWeight="SemiBold"
+                Foreground="Black"
+                                                                
+                TextTrimming="CharacterEllipsis" />
+
+            <Button x:ConnectionId='6' Background="Blue" Foreground="Black" Content="PopOut"  Grid.Column="1"  Name="HoverButton1"                                                                                    />
+        </Grid>
+
         <ScrollViewer Grid.Row="1">
-            <RichEditBox x:ConnectionId='5'
+            <RichEditBox x:ConnectionId='4'
                 Name="Contents"
                 Margin="15"
                 FontSize="14"
@@ -38,7 +52,7 @@
             BorderBrush="Black"
             BorderThickness="0,1,0,0"
             CornerRadius="4">
-            <TextBlock x:ConnectionId='4' Foreground="#000000"                                                             />
+            <TextBlock x:ConnectionId='3' Foreground="#000000"                                                             />
         </Border>
     </Grid>
 

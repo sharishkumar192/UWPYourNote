@@ -39,17 +39,17 @@ namespace UWPYourNote.ViewModels.usercontrol
         //--------------------------------------------- SEARCH NOTES BASED ON THE TEXT/ RECENT SEARCHES-----------------------------------
 
         void AssignSuggestedNotes(ObservableCollection<Note> notes)
-        {
+         {
             UserControl page = (UserControl)noteTitleSearchView;
             _ = page?.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Low, () =>
             {
                 noteTitleSearchVM.SuggestionContentItemSource.Clear();
                 if (notes == null || notes.Count == 0) { return; }
-                foreach(Note note in notes) 
+                foreach (Note note in notes)
                 {
                     noteTitleSearchVM.SuggestionContentItemSource.Add(note);
                 }
-             //   noteTitleSearchVM.SuggestionContentItemSource = notes;
+                // noteTitleSearchVM.SuggestionContentItemSource = notes;
 
 
             });
@@ -89,7 +89,7 @@ namespace UWPYourNote.ViewModels.usercontrol
             }
 
             public void onFailure(GetSuggestedAndRecentNotesUseCaseResponse result)
-           {
+            {
 
                 Presenter?.AssignSuggestedNotes(result.List);
 

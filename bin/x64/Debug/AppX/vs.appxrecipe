@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>HARISH-PT6263</Machine>
-    <WindowsUser>harish-pt6263</WindowsUser>
+    <Machine>HARISH-PT6263-N</Machine>
+    <WindowsUser>test</WindowsUser>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetOsVersion>10.0</TargetOsVersion>
     <TargetOsDescription>Windows 10.0</TargetOsDescription>
@@ -19,10 +19,10 @@
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
     <LayoutDir>D:\YourNote\UWPYourNote\bin\x64\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>89EABCBB1C12DD782515ED04ECA6344A3D72329E44C407489BE185C3CEFAEDB7</RegisteredManifestChecksum>
-    <RegisteredPackageMoniker>f370c6dd-350c-4488-8938-3a4de12a2669_1.0.0.0_x64__ekzxxtgcwg1pc</RegisteredPackageMoniker>
-    <RegisteredUserModeAppID>f370c6dd-350c-4488-8938-3a4de12a2669_ekzxxtgcwg1pc!App</RegisteredUserModeAppID>
-    <RegisteredPackageID>f370c6dd-350c-4488-8938-3a4de12a2669</RegisteredPackageID>
+    <RegisteredManifestChecksum>C496B94B176D262E0ECA21EEF803024EEA170E80D9A287C1568A8E2D9941FDFF</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>f398c6dd-350c-4488-8938-3a4de12a2669_1.0.0.0_x64__ekzxxtgcwg1pc</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>f398c6dd-350c-4488-8938-3a4de12a2669_ekzxxtgcwg1pc!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>f398c6dd-350c-4488-8938-3a4de12a2669</RegisteredPackageID>
     <RegisteredPackagePublisher>CN=harish-pt6263</RegisteredPackagePublisher>
     <RegisteredVersion>1.0.0.0</RegisteredVersion>
   </PropertyGroup>
@@ -30,67 +30,67 @@
     <AppXManifest Include="D:\YourNote\UWPYourNote\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-04-12T16:18:23.101</Modified>
+      <Modified>2023-04-18T00:38:04.336</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\YourNoteUWP.exe">
       <PackagePath>entrypoint\YourNoteUWP.exe</PackagePath>
-      <Modified>2023-04-12T16:18:21.979</Modified>
+      <Modified>2023-04-18T00:38:03.586</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\colorcode.core\2.0.6\lib\netstandard1.4\ColorCode.Core.dll">
+    <AppxPackagedFile Include="C:\Users\test\.nuget\packages\colorcode.core\2.0.6\lib\netstandard1.4\ColorCode.Core.dll">
       <PackagePath>ColorCode.Core.dll</PackagePath>
       <Modified>2018-10-05T23:30:08.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\colorcode.uwp\2.0.6\lib\uap10.0\ColorCode.UWP.dll">
+    <AppxPackagedFile Include="C:\Users\test\.nuget\packages\colorcode.uwp\2.0.6\lib\uap10.0\ColorCode.UWP.dll">
       <PackagePath>ColorCode.UWP.dll</PackagePath>
       <Modified>2018-10-05T23:30:16.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.bcl.asyncinterfaces\5.0.0\lib\netstandard2.0\Microsoft.Bcl.AsyncInterfaces.dll">
+    <AppxPackagedFile Include="C:\Users\test\.nuget\packages\microsoft.bcl.asyncinterfaces\5.0.0\lib\netstandard2.0\Microsoft.Bcl.AsyncInterfaces.dll">
       <PackagePath>Microsoft.Bcl.AsyncInterfaces.dll</PackagePath>
       <Modified>2020-10-19T18:40:26.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.data.sqlite.core\7.0.3\lib\netstandard2.0\Microsoft.Data.Sqlite.dll">
+    <AppxPackagedFile Include="C:\Users\test\.nuget\packages\microsoft.data.sqlite.core\7.0.3\lib\netstandard2.0\Microsoft.Data.Sqlite.dll">
       <PackagePath>Microsoft.Data.Sqlite.dll</PackagePath>
       <Modified>2023-01-13T21:07:40.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.toolkit\7.1.2\lib\netstandard2.0\Microsoft.Toolkit.dll">
+    <AppxPackagedFile Include="C:\Users\test\.nuget\packages\microsoft.toolkit\7.1.2\lib\netstandard2.0\Microsoft.Toolkit.dll">
       <PackagePath>Microsoft.Toolkit.dll</PackagePath>
       <Modified>2021-11-18T22:28:50.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.toolkit.uwp\7.1.3\lib\uap10.0.17763\Microsoft.Toolkit.Uwp.dll">
+    <AppxPackagedFile Include="C:\Users\test\.nuget\packages\microsoft.toolkit.uwp\7.1.3\lib\uap10.0.17763\Microsoft.Toolkit.Uwp.dll">
       <PackagePath>Microsoft.Toolkit.Uwp.dll</PackagePath>
       <Modified>2022-11-01T17:32:44.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.toolkit.uwp.ui\7.1.3\lib\uap10.0.17763\Microsoft.Toolkit.Uwp.UI.dll">
+    <AppxPackagedFile Include="C:\Users\test\.nuget\packages\microsoft.toolkit.uwp.ui\7.1.3\lib\uap10.0.17763\Microsoft.Toolkit.Uwp.UI.dll">
       <PackagePath>Microsoft.Toolkit.Uwp.UI.dll</PackagePath>
       <Modified>2022-11-01T17:32:54.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.toolkit.uwp.ui.controls.core\7.1.3\lib\uap10.0.17763\Microsoft.Toolkit.Uwp.UI.Controls.Core.dll">
+    <AppxPackagedFile Include="C:\Users\test\.nuget\packages\microsoft.toolkit.uwp.ui.controls.core\7.1.3\lib\uap10.0.17763\Microsoft.Toolkit.Uwp.UI.Controls.Core.dll">
       <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls.Core.dll</PackagePath>
       <Modified>2022-11-01T17:33:02.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.toolkit.uwp.ui.controls.datagrid\7.1.3\lib\uap10.0.17763\Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll">
+    <AppxPackagedFile Include="C:\Users\test\.nuget\packages\microsoft.toolkit.uwp.ui.controls.datagrid\7.1.3\lib\uap10.0.17763\Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll">
       <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll</PackagePath>
       <Modified>2022-11-01T17:33:04.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.toolkit.uwp.ui.controls.input\7.1.3\lib\uap10.0.17763\Microsoft.Toolkit.Uwp.UI.Controls.Input.dll">
+    <AppxPackagedFile Include="C:\Users\test\.nuget\packages\microsoft.toolkit.uwp.ui.controls.input\7.1.3\lib\uap10.0.17763\Microsoft.Toolkit.Uwp.UI.Controls.Input.dll">
       <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls.Input.dll</PackagePath>
       <Modified>2022-11-01T17:33:06.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.toolkit.uwp.ui.controls.layout\7.1.3\lib\uap10.0.17763\Microsoft.Toolkit.Uwp.UI.Controls.Layout.dll">
+    <AppxPackagedFile Include="C:\Users\test\.nuget\packages\microsoft.toolkit.uwp.ui.controls.layout\7.1.3\lib\uap10.0.17763\Microsoft.Toolkit.Uwp.UI.Controls.Layout.dll">
       <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls.Layout.dll</PackagePath>
       <Modified>2022-11-01T17:33:08.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.toolkit.uwp.ui.controls.markdown\7.1.3\lib\uap10.0.17763\Microsoft.Toolkit.Uwp.UI.Controls.Markdown.dll">
+    <AppxPackagedFile Include="C:\Users\test\.nuget\packages\microsoft.toolkit.uwp.ui.controls.markdown\7.1.3\lib\uap10.0.17763\Microsoft.Toolkit.Uwp.UI.Controls.Markdown.dll">
       <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls.Markdown.dll</PackagePath>
       <Modified>2022-11-01T17:33:10.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.toolkit.uwp.ui.controls.media\7.1.3\lib\uap10.0.17763\Microsoft.Toolkit.Uwp.UI.Controls.Media.dll">
+    <AppxPackagedFile Include="C:\Users\test\.nuget\packages\microsoft.toolkit.uwp.ui.controls.media\7.1.3\lib\uap10.0.17763\Microsoft.Toolkit.Uwp.UI.Controls.Media.dll">
       <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls.Media.dll</PackagePath>
       <Modified>2022-11-01T17:33:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.toolkit.uwp.ui.controls.primitives\7.1.3\lib\uap10.0.17763\Microsoft.Toolkit.Uwp.UI.Controls.Primitives.dll">
+    <AppxPackagedFile Include="C:\Users\test\.nuget\packages\microsoft.toolkit.uwp.ui.controls.primitives\7.1.3\lib\uap10.0.17763\Microsoft.Toolkit.Uwp.UI.Controls.Primitives.dll">
       <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls.Primitives.dll</PackagePath>
       <Modified>2022-11-01T17:33:16.000</Modified>
     </AppxPackagedFile>
@@ -98,39 +98,39 @@
       <PackagePath>System.Runtime.dll</PackagePath>
       <Modified>2022-06-10T16:53:28.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\sqlitepclraw.core\2.1.4\lib\netstandard2.0\SQLitePCLRaw.core.dll">
+    <AppxPackagedFile Include="C:\Users\test\.nuget\packages\sqlitepclraw.core\2.1.4\lib\netstandard2.0\SQLitePCLRaw.core.dll">
       <PackagePath>SQLitePCLRaw.core.dll</PackagePath>
       <Modified>2023-01-10T20:18:32.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\stub.system.data.sqlite.core.netstandard\1.0.117\runtimes\win-x64\native\SQLite.Interop.dll">
+    <AppxPackagedFile Include="C:\Users\test\.nuget\packages\stub.system.data.sqlite.core.netstandard\1.0.117\runtimes\win-x64\native\SQLite.Interop.dll">
       <PackagePath>SQLite.Interop.dll</PackagePath>
       <Modified>2022-11-26T08:39:32.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\stub.system.data.sqlite.core.netstandard\1.0.117\lib\netstandard2.0\System.Data.SQLite.dll">
+    <AppxPackagedFile Include="C:\Users\test\.nuget\packages\stub.system.data.sqlite.core.netstandard\1.0.117\lib\netstandard2.0\System.Data.SQLite.dll">
       <PackagePath>System.Data.SQLite.dll</PackagePath>
       <Modified>2022-11-26T08:40:08.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\system.runtime.compilerservices.unsafe\5.0.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll">
+    <AppxPackagedFile Include="C:\Users\test\.nuget\packages\system.runtime.compilerservices.unsafe\5.0.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll">
       <PackagePath>System.Runtime.CompilerServices.Unsafe.dll</PackagePath>
       <Modified>2020-10-19T18:46:44.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\system.text.encodings.web\5.0.1\lib\netstandard2.0\System.Text.Encodings.Web.dll">
+    <AppxPackagedFile Include="C:\Users\test\.nuget\packages\system.text.encodings.web\5.0.1\lib\netstandard2.0\System.Text.Encodings.Web.dll">
       <PackagePath>System.Text.Encodings.Web.dll</PackagePath>
       <Modified>2021-02-16T21:53:32.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\system.text.json\5.0.2\lib\netstandard2.0\System.Text.Json.dll">
+    <AppxPackagedFile Include="C:\Users\test\.nuget\packages\system.text.json\5.0.2\lib\netstandard2.0\System.Text.Json.dll">
       <PackagePath>System.Text.Json.dll</PackagePath>
       <Modified>2021-03-16T22:34:16.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\win2d.uwp\1.25.0\runtimes\win10-x64\native\Microsoft.Graphics.Canvas.dll">
+    <AppxPackagedFile Include="C:\Users\test\.nuget\packages\win2d.uwp\1.25.0\runtimes\win10-x64\native\Microsoft.Graphics.Canvas.dll">
       <PackagePath>Microsoft.Graphics.Canvas.dll</PackagePath>
       <Modified>2020-04-02T19:46:32.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNoteLibrary\bin\x64\Debug\UWPYourNoteLibrary.dll">
       <PackagePath>UWPYourNoteLibrary.dll</PackagePath>
-      <Modified>2023-04-12T07:34:50.138</Modified>
+      <Modified>2023-04-17T23:34:22.330</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\win2d.uwp\1.25.0\lib\uap10.0\Microsoft.Graphics.Canvas.winmd">
+    <AppxPackagedFile Include="C:\Users\test\.nuget\packages\win2d.uwp\1.25.0\lib\uap10.0\Microsoft.Graphics.Canvas.winmd">
       <PackagePath>Microsoft.Graphics.Canvas.winmd</PackagePath>
       <Modified>2020-04-02T19:44:36.000</Modified>
     </AppxPackagedFile>
@@ -138,27 +138,27 @@
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
       <Modified>2020-12-01T23:22:00.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.toolkit.uwp.ui.controls.core\7.1.3\lib\uap10.0.17763\Microsoft.Toolkit.Uwp.UI.Controls.Core\Microsoft.Toolkit.Uwp.UI.Controls.Core.xr.xml">
+    <AppxPackagedFile Include="C:\Users\test\.nuget\packages\microsoft.toolkit.uwp.ui.controls.core\7.1.3\lib\uap10.0.17763\Microsoft.Toolkit.Uwp.UI.Controls.Core\Microsoft.Toolkit.Uwp.UI.Controls.Core.xr.xml">
       <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls.Core\Microsoft.Toolkit.Uwp.UI.Controls.Core.xr.xml</PackagePath>
       <Modified>2022-11-01T17:20:58.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.toolkit.uwp.ui.controls.datagrid\7.1.3\lib\uap10.0.17763\Microsoft.Toolkit.Uwp.UI.Controls.DataGrid\Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.xr.xml">
+    <AppxPackagedFile Include="C:\Users\test\.nuget\packages\microsoft.toolkit.uwp.ui.controls.datagrid\7.1.3\lib\uap10.0.17763\Microsoft.Toolkit.Uwp.UI.Controls.DataGrid\Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.xr.xml">
       <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls.DataGrid\Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.xr.xml</PackagePath>
       <Modified>2022-11-01T17:17:18.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.toolkit.uwp.ui.controls.input\7.1.3\lib\uap10.0.17763\Microsoft.Toolkit.Uwp.UI.Controls.Input\Microsoft.Toolkit.Uwp.UI.Controls.Input.xr.xml">
+    <AppxPackagedFile Include="C:\Users\test\.nuget\packages\microsoft.toolkit.uwp.ui.controls.input\7.1.3\lib\uap10.0.17763\Microsoft.Toolkit.Uwp.UI.Controls.Input\Microsoft.Toolkit.Uwp.UI.Controls.Input.xr.xml">
       <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls.Input\Microsoft.Toolkit.Uwp.UI.Controls.Input.xr.xml</PackagePath>
       <Modified>2022-11-01T17:20:46.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.toolkit.uwp.ui.controls.layout\7.1.3\lib\uap10.0.17763\Microsoft.Toolkit.Uwp.UI.Controls.Layout\Microsoft.Toolkit.Uwp.UI.Controls.Layout.xr.xml">
+    <AppxPackagedFile Include="C:\Users\test\.nuget\packages\microsoft.toolkit.uwp.ui.controls.layout\7.1.3\lib\uap10.0.17763\Microsoft.Toolkit.Uwp.UI.Controls.Layout\Microsoft.Toolkit.Uwp.UI.Controls.Layout.xr.xml">
       <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls.Layout\Microsoft.Toolkit.Uwp.UI.Controls.Layout.xr.xml</PackagePath>
       <Modified>2022-11-01T17:20:34.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.toolkit.uwp.ui.controls.markdown\7.1.3\lib\uap10.0.17763\Microsoft.Toolkit.Uwp.UI.Controls.Markdown\Microsoft.Toolkit.Uwp.UI.Controls.Markdown.xr.xml">
+    <AppxPackagedFile Include="C:\Users\test\.nuget\packages\microsoft.toolkit.uwp.ui.controls.markdown\7.1.3\lib\uap10.0.17763\Microsoft.Toolkit.Uwp.UI.Controls.Markdown\Microsoft.Toolkit.Uwp.UI.Controls.Markdown.xr.xml">
       <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls.Markdown\Microsoft.Toolkit.Uwp.UI.Controls.Markdown.xr.xml</PackagePath>
       <Modified>2022-11-01T17:21:06.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.toolkit.uwp.ui.controls.media\7.1.3\lib\uap10.0.17763\Microsoft.Toolkit.Uwp.UI.Controls.Media\Microsoft.Toolkit.Uwp.UI.Controls.Media.xr.xml">
+    <AppxPackagedFile Include="C:\Users\test\.nuget\packages\microsoft.toolkit.uwp.ui.controls.media\7.1.3\lib\uap10.0.17763\Microsoft.Toolkit.Uwp.UI.Controls.Media\Microsoft.Toolkit.Uwp.UI.Controls.Media.xr.xml">
       <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls.Media\Microsoft.Toolkit.Uwp.UI.Controls.Media.xr.xml</PackagePath>
       <Modified>2022-11-01T17:20:24.000</Modified>
     </AppxPackagedFile>
@@ -434,71 +434,75 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\YourNoteUWP.xr.xml">
       <PackagePath>YourNoteUWP.xr.xml</PackagePath>
-      <Modified>2023-04-12T16:00:26.132</Modified>
+      <Modified>2023-04-18T00:22:20.608</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2023-04-12T16:18:21.737</Modified>
+      <Modified>2023-04-18T00:38:03.439</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\Dictionary.xbf">
       <PackagePath>Dictionary.xbf</PackagePath>
-      <Modified>2023-04-12T16:18:21.737</Modified>
+      <Modified>2023-04-18T00:38:03.432</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\NoteColorBackground.xbf">
       <PackagePath>NoteColorBackground.xbf</PackagePath>
-      <Modified>2023-04-12T16:18:21.768</Modified>
+      <Modified>2023-04-18T00:38:03.455</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\Themes\Light.xbf">
       <PackagePath>Themes\Light.xbf</PackagePath>
-      <Modified>2023-04-12T16:18:21.737</Modified>
+      <Modified>2023-04-18T00:38:03.435</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\Themes\Dark.xbf">
       <PackagePath>Themes\Dark.xbf</PackagePath>
-      <Modified>2023-04-12T16:18:21.737</Modified>
+      <Modified>2023-04-18T00:38:03.437</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\Appearence.xbf">
       <PackagePath>View\Appearence.xbf</PackagePath>
-      <Modified>2023-04-12T16:18:21.768</Modified>
+      <Modified>2023-04-18T00:38:03.456</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\HomePage.xbf">
       <PackagePath>View\HomePage.xbf</PackagePath>
-      <Modified>2023-04-12T16:18:21.753</Modified>
+      <Modified>2023-04-18T00:38:03.444</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\NoteDisplayApplicationView.xbf">
+      <PackagePath>View\NoteDisplayApplicationView.xbf</PackagePath>
+      <Modified>2023-04-18T00:38:03.457</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\usercontrol\NoteContent.xbf">
       <PackagePath>View\usercontrol\NoteContent.xbf</PackagePath>
-      <Modified>2023-04-12T16:18:21.768</Modified>
+      <Modified>2023-04-18T00:38:03.457</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\usercontrol\NoteEditOptionsControl.xbf">
       <PackagePath>View\usercontrol\NoteEditOptionsControl.xbf</PackagePath>
-      <Modified>2023-04-12T16:18:21.768</Modified>
+      <Modified>2023-04-18T00:38:03.447</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\usercontrol\NotesDataTemplate.xbf">
       <PackagePath>View\usercontrol\NotesDataTemplate.xbf</PackagePath>
-      <Modified>2023-04-12T16:18:21.768</Modified>
+      <Modified>2023-04-18T00:38:03.458</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\MainPage.xbf">
       <PackagePath>View\MainPage.xbf</PackagePath>
-      <Modified>2023-04-12T16:18:21.768</Modified>
+      <Modified>2023-04-18T00:38:03.458</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\NoteColorOptions.xbf">
       <PackagePath>View\NoteColorOptions.xbf</PackagePath>
-      <Modified>2023-04-12T16:18:21.768</Modified>
+      <Modified>2023-04-18T00:38:03.458</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\SignInPage.xbf">
       <PackagePath>View\SignInPage.xbf</PackagePath>
-      <Modified>2023-04-12T16:18:21.753</Modified>
+      <Modified>2023-04-18T00:38:03.451</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\SignUpPage.xbf">
       <PackagePath>View\SignUpPage.xbf</PackagePath>
-      <Modified>2023-04-12T16:18:21.753</Modified>
+      <Modified>2023-04-18T00:38:03.452</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\usercontrol\NoteTitleSearchBox.xbf">
       <PackagePath>View\usercontrol\NoteTitleSearchBox.xbf</PackagePath>
-      <Modified>2023-04-12T16:18:21.768</Modified>
+      <Modified>2023-04-18T00:38:03.459</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\View\usercontrol\ThemeToggle.xbf">
       <PackagePath>View\usercontrol\ThemeToggle.xbf</PackagePath>
-      <Modified>2023-04-12T16:18:21.768</Modified>
+      <Modified>2023-04-18T00:38:03.459</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.19041.0\\redist\Debug\X64\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -510,60 +514,60 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2023-04-12T10:37:11.252</Modified>
+      <Modified>2023-04-17T23:34:29.731</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\YourNote\UWPYourNote\bin\x64\Debug\Core\YourNoteUWP.exe">
       <PackagePath>YourNoteUWP.exe</PackagePath>
-      <Modified>2023-04-12T16:18:23.090</Modified>
+      <Modified>2023-04-18T00:38:04.331</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.ui.xaml\2.7.0\buildTransitive\..\lib\uap10.0\Microsoft.UI.Xaml.winmd">
+    <AppxPackagedFile Include="C:\Users\test\.nuget\packages\microsoft.ui.xaml\2.7.0\buildTransitive\..\lib\uap10.0\Microsoft.UI.Xaml.winmd">
       <PackagePath>Microsoft.UI.Xaml.winmd</PackagePath>
       <Modified>2021-09-14T09:06:08.000</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
-    <ResolvedSDKReference Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.ui.xaml\2.7.0\buildTransitive\..\tools\AppX\x86\Release\Microsoft.UI.Xaml.2.7.appx">
+    <ResolvedSDKReference Include="C:\Users\test\.nuget\packages\microsoft.ui.xaml\2.7.0\buildTransitive\..\tools\AppX\x86\Release\Microsoft.UI.Xaml.2.7.appx">
       <Name>Microsoft.UI.Xaml.2.7</Name>
       <Version>7.2109.13004.0</Version>
       <Architecture>x86</Architecture>
       <FrameworkIdentity>Name = Microsoft.UI.Xaml.2.7, MinVersion = 7.2109.13004.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
-      <AppxLocation>C:\Users\harish-pt6263\.nuget\packages\microsoft.ui.xaml\2.7.0\buildTransitive\..\tools\AppX\x86\Release\Microsoft.UI.Xaml.2.7.appx</AppxLocation>
+      <AppxLocation>C:\Users\test\.nuget\packages\microsoft.ui.xaml\2.7.0\buildTransitive\..\tools\AppX\x86\Release\Microsoft.UI.Xaml.2.7.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>
-    <ResolvedSDKReference Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.ui.xaml\2.7.0\buildTransitive\..\tools\AppX\x86\Release\Microsoft.UI.Xaml.2.7.appx">
+    <ResolvedSDKReference Include="C:\Users\test\.nuget\packages\microsoft.ui.xaml\2.7.0\buildTransitive\..\tools\AppX\x86\Release\Microsoft.UI.Xaml.2.7.appx">
       <Name>Microsoft.UI.Xaml.2.7</Name>
       <Version>7.2109.13004.0</Version>
       <Architecture>Win32</Architecture>
       <FrameworkIdentity>Name = Microsoft.UI.Xaml.2.7, MinVersion = 7.2109.13004.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
-      <AppxLocation>C:\Users\harish-pt6263\.nuget\packages\microsoft.ui.xaml\2.7.0\buildTransitive\..\tools\AppX\x86\Release\Microsoft.UI.Xaml.2.7.appx</AppxLocation>
+      <AppxLocation>C:\Users\test\.nuget\packages\microsoft.ui.xaml\2.7.0\buildTransitive\..\tools\AppX\x86\Release\Microsoft.UI.Xaml.2.7.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>
-    <ResolvedSDKReference Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.ui.xaml\2.7.0\buildTransitive\..\tools\AppX\x64\Release\Microsoft.UI.Xaml.2.7.appx">
+    <ResolvedSDKReference Include="C:\Users\test\.nuget\packages\microsoft.ui.xaml\2.7.0\buildTransitive\..\tools\AppX\x64\Release\Microsoft.UI.Xaml.2.7.appx">
       <Name>Microsoft.UI.Xaml.2.7</Name>
       <Version>7.2109.13004.0</Version>
       <Architecture>x64</Architecture>
       <FrameworkIdentity>Name = Microsoft.UI.Xaml.2.7, MinVersion = 7.2109.13004.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
-      <AppxLocation>C:\Users\harish-pt6263\.nuget\packages\microsoft.ui.xaml\2.7.0\buildTransitive\..\tools\AppX\x64\Release\Microsoft.UI.Xaml.2.7.appx</AppxLocation>
+      <AppxLocation>C:\Users\test\.nuget\packages\microsoft.ui.xaml\2.7.0\buildTransitive\..\tools\AppX\x64\Release\Microsoft.UI.Xaml.2.7.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>
-    <ResolvedSDKReference Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.ui.xaml\2.7.0\buildTransitive\..\tools\AppX\arm\Release\Microsoft.UI.Xaml.2.7.appx">
+    <ResolvedSDKReference Include="C:\Users\test\.nuget\packages\microsoft.ui.xaml\2.7.0\buildTransitive\..\tools\AppX\arm\Release\Microsoft.UI.Xaml.2.7.appx">
       <Name>Microsoft.UI.Xaml.2.7</Name>
       <Version>7.2109.13004.0</Version>
       <Architecture>arm</Architecture>
       <FrameworkIdentity>Name = Microsoft.UI.Xaml.2.7, MinVersion = 7.2109.13004.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
-      <AppxLocation>C:\Users\harish-pt6263\.nuget\packages\microsoft.ui.xaml\2.7.0\buildTransitive\..\tools\AppX\arm\Release\Microsoft.UI.Xaml.2.7.appx</AppxLocation>
+      <AppxLocation>C:\Users\test\.nuget\packages\microsoft.ui.xaml\2.7.0\buildTransitive\..\tools\AppX\arm\Release\Microsoft.UI.Xaml.2.7.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>
-    <ResolvedSDKReference Include="C:\Users\harish-pt6263\.nuget\packages\microsoft.ui.xaml\2.7.0\buildTransitive\..\tools\AppX\arm64\Release\Microsoft.UI.Xaml.2.7.appx">
+    <ResolvedSDKReference Include="C:\Users\test\.nuget\packages\microsoft.ui.xaml\2.7.0\buildTransitive\..\tools\AppX\arm64\Release\Microsoft.UI.Xaml.2.7.appx">
       <Name>Microsoft.UI.Xaml.2.7</Name>
       <Version>7.2109.13004.0</Version>
       <Architecture>arm64</Architecture>
       <FrameworkIdentity>Name = Microsoft.UI.Xaml.2.7, MinVersion = 7.2109.13004.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
-      <AppxLocation>C:\Users\harish-pt6263\.nuget\packages\microsoft.ui.xaml\2.7.0\buildTransitive\..\tools\AppX\arm64\Release\Microsoft.UI.Xaml.2.7.appx</AppxLocation>
+      <AppxLocation>C:\Users\test\.nuget\packages\microsoft.ui.xaml\2.7.0\buildTransitive\..\tools\AppX\arm64\Release\Microsoft.UI.Xaml.2.7.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>

@@ -215,7 +215,7 @@ namespace UWPYourNote.View
             MainMenuOptionsSelectedIndex = box.SelectedIndex;
             TypeOfNote typeOfNote;
             TitleSearchBox.SearchTextBoxText = "";
-            TitleSearchBox.SearchPopupIsOpen = false;
+           // TitleSearchBox.SearchPopupIsOpen = false;
 
             if (PersonalNotesIsSelected == true)
             {
@@ -253,7 +253,7 @@ namespace UWPYourNote.View
         //----------------------------Search Text Box---------------------------------------------------
         public void SearchBoxContainerLostFocus()
         {
-            TitleSearchBox.SearchPopupIsOpen = false;
+          //  TitleSearchBox.SearchPopupIsOpen = false;
         }
 
 
@@ -554,13 +554,25 @@ namespace UWPYourNote.View
 
         public void NotesDataItemClick(object sender, ItemClickEventArgs e)
         {
-            NoteDisplayPopUpOpened();
+        //    NoteDisplayPopUpOpened();
             selectedNoteFromDisplay = (UWPYourNoteLibrary.Models.Note)e.ClickedItem;
-            NoteContentPopUp.DisplayContent(LoggedUser.userId, selectedNoteFromDisplay.noteId, selectedNoteFromDisplay.title, selectedNoteFromDisplay.content, selectedNoteFromDisplay.noteColor, selectedNoteFromDisplay.modifiedDay);
+         //   ColumnSplitter.Visibility = DetailsViewVisibility = Visibility.Visible;
+    
+            DetailsView.Navigate(typeof(NoteDisplayApplicationView), selectedNoteFromDisplay);
+          //  NoteContentPopUp.DisplayContent(LoggedUser.userId, selectedNoteFromDisplay.noteId, selectedNoteFromDisplay.title, selectedNoteFromDisplay.content, selectedNoteFromDisplay.noteColor, selectedNoteFromDisplay.modifiedDay);
 
 
         }
 
+        private Visibility _detailsViewVisibility = Visibility.Collapsed;
+
+        public Visibility DetailsViewVisibility
+        {
+            get { return _detailsViewVisibility; }
+            set { _detailsViewVisibility = value;
+                OnPropertyChanged();
+            }
+        }
 
 
 
@@ -628,8 +640,10 @@ namespace UWPYourNote.View
 
         private void NoteDisplayPopUpLayoutUpdated(object sender, object e)
         {
-            NoteContentPopUpHeight = Window.Current.Bounds.Height * 1.5 / 2;
-            NoteContentPopUpWidth = Window.Current.Bounds.Width / 2;
+            //    NoteContentPopUpHeight = Window.Current.Bounds.Height * 1.5 / 2;
+            //    NoteContentPopUpWidth = Window.Current.Bounds.Width / 2;
+            NoteContentPopUpHeight = Window.Current.Bounds.Height;
+            NoteContentPopUpWidth = Window.Current.Bounds.Width;
             if (NoteContentPopUp.ActualWidth == 0 && NoteContentPopUp.ActualHeight == 0)
             {
                 return;
@@ -648,6 +662,8 @@ namespace UWPYourNote.View
                 this.NoteDisplayPopUp.HorizontalOffset = NewHorizontalOffset;
                 this.NoteDisplayPopUp.VerticalOffset = NewVerticalOffset;
             }
+
+
         }
 
 

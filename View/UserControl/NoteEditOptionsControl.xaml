@@ -210,6 +210,25 @@
             </Button.Flyout>
         </Button>
 
+        <Button
+            Name="PopOutButton"
+            Margin="5,0,0,0"
+            Click="{x:Bind NotePopoutButtonClick, Mode=OneWay}"
+            Content="&#xE8A7;"
+            FontFamily="Segoe MDL2 Assets"
+            Style="{StaticResource NoteStyleButtonStyle}"
+            ToolTipService.ToolTip="PopOut"
+            Visibility="{x:Bind PopOutVisibility, Mode=OneWay}" />
+
+        <Button
+            Name="MinimizeButton"
+            Margin="5,0,0,0"
+            Click="{x:Bind NoteMinimizeButtonClick, Mode=OneWay}"
+            Content="&#xE1D8;"
+            FontFamily="Segoe MDL2 Assets"
+            Style="{StaticResource NoteStyleButtonStyle}"
+            ToolTipService.ToolTip="Minimize"
+            Visibility="{x:Bind MinimizeVisibility, Mode=OneWay}" />
 
         <Button
             Name="NoteDeleteButton"

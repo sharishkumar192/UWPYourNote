@@ -8,21 +8,35 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="using:Microsoft.Toolkit.Uwp.UI"
     mc:Ignorable="d">
-
-    <Grid MaxHeight="500" Background="{x:Bind NoteContentBackground, Mode=OneWay}">
+    <!--   -->
+    <Grid
+        MaxHeight="500"
+         Background="{x:Bind NoteContentBackground, Mode=OneWay}"
+        PointerEntered="Grid_PointerEntered"
+        PointerExited="Grid_PointerExited">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <TextBlock
-            Name="Titles"
-            Margin="10,10,0,0"
-            FontSize="18"
-            FontWeight="SemiBold"
-            Foreground="Black"
-            Text="{x:Bind notesTemplate.title, Mode=OneWay}"
-            TextTrimming="CharacterEllipsis" />
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock
+                Name="Titles"
+                Margin="10,10,0,0"
+                FontSize="18"
+                FontWeight="SemiBold"
+                Foreground="Black"
+                Text="{x:Bind notesTemplate.title, Mode=OneWay}"
+                TextTrimming="CharacterEllipsis" />
+
+            <Button Background="Blue" Foreground="Black" Content="PopOut"  Grid.Column="1"  Name="HoverButton1" Click="HoverButton1_Click" Visibility="{x:Bind OptionsButtonForNote, Mode=OneWay}" />
+        </Grid>
+
         <ScrollViewer Grid.Row="1">
             <RichEditBox
                 Name="Contents"

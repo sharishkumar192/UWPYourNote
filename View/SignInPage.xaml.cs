@@ -41,7 +41,7 @@ namespace UWPYourNote.View
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {   _frame = e.Parameter as Frame;
-            signInPageVM = SignInPageVM.Singleton;
+                signInPageVM = new SignInPageVM();
             signInPageVM.signInPageView = this; 
             signInPageVM.GetRecentLogInUsers();
         }

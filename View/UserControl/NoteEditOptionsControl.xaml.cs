@@ -130,7 +130,7 @@ namespace UWPYourNote.View.usercontrol
                 Style style1 = Application.Current.Resources[UWPYourNoteLibrary.Util.NotesUtilities.noteColorStyle[ColorOptionsSelectedIndex]] as Style;
                 Style style2 = Application.Current.Resources[UWPYourNoteLibrary.Util.NotesUtilities.noteColorButtonStyle[ColorOptionsSelectedIndex]] as Style;
               
-                FontBackground.Style = FontIncrease.Style = FontDecrease.Style = SmallCaps.Style = AllCaps.Style = Strikethrough.Style = NoteShareButton.Style = style1;
+              MinimizeButton.Style = PopOutButton.Style =  FontBackground.Style = FontIncrease.Style = FontDecrease.Style = SmallCaps.Style = AllCaps.Style = Strikethrough.Style = NoteShareButton.Style = style1;
                 NoteColor.Style = NoteDeleteButton.Style = style2;
 
             UsersToShareView.Background = NotesUtilities.GetSolidColorBrush(NotesUtilities.noteShareBackgroundStyle[ColorOptionsSelectedIndex]);
@@ -172,6 +172,38 @@ namespace UWPYourNote.View.usercontrol
         public void NoteDeleteButtonClick(object sender, RoutedEventArgs e)
         {
             EditOptions?.Invoke(ReturnNameOfButton(sender));
+        }
+
+        private Visibility _minimizeVisibility = Visibility.Collapsed;
+
+        public Visibility MinimizeVisibility
+        {
+            get { return _minimizeVisibility; }
+            set { _minimizeVisibility = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private Visibility _popOutVisibility = Visibility.Collapsed;
+
+        public Visibility PopOutVisibility
+        {
+            get { return _popOutVisibility; }
+            set { _popOutVisibility = value;
+            OnPropertyChanged() ;
+            }
+        }
+
+
+
+        public void NotePopoutButtonClick(object sender, RoutedEventArgs e)
+        {
+          //  EditOptions?.Invoke(ReturnNameOfButton(sender));
+        }
+
+        public void NoteMinimizeButtonClick(object sender, RoutedEventArgs e)
+        {
+            //  EditOptions?.Invoke(ReturnNameOfButton(sender));
         }
         public void NoteShareButtonClick(object sender, RoutedEventArgs e)
         {

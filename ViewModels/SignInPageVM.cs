@@ -75,7 +75,8 @@ namespace UWPYourNote.ViewModels
 
             _ = page?.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Low, () =>
             {
-                        FrequentEmailItemSource = result.List;
+                        
+                FrequentEmailItemSource = result.List;
 
                 if (FrequentEmailItemSource == null || FrequentEmailItemSource.Count == 0)
                 {
@@ -85,8 +86,6 @@ namespace UWPYourNote.ViewModels
                 {
                     FrequentEmailBoxVisibility = Visibility.Visible;
                 }
-
-
             });
 
         }
@@ -131,7 +130,6 @@ namespace UWPYourNote.ViewModels
         {
             UWPYourNote.ViewModels.Util.UserUtilities.CheckIfUsersExists(email, new IsExistingUserPresenterCallBack(this));
             // return DBFetch.CheckValidEmail(UserUtilities.userTableName, email);
-
         }
 
         public void ValidateLogInUser(string userId, string password)

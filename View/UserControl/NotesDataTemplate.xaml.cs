@@ -18,6 +18,9 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using UWPYourNoteLibrary.Models;
 using static System.Net.Mime.MediaTypeNames;
+using Windows.ApplicationModel.Core;
+using Windows.UI.Core;
+using Windows.UI.ViewManagement;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -186,6 +189,61 @@ namespace UWPYourNote.View.usercontrol
             byte b = (byte)(Convert.ToUInt32(hex.Substring(4, 2), 16));
             SolidColorBrush myBrush = new SolidColorBrush(Windows.UI.Color.FromArgb((byte)255, r, g, b));
             return myBrush;
+        }
+
+        private void Grid_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            OptionsButtonForNote = Visibility.Visible;
+        }
+
+        private void Grid_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            OptionsButtonForNote = Visibility.Collapsed;
+        }
+
+        private Visibility _optionsButtonForNote = Visibility.Collapsed;
+
+        public Visibility OptionsButtonForNote 
+        {
+            get { return _optionsButtonForNote; }
+            set { _optionsButtonForNote = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+
+        private async void HoverButton1_Click(object sender, RoutedEventArgs e)
+        {
+
+            
+ 
+
+
+            CoreApplicationView newView = CoreApplication.CreateNewView();
+
+            Grid gridViewItem = (Grid)((Button)sender).Parent;
+           Note selectedNote = (Note)gridViewItem.DataContext;
+            
+            int newViewId = 0;
+            await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                Frame frame = new Frame();
+                frame.Navigate(typeof(NoteDisplayApplicationView), selectedNote);
+                Window.Current.Content = frame;
+                // You have to activate the window in order to show it later.
+                Window.Current.Activate();
+
+                newViewId = ApplicationView.GetForCurrentView().Id;
+            });
+            bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId, ViewSizePreference.UseLess);
+
+         
+        }
+
+        private object FindVisualParent<T>(FrameworkElement childItem)
+        {
+            throw new NotImplementedException();
         }
     }
 }

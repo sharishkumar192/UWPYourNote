@@ -14168,7 +14168,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\harish-pt6263\\.nuget\\packages\\": {},
+    "C:\\Users\\test\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\": {}
   },
@@ -14178,7 +14178,7 @@
       "projectUniqueName": "D:\\YourNote\\UWPYourNote\\UWPYourNote.csproj",
       "projectName": "YourNoteUWP",
       "projectPath": "D:\\YourNote\\UWPYourNote\\UWPYourNote.csproj",
-      "packagesPath": "C:\\Users\\harish-pt6263\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\test\\.nuget\\packages\\",
       "outputPath": "D:\\YourNote\\UWPYourNote\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
@@ -14187,7 +14187,7 @@
         "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\harish-pt6263\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\test\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

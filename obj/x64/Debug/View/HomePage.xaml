@@ -70,7 +70,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-
+        <Frame x:ConnectionId='12' Name="DetailsView" />
 
         <RelativePanel VerticalAlignment="Center" Background="{ThemeResource Pagebackground}">
 
@@ -83,7 +83,7 @@
                 RelativePanel.AlignTopWithPanel="True"
                 Visibility="Visible">
 
-                <Image x:ConnectionId='40'
+                <Image x:ConnectionId='41'
                     Name="AppLogo"
                     Width="30"
                     Height="30"
@@ -91,7 +91,7 @@
                     Source="/Assets/StoreLogo.scale-100.png"
                     Visibility="Visible" />
 
-                <TextBlock x:ConnectionId='41'
+                <TextBlock x:ConnectionId='42'
                     Name="AppName"
                     Margin="0,5,0,0"
                     FontSize="20"
@@ -101,7 +101,7 @@
             </StackPanel>
 
             <!--  MAIN MENU OPTIONS  -->
-            <ListBox x:ConnectionId='26'
+            <ListBox x:ConnectionId='27'
                 Name="MainMenuOptions"
                 Margin="0,5"
                 ItemContainerStyle="{StaticResource MainMenuItemStyle}"
@@ -112,17 +112,17 @@
                                                                                         
                 SelectionMode="Single"
                 Style="{StaticResource MainMenuStyle}">
-                <ListBoxItem x:ConnectionId='37'
+                <ListBoxItem x:ConnectionId='38'
                     Name="PersonalNotes"
                     Content="Personal"
                                                                                />
 
-                <ListBoxItem x:ConnectionId='38'
+                <ListBoxItem x:ConnectionId='39'
                     Name="SharedNotes"
                     Content="Shared"
                                                                              />
 
-                <ListBoxItem x:ConnectionId='39'
+                <ListBoxItem x:ConnectionId='40'
                     Name="AllNotes"
                     Content="All Notes"
                                                                           />
@@ -142,21 +142,21 @@
                     Name="SearchButton"
                     Content="Search"
                     Visibility="Collapsed" />-->
-            <StackPanel x:ConnectionId='27'
+            <StackPanel x:ConnectionId='28'
                 Name="TitleSearchBoxContainer"
                 Margin="0,7.5,0,0"
                 RelativePanel.AlignTopWithPanel="True"
                 RelativePanel.LeftOf="Settings"
                 Style="{StaticResource StackBackground}">
 
-                <usercontrol:NoteTitleSearchBox x:ConnectionId='36'
+                <usercontrol:NoteTitleSearchBox x:ConnectionId='37'
                     x:Name="TitleSearchBox"
                     Height="Auto"
                                                                                                  
                                                                  
                     Visibility="Visible" />
             </StackPanel>
-            <Button x:ConnectionId='28'
+            <Button x:ConnectionId='29'
                 Name="SearchButton"
                 Content="&#xE721;"
                 FontFamily="Segoe MDL2 Assets"
@@ -170,7 +170,7 @@
                         FlyoutPresenterStyle="{StaticResource FlyoutFlyoutPresenterStyle}"
                         LightDismissOverlayMode="On"
                         Placement="Left">
-                        <usercontrol:NoteTitleSearchBox x:ConnectionId='35' Margin="0,3.5,0,0"                                               />
+                        <usercontrol:NoteTitleSearchBox x:ConnectionId='36' Margin="0,3.5,0,0"                                               />
                     </Flyout>
                 </Button.Flyout>
             </Button>
@@ -181,7 +181,7 @@
 
 
             <!--  SETTINGS  -->
-            <Button x:ConnectionId='29'
+            <Button x:ConnectionId='30'
                 Name="Settings"
                 Width="35"
                 Height="31"
@@ -199,7 +199,7 @@
                 ToolTipService.Placement="Bottom"
                 ToolTipService.ToolTip="Settings">
                 <Button.Flyout>
-                    <Flyout x:ConnectionId='30'
+                    <Flyout x:ConnectionId='31'
                         x:Name="Hello123"
                         FlyoutPresenterStyle="{StaticResource SettingsFlyout}"
                         Placement="BottomEdgeAlignedRight">
@@ -211,7 +211,7 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <StackPanel>
-                                <usercontrol:ThemeToggle x:ConnectionId='34'
+                                <usercontrol:ThemeToggle x:ConnectionId='35'
                                     Name="ThemeToggleButton"
                                     Grid.Row="0"
                                                                                                     />
@@ -222,7 +222,7 @@
                                     <ImageBrush ImageSource="/Assets/download.png" />
                                 </Ellipse.Fill>
                             </Ellipse>
-                            <TextBlock x:ConnectionId='31'
+                            <TextBlock x:ConnectionId='32'
                                 Name="Welcome"
                                 Grid.Row="1"
                                 Margin="10,5"
@@ -230,7 +230,7 @@
                                 FontSize="14"
                                 FontWeight="SemiBold"
                                                                          />
-                            <Button x:ConnectionId='32'
+                            <Button x:ConnectionId='33'
                                 Name="Appearence"
                                 Grid.Row="2"
                                 Margin="10,5"
@@ -238,7 +238,7 @@
                                                                              
                                 Content="Appearence"
                                 CornerRadius="4" />
-                            <Button x:ConnectionId='33'
+                            <Button x:ConnectionId='34'
                                 Grid.Row="3"
                                 Margin="10,0"
                                 HorizontalAlignment="Stretch"
@@ -268,7 +268,7 @@
             CornerRadius="4"
             Style="{StaticResource GridBackground}">
 
-            <TextBlock x:ConnectionId='19'
+            <TextBlock x:ConnectionId='20'
                 Name="Title"
                 Margin="0,0,0,10"
                 HorizontalAlignment="Left"
@@ -283,7 +283,7 @@
                 HorizontalAlignment="Center"
                 BlurRadius="10"
                 Color="Gray">
-                <Grid x:ConnectionId='20'
+                <Grid x:ConnectionId='21'
                     Name="NewNote"
                                                                         
                     CornerRadius="7"
@@ -295,7 +295,7 @@
                     </Grid.RowDefinitions>
 
 
-                    <TextBox x:ConnectionId='21'
+                    <TextBox x:ConnectionId='22'
                         Name="TitleOfNewNote"
                         Grid.Row="0"
                         Width="470"
@@ -312,7 +312,7 @@
                                                                                     />
 
 
-                    <RichEditBox x:ConnectionId='22'
+                    <RichEditBox x:ConnectionId='23'
                         Name="ContentOfNewNote"
                         Grid.Row="1"
                         Margin="10"
@@ -324,7 +324,7 @@
 
 
 
-                    <Grid x:ConnectionId='23'
+                    <Grid x:ConnectionId='24'
                         Name="NoteStyleOptions"
                         Grid.Row="2"
                         Margin="12,0,10,10"
@@ -335,14 +335,14 @@
 
                         </Grid.ColumnDefinitions>
 
-                        <usercontrol:NoteEditOptionsControl x:ConnectionId='24'
+                        <usercontrol:NoteEditOptionsControl x:ConnectionId='25'
                             x:Name="NoteEditOptions"
                             Grid.Column="0"
                                                                                            />
 
 
 
-                        <Button x:ConnectionId='25'
+                        <Button x:ConnectionId='26'
                             Name="CreationButton"
                             Grid.Column="1"
                             Width="60"
@@ -360,61 +360,79 @@
 
         </Grid>
 
+        <Grid Grid.Row="2">
 
-        <GridView x:ConnectionId='12'
-            Name="NotesData"
-            Grid.Row="2"
-            Margin="10,0,10,5"
-            Background="{ThemeResource PageBg}"
-            CornerRadius="4"
-            IsItemClickEnabled="True"
-                                                                
-            ItemContainerStyle="{StaticResource GridViewItemStyle}"
-                                                                              >
-            <GridView.ItemTemplate>
-                <DataTemplate                       >
-                    <Border CornerRadius="4">
-                        <usercontrol:NotesDataTemplate notesTemplate="{Binding}" />
-                    </Border>
-                </DataTemplate>
-            </GridView.ItemTemplate>
-            <GridView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <controls:StaggeredPanel
-                        HorizontalAlignment="Stretch"
-                        ColumnSpacing="7"
-                        DesiredColumnWidth="250"
-                        RowSpacing="7" />
-                </ItemsPanelTemplate>
-            </GridView.ItemsPanel>
-        </GridView>
+            <GridView x:ConnectionId='13'
+                Name="NotesData"
+                Margin="10,0,10,5"
+                Background="{ThemeResource PageBg}"
+                CornerRadius="4"
+                IsItemClickEnabled="True"
+                                                                    
+                ItemContainerStyle="{StaticResource GridViewItemStyle}"
+                                                                                  
+                Style="{StaticResource NotesDataStyle}">
+                <GridView.ItemTemplate>
+                    <DataTemplate                       >
+                        <Border CornerRadius="4">
+                            <usercontrol:NotesDataTemplate notesTemplate="{Binding}" />
+                        </Border>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+                <GridView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <controls:StaggeredPanel
+                            HorizontalAlignment="Stretch"
+                            ColumnSpacing="7"
+                            DesiredColumnWidth="250"
+                            RowSpacing="7" />
 
 
-        <Popup x:ConnectionId='13'
-            Name="NoteDisplayPopUp"
-                                                                 
-            IsLightDismissEnabled="True"
-                                                                 
-                                                                               
-            LightDismissOverlayMode="On"
-                                                                 >
-            <Border CornerRadius="4">
-                <usercontrol:NoteContent x:ConnectionId='14'
-                    x:Name="NoteContentPopUp"
-                                                                       
-                                                                         
-                                                                                 
-                                                                          />
-            </Border>
-            <Popup.Resources>
-                <Storyboard x:ConnectionId='15' x:Name="PopIn">
-                    <PopInThemeAnimation Storyboard.TargetName="NoteDisplayPopUp" />
-                </Storyboard>
-                <Storyboard x:ConnectionId='16' x:Name="PopOut">
-                    <PopOutThemeAnimation Storyboard.TargetName="NoteDisplayPopUp" />
-                </Storyboard>
-            </Popup.Resources>
-        </Popup>
+
+                    </ItemsPanelTemplate>
+                </GridView.ItemsPanel>
+            </GridView>
+
+
+
+            <!--<controls:GridSplitter
+                Name="ColumnSplitter"
+                Grid.Column="1"
+                Width="16"
+                HorizontalAlignment="Left"
+                CursorBehavior="ChangeOnSplitterHover"
+                GripperCursor="Default"
+                ResizeBehavior="BasedOnAlignment"
+                ResizeDirection="Auto"
+                Visibility="Collapsed" />-->
+            <Popup x:ConnectionId='14'
+                Name="NoteDisplayPopUp"
+                                                                     
+                IsLightDismissEnabled="True"
+                                                                     
+                                                                                   
+                LightDismissOverlayMode="On"
+                                                                     >
+                <Border CornerRadius="4">
+                    <usercontrol:NoteContent x:ConnectionId='15'
+                        x:Name="NoteContentPopUp"
+                                                                           
+                                                                             
+                                                                                     
+                                                                              />
+                </Border>
+                <Popup.Resources>
+                    <Storyboard x:ConnectionId='16' x:Name="PopIn">
+                        <PopInThemeAnimation Storyboard.TargetName="NoteDisplayPopUp" />
+                    </Storyboard>
+                    <Storyboard x:ConnectionId='17' x:Name="PopOut">
+                        <PopOutThemeAnimation Storyboard.TargetName="NoteDisplayPopUp" />
+                    </Storyboard>
+                </Popup.Resources>
+            </Popup>
+        </Grid>
+
+
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
 

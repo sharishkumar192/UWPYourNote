@@ -70,7 +70,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-
+        <Frame Name="DetailsView" />
 
         <RelativePanel VerticalAlignment="Center" Background="{ThemeResource Pagebackground}">
 
@@ -360,61 +360,79 @@
 
         </Grid>
 
+        <Grid Grid.Row="2">
 
-        <GridView
-            Name="NotesData"
-            Grid.Row="2"
-            Margin="10,0,10,5"
-            Background="{ThemeResource PageBg}"
-            CornerRadius="4"
-            IsItemClickEnabled="True"
-            ItemClick="{x:Bind NotesDataItemClick, Mode=OneWay}"
-            ItemContainerStyle="{StaticResource GridViewItemStyle}"
-            ItemsSource="{x:Bind homePageVM.NotesDataItemSource, Mode=OneWay}">
-            <GridView.ItemTemplate>
-                <DataTemplate x:DataType="data:Note">
-                    <Border CornerRadius="4">
-                        <usercontrol:NotesDataTemplate notesTemplate="{Binding}" />
-                    </Border>
-                </DataTemplate>
-            </GridView.ItemTemplate>
-            <GridView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <controls:StaggeredPanel
-                        HorizontalAlignment="Stretch"
-                        ColumnSpacing="7"
-                        DesiredColumnWidth="250"
-                        RowSpacing="7" />
-                </ItemsPanelTemplate>
-            </GridView.ItemsPanel>
-        </GridView>
+            <GridView
+                Name="NotesData"
+                Margin="10,0,10,5"
+                Background="{ThemeResource PageBg}"
+                CornerRadius="4"
+                IsItemClickEnabled="True"
+                ItemClick="{x:Bind NotesDataItemClick, Mode=OneWay}"
+                ItemContainerStyle="{StaticResource GridViewItemStyle}"
+                ItemsSource="{x:Bind homePageVM.NotesDataItemSource, Mode=OneWay}"
+                Style="{StaticResource NotesDataStyle}">
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="data:Note">
+                        <Border CornerRadius="4">
+                            <usercontrol:NotesDataTemplate notesTemplate="{Binding}" />
+                        </Border>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+                <GridView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <controls:StaggeredPanel
+                            HorizontalAlignment="Stretch"
+                            ColumnSpacing="7"
+                            DesiredColumnWidth="250"
+                            RowSpacing="7" />
 
 
-        <Popup
-            Name="NoteDisplayPopUp"
-            Closed="{x:Bind NoteDisplayPopUpClosed, Mode=OneWay}"
-            IsLightDismissEnabled="True"
-            IsOpen="{x:Bind NoteDisplayPopUpIsOpen, Mode=OneWay}"
-            LayoutUpdated="{x:Bind NoteDisplayPopUpLayoutUpdated, Mode=OneWay}"
-            LightDismissOverlayMode="On"
-            Opened="{x:Bind NoteDisplayPopUpOpened, Mode=OneWay}">
-            <Border CornerRadius="4">
-                <usercontrol:NoteContent
-                    x:Name="NoteContentPopUp"
-                    Width="{x:Bind NoteContentPopUpWidth, Mode=OneWay}"
-                    Height="{x:Bind NoteContentPopUpHeight, Mode=OneWay}"
-                    IsTapEnabled="{x:Bind NoteContentPopUpIsTapped, Mode=OneWay}"
-                    Tapped="{x:Bind NoteContentPopUpTapped, Mode=OneWay}" />
-            </Border>
-            <Popup.Resources>
-                <Storyboard x:Name="PopIn">
-                    <PopInThemeAnimation Storyboard.TargetName="NoteDisplayPopUp" />
-                </Storyboard>
-                <Storyboard x:Name="PopOut">
-                    <PopOutThemeAnimation Storyboard.TargetName="NoteDisplayPopUp" />
-                </Storyboard>
-            </Popup.Resources>
-        </Popup>
+
+                    </ItemsPanelTemplate>
+                </GridView.ItemsPanel>
+            </GridView>
+
+
+
+            <!--<controls:GridSplitter
+                Name="ColumnSplitter"
+                Grid.Column="1"
+                Width="16"
+                HorizontalAlignment="Left"
+                CursorBehavior="ChangeOnSplitterHover"
+                GripperCursor="Default"
+                ResizeBehavior="BasedOnAlignment"
+                ResizeDirection="Auto"
+                Visibility="Collapsed" />-->
+            <Popup
+                Name="NoteDisplayPopUp"
+                Closed="{x:Bind NoteDisplayPopUpClosed, Mode=OneWay}"
+                IsLightDismissEnabled="True"
+                IsOpen="{x:Bind NoteDisplayPopUpIsOpen, Mode=OneWay}"
+                LayoutUpdated="{x:Bind NoteDisplayPopUpLayoutUpdated, Mode=OneWay}"
+                LightDismissOverlayMode="On"
+                Opened="{x:Bind NoteDisplayPopUpOpened, Mode=OneWay}">
+                <Border CornerRadius="4">
+                    <usercontrol:NoteContent
+                        x:Name="NoteContentPopUp"
+                        Width="{x:Bind NoteContentPopUpWidth, Mode=OneWay}"
+                        Height="{x:Bind NoteContentPopUpHeight, Mode=OneWay}"
+                        IsTapEnabled="{x:Bind NoteContentPopUpIsTapped, Mode=OneWay}"
+                        Tapped="{x:Bind NoteContentPopUpTapped, Mode=OneWay}" />
+                </Border>
+                <Popup.Resources>
+                    <Storyboard x:Name="PopIn">
+                        <PopInThemeAnimation Storyboard.TargetName="NoteDisplayPopUp" />
+                    </Storyboard>
+                    <Storyboard x:Name="PopOut">
+                        <PopOutThemeAnimation Storyboard.TargetName="NoteDisplayPopUp" />
+                    </Storyboard>
+                </Popup.Resources>
+            </Popup>
+        </Grid>
+
+
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
 
