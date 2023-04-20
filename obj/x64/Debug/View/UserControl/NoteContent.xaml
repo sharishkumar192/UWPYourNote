@@ -56,10 +56,7 @@
     <!--
         NOTE CONTENT
     -->
-    <Grid x:ConnectionId='10'
-                                                                
-                                                                
-                                                        >
+    <Grid x:ConnectionId='10'                                                         >
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -82,13 +79,10 @@
                 FontSize="28"
                 Foreground="Black"
                 HorizontalTextAlignment="Center"
-                                                                        
-                                                                        
                 RelativePanel.AlignHorizontalCenterWithPanel="True"
                 RelativePanel.AlignLeftWithPanel="True"
                 RelativePanel.LeftOf="NoteCloseButton"
                 Style="{StaticResource TitleDisplayStyle}"
-                                                                
                                                             
                 TextAlignment="Center"
                                                                            />
@@ -117,8 +111,7 @@
             <usercontrol:NoteEditOptionsControl x:ConnectionId='13'
                 x:Name="NoteMenuOptions"
                 Margin="5,0,5,5"
-                                                                              
-                                                                             />
+                                                                               />
         </Border>
 
 
@@ -134,10 +127,8 @@
             VerticalAlignment="Stretch"
             BorderThickness="0"
             FontSize="20"
-                                                                      
-                                                                      
+            Foreground="Black"
             Style="{StaticResource RichEditStyle}"
-                                                              
                                                                         
             TextWrapping="Wrap" />
 

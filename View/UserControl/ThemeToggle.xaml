@@ -7,13 +7,16 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="300"
     d:DesignWidth="400"
+    ActualThemeChanged="UserControl_ActualThemeChanged"
     mc:Ignorable="d">
     <Grid>
         <ToggleButton
             Name="Toggle"
             Click="Button_Click"
             Content="&#xE793;"
-            FontFamily="Segoe MDL2 Assets" />
-        
+            CornerRadius="4"
+            FontFamily="Segoe MDL2 Assets"
+            IsChecked="{x:Bind ToggleIsChecked, Mode=OneWay}"
+            Style="{StaticResource ThemeToggleStyle}" />
     </Grid>
 </UserControl>

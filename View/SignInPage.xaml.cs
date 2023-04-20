@@ -64,12 +64,12 @@ namespace UWPYourNote.View
                 if (result == null)
                 {
                     EmailToolTipContent = "";
-                    EmailCheckVisibility = Visibility.Collapsed;
+                    EmailCheckVisibility = EmailFontBorderStyleVisibility = Visibility.Collapsed;
                 }
                 else
                 {
                     EmailToolTipContent = result;
-                    EmailCheckVisibility = Visibility.Visible;
+                    EmailCheckVisibility = EmailFontBorderStyleVisibility = Visibility.Visible;
 
                 }
             });
@@ -188,18 +188,18 @@ namespace UWPYourNote.View
         {
             if (EmailCheckVisibility == Visibility.Collapsed)
             {
-                EmailToolTipVisibility = Visibility.Collapsed;
+                EmailToolTipVisibility = EmailFontBorderStyleVisibility = Visibility.Collapsed;
             }
             else
             {
-                EmailToolTipVisibility = Visibility.Visible;
+                EmailToolTipVisibility = EmailFontBorderStyleVisibility = Visibility.Visible;
             }
         }
 
         public void EmailBoxTextChanged()
         {
             EmailToolTipContent = "";
-            EmailCheckVisibility = Visibility.Collapsed;
+            EmailCheckVisibility = EmailFontBorderStyleVisibility = Visibility.Collapsed;
         }
 
 
@@ -307,12 +307,12 @@ namespace UWPYourNote.View
             if (value == null)
             {
                 PasswordToolTipContent = "";
-                PasswordCheckVisibility = Visibility.Collapsed;
+                PasswordCheckVisibility = PasswordFontBorderStyleVisibility=  Visibility.Collapsed;
             }
             else
             {
                 PasswordToolTipContent = value;
-                PasswordCheckVisibility = Visibility.Visible;
+                PasswordCheckVisibility = PasswordFontBorderStyleVisibility = Visibility.Visible;
 
 
             }
@@ -403,12 +403,14 @@ namespace UWPYourNote.View
             if (EmailToolTipContent.Equals("") == true)
             {
                 
-                     EmailToolTipContent = "";
-                EmailCheckVisibility = Visibility.Collapsed;
+                EmailToolTipContent = "";
+                EmailCheckVisibility = EmailFontBorderStyleVisibility = Visibility.Collapsed;
                 
             }
             PasswordToolTipContent = "Incorrect Email address or password";
-            PasswordCheckVisibility = Visibility.Visible;
+            PasswordCheckVisibility = PasswordFontBorderStyleVisibility = Visibility.Visible;
+               
+
             });
         }
 
@@ -421,6 +423,40 @@ namespace UWPYourNote.View
             NavigateToHomePage(loggedUser);
         }
 
-      
+
+
+        private Visibility _passwordFontBorderStyleVisibility = Visibility.Collapsed;
+
+        public Visibility PasswordFontBorderStyleVisibility
+        {
+            get { return _passwordFontBorderStyleVisibility; }
+            set { _passwordFontBorderStyleVisibility = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+        private Visibility _emailFontBorderStyleVisibility = Visibility.Collapsed;
+
+        public Visibility EmailFontBorderStyleVisibility
+        {
+            get { return _emailFontBorderStyleVisibility; }
+            set { _emailFontBorderStyleVisibility = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            double height = this.ActualHeight;
+            if(height > 400)
+            {
+                NavigationLink.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                NavigationLink.Visibility = Visibility.Collapsed;
+            }
+        }
     }
 }

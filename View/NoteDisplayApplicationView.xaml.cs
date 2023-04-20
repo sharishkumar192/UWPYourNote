@@ -19,6 +19,9 @@ using UWPYourNote.View.usercontrol;
 using UWPYourNoteLibrary.Util;
 using Windows.UI.Popups;
 using UWPYourNote.ViewModels;
+using Windows.UI.Core;
+using Windows.UI.ViewManagement;
+using Windows.ApplicationModel.Core;
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace UWPYourNote.View
@@ -33,6 +36,7 @@ namespace UWPYourNote.View
         private string _oldTitle = "";
           public bool isModified = false;
         public bool isDeleted = false;
+        private Frame _frame = null;
         public NoteDisplayApplicationViewVM noteDisplayApplicationVM;
         public NoteDisplayApplicationView()
         {
@@ -43,8 +47,6 @@ namespace UWPYourNote.View
         void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            NoteMenuOptions.MinimizeVisibility = NoteMenuOptions.PopOutVisibility = Visibility.Visible;
-
 
         }
 
@@ -61,12 +63,14 @@ namespace UWPYourNote.View
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+
             DisplayNote = (Note)e.Parameter;
             NoteContentBackground = NotesUtilities.GetSolidColorBrush(DisplayNote.noteColor);
             TitleOfNoteText  = _oldTitle = DisplayNote.title;
             ContentOfNoteText  = _oldContent  = DisplayNote.content;
             ContentOfNote.Document.SetText(Windows.UI.Text.TextSetOptions.FormatRtf, ContentOfNoteText);
             _dispatcherTimer = new DispatcherTimer();
+        
             DispatcherTimerStart(_dispatcherTimer);
         }
 
@@ -74,7 +78,7 @@ namespace UWPYourNote.View
 
 
 
-        private SolidColorBrush _noteContentBackground;
+        private SolidColorBrush _noteContentBackground = NotesUtilities.GetSolidColorBrush(0);
         public SolidColorBrush NoteContentBackground
         {
             get { return _noteContentBackground; }
@@ -216,6 +220,8 @@ namespace UWPYourNote.View
                 case "ColorOptions": NoteBackgroundColor(); break;
                 case "NoteDeleteButton": NoteDeleteButtonClick(null, null); break;
                 case "NoValidUsers": NoValidUsers(); break;
+                case "MinimizeButton": MinimizeButton(); break;
+                case "PopOutButton": PopOutButton(); break;
                 case "True":
                 case "False":
                     {
@@ -246,7 +252,32 @@ namespace UWPYourNote.View
 
         private void NoteBackgroundColor()
         {
-            NoteContentBackground = NoteMenuOptions.NoteColorForeground;
+       //     NoteContentBackground = NoteMenuOptions.NoteColorForeground;
+
+        }
+
+        private void MinimizeButton()
+        {
+            _frame.Content = null;
+        }
+
+        private async void PopOutButton()
+        {
+            CoreApplicationView newView = CoreApplication.CreateNewView();
+            int newViewId = 0;
+            await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                Frame frame = new Frame();
+                Tuple<Note, Frame> tp = new Tuple<Note, Frame>(DisplayNote, null);
+                frame.Navigate(typeof(NoteDisplayApplicationView), tp);
+                Window.Current.Content = frame;
+                // You have to activate the window in order to show it later.
+                Window.Current.Activate();
+
+                newViewId = ApplicationView.GetForCurrentView().Id;
+            });
+            bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId, ViewSizePreference.UseLess);
+            _frame.Content = null;
 
         }
 
@@ -273,10 +304,7 @@ namespace UWPYourNote.View
             var result = await showDialog.ShowAsync();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-         
-        }
+      
     }
 
 

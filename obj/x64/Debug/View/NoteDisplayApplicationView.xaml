@@ -64,9 +64,8 @@
 
 
 
-        <!--  NOTE CONTENT  -->
-        <Button x:ConnectionId='11' Background="Red"                     />
-        <TextBox x:ConnectionId='12'
+
+        <TextBox x:ConnectionId='11'
             Name="TitleOfNote"
             Height="50"
             Margin="30,10,10,10"
@@ -78,7 +77,7 @@
                                                                        />
 
 
-        <Border x:ConnectionId='13'
+        <Border x:ConnectionId='12'
             Name="NoteMenuOptionsContainer"
             Grid.Row="1"
             HorizontalAlignment="Center"
@@ -86,7 +85,7 @@
             CornerRadius="4">
 
 
-            <usercontrol:NoteEditOptionsControl x:ConnectionId='15'
+            <usercontrol:NoteEditOptionsControl x:ConnectionId='14'
                 x:Name="NoteMenuOptions"
                 Margin="5,0,5,5"
                                                                                />
@@ -96,7 +95,7 @@
 
 
 
-        <RichEditBox x:ConnectionId='14'
+        <RichEditBox x:ConnectionId='13'
             Name="ContentOfNote"
             Grid.Row="2"
             Margin="30,10,10,10"

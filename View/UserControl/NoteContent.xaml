@@ -56,10 +56,7 @@
     <!--
         NOTE CONTENT
     -->
-    <Grid
-        Background="{x:Bind NoteContentBackground, Mode=OneWay}"
-        IsTapEnabled="{x:Bind NoteContentIsTapped, Mode=OneWay}"
-        Tapped="{x:Bind NoteContentTapped, Mode=OneWay}">
+    <Grid Background="{x:Bind NoteContentBackground, Mode=OneWay}">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -82,13 +79,10 @@
                 FontSize="28"
                 Foreground="Black"
                 HorizontalTextAlignment="Center"
-                IsReadOnly="{x:Bind TitleOfNoteIsReadOnly, Mode=OneWay}"
-                IsTapEnabled="{x:Bind TitleOfNoteIsTapped, Mode=OneWay}"
                 RelativePanel.AlignHorizontalCenterWithPanel="True"
                 RelativePanel.AlignLeftWithPanel="True"
                 RelativePanel.LeftOf="NoteCloseButton"
                 Style="{StaticResource TitleDisplayStyle}"
-                Tapped="{x:Bind TitleOfNoteTapped, Mode=OneWay}"
                 Text="{x:Bind TitleOfNoteText, Mode=OneWay}"
                 TextAlignment="Center"
                 TextChanged="{x:Bind TitleOfNoteTextChanged, Mode=OneWay}" />
@@ -117,8 +111,7 @@
             <usercontrol:NoteEditOptionsControl
                 x:Name="NoteMenuOptions"
                 Margin="5,0,5,5"
-                EditOptions="{x:Bind NoteMenuOptionsEditOptions, Mode=OneWay}"
-                Visibility="{x:Bind NoteMenuOptionsVisibility, Mode=OneWay}" />
+                EditOptions="{x:Bind NoteMenuOptionsEditOptions, Mode=OneWay}" />
         </Border>
 
 
@@ -134,10 +127,8 @@
             VerticalAlignment="Stretch"
             BorderThickness="0"
             FontSize="20"
-            IsReadOnly="{x:Bind ContentOfNoteIsReadOnly, Mode=OneWay}"
-            IsTapEnabled="{x:Bind ContentOfNoteIsTapped, Mode=OneWay}"
+            Foreground="Black"
             Style="{StaticResource RichEditStyle}"
-            Tapped="{x:Bind ContentOfNoteTapped, Mode=OneWay}"
             TextChanged="{x:Bind ContentOfNoteTextChanged, Mode=OneWay}"
             TextWrapping="Wrap" />
 

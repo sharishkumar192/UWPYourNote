@@ -42,8 +42,6 @@
       <RootProperty Name="Style" />
       <RootProperty Name="Name" />
       <RootProperty Name="Visibility" />
-      <RootProperty Name="IsTapEnabled" />
-      <RootEvent Name="Tapped" />
       <RootEvent Name="PointerEntered" />
       <RootEvent Name="PointerExited" />
       <RootMethod Name="GetRow" />
@@ -127,6 +125,8 @@
       <RootProperty Name="FontSize" />
       <RootProperty Name="IsHorizontalScrollChainingEnabled" />
       <RootProperty Name="IsVerticalScrollChainingEnabled" />
+      <RootProperty Name="Name" />
+      <RootProperty Name="HorizontalAlignment" />
       <RootMethod Name="GetHorizontalScrollBarVisibility" />
       <RootMethod Name="SetHorizontalScrollBarVisibility" />
       <RootMethod Name="GetVerticalScrollBarVisibility" />
@@ -204,6 +204,7 @@
       <RootProperty Name="Name" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Style" />
+      <RootProperty Name="Visibility" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.FontIcon">
       <RootProperty Name="Glyph" />
@@ -239,9 +240,9 @@
       <RootProperty Name="Content" />
       <RootProperty Name="CornerRadius" />
       <RootProperty Name="FontFamily" />
-      <RootProperty Name="Flyout" />
       <RootProperty Name="Height" />
       <RootProperty Name="Background" />
+      <RootProperty Name="Flyout" />
       <RootProperty Name="HorizontalAlignment" />
       <RootEvent Name="Click" />
     </RootType>
@@ -270,13 +271,12 @@
       <RootProperty Name="MaxLength" />
       <RootProperty Name="MaxWidth" />
       <RootProperty Name="HorizontalTextAlignment" />
-      <RootProperty Name="IsReadOnly" />
-      <RootProperty Name="IsTapEnabled" />
       <RootProperty Name="TextAlignment" />
       <RootProperty Name="Background" />
       <RootProperty Name="CornerRadius" />
+      <RootEvent Name="LosingFocus" />
+      <RootEvent Name="LostFocus" />
       <RootEvent Name="TextChanged" />
-      <RootEvent Name="Tapped" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.PasswordBox">
       <RootProperty Name="SelectionHighlightColor" />
@@ -363,14 +363,27 @@
       <RootProperty Name="FontSize" />
       <RootProperty Name="Foreground" />
       <RootProperty Name="Padding" />
-      <RootProperty Name="IsReadOnly" />
-      <RootProperty Name="IsTapEnabled" />
       <RootProperty Name="HorizontalTextAlignment" />
       <RootEvent Name="GotFocus" />
       <RootEvent Name="TextChanged" />
-      <RootEvent Name="Tapped" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.GridViewItem" />
+    <RootType FullName="Windows.UI.Xaml.Controls.Primitives.ToggleButton">
+      <RootProperty Name="MinWidth" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="BorderThickness" />
+      <RootProperty Name="FontSize" />
+      <RootProperty Name="IsTabStop" />
+      <RootProperty Name="Style" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="Name" />
+      <RootProperty Name="Content" />
+      <RootProperty Name="CornerRadius" />
+      <RootProperty Name="FontFamily" />
+      <RootProperty Name="IsChecked" />
+      <RootEvent Name="Click" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Setter">
       <RootProperty Name="Property" />
       <RootProperty Name="Value" />
@@ -380,23 +393,7 @@
       <RootProperty Name="TargetType" />
       <RootProperty Name="Template" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.VisualStateManager">
-      <RootMethod Name="GetVisualStateGroups" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.RowDefinition">
-      <RootProperty Name="Height" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ContentPresenter">
-      <RootProperty Name="Margin" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Content" />
-      <RootProperty Name="ContentTemplate" />
-      <RootProperty Name="FontWeight" />
-      <RootProperty Name="Foreground" />
-      <RootProperty Name="TextWrapping" />
-      <RootProperty Name="Visibility" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="ContentTransitions" />
       <RootProperty Name="Padding" />
       <RootProperty Name="HorizontalContentAlignment" />
       <RootProperty Name="VerticalContentAlignment" />
@@ -404,7 +401,17 @@
       <RootProperty Name="BackgroundSizing" />
       <RootProperty Name="BorderBrush" />
       <RootProperty Name="BorderThickness" />
+      <RootProperty Name="Content" />
+      <RootProperty Name="ContentTemplate" />
+      <RootProperty Name="ContentTransitions" />
       <RootProperty Name="CornerRadius" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="FontWeight" />
+      <RootProperty Name="Foreground" />
+      <RootProperty Name="TextWrapping" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="FontFamily" />
       <RootProperty Name="LineStackingStrategy" />
       <RootProperty Name="TextLineBounds" />
@@ -415,6 +422,9 @@
     <RootType FullName="Windows.UI.Xaml.Automation.AutomationProperties">
       <RootMethod Name="GetAccessibilityView" />
       <RootMethod Name="SetAccessibilityView" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.VisualStateManager">
+      <RootMethod Name="GetVisualStateGroups" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.TemplateBindingExtension" />
     <RootType FullName="Windows.UI.Xaml.VisualStateGroup">
@@ -435,12 +445,16 @@
     <RootType FullName="Windows.UI.Xaml.Media.Animation.ObjectAnimationUsingKeyFrames">
       <RootProperty Name="KeyFrames" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.Animation.PointerUpThemeAnimation" />
     <RootType FullName="Windows.UI.Xaml.Media.Animation.DiscreteObjectKeyFrame">
       <RootProperty Name="KeyTime" />
       <RootProperty Name="Value" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension">
       <RootProperty Name="ResourceKey" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.RowDefinition">
+      <RootProperty Name="Height" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ColumnDefinition">
       <RootProperty Name="Width" />
@@ -451,7 +465,6 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Data.RelativeSource" />
     <RootType FullName="Windows.UI.Xaml.Media.Animation.PointerDownThemeAnimation" />
-    <RootType FullName="Windows.UI.Xaml.Media.Animation.PointerUpThemeAnimation" />
     <RootType FullName="Windows.UI.Xaml.Controls.ItemsPresenter">
       <RootProperty Name="Padding" />
       <RootProperty Name="Footer" />
@@ -523,20 +536,6 @@
       <RootProperty Name="SelectedPointerOverBackground" />
       <RootProperty Name="SelectedPressedBackground" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.Primitives.ToggleButton">
-      <RootProperty Name="MinWidth" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="BorderThickness" />
-      <RootProperty Name="FontSize" />
-      <RootProperty Name="IsTabStop" />
-      <RootProperty Name="Style" />
-      <RootProperty Name="Visibility" />
-      <RootProperty Name="Name" />
-      <RootProperty Name="Content" />
-      <RootProperty Name="FontFamily" />
-      <RootEvent Name="Click" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ItemsWrapGrid">
       <RootProperty Name="Orientation" />
     </RootType>
@@ -550,6 +549,8 @@
       <RootProperty Name="Background" />
       <RootProperty Name="MinWidth" />
       <RootProperty Name="MinHeight" />
+      <RootEvent Name="Loaded" />
+      <RootEvent Name="SizeChanged" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.BindExtension">
       <RootProperty Name="Mode" />
@@ -558,9 +559,6 @@
     <RootType FullName="YourNoteUWP.View.Appearence" />
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
       <RootProperty Name="Template" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.Frame">
-      <RootProperty Name="Name" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.RelativePanel">
       <RootProperty Name="VerticalAlignment" />
@@ -583,13 +581,13 @@
     <RootType FullName="UWPYourNote.View.usercontrol.NoteContent">
       <RootProperty Name="Width" />
       <RootProperty Name="Height" />
-      <RootProperty Name="IsTapEnabled" />
-      <RootEvent Name="Tapped" />
+      <RootEvent Name="PopOutWindow" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.Animation.PopOutThemeAnimation" />
     <RootType FullName="Windows.UI.Xaml.Media.Animation.PopInThemeAnimation" />
     <RootType FullName="UWPYourNote.View.usercontrol.NotesDataTemplate">
       <RootProperty Name="notesTemplate" />
+      <RootEvent Name="NoteDisplayPopOutWindow" />
     </RootType>
     <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.StaggeredPanel">
       <RootProperty Name="HorizontalAlignment" />
@@ -598,6 +596,7 @@
       <RootProperty Name="RowSpacing" />
     </RootType>
     <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.DropShadowPanel">
+      <RootProperty Name="Name" />
       <RootProperty Name="Width" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="BlurRadius" />
@@ -607,7 +606,6 @@
     </RootType>
     <RootType FullName="UWPYourNote.View.usercontrol.NoteEditOptionsControl">
       <RootProperty Name="Margin" />
-      <RootProperty Name="Visibility" />
       <RootEvent Name="EditOptions" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ToolTipService">
@@ -620,7 +618,6 @@
       <RootProperty Name="FlyoutPresenterStyle" />
       <RootProperty Name="Placement" />
       <RootProperty Name="Content" />
-      <RootProperty Name="LightDismissOverlayMode" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Shapes.Ellipse">
       <RootProperty Name="Width" />
@@ -635,11 +632,11 @@
       <RootEvent Name="ToggleThemeClick" />
     </RootType>
     <RootType FullName="UWPYourNote.View.usercontrol.NoteTitleSearchBox">
-      <RootProperty Name="Margin" />
-      <RootProperty Name="LoggedUser" />
       <RootProperty Name="Height" />
+      <RootProperty Name="LoggedUser" />
       <RootProperty Name="Visibility" />
       <RootEvent Name="DisplaySelectedNote" />
+      <RootEvent Name="UserControlLostFocus" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Image">
       <RootProperty Name="Name" />
@@ -658,10 +655,15 @@
     <RootType FullName="Windows.UI.Xaml.Controls.UserControl">
       <RootProperty Name="Resources" />
       <RootProperty Name="Content" />
+      <RootEvent Name="LostFocus" />
+      <RootEvent Name="ActualThemeChanged" />
     </RootType>
     <RootType FullName="UWPYourNoteLibrary.Models.ItemsDataTemplateSelector">
       <RootProperty Name="AllItems" />
       <RootProperty Name="LastItems" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Frame">
+      <RootProperty Name="Name" />
     </RootType>
     <RootType FullName="UWPYourNote.View.MainPage" />
     <RootType FullName="UWPYourNote.View.NoteColorOptions" />

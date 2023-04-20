@@ -220,7 +220,7 @@
             ToolTipService.ToolTip="PopOut"
             Visibility="{x:Bind PopOutVisibility, Mode=OneWay}" />
 
-        <Button
+        <!--<Button
             Name="MinimizeButton"
             Margin="5,0,0,0"
             Click="{x:Bind NoteMinimizeButtonClick, Mode=OneWay}"
@@ -228,7 +228,7 @@
             FontFamily="Segoe MDL2 Assets"
             Style="{StaticResource NoteStyleButtonStyle}"
             ToolTipService.ToolTip="Minimize"
-            Visibility="{x:Bind MinimizeVisibility, Mode=OneWay}" />
+            Visibility="{x:Bind MinimizeVisibility, Mode=OneWay}" />-->
 
         <Button
             Name="NoteDeleteButton"

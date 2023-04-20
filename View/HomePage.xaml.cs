@@ -32,6 +32,7 @@ using Windows.UI.WindowManagement;
 using Windows.UI.Xaml.Hosting;
 using System.Reflection;
 using YourNoteUWP.ViewModels.Contract;
+using UWPYourNoteLibrary.Notification;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -49,6 +50,9 @@ namespace UWPYourNote.View
         private NoteTitleSearchVM noteTitleSearchVM;
         bool themeCheck;
         bool accentCheck;
+        bool isTitleGotFocus = false;
+        Dictionary<long, int> NoteApplicationView = new Dictionary<long, int>();
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -65,9 +69,6 @@ namespace UWPYourNote.View
         }
 
 
-
-
-
         private delegate void DelUserControlMethod(object sender, object e);
         private delegate void AccentChange(object sender, object e);
         private void DelegateIntialize()
@@ -79,7 +80,6 @@ namespace UWPYourNote.View
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-
             DelegateIntialize();
             homePageVM = HomePageVM.Singleton;
             NoteEditOptions.NoteDeleteButtonVisibility = NoteEditOptions.NoteShareButtonVisibility = Visibility.Collapsed;
@@ -308,6 +308,7 @@ namespace UWPYourNote.View
         //----------------------------Sign Out Button---------------------------------------------------
         public void LogoutContentTapped()
         {
+            OnPageExited();
             if (_frame.CanGoBack)
             {
                 _frame.GoBack();
@@ -431,6 +432,12 @@ namespace UWPYourNote.View
         private void ContentOfNewNoteGotFocus()
         {
             TitleOfNewNoteVisibility = NoteStyleOptionsVisibility = Visibility.Visible;
+            if(!isTitleGotFocus)
+            {
+                TitleOfNewNote.Focus(FocusState.Programmatic);
+                isTitleGotFocus = true;
+            }
+            // TitleOfNewNote.Select(0, 0);
 
         }
 
@@ -554,12 +561,19 @@ namespace UWPYourNote.View
 
         public void NotesDataItemClick(object sender, ItemClickEventArgs e)
         {
-        //    NoteDisplayPopUpOpened();
+            NoteDisplayPopUpOpened();
             selectedNoteFromDisplay = (UWPYourNoteLibrary.Models.Note)e.ClickedItem;
-         //   ColumnSplitter.Visibility = DetailsViewVisibility = Visibility.Visible;
-    
-            DetailsView.Navigate(typeof(NoteDisplayApplicationView), selectedNoteFromDisplay);
-          //  NoteContentPopUp.DisplayContent(LoggedUser.userId, selectedNoteFromDisplay.noteId, selectedNoteFromDisplay.title, selectedNoteFromDisplay.content, selectedNoteFromDisplay.noteColor, selectedNoteFromDisplay.modifiedDay);
+            //   ColumnSplitter.Visibility = DetailsViewVisibility = Visibility.Visible;
+            //   Tuple<Note, Frame> tp = new Tuple<Note, Frame>(selectedNoteFromDisplay, DetailsView);
+            //  DetailsView.Navigate(typeof(NoteDisplayApplicationView), tp);
+            double width = this.ActualWidth;
+            if(width <600)
+            {
+                NotesInPopOutWindow(selectedNoteFromDisplay);
+                return;
+            }
+            selectedNoteFromDisplay.userId = LoggedUser.userId;
+            NoteContentPopUp.DisplayContent(selectedNoteFromDisplay);
 
 
         }
@@ -640,10 +654,10 @@ namespace UWPYourNote.View
 
         private void NoteDisplayPopUpLayoutUpdated(object sender, object e)
         {
-            //    NoteContentPopUpHeight = Window.Current.Bounds.Height * 1.5 / 2;
-            //    NoteContentPopUpWidth = Window.Current.Bounds.Width / 2;
-            NoteContentPopUpHeight = Window.Current.Bounds.Height;
-            NoteContentPopUpWidth = Window.Current.Bounds.Width;
+                NoteContentPopUpHeight = Window.Current.Bounds.Height * 1.5 / 2;
+                NoteContentPopUpWidth = Window.Current.Bounds.Width / 2;
+         //   NoteContentPopUpHeight = Window.Current.Bounds.Height;
+         //   NoteContentPopUpWidth = Window.Current.Bounds.Width;
             if (NoteContentPopUp.ActualWidth == 0 && NoteContentPopUp.ActualHeight == 0)
             {
                 return;
@@ -682,29 +696,12 @@ namespace UWPYourNote.View
 
         private void NoteDisplayPopUpClosed(object sender, object e)
         {
-            NoteContentPopUp.ChangesOnClosing();
             NoteContentPopUp.UsersToShare = null;
 
             if (NoteContentPopUp._dispatcherTimer != null)
             {
-                if (NoteContentPopUp.isDeleted)
-                {
-                    NoteContentPopUp.DispatcherTimerStop(NoteContentPopUp._dispatcherTimer);
-                }
-                else
-                {
                     NoteContentPopUp.DispatcherTimer_Tick(sender, e);
-                    NoteContentPopUp.DispatcherTimerStop(NoteContentPopUp._dispatcherTimer);
-
-                }
-            }
-            if (NoteContentPopUp.isDeleted)
-            {
-                homePageVM.NoteDeletion(selectedNoteFromDisplay);
-            }
-            if (NoteContentPopUp.isDeleted == false && NoteContentPopUp.isModified)
-            {
-                homePageVM.NoteUpdation(selectedNoteFromDisplay, NoteContentPopUp.TitleOfNoteText, NoteContentPopUp.ContentOfNoteText, NoteContentPopUp.currentDay, NoteContentPopUp.GetNoteColor());
+                    NoteContentPopUp.DispatcherTimerStop();
             }
             NoteDisplayPopUpIsOpen = false;
 
@@ -724,15 +721,9 @@ namespace UWPYourNote.View
             }
         }
 
-        private void NoteContentPopUpTapped()
-        {
-            if (NoteContentPopUpIsTapped)
-            {
-                NoteContentPopUpIsTapped = false;
-                NoteContentPopUp.EditModeEnabled();
-            }
-
-        }
+        
+                
+        
         private void NoteBackgroundColor()
         {
             NewNoteBackground = NoteEditOptions.NoteColorForeground;
@@ -773,15 +764,111 @@ namespace UWPYourNote.View
 
         private void ThemeToggleButtonClick()
         {
-            Hello123.Hide();
+            SettingsFlyout.Hide();
         }
 
    
        
         private void TitleSearchBoxDisplaySelectedNote(Note selectedNote)
         {
-            NoteContentPopUp.DisplayContent(LoggedUser.userId, selectedNote.noteId, selectedNote.title, selectedNote.content, selectedNote.searchCount, selectedNote.noteColor, selectedNote.modifiedDay);
+            selectedNote.userId = LoggedUser.userId;
+            NoteContentPopUp.DisplayContent(selectedNote, selectedNote.searchCount);
             NoteDisplayPopUpOpened();
+        }
+
+        private void NoteSearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            double width = this.ActualWidth;
+            double height = this.ActualHeight;
+            if (width > 600 && height>0)
+            {
+                AppName.Visibility = AppLogo.Visibility = Visibility.Visible;
+            }
+                TitleSearchBoxContainer.Visibility = Visibility.Visible;
+            NoteSearchButton.Visibility   = MainMenuOptions.Visibility = Visibility.Collapsed;
+            TitleSearchBox.Focus(FocusState.Programmatic);
+        }
+
+        private void TitleSearchBox_SearchTextBoxLostFocus()
+        {
+            double width = this.ActualWidth;
+            double height = this.ActualHeight;
+            if (width > 1100 && height > 0)
+            {
+                AppName.Visibility = AppLogo.Visibility = TitleSearchBoxContainer.Visibility = MainMenuOptions.Visibility = Visibility.Visible;
+                NoteSearchButton.Visibility = Visibility.Collapsed;
+                return;
+            }
+            AppName.Visibility = AppLogo.Visibility = TitleSearchBoxContainer.Visibility = Visibility.Collapsed;
+            NoteSearchButton.Visibility = MainMenuOptions.Visibility = Visibility.Visible;
+        }
+
+
+
+       
+      
+
+        private void TitleOfNewNote_LosingFocus(UIElement sender, LosingFocusEventArgs args)
+        {
+          
+        }
+
+        private void TitleOfNewNote_LostFocus(object sender, RoutedEventArgs e)
+        {
+          //  ContentOfNewNote.Focus(FocusState.Programmatic);
+        }
+
+
+
+        public async void NotesInPopOutWindow(Note selectedNote)
+        {
+
+
+            if (NoteApplicationView.ContainsKey(selectedNote.noteId))
+            {
+                await ApplicationViewSwitcher.SwitchAsync(NoteApplicationView[selectedNote.noteId]);
+                return;
+            }
+            int newViewId = 0;
+            CoreApplicationView newView = CoreApplication.CreateNewView();
+            await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                Frame frame = new Frame();
+                frame.Navigate(typeof(NoteDisplayApplicationView), selectedNote);
+                Window.Current.Content = frame;
+                // You have to activate the window in order to show it later.
+                Window.Current.Activate();
+
+                newViewId = ApplicationView.GetForCurrentView().Id;
+            });
+            bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId, ViewSizePreference.UseLess);
+            NoteApplicationView[selectedNote.noteId] = newViewId;
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            NotificationManager.UpdateNoteSucceeded += NotificationManager_UpdateNoteSucceeded;
+            NotificationManager.DeleteNoteSucceeded += NotificationManager_DeleteNoteSucceeded;
+        }
+
+      
+
+        private void OnPageExited()
+        {
+            NotificationManager.UpdateNoteSucceeded -= NotificationManager_UpdateNoteSucceeded;
+            NotificationManager.DeleteNoteSucceeded -= NotificationManager_DeleteNoteSucceeded;
+        }
+
+        private void NotificationManager_UpdateNoteSucceeded(Note updateNote)
+        {
+            homePageVM.homePageView = this;
+            homePageVM.NoteUpdation(selectedNoteFromDisplay, updateNote);
+        }
+
+        private void NotificationManager_DeleteNoteSucceeded()
+        {
+            homePageVM.homePageView = this;
+            homePageVM.NoteDeletion(selectedNoteFromDisplay);
         }
     }
 }

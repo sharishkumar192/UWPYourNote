@@ -64,8 +64,7 @@
 
 
 
-        <!--  NOTE CONTENT  -->
-        <Button Background="Red" Click="Button_Click"/>
+
         <TextBox
             Name="TitleOfNote"
             Height="50"

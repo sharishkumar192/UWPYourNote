@@ -128,7 +128,7 @@
                 BorderBrush="Black"
                 BorderThickness="1"
                 CornerRadius="20">
-                <Rectangle x:ConnectionId='23'
+                <Rectangle x:ConnectionId='22'
                     Width="14"
                     Height="14"
                                                                     
@@ -137,7 +137,7 @@
             </Border>
             <Button.Flyout>
                 <Flyout FlyoutPresenterStyle="{StaticResource NoteColorFlyout}" Placement="Bottom">
-                    <ListBox x:ConnectionId='24'
+                    <ListBox x:ConnectionId='23'
                         Name="ColorOptions"
                         Height="40"
                                                                                        
@@ -186,7 +186,7 @@
             <Button.Flyout>
                 <Flyout FlyoutPresenterStyle="{StaticResource NoteColorFlyout}" Placement="Bottom">
                     <Grid>
-                        <ListView x:ConnectionId='22'
+                        <ListView x:ConnectionId='21'
                             Name="UsersToShareView"
                             Width="Auto"
                             MaxHeight="150"
@@ -220,17 +220,17 @@
             ToolTipService.ToolTip="PopOut"
                                                                 />
 
-        <Button x:ConnectionId='20'
+        <!--<Button
             Name="MinimizeButton"
             Margin="5,0,0,0"
-                                                                 
+            Click="{x:Bind NoteMinimizeButtonClick, Mode=OneWay}"
             Content="&#xE1D8;"
             FontFamily="Segoe MDL2 Assets"
             Style="{StaticResource NoteStyleButtonStyle}"
             ToolTipService.ToolTip="Minimize"
-                                                                  />
+            Visibility="{x:Bind MinimizeVisibility, Mode=OneWay}" />-->
 
-        <Button x:ConnectionId='21'
+        <Button x:ConnectionId='20'
             Name="NoteDeleteButton"
             Margin="5,0,0,0"
                                                                

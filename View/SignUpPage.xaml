@@ -12,219 +12,223 @@
         <ImageBrush ImageSource="{ThemeResource ApplicationDropoutImage}" />
     </Page.Background>
 
-    <!--<ScrollViewer
+    <ScrollViewer
         Name="SignUpPageScrollViewer"
         HorizontalAlignment="Stretch"
         VerticalAlignment="Stretch"
         HorizontalScrollBarVisibility="Auto"
-        VerticalScrollBarVisibility="Auto">-->
-    <controls:DropShadowPanel
-        HorizontalAlignment="Center"
-        VerticalAlignment="Center"
-        BlurRadius="10"
-        Color="Gray">
-        <Grid
-            Name="Grid123"
+        VerticalScrollBarVisibility="Auto">
+        <controls:DropShadowPanel
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            CornerRadius="4"
-            Style="{StaticResource GridBackground}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-
-
-            </Grid.RowDefinitions>
-
-
-            <!--<Title>-->
-            <StackPanel
-                Name="Title"
-                Grid.Row="0"
-                Width="430"
-                HorizontalAlignment="Center"
-                Background="{ThemeResource PageBg}"
-                BorderThickness="0,5,0,0"
-                CornerRadius="4,4,0,0">
-                <StackPanel Margin="15,15,5,5" Orientation="Horizontal">
-                    <Image
-                        Width="30"
-                        Height="30"
-                        Margin="0,0,10,0"
-                        Source="/Assets/StoreLogo.scale-100.png" />
-
-                    <TextBlock
-                        FontSize="20"
-                        Foreground="{ThemeResource TextBoxFg}"
-                        Text="Notebook" />
-                </StackPanel>
-                <TextBlock
-                    Margin="15,5,5,5"
-                    FontSize="16"
-                    FontWeight="SemiBold"
-                    Foreground="{ThemeResource TextBoxFg}"
-                    Text="Create your free account" />
-            </StackPanel>
-
-
+            BlurRadius="10"
+            Color="Gray">
             <Grid
-                Grid.Row="1"
-                BorderThickness="5,0,5,5"
-                CornerRadius="0,0,4,4"
+                Name="Grid123"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                CornerRadius="4"
                 Style="{StaticResource GridBackground}">
-
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
+
+
                 </Grid.RowDefinitions>
-                <!--<Name Field>-->
 
-                <TextBox
-                    Name="NameBox"
+
+                <!--<Title>-->
+                <StackPanel
+                    Name="Title"
                     Grid.Row="0"
+                    Width="430"
                     HorizontalAlignment="Center"
-                    PlaceholderText="{x:Bind NameBoxPlaceHolderText, Mode=OneWay}"
-                    Style="{StaticResource TextBoxStyle}"
-                    Text="{x:Bind NameBoxContent, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
-                    TextChanged="{x:Bind NameBoxTextChanged, Mode=OneWay}" />
+                    Background="{ThemeResource PageBg}"
+                    BorderThickness="0,5,0,0"
+                    CornerRadius="4,4,0,0">
+                    <StackPanel Margin="15,15,5,5" Orientation="Horizontal">
+                        <Image
+                            Width="30"
+                            Height="30"
+                            Margin="0,0,10,0"
+                            Source="/Assets/StoreLogo.scale-100.png" />
 
-                <RelativePanel Grid.Row="0" Margin="0,15,0,0">
-                    <Border
-                        Name="NameCheckBorder"
-                        RelativePanel.AlignRightWithPanel="True"
-                        Style="{StaticResource FontBorderStyle}">
-                        <FontIcon
-                            Name="NameCheck"
-                            Style="{StaticResource FontIconStyle}"
-                            Visibility="{x:Bind NameCheckVisibility, Mode=OneWay}" />
-                        <ToolTipService.ToolTip>
-                            <TextBlock
-                                Name="NameToolTip"
-                                Text="{x:Bind NameToolTipContent, Mode=OneWay}"
-                                Visibility="{x:Bind NameToolTipVisibility, Mode=OneWay}" />
-                        </ToolTipService.ToolTip>
-                    </Border>
+                        <TextBlock
+                            FontSize="20"
+                            Foreground="{ThemeResource TextBoxFg}"
+                            Text="Notebook" />
+                    </StackPanel>
+                    <TextBlock
+                        Margin="15,5,5,5"
+                        FontSize="16"
+                        FontWeight="SemiBold"
+                        Foreground="{ThemeResource TextBoxFg}"
+                        Text="Create your free account" />
+                </StackPanel>
 
-                </RelativePanel>
 
-                <!--<Email Field>-->
-                <TextBox
-                    Name="EmailBox"
+                <Grid
                     Grid.Row="1"
-                    HorizontalAlignment="Center"
-                    IsSpellCheckEnabled="False"
-                    PlaceholderText="{x:Bind EmailBoxPlaceHolderText, Mode=OneWay}"
-                    Style="{StaticResource TextBoxStyle}"
-                    Text="{x:Bind EmailBoxContent, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
-                    TextChanged="{x:Bind EmailBoxTextChanged, Mode=OneWay}" />
+                    BorderThickness="5,0,5,5"
+                    CornerRadius="0,0,4,4"
+                    Style="{StaticResource GridBackground}">
 
-                <RelativePanel Grid.Row="1" Margin="0,15,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <!--<Name Field>-->
 
+                    <TextBox
+                        Name="NameBox"
+                        Grid.Row="0"
+                        HorizontalAlignment="Center"
+                        PlaceholderText="{x:Bind NameBoxPlaceHolderText, Mode=OneWay}"
+                        Style="{StaticResource TextBoxStyle}"
+                        Text="{x:Bind NameBoxContent, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
+                        TextChanged="{x:Bind NameBoxTextChanged, Mode=OneWay}" />
 
-                    <Border
-                        Name="EmailCheckBorder"
-                        RelativePanel.AlignRightWithPanel="True"
-                        Style="{StaticResource FontBorderStyle}">
-                        <FontIcon
-                            Name="EmailCheck"
-                            Style="{StaticResource FontIconStyle}"
-                            Visibility="{x:Bind EmailCheckVisibility, Mode=OneWay}" />
-                        <ToolTipService.ToolTip>
-                            <TextBlock
-                                Name="EmailToolTip"
-                                Text="{x:Bind EmailToolTipContent, Mode=OneWay}"
-                                Visibility="{x:Bind EmailToolTipVisibility, Mode=OneWay}" />
-                        </ToolTipService.ToolTip>
-                    </Border>
+                    <RelativePanel Grid.Row="0" Margin="0,15,0,0">
+                        <Border
+                            Name="NameCheckBorder"
+                            RelativePanel.AlignRightWithPanel="True"
+                            Style="{StaticResource FontBorderStyle}"
+                            Visibility="{x:Bind NameCheckBorderVisibility, Mode=OneWay}">
+                            <FontIcon
+                                Name="NameCheck"
+                                Style="{StaticResource FontIconStyle}"
+                                Visibility="{x:Bind NameCheckVisibility, Mode=OneWay}" />
+                            <ToolTipService.ToolTip>
+                                <TextBlock
+                                    Name="NameToolTip"
+                                    Text="{x:Bind NameToolTipContent, Mode=OneWay}"
+                                    Visibility="{x:Bind NameToolTipVisibility, Mode=OneWay}" />
+                            </ToolTipService.ToolTip>
+                        </Border>
 
-                </RelativePanel>
+                    </RelativePanel>
 
+                    <!--<Email Field>-->
+                    <TextBox
+                        Name="EmailBox"
+                        Grid.Row="1"
+                        HorizontalAlignment="Center"
+                        IsSpellCheckEnabled="False"
+                        PlaceholderText="{x:Bind EmailBoxPlaceHolderText, Mode=OneWay}"
+                        Style="{StaticResource TextBoxStyle}"
+                        Text="{x:Bind EmailBoxContent, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
+                        TextChanged="{x:Bind EmailBoxTextChanged, Mode=OneWay}" />
 
-                <!--<Password Field>-->
-                <PasswordBox
-                    Name="PasswordBox"
-                    Grid.Row="2"
-                    Password="{x:Bind PasswordBoxPassword, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
-                    PasswordChanged="{x:Bind PasswordBoxTextChanged, Mode=OneWay}"
-                    PasswordRevealMode="{x:Bind PasswordBoxRevealMode, Mode=OneWay}"
-                    PlaceholderText="{x:Bind PasswordBoxPlaceHolderText, Mode=OneWay}"
-                    Style="{StaticResource PasswordBoxStyle}" />
-
-
-                <RelativePanel Grid.Row="2" Margin="0,15,0,0">
-                    <Border
-                        Name="PasswordCheckBorder"
-                        RelativePanel.AlignRightWithPanel="True"
-                        Style="{StaticResource FontBorderStyle}">
-
-                        <FontIcon
-                            Name="PasswordCheck"
-                            Style="{StaticResource FontIconStyle}"
-                            Visibility="{x:Bind PasswordCheckVisibility, Mode=OneWay}" />
-
-                        <ToolTipService.ToolTip>
-                            <TextBlock
-                                Name="PasswordToolTip"
-                                Text="{x:Bind PasswordToolTipContent, Mode=OneWay}"
-                                Visibility="{x:Bind PasswordToolTipVisibility, Mode=OneWay}" />
-                        </ToolTipService.ToolTip>
-
-                    </Border>
-                </RelativePanel>
+                    <RelativePanel Grid.Row="1" Margin="0,15,0,0">
 
 
-                <CheckBox
-                    Name="RevealModeCheckBox"
-                    Grid.Row="3"
-                    Checked="{x:Bind RevealModeCheckBoxChecked, Mode=OneWay}"
-                    IsChecked="{x:Bind RevealModeCheckBoxIsChecked, Mode=OneWay}"
-                    Style="{StaticResource ValidateCheckBox}"
-                    Unchecked="{x:Bind RevealModeCheckBoxChecked, Mode=OneWay}" />
+                        <Border
+                            Name="EmailCheckBorder"
+                            RelativePanel.AlignRightWithPanel="True"
+                            Style="{StaticResource FontBorderStyle}"
+                            Visibility="{x:Bind EmailCheckBorderVisibility, Mode=OneWay}">
+                            <FontIcon
+                                Name="EmailCheck"
+                                Style="{StaticResource FontIconStyle}"
+                                Visibility="{x:Bind EmailCheckVisibility, Mode=OneWay}" />
+                            <ToolTipService.ToolTip>
+                                <TextBlock
+                                    Name="EmailToolTip"
+                                    Text="{x:Bind EmailToolTipContent, Mode=OneWay}"
+                                    Visibility="{x:Bind EmailToolTipVisibility, Mode=OneWay}" />
+                            </ToolTipService.ToolTip>
+                        </Border>
+
+                    </RelativePanel>
+
+
+                    <!--<Password Field>-->
+                    <PasswordBox
+                        Name="PasswordBox"
+                        Grid.Row="2"
+                        Password="{x:Bind PasswordBoxPassword, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
+                        PasswordChanged="{x:Bind PasswordBoxTextChanged, Mode=OneWay}"
+                        PasswordRevealMode="{x:Bind PasswordBoxRevealMode, Mode=OneWay}"
+                        PlaceholderText="{x:Bind PasswordBoxPlaceHolderText, Mode=OneWay}"
+                        Style="{StaticResource PasswordBoxStyle}" />
+
+
+                    <RelativePanel Grid.Row="2" Margin="0,15,0,0">
+                        <Border
+                            Name="PasswordCheckBorder"
+                            RelativePanel.AlignRightWithPanel="True"
+                            Style="{StaticResource FontBorderStyle}"
+                            Visibility="{x:Bind PasswordCheckBorderVisbility, Mode=OneWay}">
+
+                            <FontIcon
+                                Name="PasswordCheck"
+                                Style="{StaticResource FontIconStyle}"
+                                Visibility="{x:Bind PasswordCheckVisibility, Mode=OneWay}" />
+
+                            <ToolTipService.ToolTip>
+                                <TextBlock
+                                    Name="PasswordToolTip"
+                                    Text="{x:Bind PasswordToolTipContent, Mode=OneWay}"
+                                    Visibility="{x:Bind PasswordToolTipVisibility, Mode=OneWay}" />
+                            </ToolTipService.ToolTip>
+
+                        </Border>
+                    </RelativePanel>
+
+
+                    <CheckBox
+                        Name="RevealModeCheckBox"
+                        Grid.Row="3"
+                        Checked="{x:Bind RevealModeCheckBoxChecked, Mode=OneWay}"
+                        IsChecked="{x:Bind RevealModeCheckBoxIsChecked, Mode=OneWay}"
+                        Style="{StaticResource ValidateCheckBox}"
+                        Unchecked="{x:Bind RevealModeCheckBoxChecked, Mode=OneWay}" />
 
 
 
 
 
-                <!--<Confirm Password Field>-->
-                <PasswordBox
-                    Name="ConfirmPasswordBox"
-                    Grid.Row="4"
-                    Password="{x:Bind ConfirmPasswordBoxPassword, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
-                    PasswordChanged="{x:Bind ConfirmPasswordBoxPasswordChanged, Mode=OneWay}"
-                    PasswordRevealMode="{x:Bind ConfirmPasswordBoxRevealMode, Mode=OneWay}"
-                    PlaceholderText="{x:Bind ConfirmPasswordBoxPlaceHolderText, Mode=OneWay}"
-                    Style="{StaticResource PasswordBoxStyle}" />
+                    <!--<Confirm Password Field>-->
+                    <PasswordBox
+                        Name="ConfirmPasswordBox"
+                        Grid.Row="4"
+                        Password="{x:Bind ConfirmPasswordBoxPassword, UpdateSourceTrigger=LostFocus, Mode=TwoWay}"
+                        PasswordChanged="{x:Bind ConfirmPasswordBoxPasswordChanged, Mode=OneWay}"
+                        PasswordRevealMode="{x:Bind ConfirmPasswordBoxRevealMode, Mode=OneWay}"
+                        PlaceholderText="{x:Bind ConfirmPasswordBoxPlaceHolderText, Mode=OneWay}"
+                        Style="{StaticResource PasswordBoxStyle}" />
 
-                <RelativePanel Grid.Row="4" Margin="0,15,0,0">
+                    <RelativePanel Grid.Row="4" Margin="0,15,0,0">
 
-                    <Border
-                        Name="ConfirmPasswordCheckBorder"
-                        RelativePanel.AlignRightWithPanel="True"
-                        Style="{StaticResource FontBorderStyle}">
-                        <FontIcon
-                            Name="ConfirmPasswordCheck"
-                            Style="{StaticResource FontIconStyle}"
-                            Visibility="{x:Bind ConfirmPasswordCheckVisibility, Mode=OneWay}" />
+                        <Border
+                            Name="ConfirmPasswordCheckBorder"
+                            RelativePanel.AlignRightWithPanel="True"
+                            Style="{StaticResource FontBorderStyle}"
+                            Visibility="{x:Bind ConfirmPasswordCheckBorderVisibility, Mode=OneWay}">
+                            <FontIcon
+                                Name="ConfirmPasswordCheck"
+                                Style="{StaticResource FontIconStyle}"
+                                Visibility="{x:Bind ConfirmPasswordCheckVisibility, Mode=OneWay}" />
 
-                        <ToolTipService.ToolTip>
-                            <TextBlock
-                                Name="ConfirmPasswordToolTip"
-                                Text="{x:Bind ConfirmPasswordToolTipContent, Mode=OneWay}"
-                                Visibility="{x:Bind ConfirmPasswordToolTipVisibility, Mode=OneWay}" />
-                        </ToolTipService.ToolTip>
-                    </Border>
+                            <ToolTipService.ToolTip>
+                                <TextBlock
+                                    Name="ConfirmPasswordToolTip"
+                                    Text="{x:Bind ConfirmPasswordToolTipContent, Mode=OneWay}"
+                                    Visibility="{x:Bind ConfirmPasswordToolTipVisibility, Mode=OneWay}" />
+                            </ToolTipService.ToolTip>
+                        </Border>
 
-                </RelativePanel>
+                    </RelativePanel>
 
 
-                <RelativePanel Grid.Row="5" Margin="0,15,5,0">
+                    <RelativePanel Grid.Row="5" Margin="0,15,5,0">
 
-                    <!--<Button
+                        <!--<Button
                         Name="SignUpBackButton"
                         Margin="0,0,0,10"
                         Click="{x:Bind SignUpBackButtonClick, Mode=OneWay}"
@@ -232,71 +236,73 @@
                         RelativePanel.LeftOf="LogInButton"
                         Style="{StaticResource BackButtonStyle}" />-->
 
-                    <Button
-                        Name="CreateAccount"
-                        Width="150"
-                        Click="{x:Bind CreateAccountClick, Mode=OneWay}"
-                        Content="Create Account"
-                        RelativePanel.AlignRightWithPanel="True"
-                        Style="{StaticResource SignUpButtonStyle}" />
+                        <Button
+                            Name="CreateAccount"
+                            Width="150"
+                            Click="{x:Bind CreateAccountClick, Mode=OneWay}"
+                            Content="Create Account"
+                            RelativePanel.AlignRightWithPanel="True"
+                            Style="{StaticResource SignUpButtonStyle}" />
 
-                </RelativePanel>
-
-
-
-                <StackPanel
-                    Grid.Row="6"
-                    Margin="15"
-                    HorizontalAlignment="Center"
-                    Orientation="Horizontal">
-                    <TextBlock
-                        Margin="0,0,2,0"
-                        FontSize="14"
-                        Foreground="{ThemeResource TextBoxFg}"
-                        Text="  Already have an account? " />
-
-                    <HyperlinkButton
-                        x:Name="NavigateToSignIn"
-                        Click="{x:Bind NavigateToSignInClick, Mode=OneWay}"
-                        Content="SignIn"
-                        FontSize="14"
-                        Style="{StaticResource NavigationLinks}" />
-                </StackPanel>
+                    </RelativePanel>
 
 
 
+                    <StackPanel
+                        Name="NavigateToSignInContainer"
+                        Grid.Row="6"
+                        Margin="15"
+                        HorizontalAlignment="Center"
+                        Orientation="Horizontal"
+                        Visibility="{x:Bind NavigateToSignInContainerVisibility, Mode=OneWay}">
+                        <TextBlock
+                            Margin="0,0,2,0"
+                            FontSize="14"
+                            Foreground="{ThemeResource TextBoxFg}"
+                            Text="  Already have an account? " />
+
+                        <HyperlinkButton
+                            x:Name="NavigateToSignIn"
+                            Click="{x:Bind NavigateToSignInClick, Mode=OneWay}"
+                            Content="SignIn"
+                            FontSize="14"
+                            Style="{StaticResource NavigationLinks}" />
+                    </StackPanel>
 
 
+
+
+
+                </Grid>
+
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup>
+                        <VisualState x:Name="NarrowLayout">
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="0" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="Title.Background" Value="Red" />
+                                <!--<Setter Target="LayoutGrid.Background" Value="Blue" />-->
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="WideLayout">
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="1000" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="Title.Background" Value="Blue" />
+                                <!--<Setter Target="LayoutGrid.Background" Value="Blue" />-->
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
             </Grid>
 
-            <VisualStateManager.VisualStateGroups>
-                <VisualStateGroup>
-                    <VisualState x:Name="NarrowLayout">
-                        <VisualState.StateTriggers>
-                            <AdaptiveTrigger MinWindowWidth="0" />
-                        </VisualState.StateTriggers>
-                        <VisualState.Setters>
-                            <Setter Target="Title.Background" Value="Red" />
-                            <!--<Setter Target="LayoutGrid.Background" Value="Blue" />-->
-                        </VisualState.Setters>
-                    </VisualState>
-                    <VisualState x:Name="WideLayout">
-                        <VisualState.StateTriggers>
-                            <AdaptiveTrigger MinWindowWidth="1000" />
-                        </VisualState.StateTriggers>
-                        <VisualState.Setters>
-                            <Setter Target="Title.Background" Value="Blue" />
-                            <!--<Setter Target="LayoutGrid.Background" Value="Blue" />-->
-                        </VisualState.Setters>
-                    </VisualState>
-                </VisualStateGroup>
-            </VisualStateManager.VisualStateGroups>
-        </Grid>
+
+        </controls:DropShadowPanel>
 
 
-    </controls:DropShadowPanel>
-
-
-    <!--</ScrollViewer>-->
+    </ScrollViewer>
 
 </Page>

@@ -9,6 +9,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:usercontrol="using:UWPYourNote.View.usercontrol"
     xmlns:util="using:UWPYourNoteLibrary.Util"
+    Loaded="Page_Loaded"
     mc:Ignorable="d">
     <Page.Resources>
 
@@ -70,7 +71,6 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Frame Name="DetailsView" />
 
         <RelativePanel VerticalAlignment="Center" Background="{ThemeResource Pagebackground}">
 
@@ -130,21 +130,10 @@
             </ListBox>
 
 
-            <!--  SEARCH BOX  -->
-            <!--<StackPanel
-                Name="SearchBoxContainer"
-                Margin="0,7,5,0"
-                LostFocus="{x:Bind SearchBoxContainerLostFocus, Mode=OneWay}"
-                RelativePanel.AlignBottomWithPanel="True"
-                RelativePanel.AlignTopWithPanel="True"
-                RelativePanel.LeftOf="Settings">-->
-            <!--<Button
-                    Name="SearchButton"
-                    Content="Search"
-                    Visibility="Collapsed" />-->
+
             <StackPanel
                 Name="TitleSearchBoxContainer"
-                Margin="0,7.5,0,0"
+                Margin="0,7.5,5,0"
                 RelativePanel.AlignTopWithPanel="True"
                 RelativePanel.LeftOf="Settings"
                 Style="{StaticResource StackBackground}">
@@ -154,26 +143,21 @@
                     Height="Auto"
                     DisplaySelectedNote="{x:Bind TitleSearchBoxDisplaySelectedNote, Mode=OneWay}"
                     LoggedUser="{x:Bind LoggedUser, Mode=OneWay}"
+                    UserControlLostFocus="TitleSearchBox_SearchTextBoxLostFocus"
                     Visibility="Visible" />
             </StackPanel>
             <Button
-                Name="SearchButton"
+                Name="NoteSearchButton"
+                Margin="0,0,5,0"
+                Click="NoteSearchButton_Click"
                 Content="&#xE721;"
+                CornerRadius="4"
                 FontFamily="Segoe MDL2 Assets"
                 RelativePanel.AlignBottomWithPanel="True"
                 RelativePanel.AlignTopWithPanel="True"
                 RelativePanel.LeftOf="Settings"
-                Style="{StaticResource SignOutButtonStyle}"
-                Visibility="Collapsed">
-                <Button.Flyout>
-                    <Flyout
-                        FlyoutPresenterStyle="{StaticResource FlyoutFlyoutPresenterStyle}"
-                        LightDismissOverlayMode="On"
-                        Placement="Left">
-                        <usercontrol:NoteTitleSearchBox Margin="0,3.5,0,0" LoggedUser="{x:Bind LoggedUser, Mode=OneWay}" />
-                    </Flyout>
-                </Button.Flyout>
-            </Button>
+                Style="{StaticResource NoteSearchButtonStyle}"
+                Visibility="Collapsed" />
             <!--<usercontrol:NoteTitleSearchBox
                     />-->
 
@@ -185,7 +169,7 @@
                 Name="Settings"
                 Width="35"
                 Height="31"
-                Margin="0,0,10,0"
+                Margin="5.5,0,10,0"
                 Background="Transparent"
                 Content="&#xE713;"
                 CornerRadius="4"
@@ -195,12 +179,12 @@
                 RelativePanel.AlignBottomWithPanel="True"
                 RelativePanel.AlignRightWithPanel="True"
                 RelativePanel.AlignTopWithPanel="True"
-                Style="{StaticResource SignOutButtonStyle}"
+                Style="{StaticResource NoteSearchButtonStyle}"
                 ToolTipService.Placement="Bottom"
                 ToolTipService.ToolTip="Settings">
                 <Button.Flyout>
                     <Flyout
-                        x:Name="Hello123"
+                        x:Name="SettingsFlyout"
                         FlyoutPresenterStyle="{StaticResource SettingsFlyout}"
                         Placement="BottomEdgeAlignedRight">
                         <Grid>
@@ -263,28 +247,31 @@
 
         <Grid
             Grid.Row="1"
-            Margin="10,2,0,15"
+            Margin="0,2,0,15"
             Padding="0,10"
             CornerRadius="4"
             Style="{StaticResource GridBackground}">
 
             <TextBlock
                 Name="Title"
-                Margin="0,0,0,10"
+                Margin="10,0,0,10"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 FontSize="18"
                 FontWeight="SemiBold"
                 Foreground="{ThemeResource TextBoxFg}"
-                Text="{x:Bind TitleText, Mode=OneWay}" />
+                Text="{x:Bind TitleText, Mode=OneWay}"
+                Visibility="Visible" />
 
             <controls:DropShadowPanel
+                Name="NewNoteDropShadow"
                 Width="500"
                 HorizontalAlignment="Center"
                 BlurRadius="10"
                 Color="Gray">
                 <Grid
                     Name="NewNote"
+                    Width="500"
                     Background="{x:Bind NewNoteBackground, Mode=OneWay}"
                     CornerRadius="7"
                     Visibility="{x:Bind NewNoteVisibility, Mode=OneWay}">
@@ -304,6 +291,8 @@
                         HorizontalAlignment="Stretch"
                         BorderBrush="Transparent"
                         FontSize="16"
+                        LosingFocus="TitleOfNewNote_LosingFocus"
+                        LostFocus="TitleOfNewNote_LostFocus"
                         PlaceholderText="Title"
                         Style="{StaticResource NewNoteTitleStyle}"
                         Text="{x:Bind TitleOfNewNoteText, Mode=OneWay}"
@@ -375,7 +364,7 @@
                 <GridView.ItemTemplate>
                     <DataTemplate x:DataType="data:Note">
                         <Border CornerRadius="4">
-                            <usercontrol:NotesDataTemplate notesTemplate="{Binding}" />
+                            <usercontrol:NotesDataTemplate NoteDisplayPopOutWindow="NotesInPopOutWindow" notesTemplate="{Binding}" />
                         </Border>
                     </DataTemplate>
                 </GridView.ItemTemplate>
@@ -386,9 +375,6 @@
                             ColumnSpacing="7"
                             DesiredColumnWidth="250"
                             RowSpacing="7" />
-
-
-
                     </ItemsPanelTemplate>
                 </GridView.ItemsPanel>
             </GridView>
@@ -404,22 +390,23 @@
                 GripperCursor="Default"
                 ResizeBehavior="BasedOnAlignment"
                 ResizeDirection="Auto"
+                IsLightDismissEnabled="{x:Bind NoteDisplayPopUpIsLight, Mode=OneWay}"
+
                 Visibility="Collapsed" />-->
             <Popup
                 Name="NoteDisplayPopUp"
                 Closed="{x:Bind NoteDisplayPopUpClosed, Mode=OneWay}"
-                IsLightDismissEnabled="True"
+                IsLightDismissEnabled="False"
                 IsOpen="{x:Bind NoteDisplayPopUpIsOpen, Mode=OneWay}"
                 LayoutUpdated="{x:Bind NoteDisplayPopUpLayoutUpdated, Mode=OneWay}"
-                LightDismissOverlayMode="On"
+                LightDismissOverlayMode="Off"
                 Opened="{x:Bind NoteDisplayPopUpOpened, Mode=OneWay}">
                 <Border CornerRadius="4">
                     <usercontrol:NoteContent
                         x:Name="NoteContentPopUp"
                         Width="{x:Bind NoteContentPopUpWidth, Mode=OneWay}"
                         Height="{x:Bind NoteContentPopUpHeight, Mode=OneWay}"
-                        IsTapEnabled="{x:Bind NoteContentPopUpIsTapped, Mode=OneWay}"
-                        Tapped="{x:Bind NoteContentPopUpTapped, Mode=OneWay}" />
+                        PopOutWindow="{x:Bind NotesInPopOutWindow}" />
                 </Border>
                 <Popup.Resources>
                     <Storyboard x:Name="PopIn">
@@ -442,9 +429,12 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="TitleSearchBoxContainer.Visibility" Value="Collapsed" />
-                        <Setter Target="SearchButton.Visibility" Value="Visible" />
+                        <Setter Target="NoteSearchButton.Visibility" Value="Visible" />
                         <Setter Target="AppName.Visibility" Value="Collapsed" />
                         <Setter Target="AppLogo.Visibility" Value="Collapsed" />
+                        <Setter Target="Title.Visibility" Value="Collapsed" />
+                        <Setter Target="NewNote.Width" Value="475" />
+                        <Setter Target="NewNoteDropShadow.Width" Value="475" />
                     </VisualState.Setters>
                 </VisualState>
 
@@ -459,7 +449,11 @@
                         <Setter Target="AppLogoNameContainer.Visibility" Value="Collapsed" />
                         <Setter Target="TitleSearchBoxContainer.Background" Value="Blue" />
                         <Setter Target="TitleSearchBoxContainer.Visibility" Value="Collapsed" />
-                        <Setter Target="SearchButton.Visibility" Value="Visible" />
+                        <Setter Target="NoteSearchButton.Visibility" Value="Visible" />
+                        <Setter Target="Title.Visibility" Value="Collapsed" />
+                        <Setter Target="NewNote.Width" Value="475" />
+                        <Setter Target="NewNoteDropShadow.Width" Value="475" />
+
 
                     </VisualState.Setters>
                 </VisualState>
@@ -470,9 +464,13 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="TitleSearchBoxContainer.Visibility" Value="Collapsed" />
-                        <Setter Target="SearchButton.Visibility" Value="Visible" />
+                        <Setter Target="NoteSearchButton.Visibility" Value="Visible" />
                         <Setter Target="AppName.Visibility" Value="Collapsed" />
                         <Setter Target="AppLogo.Visibility" Value="Collapsed" />
+                        <Setter Target="Title.Visibility" Value="Collapsed" />
+                        <Setter Target="NewNote.Width" Value="475" />
+                        <Setter Target="NewNoteDropShadow.Width" Value="475" />
+
                     </VisualState.Setters>
                 </VisualState>
 
@@ -482,9 +480,12 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="TitleSearchBoxContainer.Visibility" Value="Visible" />
-                        <Setter Target="SearchButton.Visibility" Value="Collapsed" />
+                        <Setter Target="NoteSearchButton.Visibility" Value="Collapsed" />
                         <Setter Target="AppName.Visibility" Value="Visible" />
                         <Setter Target="AppLogo.Visibility" Value="Visible" />
+                        <Setter Target="Title.Visibility" Value="Visible" />
+                        <Setter Target="NewNote.Width" Value="500" />
+                        <Setter Target="NewNoteDropShadow.Width" Value="500" />
                     </VisualState.Setters>
                 </VisualState>
 
@@ -495,9 +496,13 @@
                     <VisualState.Setters>
 
                         <Setter Target="TitleSearchBoxContainer.Visibility" Value="Visible" />
-                        <Setter Target="SearchButton.Visibility" Value="Collapsed" />
+                        <Setter Target="NoteSearchButton.Visibility" Value="Collapsed" />
                         <Setter Target="AppName.Visibility" Value="Visible" />
                         <Setter Target="AppLogo.Visibility" Value="Visible" />
+                        <Setter Target="Title.Visibility" Value="Visible" />
+                        <Setter Target="NewNote.Width" Value="500" />
+                        <Setter Target="NewNoteDropShadow.Width" Value="500" />
+
                     </VisualState.Setters>
                 </VisualState>
 
@@ -506,9 +511,13 @@
                         <AdaptiveTrigger MinWindowWidth="1300" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="SearchButton.Visibility" Value="Collapsed" />
+                        <Setter Target="NoteSearchButton.Visibility" Value="Collapsed" />
                         <Setter Target="AppName.Visibility" Value="Visible" />
                         <Setter Target="AppLogo.Visibility" Value="Visible" />
+                        <Setter Target="Title.Visibility" Value="Visible" />
+                        <Setter Target="NewNote.Width" Value="500" />
+                        <Setter Target="NewNoteDropShadow.Width" Value="500" />
+
                     </VisualState.Setters>
                 </VisualState>
 

@@ -9,6 +9,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:usercontrol="using:UWPYourNote.View.usercontrol"
     xmlns:util="using:UWPYourNoteLibrary.Util"
+                        
     mc:Ignorable="d">
     <Page.Resources>
 
@@ -70,7 +71,6 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Frame x:ConnectionId='12' Name="DetailsView" />
 
         <RelativePanel VerticalAlignment="Center" Background="{ThemeResource Pagebackground}">
 
@@ -101,7 +101,7 @@
             </StackPanel>
 
             <!--  MAIN MENU OPTIONS  -->
-            <ListBox x:ConnectionId='27'
+            <ListBox x:ConnectionId='28'
                 Name="MainMenuOptions"
                 Margin="0,5"
                 ItemContainerStyle="{StaticResource MainMenuItemStyle}"
@@ -130,21 +130,10 @@
             </ListBox>
 
 
-            <!--  SEARCH BOX  -->
-            <!--<StackPanel
-                Name="SearchBoxContainer"
-                Margin="0,7,5,0"
-                LostFocus="{x:Bind SearchBoxContainerLostFocus, Mode=OneWay}"
-                RelativePanel.AlignBottomWithPanel="True"
-                RelativePanel.AlignTopWithPanel="True"
-                RelativePanel.LeftOf="Settings">-->
-            <!--<Button
-                    Name="SearchButton"
-                    Content="Search"
-                    Visibility="Collapsed" />-->
-            <StackPanel x:ConnectionId='28'
+
+            <StackPanel x:ConnectionId='29'
                 Name="TitleSearchBoxContainer"
-                Margin="0,7.5,0,0"
+                Margin="0,7.5,5,0"
                 RelativePanel.AlignTopWithPanel="True"
                 RelativePanel.LeftOf="Settings"
                 Style="{StaticResource StackBackground}">
@@ -154,26 +143,21 @@
                     Height="Auto"
                                                                                                  
                                                                  
+                                                                                
                     Visibility="Visible" />
             </StackPanel>
-            <Button x:ConnectionId='29'
-                Name="SearchButton"
+            <Button x:ConnectionId='30'
+                Name="NoteSearchButton"
+                Margin="0,0,5,0"
+                                              
                 Content="&#xE721;"
+                CornerRadius="4"
                 FontFamily="Segoe MDL2 Assets"
                 RelativePanel.AlignBottomWithPanel="True"
                 RelativePanel.AlignTopWithPanel="True"
                 RelativePanel.LeftOf="Settings"
-                Style="{StaticResource SignOutButtonStyle}"
-                Visibility="Collapsed">
-                <Button.Flyout>
-                    <Flyout
-                        FlyoutPresenterStyle="{StaticResource FlyoutFlyoutPresenterStyle}"
-                        LightDismissOverlayMode="On"
-                        Placement="Left">
-                        <usercontrol:NoteTitleSearchBox x:ConnectionId='36' Margin="0,3.5,0,0"                                               />
-                    </Flyout>
-                </Button.Flyout>
-            </Button>
+                Style="{StaticResource NoteSearchButtonStyle}"
+                Visibility="Collapsed" />
             <!--<usercontrol:NoteTitleSearchBox
                     />-->
 
@@ -181,11 +165,11 @@
 
 
             <!--  SETTINGS  -->
-            <Button x:ConnectionId='30'
+            <Button x:ConnectionId='31'
                 Name="Settings"
                 Width="35"
                 Height="31"
-                Margin="0,0,10,0"
+                Margin="5.5,0,10,0"
                 Background="Transparent"
                 Content="&#xE713;"
                 CornerRadius="4"
@@ -195,12 +179,12 @@
                 RelativePanel.AlignBottomWithPanel="True"
                 RelativePanel.AlignRightWithPanel="True"
                 RelativePanel.AlignTopWithPanel="True"
-                Style="{StaticResource SignOutButtonStyle}"
+                Style="{StaticResource NoteSearchButtonStyle}"
                 ToolTipService.Placement="Bottom"
                 ToolTipService.ToolTip="Settings">
                 <Button.Flyout>
-                    <Flyout x:ConnectionId='31'
-                        x:Name="Hello123"
+                    <Flyout x:ConnectionId='32'
+                        x:Name="SettingsFlyout"
                         FlyoutPresenterStyle="{StaticResource SettingsFlyout}"
                         Placement="BottomEdgeAlignedRight">
                         <Grid>
@@ -211,7 +195,7 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <StackPanel>
-                                <usercontrol:ThemeToggle x:ConnectionId='35'
+                                <usercontrol:ThemeToggle x:ConnectionId='36'
                                     Name="ThemeToggleButton"
                                     Grid.Row="0"
                                                                                                     />
@@ -222,7 +206,7 @@
                                     <ImageBrush ImageSource="/Assets/download.png" />
                                 </Ellipse.Fill>
                             </Ellipse>
-                            <TextBlock x:ConnectionId='32'
+                            <TextBlock x:ConnectionId='33'
                                 Name="Welcome"
                                 Grid.Row="1"
                                 Margin="10,5"
@@ -230,7 +214,7 @@
                                 FontSize="14"
                                 FontWeight="SemiBold"
                                                                          />
-                            <Button x:ConnectionId='33'
+                            <Button x:ConnectionId='34'
                                 Name="Appearence"
                                 Grid.Row="2"
                                 Margin="10,5"
@@ -238,7 +222,7 @@
                                                                              
                                 Content="Appearence"
                                 CornerRadius="4" />
-                            <Button x:ConnectionId='34'
+                            <Button x:ConnectionId='35'
                                 Grid.Row="3"
                                 Margin="10,0"
                                 HorizontalAlignment="Stretch"
@@ -263,28 +247,31 @@
 
         <Grid
             Grid.Row="1"
-            Margin="10,2,0,15"
+            Margin="0,2,0,15"
             Padding="0,10"
             CornerRadius="4"
             Style="{StaticResource GridBackground}">
 
             <TextBlock x:ConnectionId='20'
                 Name="Title"
-                Margin="0,0,0,10"
+                Margin="10,0,0,10"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 FontSize="18"
                 FontWeight="SemiBold"
                 Foreground="{ThemeResource TextBoxFg}"
-                                                       />
+                                                      
+                Visibility="Visible" />
 
-            <controls:DropShadowPanel
+            <controls:DropShadowPanel x:ConnectionId='21'
+                Name="NewNoteDropShadow"
                 Width="500"
                 HorizontalAlignment="Center"
                 BlurRadius="10"
                 Color="Gray">
-                <Grid x:ConnectionId='21'
+                <Grid x:ConnectionId='22'
                     Name="NewNote"
+                    Width="500"
                                                                         
                     CornerRadius="7"
                                                                         >
@@ -295,7 +282,7 @@
                     </Grid.RowDefinitions>
 
 
-                    <TextBox x:ConnectionId='22'
+                    <TextBox x:ConnectionId='23'
                         Name="TitleOfNewNote"
                         Grid.Row="0"
                         Width="470"
@@ -304,6 +291,8 @@
                         HorizontalAlignment="Stretch"
                         BorderBrush="Transparent"
                         FontSize="16"
+                                                                
+                                                            
                         PlaceholderText="Title"
                         Style="{StaticResource NewNoteTitleStyle}"
                                                                        
@@ -312,7 +301,7 @@
                                                                                     />
 
 
-                    <RichEditBox x:ConnectionId='23'
+                    <RichEditBox x:ConnectionId='24'
                         Name="ContentOfNewNote"
                         Grid.Row="1"
                         Margin="10"
@@ -324,7 +313,7 @@
 
 
 
-                    <Grid x:ConnectionId='24'
+                    <Grid x:ConnectionId='25'
                         Name="NoteStyleOptions"
                         Grid.Row="2"
                         Margin="12,0,10,10"
@@ -335,14 +324,14 @@
 
                         </Grid.ColumnDefinitions>
 
-                        <usercontrol:NoteEditOptionsControl x:ConnectionId='25'
+                        <usercontrol:NoteEditOptionsControl x:ConnectionId='26'
                             x:Name="NoteEditOptions"
                             Grid.Column="0"
                                                                                            />
 
 
 
-                        <Button x:ConnectionId='26'
+                        <Button x:ConnectionId='27'
                             Name="CreationButton"
                             Grid.Column="1"
                             Width="60"
@@ -362,7 +351,7 @@
 
         <Grid Grid.Row="2">
 
-            <GridView x:ConnectionId='13'
+            <GridView x:ConnectionId='12'
                 Name="NotesData"
                 Margin="10,0,10,5"
                 Background="{ThemeResource PageBg}"
@@ -375,7 +364,7 @@
                 <GridView.ItemTemplate>
                     <DataTemplate                       >
                         <Border CornerRadius="4">
-                            <usercontrol:NotesDataTemplate notesTemplate="{Binding}" />
+                            <usercontrol:NotesDataTemplate x:ConnectionId='19'                                               notesTemplate="{Binding}" />
                         </Border>
                     </DataTemplate>
                 </GridView.ItemTemplate>
@@ -386,9 +375,6 @@
                             ColumnSpacing="7"
                             DesiredColumnWidth="250"
                             RowSpacing="7" />
-
-
-
                     </ItemsPanelTemplate>
                 </GridView.ItemsPanel>
             </GridView>
@@ -404,28 +390,29 @@
                 GripperCursor="Default"
                 ResizeBehavior="BasedOnAlignment"
                 ResizeDirection="Auto"
+                IsLightDismissEnabled="{x:Bind NoteDisplayPopUpIsLight, Mode=OneWay}"
+
                 Visibility="Collapsed" />-->
-            <Popup x:ConnectionId='14'
+            <Popup x:ConnectionId='13'
                 Name="NoteDisplayPopUp"
                                                                      
-                IsLightDismissEnabled="True"
+                IsLightDismissEnabled="False"
                                                                      
                                                                                    
-                LightDismissOverlayMode="On"
+                LightDismissOverlayMode="Off"
                                                                      >
                 <Border CornerRadius="4">
-                    <usercontrol:NoteContent x:ConnectionId='15'
+                    <usercontrol:NoteContent x:ConnectionId='14'
                         x:Name="NoteContentPopUp"
                                                                            
                                                                              
-                                                                                     
-                                                                              />
+                                                                    />
                 </Border>
                 <Popup.Resources>
-                    <Storyboard x:ConnectionId='16' x:Name="PopIn">
+                    <Storyboard x:ConnectionId='15' x:Name="PopIn">
                         <PopInThemeAnimation Storyboard.TargetName="NoteDisplayPopUp" />
                     </Storyboard>
-                    <Storyboard x:ConnectionId='17' x:Name="PopOut">
+                    <Storyboard x:ConnectionId='16' x:Name="PopOut">
                         <PopOutThemeAnimation Storyboard.TargetName="NoteDisplayPopUp" />
                     </Storyboard>
                 </Popup.Resources>
@@ -442,9 +429,12 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="TitleSearchBoxContainer.Visibility" Value="Collapsed" />
-                        <Setter Target="SearchButton.Visibility" Value="Visible" />
+                        <Setter Target="NoteSearchButton.Visibility" Value="Visible" />
                         <Setter Target="AppName.Visibility" Value="Collapsed" />
                         <Setter Target="AppLogo.Visibility" Value="Collapsed" />
+                        <Setter Target="Title.Visibility" Value="Collapsed" />
+                        <Setter Target="NewNote.Width" Value="475" />
+                        <Setter Target="NewNoteDropShadow.Width" Value="475" />
                     </VisualState.Setters>
                 </VisualState>
 
@@ -459,7 +449,11 @@
                         <Setter Target="AppLogoNameContainer.Visibility" Value="Collapsed" />
                         <Setter Target="TitleSearchBoxContainer.Background" Value="Blue" />
                         <Setter Target="TitleSearchBoxContainer.Visibility" Value="Collapsed" />
-                        <Setter Target="SearchButton.Visibility" Value="Visible" />
+                        <Setter Target="NoteSearchButton.Visibility" Value="Visible" />
+                        <Setter Target="Title.Visibility" Value="Collapsed" />
+                        <Setter Target="NewNote.Width" Value="475" />
+                        <Setter Target="NewNoteDropShadow.Width" Value="475" />
+
 
                     </VisualState.Setters>
                 </VisualState>
@@ -470,9 +464,13 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="TitleSearchBoxContainer.Visibility" Value="Collapsed" />
-                        <Setter Target="SearchButton.Visibility" Value="Visible" />
+                        <Setter Target="NoteSearchButton.Visibility" Value="Visible" />
                         <Setter Target="AppName.Visibility" Value="Collapsed" />
                         <Setter Target="AppLogo.Visibility" Value="Collapsed" />
+                        <Setter Target="Title.Visibility" Value="Collapsed" />
+                        <Setter Target="NewNote.Width" Value="475" />
+                        <Setter Target="NewNoteDropShadow.Width" Value="475" />
+
                     </VisualState.Setters>
                 </VisualState>
 
@@ -482,9 +480,12 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="TitleSearchBoxContainer.Visibility" Value="Visible" />
-                        <Setter Target="SearchButton.Visibility" Value="Collapsed" />
+                        <Setter Target="NoteSearchButton.Visibility" Value="Collapsed" />
                         <Setter Target="AppName.Visibility" Value="Visible" />
                         <Setter Target="AppLogo.Visibility" Value="Visible" />
+                        <Setter Target="Title.Visibility" Value="Visible" />
+                        <Setter Target="NewNote.Width" Value="500" />
+                        <Setter Target="NewNoteDropShadow.Width" Value="500" />
                     </VisualState.Setters>
                 </VisualState>
 
@@ -495,9 +496,13 @@
                     <VisualState.Setters>
 
                         <Setter Target="TitleSearchBoxContainer.Visibility" Value="Visible" />
-                        <Setter Target="SearchButton.Visibility" Value="Collapsed" />
+                        <Setter Target="NoteSearchButton.Visibility" Value="Collapsed" />
                         <Setter Target="AppName.Visibility" Value="Visible" />
                         <Setter Target="AppLogo.Visibility" Value="Visible" />
+                        <Setter Target="Title.Visibility" Value="Visible" />
+                        <Setter Target="NewNote.Width" Value="500" />
+                        <Setter Target="NewNoteDropShadow.Width" Value="500" />
+
                     </VisualState.Setters>
                 </VisualState>
 
@@ -506,9 +511,13 @@
                         <AdaptiveTrigger MinWindowWidth="1300" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="SearchButton.Visibility" Value="Collapsed" />
+                        <Setter Target="NoteSearchButton.Visibility" Value="Collapsed" />
                         <Setter Target="AppName.Visibility" Value="Visible" />
                         <Setter Target="AppLogo.Visibility" Value="Visible" />
+                        <Setter Target="Title.Visibility" Value="Visible" />
+                        <Setter Target="NewNote.Width" Value="500" />
+                        <Setter Target="NewNoteDropShadow.Width" Value="500" />
+
                     </VisualState.Setters>
                 </VisualState>
 

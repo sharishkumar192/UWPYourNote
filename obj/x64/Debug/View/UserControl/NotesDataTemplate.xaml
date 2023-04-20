@@ -8,10 +8,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="using:Microsoft.Toolkit.Uwp.UI"
     mc:Ignorable="d">
-    <!--   -->
+    <!--    -->
     <Grid x:ConnectionId='2'
         MaxHeight="500"
-                                                                 
+                                                                
                                             
                                           >
         <Grid.RowDefinitions>
@@ -33,8 +33,18 @@
                 Foreground="Black"
                                                                 
                 TextTrimming="CharacterEllipsis" />
-
-            <Button x:ConnectionId='6' Background="Blue" Foreground="Black" Content="PopOut"  Grid.Column="1"  Name="HoverButton1"                                                                                    />
+            <Border
+                Grid.Column="1"
+                Height="40"
+                Padding="0,7,0,0">
+                <Button x:ConnectionId='6'
+                    Name="HoverButton1"
+                                              
+                    Content="&#xE8A7;"
+                    FontFamily="Segoe MDL2 Assets"
+                    Style="{StaticResource NoteStyleButtonStyle}"
+                                                                            />
+            </Border>
         </Grid>
 
         <ScrollViewer Grid.Row="1">
@@ -46,14 +56,12 @@
                 Style="{StaticResource NotesDataRichEdit}"
                 TextWrapping="Wrap" />
         </ScrollViewer>
-        <Border
+
+        <TextBlock x:ConnectionId='3'
             Grid.Row="2"
             Margin="5,0,5,5"
-            BorderBrush="Black"
-            BorderThickness="0,1,0,0"
-            CornerRadius="4">
-            <TextBlock x:ConnectionId='3' Foreground="#000000"                                                             />
-        </Border>
+            Foreground="#000000"
+                                                                        />
     </Grid>
 
 

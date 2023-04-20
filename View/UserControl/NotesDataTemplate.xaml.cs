@@ -30,12 +30,14 @@ namespace UWPYourNote.View.usercontrol
     {
         // private static bool loadOnce = false;
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public event Action<Note> NoteDisplayPopOutWindow;
         void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-
+       
 
         public Note notesTemplate
         {
@@ -216,34 +218,14 @@ namespace UWPYourNote.View.usercontrol
         private async void HoverButton1_Click(object sender, RoutedEventArgs e)
         {
 
-            
- 
+          
+            Border popOutButton = (Border)((Button)sender).Parent;
+            Grid gridViewItem = (Grid)(popOutButton).Parent;
+            Note selectedNote = (Note)gridViewItem.DataContext;
+            NoteDisplayPopOutWindow?.Invoke(selectedNote);
 
 
-            CoreApplicationView newView = CoreApplication.CreateNewView();
-
-            Grid gridViewItem = (Grid)((Button)sender).Parent;
-           Note selectedNote = (Note)gridViewItem.DataContext;
-            
-            int newViewId = 0;
-            await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-            {
-                Frame frame = new Frame();
-                frame.Navigate(typeof(NoteDisplayApplicationView), selectedNote);
-                Window.Current.Content = frame;
-                // You have to activate the window in order to show it later.
-                Window.Current.Activate();
-
-                newViewId = ApplicationView.GetForCurrentView().Id;
-            });
-            bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId, ViewSizePreference.UseLess);
-
-         
         }
 
-        private object FindVisualParent<T>(FrameworkElement childItem)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

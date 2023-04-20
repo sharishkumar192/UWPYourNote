@@ -134,7 +134,7 @@ namespace UWPYourNote.View
         public void NameBoxTextChanged()
         {
             NameToolTipContent = "";
-            NameCheckVisibility = Visibility.Collapsed;
+            NameCheckVisibility = NameCheckBorderVisibility = Visibility.Collapsed;
         }
 
         public void NameBoxLostFocus()
@@ -144,13 +144,13 @@ namespace UWPYourNote.View
             if (value == null)
             {
                 NameToolTipContent = "";
-                NameCheckVisibility = Visibility.Collapsed;
+                NameCheckVisibility = NameCheckBorderVisibility = Visibility.Collapsed;
 
             }
             else
             {
                 NameToolTipContent = value;
-                NameCheckVisibility = Visibility.Visible;
+                NameCheckVisibility = NameCheckBorderVisibility = Visibility.Visible;
 
             }
         }
@@ -159,11 +159,11 @@ namespace UWPYourNote.View
         {
             if (NameCheckVisibility == Visibility.Collapsed)
             {
-                NameToolTipVisibility = Visibility.Collapsed;
+                NameToolTipVisibility = NameCheckBorderVisibility = Visibility.Collapsed;
             }
             else
             {
-                NameToolTipVisibility = Visibility.Visible;
+                NameToolTipVisibility = NameCheckBorderVisibility = Visibility.Visible;
             }
         }
 
@@ -179,12 +179,12 @@ namespace UWPYourNote.View
                 if (result == null)
                 {
                     EmailToolTipContent = "";
-                    EmailCheckVisibility = Visibility.Collapsed;
+                    EmailCheckVisibility = EmailCheckBorderVisibility = Visibility.Collapsed;
                 }
                 else
                 {
                     EmailToolTipContent = result;
-                    EmailCheckVisibility = Visibility.Visible;
+                    EmailCheckVisibility = EmailCheckBorderVisibility = Visibility.Visible;
 
                 }
 
@@ -202,13 +202,20 @@ namespace UWPYourNote.View
             string checkNullOrEmpty = UWPYourNoteLibrary.Util.UserUtilities.CheckNullOrEmpty(email);
 
             if (checkNullOrEmpty != null)
+            {
                 return checkNullOrEmpty;
+            }
 
             string checkValid = UWPYourNoteLibrary.Util.UserUtilities.CheckValidEmail(email);
 
-            CheckAlreadyExistingEmail(email);
+            if(checkNullOrEmpty == null && checkValid==null)
+            {
+                CheckAlreadyExistingEmail(email);
+            }
             if (checkValid != null)
+            {
                 return checkValid;
+            }
             return null;
         }
         //Text Box
@@ -278,12 +285,12 @@ namespace UWPYourNote.View
             if (value == null)
             {
                 EmailToolTipContent = "";
-                EmailCheckVisibility = Visibility.Collapsed;
+                EmailCheckVisibility = EmailCheckBorderVisibility = Visibility.Collapsed;
             }
             else
             {
                 EmailToolTipContent = value;
-                EmailCheckVisibility = Visibility.Visible;
+                EmailCheckVisibility = EmailCheckBorderVisibility = Visibility.Visible;
 
             }
 
@@ -293,11 +300,11 @@ namespace UWPYourNote.View
         {
             if (EmailCheckVisibility == Visibility.Collapsed)
             {
-                EmailToolTipVisibility = Visibility.Collapsed;
+                EmailToolTipVisibility = EmailCheckBorderVisibility = Visibility.Collapsed;
             }
             else
             {
-                EmailToolTipVisibility = Visibility.Visible;
+                EmailToolTipVisibility = EmailCheckBorderVisibility = Visibility.Visible;
             }
         }
 
@@ -400,7 +407,7 @@ namespace UWPYourNote.View
         public void PasswordBoxTextChanged()
         {
             PasswordToolTipContent = "";
-            PasswordCheckVisibility = Visibility.Collapsed;
+            PasswordCheckVisibility = PasswordCheckBorderVisbility = Visibility.Collapsed;
         }
 
         public void PasswordBoxLostFocus()
@@ -409,12 +416,12 @@ namespace UWPYourNote.View
             if (value == null)
             {
                 PasswordToolTipContent = "";
-                PasswordCheckVisibility = Visibility.Collapsed;
+                PasswordCheckVisibility = PasswordCheckBorderVisbility = Visibility.Collapsed;
             }
             else
             {
                 PasswordToolTipContent = value;
-                PasswordCheckVisibility = Visibility.Visible;
+                PasswordCheckVisibility = PasswordCheckBorderVisbility = Visibility.Visible;
 
 
             }
@@ -441,11 +448,11 @@ namespace UWPYourNote.View
         {
             if (PasswordCheckVisibility == Visibility.Collapsed)
             {
-                PasswordToolTipVisibility = Visibility.Collapsed;
+                PasswordToolTipVisibility = PasswordCheckBorderVisbility = Visibility.Collapsed;
             }
             else
             {
-                PasswordToolTipVisibility = Visibility.Visible;
+                PasswordToolTipVisibility = PasswordCheckBorderVisbility = Visibility.Visible;
             }
         }
 
@@ -543,7 +550,7 @@ namespace UWPYourNote.View
         public void ConfirmPasswordBoxPasswordChanged()
         {
             ConfirmPasswordToolTipContent = "";
-            ConfirmPasswordCheckVisibility = Visibility.Collapsed;
+            ConfirmPasswordCheckVisibility = ConfirmPasswordCheckBorderVisibility = Visibility.Collapsed;
         }
 
         public void ConfirmPasswordBoxLostFocus()
@@ -553,12 +560,12 @@ namespace UWPYourNote.View
             {
 
                 ConfirmPasswordToolTipContent = "";
-                ConfirmPasswordCheckVisibility = Visibility.Collapsed;
+                ConfirmPasswordCheckVisibility = ConfirmPasswordCheckBorderVisibility =  Visibility.Collapsed;
             }
             else
             {
                 ConfirmPasswordToolTipContent = value;
-                ConfirmPasswordCheckVisibility = Visibility.Visible;
+                ConfirmPasswordCheckVisibility = ConfirmPasswordCheckBorderVisibility =  Visibility.Visible;
 
             }
         }
@@ -567,11 +574,11 @@ namespace UWPYourNote.View
         {
             if (ConfirmPasswordCheckVisibility == Visibility.Collapsed)
             {
-                ConfirmPasswordToolTipVisibility = Visibility.Collapsed;
+                ConfirmPasswordToolTipVisibility = ConfirmPasswordCheckBorderVisibility = Visibility.Collapsed;
             }
             else
             {
-                ConfirmPasswordToolTipVisibility = Visibility.Visible;
+                ConfirmPasswordToolTipVisibility = ConfirmPasswordCheckBorderVisibility = Visibility.Visible;
             }
         }
 
@@ -612,6 +619,67 @@ namespace UWPYourNote.View
             NavigateToSignInPage();
         }
 
-        
+        private Visibility _nameCheckBorderVisibility = Visibility.Collapsed;
+
+        public Visibility NameCheckBorderVisibility
+        {
+            get { return _nameCheckBorderVisibility; }
+            set { 
+                _nameCheckBorderVisibility = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+        private Visibility _emailCheckBorderVisibility = Visibility.Collapsed;
+
+        public Visibility EmailCheckBorderVisibility
+        {
+            get { return _emailCheckBorderVisibility; }
+            set
+            {
+                _emailCheckBorderVisibility = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+        private Visibility _passwordCheckBorderVisbility = Visibility.Collapsed;
+
+        public Visibility PasswordCheckBorderVisbility
+        {
+            get { return _passwordCheckBorderVisbility; }
+            set
+            {
+                _passwordCheckBorderVisbility = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+        private Visibility _confirmPasswordCheckBorderVisibility = Visibility.Collapsed;
+
+        public Visibility ConfirmPasswordCheckBorderVisibility
+        {
+            get { return _confirmPasswordCheckBorderVisibility; }
+            set
+            {
+                _confirmPasswordCheckBorderVisibility = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private Visibility _navigateToSignInContainerVisibility = Visibility.Visible;
+
+        public Visibility NavigateToSignInContainerVisibility
+        {
+            get { return _navigateToSignInContainerVisibility; }
+            set { _navigateToSignInContainerVisibility = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+       
     }
 }

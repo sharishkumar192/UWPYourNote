@@ -31,7 +31,7 @@ namespace UWPYourNote.View.usercontrol
         public event Action<Note> DisplaySelectedNote;
         public NoteTitleSearchVM noteTitleSearchVM;
 
-
+        public event Action UserControlLostFocus;
 
     
 
@@ -85,9 +85,10 @@ namespace UWPYourNote.View.usercontrol
             try
             {
                 //    throw new Exception();
+                //    throw new Exception();
                 if (ChangeVar())
                 {
-                  //  SearchPopupIsOpen = true;
+                   // SearchPopupIsOpen = true;
                     TextBox contentOfTextBox = (TextBox)sender;
                     var lowerText = contentOfTextBox.Text.ToLower();
                     var user = LoggedUser.userId;
@@ -108,7 +109,7 @@ namespace UWPYourNote.View.usercontrol
         {
             selectedNoteFromDisplay = (Note)e.ClickedItem;
             selectedNoteFromDisplay.searchCount++;
-            //SearchPopupIsOpen = false;
+           // SearchPopupIsOpen = false;
             DisplaySelectedNote?.Invoke(selectedNoteFromDisplay);
             
 
@@ -131,6 +132,12 @@ namespace UWPYourNote.View.usercontrol
                 OnPropertyChanged();
             }
         }
+
+        private void NoteTitleSearchBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            UserControlLostFocus?.Invoke();
+        }
+
 
         //----------------------------Search Popup---------------------------------------------------
 
@@ -156,8 +163,8 @@ namespace UWPYourNote.View.usercontrol
         //        OnPropertyChanged();
         //    }
         //}
-     
 
-       
+
+
     }
 }

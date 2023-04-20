@@ -130,14 +130,10 @@ namespace UWPYourNote.View.usercontrol
                 Style style1 = Application.Current.Resources[UWPYourNoteLibrary.Util.NotesUtilities.noteColorStyle[ColorOptionsSelectedIndex]] as Style;
                 Style style2 = Application.Current.Resources[UWPYourNoteLibrary.Util.NotesUtilities.noteColorButtonStyle[ColorOptionsSelectedIndex]] as Style;
               
-              MinimizeButton.Style = PopOutButton.Style =  FontBackground.Style = FontIncrease.Style = FontDecrease.Style = SmallCaps.Style = AllCaps.Style = Strikethrough.Style = NoteShareButton.Style = style1;
+              PopOutButton.Style =  FontBackground.Style = FontIncrease.Style = FontDecrease.Style = SmallCaps.Style = AllCaps.Style = Strikethrough.Style = NoteShareButton.Style = style1;
                 NoteColor.Style = NoteDeleteButton.Style = style2;
 
             UsersToShareView.Background = NotesUtilities.GetSolidColorBrush(NotesUtilities.noteShareBackgroundStyle[ColorOptionsSelectedIndex]);
-            // NotesUtilities.NoteBackgroundColor(ColorOptionsSelectedIndex);
-            // SolidColorBrush bgColor = NotesUtilities.GetSolidColorBrush(NotesUtilities.noteShareBackgroundStyle[ColorOptionsSelectedIndex]);
-
-            //   UsersToShareViewBackground = bgColor;
 
         }
 
@@ -198,12 +194,12 @@ namespace UWPYourNote.View.usercontrol
 
         public void NotePopoutButtonClick(object sender, RoutedEventArgs e)
         {
-          //  EditOptions?.Invoke(ReturnNameOfButton(sender));
+            EditOptions?.Invoke(ReturnNameOfButton(sender));
         }
 
         public void NoteMinimizeButtonClick(object sender, RoutedEventArgs e)
         {
-            //  EditOptions?.Invoke(ReturnNameOfButton(sender));
+              EditOptions?.Invoke(ReturnNameOfButton(sender));
         }
         public void NoteShareButtonClick(object sender, RoutedEventArgs e)
         {

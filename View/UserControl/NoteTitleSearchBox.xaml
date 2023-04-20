@@ -7,7 +7,9 @@
     xmlns:data="using:UWPYourNoteLibrary.Models"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:util="using:UWPYourNoteLibrary.Util"
+    LostFocus="NoteTitleSearchBox_LostFocus"
     d:DesignHeight="300"
+
     d:DesignWidth="400"
     mc:Ignorable="d">
     <UserControl.Resources>
@@ -59,6 +61,7 @@
             CornerRadius="4"
             FontSize="15"
             Foreground="Black"
+            
             Style="{StaticResource CustomSearchBox}"
             Text="{x:Bind SearchTextBoxText, Mode=OneWay}"
             TextChanged="{x:Bind SearchTextBoxTextChanged, Mode=OneWay}"
@@ -70,7 +73,8 @@
             Margin="0,4,0,0"
             IsLightDismissEnabled="False"
             IsOpen="True"
-            KeyTipPlacementMode="Bottom">
+            KeyTipPlacementMode="Bottom"
+            LightDismissOverlayMode="Off">
 
             <controls:DropShadowPanel BlurRadius="10" Color="Gray">
 
