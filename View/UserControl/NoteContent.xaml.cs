@@ -85,7 +85,7 @@ namespace UWPYourNote.View.usercontrol
             noteContentVM.noteContentView = this;
             _noteColorChosen = NoteMenuOptions.ColorOptionsSelectedIndex;
             string modifiedDay = DateTime.Now.ToString("MMM/dd/yyyy hh:mm:ss.fff tt");
-            noteContentVM.ChangeNoteColor(DisplayNote.noteId, _noteColorChosen, modifiedDay);
+            noteContentVM.UpdateNoteColor(DisplayNote.noteId, _noteColorChosen, modifiedDay);
         }
 
         private SolidColorBrush _noteContentBackground;
@@ -146,18 +146,18 @@ namespace UWPYourNote.View.usercontrol
         public ObservableCollection<UWPYourNoteLibrary.Models.User> NoteShareButtonClick(object sender, RoutedEventArgs e)
         {
             ObservableCollection<UWPYourNoteLibrary.Models.User> notes = null;
-            noteContentVM = NoteContentVM.Singleton;
-            noteContentVM.noteContentView = this;
-            if (noteContentVM.IsOwner(DisplayNote.userId, DisplayNote.noteId) == true)
-            {
-                notes = noteContentVM.GetUsersToShare(DisplayNote.userId, DisplayNote.noteId);
+            //noteContentVM = NoteContentVM.Singleton;
+            //noteContentVM.noteContentView = this;
+            //if (noteContentVM.IsOwner(DisplayNote.userId, DisplayNote.noteId) == true)
+            //{
+            //    notes = noteContentVM.GetUsersToShare(DisplayNote.userId, DisplayNote.noteId);
 
-            }
-            else
-            {
-                noteContentVM = NoteContentVM.Singleton;
-                noteContentVM.IsNoteShared(false);
-            }
+            //}
+            //else
+            //{
+            //    noteContentVM = NoteContentVM.Singleton;
+            //    noteContentVM.IsNoteShared(false);
+            //}
 
             return notes;
         }
@@ -168,7 +168,7 @@ namespace UWPYourNote.View.usercontrol
 
             noteContentVM.noteContentView = this;
             noteContentVM.DeleteNote(DisplayNote.noteId);
-            _delPageMethod.DynamicInvoke(null, null);
+            _delPageMethod?.DynamicInvoke(null, null);
         }
         ////----------------------------Content Text Box ---------------------------------------------------
 

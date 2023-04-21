@@ -11,10 +11,11 @@ using UWPYourNote.ViewModels.Contract;
 using Windows.UI.Xaml.Controls;
 using UWPYourNoteLibrary.Util;
 using System.Diagnostics;
+using UWPYourNote.View.usercontrol;
 
 namespace UWPYourNote.ViewModels
 {
-    internal class NoteContentVM  
+    internal class NoteContentVM
     {
 
         private NoteContentVM()
@@ -42,45 +43,26 @@ namespace UWPYourNote.ViewModels
 
         public void UpdateNote(Note noteToUpdate, bool titleChange, bool contentChange)
         {
-            UpdateNoteUseCaseRequest request = new UpdateNoteUseCaseRequest();
-            request.NoteToUpdate = noteToUpdate;
-            request.IsTitleChanged = titleChange;
-            request.IsContentChanged = contentChange;
-            UpdateNoteUseCase usecase = new UpdateNoteUseCase(request, new UpdateNotePresenterCallBack(this));
-            usecase.Action();
-
-        }
-
-        public void UpdateCount(long searchCount, long noteId)
-        {
-          DBUpdation.UpdateNoteCount(NotesUtilities.notesTableName, searchCount, noteId);
+            NotesUtilities.UpdateNote(noteToUpdate, titleChange, contentChange, new UpdateNotePresenterCallBack(this));
         }
 
 
-   
+
+
+
+
 
         public void DeleteNote(long noteId)
         {
-            DeleteNoteUseCaseRequest request = new DeleteNoteUseCaseRequest();
-            request.NoteId = noteId;
-            DeleteNoteUseCase usecase = new DeleteNoteUseCase(request, new DeleteNotePresenterCallBack(this));
-            usecase.Action();
+            NotesUtilities.DeleteNote(noteId, new DeleteNotePresenterCallBack(this));
         }
-        public bool IsOwner(string userId, long noteId)
-        {
-            return DBFetch.CanShareNote(NotesUtilities.notesTableName, userId, noteId);
-        }
+
 
 
         public void ShareNote(string sharedUserId, long noteId)
         {
-            ShareNoteUseCaseRequest request = new ShareNoteUseCaseRequest();
-            request.NoteId = noteId;
-            request.SharedUserID = sharedUserId;
-            ShareNoteUseCase usecase = new ShareNoteUseCase(request, new ShareNotePresenterCallBack(this));
-            usecase.Action();
+            NotesUtilities.ShareNote(sharedUserId, noteId, new ShareNotePresenterCallBack(this));
 
-          
         }
         public async void IsNoteShared(bool value)
         {
@@ -98,19 +80,26 @@ namespace UWPYourNote.ViewModels
         }
 
 
-        public ObservableCollection<UWPYourNoteLibrary.Models.User> GetUsersToShare(string userId, long displayNoteId)
+        public void GetUsersToShare(string userId, long displayNoteId)
         {
-            return DBFetch.ValidUsersToShare(UserUtilities.userTableName, NotesUtilities.sharedTableName, NotesUtilities.notesTableName, userId, displayNoteId);
-        }
-
-        public void ChangeNoteColor(long noteId, long noteColor, string modifiedDay)
-        {
-            DBUpdation.UpdateNoteColor(NotesUtilities.notesTableName, noteId, noteColor, modifiedDay);
+            NotesUtilities.ValidUsersToShare(userId, displayNoteId, new ValidUsersToSharePresenterCallBack(this));
 
         }
 
+        public void IsOwner(string userId, long noteId)
+        {
+            NotesUtilities.CanShareNote(userId, noteId, new CanShareNotePresenterCallBack(this));
 
+        }
+        public void UpdateNoteColor(long noteId, long noteColor, string modifiedDay)
+        {
+            NotesUtilities.UpdateNoteColor(noteId, noteColor, modifiedDay, new UpdateNoteColorPresenterCallBack(this));
+        }
 
+        public void UpdateCount(long searchCount, long noteId)
+        {
+            NotesUtilities.UpdateCount(searchCount, noteId, new UpdateCountPresenterCallBack(this));
+        }
 
         //-----------------------------------------PRESENTER CALLBACK-----------------------------------------------------------
 
@@ -121,7 +110,7 @@ namespace UWPYourNote.ViewModels
             public UpdateNotePresenterCallBack(NoteContentVM presenter)
             {
                 stopwatch.Start();
-             
+
                 Presenter = presenter;
             }
 
@@ -135,7 +124,7 @@ namespace UWPYourNote.ViewModels
             public void onSuccess(UpdateNoteUseCaseResponse result)
             {
                 stopwatch.Stop();
-            
+
                 Debug.WriteLine(stopwatch.ElapsedMilliseconds);
                 stopwatch = null;
             }
@@ -172,15 +161,105 @@ namespace UWPYourNote.ViewModels
 
             public void onFailure(DeleteNoteUseCaseResponse response)
             {
-               
+
             }
 
             public void onSuccess(DeleteNoteUseCaseResponse response)
             {
-                
+
 
             }
         }
+
+
+        private class UpdateCountPresenterCallBack : ICallback<UpdateCountUseCaseResponse>
+        {
+            NoteContentVM Presenter;
+            string value = null;
+            public UpdateCountPresenterCallBack(NoteContentVM noteContentVM)
+            {
+                Presenter = noteContentVM;
+            }
+
+
+            public void onSuccess(UpdateCountUseCaseResponse result)
+            {
+            }
+
+            public void onFailure(UpdateCountUseCaseResponse result)
+            {
+
+            }
+        }
+
+        private class UpdateNoteColorPresenterCallBack : ICallback<UpdateNoteColorUseCaseResponse>
+        {
+            NoteContentVM Presenter;
+            string value = null;
+            public UpdateNoteColorPresenterCallBack(NoteContentVM noteContentVM)
+            {
+                Presenter = noteContentVM;
+            }
+
+
+            public void onSuccess(UpdateNoteColorUseCaseResponse result)
+            {
+
+            }
+
+            public void onFailure(UpdateNoteColorUseCaseResponse result)
+            {
+
+            }
+        }
+
+
+
+        private class CanShareNotePresenterCallBack : ICallback<CanShareNoteUseCaseResponse>
+        {
+            NoteContentVM Presenter;
+            string value = null;
+            public CanShareNotePresenterCallBack(NoteContentVM noteContentVM)
+            {
+                Presenter = noteContentVM;
+            }
+
+
+            public void onSuccess(CanShareNoteUseCaseResponse result)
+            {
+
+            }
+
+            public void onFailure(CanShareNoteUseCaseResponse result)
+            {
+
+            }
+        }
+
+
+        private class ValidUsersToSharePresenterCallBack : ICallback<ValidUsersToShareUseCaseResponse>
+        {
+            NoteContentVM Presenter;
+            string value = null;
+            public ValidUsersToSharePresenterCallBack(NoteContentVM noteContentVM)
+            {
+                Presenter = noteContentVM;
+            }
+
+
+            public void onSuccess(ValidUsersToShareUseCaseResponse result)
+            {
+
+            }
+
+            public void onFailure(ValidUsersToShareUseCaseResponse result)
+            {
+
+            }
+        }
+
+
+
 
 
 

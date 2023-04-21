@@ -76,7 +76,7 @@ namespace UWPYourNote.ViewModels
             request.IsSort = isSort;
             request.Type = type;
             GetNotesUseCase usecase = new GetNotesUseCase(request, new GetNotesPresenterCallBack(this));
-            usecase.Action();
+             usecase.Execute();
 
         }
         void AssignNotes(ObservableCollection<Note> notes, bool IsSort)

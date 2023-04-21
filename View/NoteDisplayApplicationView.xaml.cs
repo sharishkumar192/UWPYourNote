@@ -22,6 +22,8 @@ using UWPYourNote.ViewModels;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.ApplicationModel.Core;
+using static UWPYourNoteLibrary.Util.NotesUtilities;
+using System.Collections.ObjectModel;
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace UWPYourNote.View
@@ -34,13 +36,20 @@ namespace UWPYourNote.View
         public DispatcherTimer _dispatcherTimer = null;
         private string _oldContent = "";
         private string _oldTitle = "";
-          public bool isModified = false;
-        public bool isDeleted = false;
-        private Frame _frame = null;
         public NoteDisplayApplicationViewVM noteDisplayApplicationVM;
+        private delegate ObservableCollection<UWPYourNoteLibrary.Models.User> NoteContentUserControl(object sender, RoutedEventArgs e);
+        private delegate void ToShareView(object sender, ItemClickEventArgs e);
+
         public NoteDisplayApplicationView()
         {
             this.InitializeComponent();
+            noteDisplayApplicationVM = new NoteDisplayApplicationViewVM();
+
+            NoteContentUserControl delUserControlMethod = new NoteContentUserControl(NoteShareButtonClick);
+            NoteMenuOptions.CallingPageMethod = delUserControlMethod;
+
+            ToShareView itemClick = new ToShareView(UsersToShareView_ItemClick);
+            NoteMenuOptions.ToShare = itemClick;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -50,7 +59,29 @@ namespace UWPYourNote.View
 
         }
 
+        private void UsersToShareView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            UWPYourNoteLibrary.Models.User selectedUser = (UWPYourNoteLibrary.Models.User)e.ClickedItem;
+            noteDisplayApplicationVM.ShareNote(selectedUser.userId, DisplayNote.noteId);
 
+        }
+
+
+        public ObservableCollection<UWPYourNoteLibrary.Models.User> NoteShareButtonClick(object sender, RoutedEventArgs e)
+        {
+            ObservableCollection<UWPYourNoteLibrary.Models.User> notes = null;
+            //if (noteDisplayApplicationVM.IsOwner(DisplayNote.userId, DisplayNote.noteId) == true)
+            //{
+            //    notes = noteDisplayApplicationVM.GetUsersToShare(DisplayNote.userId, DisplayNote.noteId);
+
+            //}
+            //else
+            //{
+            //    noteDisplayApplicationVM.IsNoteShared(false);
+            //}
+
+            return notes;
+        }
         private Note _displayNote = null ;
 
         public Note DisplayNote
@@ -69,9 +100,7 @@ namespace UWPYourNote.View
             TitleOfNoteText  = _oldTitle = DisplayNote.title;
             ContentOfNoteText  = _oldContent  = DisplayNote.content;
             ContentOfNote.Document.SetText(Windows.UI.Text.TextSetOptions.FormatRtf, ContentOfNoteText);
-            _dispatcherTimer = new DispatcherTimer();
-        
-            DispatcherTimerStart(_dispatcherTimer);
+            DispatcherTimerStart();
         }
 
         //------------------------------------------------------------------
@@ -127,14 +156,14 @@ namespace UWPYourNote.View
 
 
       
-        public void DispatcherTimerStart(DispatcherTimer dispatcherTimer)
+        public void DispatcherTimerStart()
         {
-            if (dispatcherTimer != null)
-            {
-                dispatcherTimer.Tick += DispatcherTimer_Tick;
-                dispatcherTimer.Interval = new TimeSpan(0, 0, 5);
-                dispatcherTimer.Start();
-            }
+
+            _dispatcherTimer = new DispatcherTimer();
+            _dispatcherTimer.Interval = new TimeSpan(0, 0, (int)AutoSaveTimer.TimeFrequency);
+            _dispatcherTimer.Tick += DispatcherTimer_Tick;
+            _dispatcherTimer.Start();
+
         }
         public void DispatcherTimerStop(DispatcherTimer dispatcherTimer)
         {
@@ -148,32 +177,23 @@ namespace UWPYourNote.View
         {
             bool contentChange = IsChanged(_oldContent, ContentOfNoteText);
             bool titleChange = IsChanged(_oldTitle, TitleOfNoteText);
-            string modifiedDay = DateTime.Now.ToString("MMM/dd/yyyy hh:mm:ss.fff tt");
-            Note updateNote = new Note(DisplayNote.noteId, TitleOfNoteText, ContentOfNoteText, modifiedDay);
-            noteDisplayApplicationVM = new NoteDisplayApplicationViewVM();
-            // noteDisplayApplicationVM.noteContentView = this;
-
-            noteDisplayApplicationVM.UpdateNote(updateNote, titleChange, contentChange);
-            if (contentChange && titleChange)
+            if (titleChange)
             {
-                _oldContent = ContentOfNoteText;
-                _oldTitle = TitleOfNoteText;
-                isModified = true;
-            }
-            else
-            {
-                if (contentChange)
-                {
-                    _oldContent = ContentOfNoteText;
-                    isModified = true;
-                }
-                if (titleChange)
-                {
-                    _oldTitle = TitleOfNoteText;
-                    isModified = true;
-                }
-            }
+                DisplayNote.title = TitleOfNoteText;
 
+            }
+            if (contentChange)
+            {
+                DisplayNote.content = ContentOfNoteText;
+
+            }
+            if (titleChange || contentChange)
+            {
+                DisplayNote.noteColor = NoteMenuOptions.ColorOptionsSelectedIndex;
+                DisplayNote.modifiedDay = DateTime.Now.ToString("MMM/dd/yyyy hh:mm:ss.fff tt");
+                noteDisplayApplicationVM.UpdateNote(DisplayNote, titleChange, contentChange);
+
+            }
         }
 
         private bool IsChanged(string oContext, string nContext)
@@ -193,20 +213,6 @@ namespace UWPYourNote.View
 
         }
 
-    
-
-
-        private void ToEnableEditMode()
-        {
-          
-            _dispatcherTimer = null;
-            isModified = false;
-            NoteMenuOptions.UsersToShare = null;
-            isDeleted = false;
-
-
-
-        }
         private void NoteMenuOptionsEditOptions(string name)
         {
             switch (name)
@@ -220,8 +226,6 @@ namespace UWPYourNote.View
                 case "ColorOptions": NoteBackgroundColor(); break;
                 case "NoteDeleteButton": NoteDeleteButtonClick(null, null); break;
                 case "NoValidUsers": NoValidUsers(); break;
-                case "MinimizeButton": MinimizeButton(); break;
-                case "PopOutButton": PopOutButton(); break;
                 case "True":
                 case "False":
                     {
@@ -252,43 +256,24 @@ namespace UWPYourNote.View
 
         private void NoteBackgroundColor()
         {
-       //     NoteContentBackground = NoteMenuOptions.NoteColorForeground;
+            NoteContentBackground = NoteMenuOptions.NoteColorForeground;
 
         }
 
-        private void MinimizeButton()
+        private System.Delegate _delPageMethod;
+        public Delegate CallingPageMethod
         {
-            _frame.Content = null;
+            set { _delPageMethod = value; }
         }
 
-        private async void PopOutButton()
-        {
-            CoreApplicationView newView = CoreApplication.CreateNewView();
-            int newViewId = 0;
-            await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-            {
-                Frame frame = new Frame();
-                Tuple<Note, Frame> tp = new Tuple<Note, Frame>(DisplayNote, null);
-                frame.Navigate(typeof(NoteDisplayApplicationView), tp);
-                Window.Current.Content = frame;
-                // You have to activate the window in order to show it later.
-                Window.Current.Activate();
-
-                newViewId = ApplicationView.GetForCurrentView().Id;
-            });
-            bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId, ViewSizePreference.UseLess);
-            _frame.Content = null;
-
-        }
 
         //----------------------------Note Delete Button ---------------------------------------------------
         public void NoteDeleteButtonClick(object sender, RoutedEventArgs e)
         {
 
-           // noteContentVM = NoteContentVM.Singleton;
-        //    noteContentVM.DeleteNote(_noteId);
-            isDeleted = true;
-          //  _delPageMethod.DynamicInvoke(null, null);
+            noteDisplayApplicationVM.DeleteNote(DisplayNote.noteId);
+            _delPageMethod.DynamicInvoke(null, null);
+           
         }
 
 
