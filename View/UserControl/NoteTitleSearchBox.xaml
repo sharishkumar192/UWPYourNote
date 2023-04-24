@@ -15,7 +15,9 @@
 
         <DataTemplate x:Key="SearchTitleA" x:DataType="data:Note">
             <StackPanel
+                Width="325"
                 Margin="0,10,0,0"
+                HorizontalAlignment="Stretch"
                 BorderBrush="#f1f1f1"
                 BorderThickness="0,0,0,1"
                 Orientation="Horizontal">
@@ -35,7 +37,10 @@
         </DataTemplate>
 
         <DataTemplate x:Key="SearchTitleL" x:DataType="data:Note">
-            <StackPanel Margin="0,10,0,10" Orientation="Horizontal">
+            <StackPanel
+                Width="325"
+                Margin="0,10,0,10"
+                Orientation="Horizontal">
                 <Rectangle
                     Width="35"
                     Height="35"

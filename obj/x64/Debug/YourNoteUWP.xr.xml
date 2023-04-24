@@ -274,8 +274,6 @@
       <RootProperty Name="TextAlignment" />
       <RootProperty Name="Background" />
       <RootProperty Name="CornerRadius" />
-      <RootEvent Name="LosingFocus" />
-      <RootEvent Name="LostFocus" />
       <RootEvent Name="TextChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.PasswordBox">
@@ -354,6 +352,7 @@
       <RootProperty Name="TextWrapping" />
       <RootProperty Name="SelectionFlyout" />
       <RootProperty Name="Name" />
+      <RootProperty Name="IsSpellCheckEnabled" />
       <RootProperty Name="Margin" />
       <RootProperty Name="PlaceholderText" />
       <RootProperty Name="Style" />
@@ -629,6 +628,7 @@
     </RootType>
     <RootType FullName="UWPYourNote.View.usercontrol.ThemeToggle">
       <RootProperty Name="Name" />
+      <RootProperty Name="Margin" />
       <RootEvent Name="ToggleThemeClick" />
     </RootType>
     <RootType FullName="UWPYourNote.View.usercontrol.NoteTitleSearchBox">

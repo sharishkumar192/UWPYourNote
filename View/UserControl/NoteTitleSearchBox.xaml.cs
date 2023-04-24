@@ -110,6 +110,9 @@ namespace UWPYourNote.View.usercontrol
             selectedNoteFromDisplay = (Note)e.ClickedItem;
             selectedNoteFromDisplay.searchCount++;
            // SearchPopupIsOpen = false;
+           SearchPopup.IsOpen = false;
+            Suggestion.ItemsSource = null;
+            SearchTextBoxText = null;
             DisplaySelectedNote?.Invoke(selectedNoteFromDisplay);
             
 

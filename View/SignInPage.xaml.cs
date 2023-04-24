@@ -449,6 +449,7 @@ namespace UWPYourNote.View
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             double height = this.ActualHeight;
+            double width = this.ActualWidth;
             if(height > 400)
             {
                 NavigationLink.Visibility = Visibility.Visible;
@@ -456,6 +457,15 @@ namespace UWPYourNote.View
             else
             {
                 NavigationLink.Visibility = Visibility.Collapsed;
+            }
+
+            if(width < 800 )
+            {
+                FrequentEmailBox.Visibility = ColumnDivider.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                FrequentEmailBox.Visibility = ColumnDivider.Visibility = Visibility.Visible;
             }
         }
     }

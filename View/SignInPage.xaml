@@ -89,7 +89,10 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Column="0" Padding="20,0,20,0">
+            <Grid
+                Name="Column0"
+                Grid.Column="0"
+                Padding="20,0,20,5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -105,7 +108,7 @@
                 <StackPanel
                     Name="Title"
                     Grid.Row="0"
-                    Margin="0,5,0,0"
+                    Margin="-0.5,5,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     CornerRadius="4"
@@ -342,6 +345,7 @@
                         <AdaptiveTrigger MinWindowWidth="0" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
+            
                         <Setter Target="FrequentEmailBox.Visibility" Value="Collapsed" />
                         <Setter Target="ColumnDivider.Visibility" Value="Collapsed" />
 
@@ -353,6 +357,7 @@
                         <AdaptiveTrigger MinWindowWidth="900" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
+
                         <Setter Target="FrequentEmailBox.Visibility" Value="Visible" />
                         <Setter Target="ColumnDivider.Visibility" Value="Visible" />
                     </VisualState.Setters>

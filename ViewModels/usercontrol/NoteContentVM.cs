@@ -66,17 +66,22 @@ namespace UWPYourNote.ViewModels
         }
         public async void IsNoteShared(bool value)
         {
-            MessageDialog showDialog;
-            if (value == true)
-                showDialog = new MessageDialog("Note has been shared!");
-            else
-                showDialog = new MessageDialog("You cant share this note, as your not the owner!");
-            showDialog.Commands.Add(new UICommand("Ok")
+            UserControl uc = (UserControl)noteContentView;
+            _ = uc?.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Low, () =>
             {
-                Id = 0
+                MessageDialog showDialog;
+                if (value == true)
+                    showDialog = new MessageDialog("Note has been shared!");
+                else
+                    showDialog = new MessageDialog("You cant share this note, as your not the owner!");
+                showDialog.Commands.Add(new UICommand("Ok")
+                {
+                    Id = 0
+                });
+                showDialog.DefaultCommandIndex = 0;
+                var result = showDialog.ShowAsync();
+
             });
-            showDialog.DefaultCommandIndex = 0;
-            var result = await showDialog.ShowAsync();
         }
 
 
@@ -225,14 +230,14 @@ namespace UWPYourNote.ViewModels
             }
 
 
-            public void onSuccess(CanShareNoteUseCaseResponse result)
+            public void onSuccess(CanShareNoteUseCaseResponse Response)
             {
-
+                Presenter?.noteContentView?.CanShareNote(Response.Result);
             }
 
-            public void onFailure(CanShareNoteUseCaseResponse result)
+            public void onFailure(CanShareNoteUseCaseResponse Response)
             {
-
+                Presenter?.IsNoteShared(Response.Result);
             }
         }
 
@@ -247,14 +252,14 @@ namespace UWPYourNote.ViewModels
             }
 
 
-            public void onSuccess(ValidUsersToShareUseCaseResponse result)
+            public void onSuccess(ValidUsersToShareUseCaseResponse Response)
             {
-
+                Presenter?.noteContentView?.ValidUsersLists(Response.Result);
             }
 
-            public void onFailure(ValidUsersToShareUseCaseResponse result)
+            public void onFailure(ValidUsersToShareUseCaseResponse Response)
             {
-
+                Presenter?.noteContentView?.ValidUsersLists(Response.Result);
             }
         }
 

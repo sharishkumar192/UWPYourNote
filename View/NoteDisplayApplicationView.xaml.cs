@@ -24,6 +24,7 @@ using Windows.UI.ViewManagement;
 using Windows.ApplicationModel.Core;
 using static UWPYourNoteLibrary.Util.NotesUtilities;
 using System.Collections.ObjectModel;
+using UWPYourNote.ViewModels.Contract;
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace UWPYourNote.View
@@ -31,7 +32,7 @@ namespace UWPYourNote.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class NoteDisplayApplicationView : Page, INotifyPropertyChanged
+    public sealed partial class NoteDisplayApplicationView : Page, INotifyPropertyChanged, INoteApplicationView
     {
         public DispatcherTimer _dispatcherTimer = null;
         private string _oldContent = "";
@@ -40,17 +41,16 @@ namespace UWPYourNote.View
         private delegate ObservableCollection<UWPYourNoteLibrary.Models.User> NoteContentUserControl(object sender, RoutedEventArgs e);
         private delegate void ToShareView(object sender, ItemClickEventArgs e);
 
+
+       
         public NoteDisplayApplicationView()
         {
             this.InitializeComponent();
             noteDisplayApplicationVM = new NoteDisplayApplicationViewVM();
-
-            NoteContentUserControl delUserControlMethod = new NoteContentUserControl(NoteShareButtonClick);
-            NoteMenuOptions.CallingPageMethod = delUserControlMethod;
-
-            ToShareView itemClick = new ToShareView(UsersToShareView_ItemClick);
-            NoteMenuOptions.ToShare = itemClick;
+           
+          //  Windows.UI.Core.CoreApplication.Current.Suspending += Current_Suspending;
         }
+    
 
         public event PropertyChangedEventHandler PropertyChanged;
         void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -59,29 +59,39 @@ namespace UWPYourNote.View
 
         }
 
-        private void UsersToShareView_ItemClick(object sender, ItemClickEventArgs e)
+        private void UsersToShareViewItemClick(object sender, ItemClickEventArgs e)
         {
             UWPYourNoteLibrary.Models.User selectedUser = (UWPYourNoteLibrary.Models.User)e.ClickedItem;
+            noteDisplayApplicationVM.noteApplicationView = this;
             noteDisplayApplicationVM.ShareNote(selectedUser.userId, DisplayNote.noteId);
 
         }
+     
 
-
-        public ObservableCollection<UWPYourNoteLibrary.Models.User> NoteShareButtonClick(object sender, RoutedEventArgs e)
+        public void NoteShareButtonClick(object sender, RoutedEventArgs e)
         {
-            ObservableCollection<UWPYourNoteLibrary.Models.User> notes = null;
-            //if (noteDisplayApplicationVM.IsOwner(DisplayNote.userId, DisplayNote.noteId) == true)
-            //{
-            //    notes = noteDisplayApplicationVM.GetUsersToShare(DisplayNote.userId, DisplayNote.noteId);
 
-            //}
-            //else
-            //{
-            //    noteDisplayApplicationVM.IsNoteShared(false);
-            //}
+            noteDisplayApplicationVM = NoteDisplayApplicationViewVM.Singleton;
+            noteDisplayApplicationVM.noteApplicationView = this;
+            noteDisplayApplicationVM.IsOwner(DisplayNote.userId, DisplayNote.noteId);
 
-            return notes;
         }
+     
+        public void CanShareNote(bool result)
+        {
+            noteDisplayApplicationVM.GetUsersToShare(DisplayNote.userId, DisplayNote.noteId);
+        }
+
+        public void ValidUsersLists(ObservableCollection<UWPYourNoteLibrary.Models.User> listOfUsers)
+        {
+            if (listOfUsers == null)
+            {
+                NoValidUsers();
+                return;
+            }
+            NoteMenuOptions.UsersToShare = listOfUsers;
+        }
+
         private Note _displayNote = null ;
 
         public Note DisplayNote
@@ -92,14 +102,22 @@ namespace UWPYourNote.View
             }
         }
 
+        private void TakeNoteColor(long color)
+        {
+            NoteContentBackground = NotesUtilities.GetSolidColorBrush(color);
+            NoteMenuOptions.NoteColorForeground = NotesUtilities.GetSolidColorBrush(color);
+            NoteMenuOptions.ColorOptionsSelectedIndex = (int)color;
+        }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
 
             DisplayNote = (Note)e.Parameter;
             NoteContentBackground = NotesUtilities.GetSolidColorBrush(DisplayNote.noteColor);
             TitleOfNoteText  = _oldTitle = DisplayNote.title;
+            
             ContentOfNoteText  = _oldContent  = DisplayNote.content;
             ContentOfNote.Document.SetText(Windows.UI.Text.TextSetOptions.FormatRtf, ContentOfNoteText);
+            TakeNoteColor(DisplayNote.noteColor);
             DispatcherTimerStart();
         }
 
@@ -289,7 +307,10 @@ namespace UWPYourNote.View
             var result = await showDialog.ShowAsync();
         }
 
-      
+        private void Page_Unloaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
 

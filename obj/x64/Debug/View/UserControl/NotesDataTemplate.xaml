@@ -53,6 +53,7 @@
                 Margin="15"
                 FontSize="14"
                 HorizontalTextAlignment="Left"
+                IsSpellCheckEnabled="False"
                 Style="{StaticResource NotesDataRichEdit}"
                 TextWrapping="Wrap" />
         </ScrollViewer>

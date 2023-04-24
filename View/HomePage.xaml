@@ -10,6 +10,7 @@
     xmlns:usercontrol="using:UWPYourNote.View.usercontrol"
     xmlns:util="using:UWPYourNoteLibrary.Util"
     Loaded="Page_Loaded"
+    SizeChanged="Page_SizeChanged"
     mc:Ignorable="d">
     <Page.Resources>
 
@@ -175,7 +176,6 @@
                 CornerRadius="4"
                 FontFamily="Segoe MDL2 Assets"
                 FontSize="14"
-                Foreground="{ThemeResource PrimaryButtonBgOnHover}"
                 RelativePanel.AlignBottomWithPanel="True"
                 RelativePanel.AlignRightWithPanel="True"
                 RelativePanel.AlignTopWithPanel="True"
@@ -187,7 +187,7 @@
                         x:Name="SettingsFlyout"
                         FlyoutPresenterStyle="{StaticResource SettingsFlyout}"
                         Placement="BottomEdgeAlignedRight">
-                        <Grid>
+                        <Grid Height="300">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
@@ -198,6 +198,7 @@
                                 <usercontrol:ThemeToggle
                                     Name="ThemeToggleButton"
                                     Grid.Row="0"
+                                    Margin="0,5,0,0"
                                     ToggleThemeClick="{x:Bind ThemeToggleButtonClick, Mode=OneWay}" />
 
                             </StackPanel>
@@ -215,19 +216,22 @@
                                 FontWeight="SemiBold"
                                 Text="{x:Bind WelcomeText, Mode=OneWay}" />
                             <Button
-                                Name="Appearence"
+                                Name="Appearance"
                                 Grid.Row="2"
-                                Margin="10,5"
+                                Margin="10"
                                 HorizontalAlignment="Stretch"
                                 Click="{x:Bind AppearenceClick, Mode=OneWay}"
                                 Content="Appearence"
-                                CornerRadius="4" />
+                                CornerRadius="4"
+                                ToolTipService.ToolTip="Appearance" />
                             <Button
                                 Grid.Row="3"
-                                Margin="10,0"
+                                Margin="10,0,10,0"
                                 HorizontalAlignment="Stretch"
                                 Click="{x:Bind LogoutContentTapped, Mode=OneWay}"
-                                CornerRadius="4">
+                                CornerRadius="4"
+                                Style="{StaticResource LogoutStyle}"
+                                ToolTipService.ToolTip="Logout">
                                 <StackPanel Orientation="Horizontal">
                                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xF3B1;" />
                                     <TextBlock Text="Logout" />
@@ -291,8 +295,6 @@
                         HorizontalAlignment="Stretch"
                         BorderBrush="Transparent"
                         FontSize="16"
-                        LosingFocus="TitleOfNewNote_LosingFocus"
-                        LostFocus="TitleOfNewNote_LostFocus"
                         PlaceholderText="Title"
                         Style="{StaticResource NewNoteTitleStyle}"
                         Text="{x:Bind TitleOfNewNoteText, Mode=OneWay}"
@@ -304,6 +306,7 @@
                     <RichEditBox
                         Name="ContentOfNewNote"
                         Grid.Row="1"
+                        IsSpellCheckEnabled="False"
                         Margin="10"
                         GotFocus="{x:Bind ContentOfNewNoteGotFocus, Mode=OneWay}"
                         PlaceholderText="Take a note..."
@@ -390,16 +393,16 @@
                 GripperCursor="Default"
                 ResizeBehavior="BasedOnAlignment"
                 ResizeDirection="Auto"
-                IsLightDismissEnabled="{x:Bind NoteDisplayPopUpIsLight, Mode=OneWay}"
+
 
                 Visibility="Collapsed" />-->
             <Popup
                 Name="NoteDisplayPopUp"
                 Closed="{x:Bind NoteDisplayPopUpClosed, Mode=OneWay}"
-                IsLightDismissEnabled="False"
+                IsLightDismissEnabled="{x:Bind NoteDisplayPopUpIsLight, Mode=OneWay}"
                 IsOpen="{x:Bind NoteDisplayPopUpIsOpen, Mode=OneWay}"
                 LayoutUpdated="{x:Bind NoteDisplayPopUpLayoutUpdated, Mode=OneWay}"
-                LightDismissOverlayMode="Off"
+                LightDismissOverlayMode="On"
                 Opened="{x:Bind NoteDisplayPopUpOpened, Mode=OneWay}">
                 <Border CornerRadius="4">
                     <usercontrol:NoteContent
@@ -447,7 +450,6 @@
                         <Setter Target="AppName.Visibility" Value="Collapsed" />
                         <Setter Target="AppLogo.Visibility" Value="Collapsed" />
                         <Setter Target="AppLogoNameContainer.Visibility" Value="Collapsed" />
-                        <Setter Target="TitleSearchBoxContainer.Background" Value="Blue" />
                         <Setter Target="TitleSearchBoxContainer.Visibility" Value="Collapsed" />
                         <Setter Target="NoteSearchButton.Visibility" Value="Visible" />
                         <Setter Target="Title.Visibility" Value="Collapsed" />

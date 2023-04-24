@@ -27,7 +27,6 @@ namespace UWPYourNote.View.usercontrol
     public sealed partial class NoteEditOptionsControl : UserControl, INotifyPropertyChanged
     {
         public event Action<string> EditOptions;
-    
         public NoteEditOptionsControl()
         {
             this.InitializeComponent();
@@ -41,16 +40,16 @@ namespace UWPYourNote.View.usercontrol
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        private Delegate _delPageMethod;
+        private Delegate _canShareNote;
         public Delegate CallingPageMethod
         {
-            set { _delPageMethod = value; }
+            set { _canShareNote = value; }
         }
 
-        private Delegate _toShare;
+        private Delegate _shareNote;
         public Delegate ToShare
         {
-            set { _toShare = value; }
+            set { _shareNote = value; }
         }
 
 
@@ -205,9 +204,9 @@ namespace UWPYourNote.View.usercontrol
         {
             if (UsersToShare == null)
             {
-                UsersToShare = (ObservableCollection<UWPYourNoteLibrary.Models.User>)_delPageMethod.DynamicInvoke(null, null);
+                _canShareNote?.DynamicInvoke(null, null);
             }
-
+            
             if (UsersToShare != null && UsersToShare.Count == 0)
                 NoValidUsers();
         }
@@ -229,14 +228,16 @@ namespace UWPYourNote.View.usercontrol
 
         private void UsersToShareView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            ListView view = (ListView)sender;
-            _toShare.DynamicInvoke(view.Name, e);
+            if(UsersToShare == null)
+            {
+                return;
+            }
 
+            ListView view = (ListView)sender;
+            _shareNote?.DynamicInvoke(view.Name, e);
             int i = UsersToShare.IndexOf((UWPYourNoteLibrary.Models.User)e.ClickedItem);
             UsersToShare.RemoveAt(i);
-
-            NoteShared(true);
-            //EditOptions?.Invoke(view.name,e);
+            //NoteShared(true);
         }
 
         private void NoteShared(bool value)

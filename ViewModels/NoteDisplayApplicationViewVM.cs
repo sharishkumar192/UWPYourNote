@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UWPYourNote.ViewModels;
+using UWPYourNote.ViewModels.Contract;
 using UWPYourNoteLibrary.Data.Managers;
 using UWPYourNoteLibrary.Domain.Contract;
 using UWPYourNoteLibrary.Domain.UseCase;
@@ -16,6 +17,21 @@ namespace UWPYourNote.ViewModels
     public class NoteDisplayApplicationViewVM
     {
 
+        private static NoteDisplayApplicationViewVM _noteViewModel;
+
+        public static NoteDisplayApplicationViewVM Singleton
+        {
+            get
+            {
+                if (_noteViewModel == null)
+                {
+                    _noteViewModel = new NoteDisplayApplicationViewVM();
+                }
+                return _noteViewModel;
+            }
+        }
+
+        public INoteApplicationView noteApplicationView;
         public void UpdateNote(Note noteToUpdate, bool titleChange, bool contentChange)
         {
             NotesUtilities.UpdateNote(noteToUpdate, titleChange, contentChange, new UpdateNotePresenterCallBack(this));

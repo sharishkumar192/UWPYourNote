@@ -27,6 +27,10 @@ using Windows.ApplicationModel.Core;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using static UWPYourNoteLibrary.Util.NotesUtilities;
+using UWPYourNoteLibrary.Data.Handler.Contract;
+using UWPYourNoteLibrary.Data.Handler;
+using Windows.Media.Playback;
+using UWPYourNote.ViewModels;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -41,12 +45,6 @@ namespace UWPYourNote.View.usercontrol
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-
-        private delegate ObservableCollection<UWPYourNoteLibrary.Models.User> NoteContentUserControl(object sender, RoutedEventArgs e);
-
-
-
 
         private void ToEnableEditMode()
         {
@@ -143,23 +141,12 @@ namespace UWPYourNote.View.usercontrol
             }
         }
 
-        public ObservableCollection<UWPYourNoteLibrary.Models.User> NoteShareButtonClick(object sender, RoutedEventArgs e)
+        public void NoteShareButtonClick(object sender, RoutedEventArgs e)
         {
-            ObservableCollection<UWPYourNoteLibrary.Models.User> notes = null;
-            //noteContentVM = NoteContentVM.Singleton;
-            //noteContentVM.noteContentView = this;
-            //if (noteContentVM.IsOwner(DisplayNote.userId, DisplayNote.noteId) == true)
-            //{
-            //    notes = noteContentVM.GetUsersToShare(DisplayNote.userId, DisplayNote.noteId);
+            noteContentVM = NoteContentVM.Singleton;
+            noteContentVM.noteContentView = this;
+            noteContentVM.IsOwner(DisplayNote.userId, DisplayNote.noteId);
 
-            //}
-            //else
-            //{
-            //    noteContentVM = NoteContentVM.Singleton;
-            //    noteContentVM.IsNoteShared(false);
-            //}
-
-            return notes;
         }
 
         ////----------------------------Note Delete Button ---------------------------------------------------
@@ -174,6 +161,27 @@ namespace UWPYourNote.View.usercontrol
 
 
 
+        public void CanShareNote(bool result)
+        {
+            noteContentVM.GetUsersToShare(DisplayNote.userId, DisplayNote.noteId);
+        }
+
+        public  void ValidUsersLists(ObservableCollection<UWPYourNoteLibrary.Models.User> listOfUsers)
+        {
+            _ = Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Low, () =>
+             {
+                 if (listOfUsers == null)
+                 {
+                     NoValidUsers();
+                     return;
+                 }
+                 NoteMenuOptions.UsersToShare = listOfUsers;
+                 //foreach (UWPYourNoteLibrary.Models.User user in listOfUsers)
+                 //{
+                 //    NoteMenuOptions.UsersToShare.Add(user);
+                 //}
+             });
+        }
 
 
 
@@ -181,9 +189,7 @@ namespace UWPYourNote.View.usercontrol
 
 
 
-
-        delegate void ToShareView(object sender, ItemClickEventArgs e);
-        private void UsersToShareView_ItemClick(object sender, ItemClickEventArgs e)
+        private void UsersToShareViewItemClick(object sender, ItemClickEventArgs e)
         {
             noteContentVM.noteContentView = this;
             UWPYourNoteLibrary.Models.User selectedUser = (UWPYourNoteLibrary.Models.User)e.ClickedItem;
@@ -225,6 +231,8 @@ namespace UWPYourNote.View.usercontrol
         public long _noteColorChosen;
 
         public event Action<Note> PopOutWindow;
+        private delegate void NoteContentUserControl(object sender, RoutedEventArgs e);
+        private delegate void ToShareView(object sender, ItemClickEventArgs e);
         public NoteContent()
         {
             this.InitializeComponent();
@@ -233,7 +241,7 @@ namespace UWPYourNote.View.usercontrol
             NoteContentUserControl delUserControlMethod = new NoteContentUserControl(NoteShareButtonClick);
             NoteMenuOptions.CallingPageMethod = delUserControlMethod;
 
-            ToShareView itemClick = new ToShareView(UsersToShareView_ItemClick);
+            ToShareView itemClick = new ToShareView(UsersToShareViewItemClick);
             NoteMenuOptions.ToShare = itemClick;
 
         }

@@ -89,7 +89,10 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Column="0" Padding="20,0,20,0">
+            <Grid x:ConnectionId='11'
+                Name="Column0"
+                Grid.Column="0"
+                Padding="20,0,20,5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -102,10 +105,10 @@
                 </Grid.RowDefinitions>
 
                 <!--<Title>-->
-                <StackPanel x:ConnectionId='14'
+                <StackPanel x:ConnectionId='15'
                     Name="Title"
                     Grid.Row="0"
-                    Margin="0,5,0,0"
+                    Margin="-0.5,5,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     CornerRadius="4"
@@ -141,7 +144,7 @@
 
 
                 <!--<Email Field>-->
-                <TextBox x:ConnectionId='15'
+                <TextBox x:ConnectionId='16'
                     Name="EmailBox"
                     Grid.Row="2"
                     HorizontalAlignment="Center"
@@ -152,20 +155,20 @@
 
 
                 <RelativePanel Grid.Row="2" Margin="0,15,0,0">
-                    <Border x:ConnectionId='24'
+                    <Border x:ConnectionId='25'
                         Name="EmailFontBorderStyle"
                         Width="Auto"
                         Margin="-10,0,-30,0"
                         RelativePanel.AlignRightWithPanel="True"
                         Style="{StaticResource FontBorderStyle}"
                                                                                          >
-                        <FontIcon x:ConnectionId='25'
+                        <FontIcon x:ConnectionId='26'
                             Name="EmailCheck"
                             HorizontalAlignment="Left"
                             Style="{StaticResource FontIconStyle}"
                                                                                     />
                         <ToolTipService.ToolTip>
-                            <TextBlock x:ConnectionId='26'
+                            <TextBlock x:ConnectionId='27'
                                 Name="EmailToolTip"
                                                                                 
                                                                                           />
@@ -174,7 +177,7 @@
                 </RelativePanel>
 
                 <!--<Password Field>-->
-                <PasswordBox x:ConnectionId='16'
+                <PasswordBox x:ConnectionId='17'
                     Name="PasswordBox"
                     Grid.Row="3"
                                                                                                        
@@ -185,21 +188,21 @@
 
                 <RelativePanel Grid.Row="3" Margin="0,15,0,0">
 
-                    <Border x:ConnectionId='21'
+                    <Border x:ConnectionId='22'
                         Name="PasswordFontBorderStyle"
                         Margin="-10,0,-30,0"
                         RelativePanel.AlignRightWithPanel="True"
                         Style="{StaticResource FontBorderStyle}"
                                                                                             >
 
-                        <FontIcon x:ConnectionId='22'
+                        <FontIcon x:ConnectionId='23'
                             Name="PasswordCheck"
                             HorizontalAlignment="Left"
                             Style="{StaticResource FontIconStyle}"
                                                                                        />
 
                         <ToolTipService.ToolTip>
-                            <TextBlock x:ConnectionId='23'
+                            <TextBlock x:ConnectionId='24'
                                 Name="PasswordToolTip"
                                                                                    
                                                                                              />
@@ -211,7 +214,7 @@
 
                 <!--<Show Password>-->
 
-                <CheckBox x:ConnectionId='17'
+                <CheckBox x:ConnectionId='18'
                     Name="RevealModeCheckBox"
                     Grid.Row="4"
                     Margin="15,15,15,2"
@@ -223,7 +226,7 @@
                 <!--<Buttons>-->
 
                 <RelativePanel Grid.Row="4" Margin="0,15,5,0">
-                    <Button x:ConnectionId='20'
+                    <Button x:ConnectionId='21'
                         Name="LogInButton"
                         Width="70"
                         Margin="0,0,10,0"
@@ -236,7 +239,7 @@
 
 
 
-                <StackPanel x:ConnectionId='18'
+                <StackPanel x:ConnectionId='19'
                     Name="NavigationLink"
                     Grid.Row="5"
                     Margin="15"
@@ -248,7 +251,7 @@
                         Foreground="{ThemeResource TextBoxFg}"
                         Text="New User? Start your journey with us by creating an" />
 
-                    <HyperlinkButton x:ConnectionId='19'
+                    <HyperlinkButton x:ConnectionId='20'
                         x:Name="NavigateToSignUp"
                                                                            
                         Content="account"
@@ -261,7 +264,7 @@
             </Grid>
             <!--<Column Spacer>-->
 
-            <Grid x:ConnectionId='11'
+            <Grid x:ConnectionId='12'
                 Name="ColumnDivider"
                 Grid.Column="1"
                 Width="1"
@@ -270,7 +273,7 @@
 
             <!--<Email list>-->
 
-            <Grid x:ConnectionId='12'
+            <Grid x:ConnectionId='13'
                 Name="FrequentEmailBox"
                 Grid.Column="2"
                 Padding="35,0,33,10"
@@ -290,7 +293,7 @@
                     Text="Choose an account" />
 
 
-                <ListView x:ConnectionId='13'
+                <ListView x:ConnectionId='14'
                     Name="FrequentEmail"
                     Grid.Row="1"
                     Width="300"
@@ -342,6 +345,7 @@
                         <AdaptiveTrigger MinWindowWidth="0" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
+            
                         <Setter Target="FrequentEmailBox.Visibility" Value="Collapsed" />
                         <Setter Target="ColumnDivider.Visibility" Value="Collapsed" />
 
@@ -353,6 +357,7 @@
                         <AdaptiveTrigger MinWindowWidth="900" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
+
                         <Setter Target="FrequentEmailBox.Visibility" Value="Visible" />
                         <Setter Target="ColumnDivider.Visibility" Value="Visible" />
                     </VisualState.Setters>

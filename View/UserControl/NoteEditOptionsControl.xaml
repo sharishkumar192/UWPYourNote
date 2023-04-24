@@ -137,37 +137,39 @@
             </Border>
             <Button.Flyout>
                 <Flyout FlyoutPresenterStyle="{StaticResource NoteColorFlyout}" Placement="Bottom">
-                    <ListBox
-                        Name="ColorOptions"
-                        Height="40"
-                        SelectedIndex="{x:Bind ColorOptionsSelectedIndex, Mode=OneWay}"
-                        SelectionChanged="{x:Bind ColorOptionsSelectionChanged, Mode=OneWay}"
-                        SelectionMode="Single"
-                        Style="{StaticResource NoteColorOptionStyle}">
-                        <ListBoxItem>
-                            <Border Background="Black" CornerRadius="20">
-                                <FontIcon Foreground="#f8bec5" Style="{StaticResource ColorIcons}" />
-                            </Border>
-                        </ListBoxItem>
-                        <ListBoxItem>
-                            <Border Background="Black" CornerRadius="20">
-                                <FontIcon Foreground="#c6e8b7" Style="{StaticResource ColorIcons}" />
-                            </Border>
-                        </ListBoxItem>
+                    <Border CornerRadius="4">
+                        <ListBox
+                            Name="ColorOptions"
+                            Height="40"
+                            SelectedIndex="{x:Bind ColorOptionsSelectedIndex, Mode=OneWay}"
+                            SelectionChanged="{x:Bind ColorOptionsSelectionChanged, Mode=OneWay}"
+                            SelectionMode="Single"
+                            Style="{StaticResource NoteColorOptionStyle}">
+                            <ListBoxItem>
+                                <Border Background="Black" CornerRadius="20">
+                                    <FontIcon Foreground="#f8bec5" Style="{StaticResource ColorIcons}" />
+                                </Border>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <Border Background="Black" CornerRadius="20">
+                                    <FontIcon Foreground="#c6e8b7" Style="{StaticResource ColorIcons}" />
+                                </Border>
+                            </ListBoxItem>
 
-                        <ListBoxItem>
-                            <Border Background="Black" CornerRadius="20">
-                                <FontIcon Foreground="#fdefad" Style="{StaticResource ColorIcons}" />
-                            </Border>
-                        </ListBoxItem>
+                            <ListBoxItem>
+                                <Border Background="Black" CornerRadius="20">
+                                    <FontIcon Foreground="#fdefad" Style="{StaticResource ColorIcons}" />
+                                </Border>
+                            </ListBoxItem>
 
-                        <ListBoxItem>
-                            <Border Background="Black" CornerRadius="20">
-                                <FontIcon Foreground="#c3e9fd" Style="{StaticResource ColorIcons}" />
-                            </Border>
-                        </ListBoxItem>
+                            <ListBoxItem>
+                                <Border Background="Black" CornerRadius="20">
+                                    <FontIcon Foreground="#c3e9fd" Style="{StaticResource ColorIcons}" />
+                                </Border>
+                            </ListBoxItem>
 
-                    </ListBox>
+                        </ListBox>
+                    </Border>
                 </Flyout>
 
             </Button.Flyout>

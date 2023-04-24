@@ -41,7 +41,7 @@ namespace UWPYourNote.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class HomePage : Page, IHomePageView, INotifyPropertyChanged, INoteContentView
+    public sealed partial class HomePage : Page, IHomePageView, INotifyPropertyChanged
     {
         private Frame _frame;
         private UWPYourNoteLibrary.Models.Note _selectedNote = null;
@@ -66,6 +66,7 @@ namespace UWPYourNote.View
 
             themeCheck = accentCheck = false;
             this.InitializeComponent();
+            TitleSearchBox.SearchTextBoxText = string.Empty;
         }
 
 
@@ -97,13 +98,13 @@ namespace UWPYourNote.View
             set
             {
                 _loggedUser = value;
-            //    TitleSearchBox.LoggedUser = value;
+                //    TitleSearchBox.LoggedUser = value;
                 OnPropertyChanged();
             }
 
         }
 
-     
+
 
 
         private async void NoTitle()
@@ -127,10 +128,10 @@ namespace UWPYourNote.View
 
         }
 
- 
 
 
-   
+
+
 
 
         //----------------------------Main Menu List Box---------------------------------------------------
@@ -215,7 +216,7 @@ namespace UWPYourNote.View
             MainMenuOptionsSelectedIndex = box.SelectedIndex;
             TypeOfNote typeOfNote;
             TitleSearchBox.SearchTextBoxText = "";
-           // TitleSearchBox.SearchPopupIsOpen = false;
+            // TitleSearchBox.SearchPopupIsOpen = false;
 
             if (PersonalNotesIsSelected == true)
             {
@@ -238,7 +239,7 @@ namespace UWPYourNote.View
                 TitleText = typeOfNote.ToString();
                 GetNotes(typeOfNote);
                 TitleSearchBox._selectedNote = new Note("", "", "", 0);
-             
+
             }
             else if (AllNotesIsSelected == true)
             {
@@ -253,12 +254,12 @@ namespace UWPYourNote.View
         //----------------------------Search Text Box---------------------------------------------------
         public void SearchBoxContainerLostFocus()
         {
-          //  TitleSearchBox.SearchPopupIsOpen = false;
+            //  TitleSearchBox.SearchPopupIsOpen = false;
         }
 
 
 
-  
+
 
 
 
@@ -302,7 +303,7 @@ namespace UWPYourNote.View
 
 
 
-       
+
 
 
         //----------------------------Sign Out Button---------------------------------------------------
@@ -432,7 +433,7 @@ namespace UWPYourNote.View
         private void ContentOfNewNoteGotFocus()
         {
             TitleOfNewNoteVisibility = NoteStyleOptionsVisibility = Visibility.Visible;
-            if(!isTitleGotFocus)
+            if (!isTitleGotFocus)
             {
                 TitleOfNewNote.Focus(FocusState.Programmatic);
                 isTitleGotFocus = true;
@@ -523,13 +524,10 @@ namespace UWPYourNote.View
         {
             if (CreationButtonContent == "Save")
             {
-
-
                 if (String.IsNullOrEmpty(TitleOfNewNoteText))
                 {
                     NoTitle();
                     return;
-
                 }
 
                 CreateNewNote();
@@ -538,12 +536,9 @@ namespace UWPYourNote.View
                 ContentOfNewNote.Document.SetText(Windows.UI.Text.TextSetOptions.None, "");
             }
 
-
-
             TitleOfNewNoteVisibility = Visibility.Collapsed;
             NoteStyleOptionsVisibility = Visibility.Collapsed;
-
-
+            isTitleGotFocus = false;
         }
 
         //----------------------------Note Grid homePageView---------------------------------------------------
@@ -567,7 +562,7 @@ namespace UWPYourNote.View
             //   Tuple<Note, Frame> tp = new Tuple<Note, Frame>(selectedNoteFromDisplay, DetailsView);
             //  DetailsView.Navigate(typeof(NoteDisplayApplicationView), tp);
             double width = this.ActualWidth;
-            if(width <600)
+            if (width < 600)
             {
                 NotesInPopOutWindow(selectedNoteFromDisplay);
                 return;
@@ -583,7 +578,9 @@ namespace UWPYourNote.View
         public Visibility DetailsViewVisibility
         {
             get { return _detailsViewVisibility; }
-            set { _detailsViewVisibility = value;
+            set
+            {
+                _detailsViewVisibility = value;
                 OnPropertyChanged();
             }
         }
@@ -654,10 +651,10 @@ namespace UWPYourNote.View
 
         private void NoteDisplayPopUpLayoutUpdated(object sender, object e)
         {
-                NoteContentPopUpHeight = Window.Current.Bounds.Height * 1.5 / 2;
-                NoteContentPopUpWidth = Window.Current.Bounds.Width / 2;
-         //   NoteContentPopUpHeight = Window.Current.Bounds.Height;
-         //   NoteContentPopUpWidth = Window.Current.Bounds.Width;
+            NoteContentPopUpHeight = Window.Current.Bounds.Height * 1.5 / 2;
+            NoteContentPopUpWidth = Window.Current.Bounds.Width / 2;
+            //   NoteContentPopUpHeight = Window.Current.Bounds.Height;
+            //   NoteContentPopUpWidth = Window.Current.Bounds.Width;
             if (NoteContentPopUp.ActualWidth == 0 && NoteContentPopUp.ActualHeight == 0)
             {
                 return;
@@ -700,8 +697,8 @@ namespace UWPYourNote.View
 
             if (NoteContentPopUp._dispatcherTimer != null)
             {
-                    NoteContentPopUp.DispatcherTimer_Tick(sender, e);
-                    NoteContentPopUp.DispatcherTimerStop();
+                NoteContentPopUp.DispatcherTimer_Tick(sender, e);
+                NoteContentPopUp.DispatcherTimerStop();
             }
             NoteDisplayPopUpIsOpen = false;
 
@@ -721,9 +718,9 @@ namespace UWPYourNote.View
             }
         }
 
-        
-                
-        
+
+
+
         private void NoteBackgroundColor()
         {
             NewNoteBackground = NoteEditOptions.NoteColorForeground;
@@ -748,7 +745,7 @@ namespace UWPYourNote.View
 
         }
 
-        
+
         private async void AppearenceClick(object sender, RoutedEventArgs e)
         {
             AppWindow appWindow = await AppWindow.TryCreateAsync();
@@ -757,9 +754,9 @@ namespace UWPYourNote.View
             ElementCompositionPreview.SetAppWindowContent(appWindow, appWindowContentFrame);
             await appWindow.TryShowAsync();
             var id = ApplicationView.GetForCurrentView().Id;
-           
-            
-            
+
+
+
         }
 
         private void ThemeToggleButtonClick()
@@ -767,11 +764,17 @@ namespace UWPYourNote.View
             SettingsFlyout.Hide();
         }
 
-   
-       
+
+
         private void TitleSearchBoxDisplaySelectedNote(Note selectedNote)
         {
             selectedNote.userId = LoggedUser.userId;
+            double width = this.ActualWidth;
+            if (width < 600)
+            {
+                NotesInPopOutWindow(selectedNote);
+                return;
+            }
             NoteContentPopUp.DisplayContent(selectedNote, selectedNote.searchCount);
             NoteDisplayPopUpOpened();
         }
@@ -780,12 +783,12 @@ namespace UWPYourNote.View
         {
             double width = this.ActualWidth;
             double height = this.ActualHeight;
-            if (width > 600 && height>0)
+            if (width > 600 && height > 0)
             {
                 AppName.Visibility = AppLogo.Visibility = Visibility.Visible;
             }
-                TitleSearchBoxContainer.Visibility = Visibility.Visible;
-            NoteSearchButton.Visibility   = MainMenuOptions.Visibility = Visibility.Collapsed;
+            TitleSearchBoxContainer.Visibility = Visibility.Visible;
+            NoteSearchButton.Visibility = MainMenuOptions.Visibility = Visibility.Collapsed;
             TitleSearchBox.Focus(FocusState.Programmatic);
         }
 
@@ -805,25 +808,25 @@ namespace UWPYourNote.View
 
 
 
-       
-      
+
+
 
         private void TitleOfNewNote_LosingFocus(UIElement sender, LosingFocusEventArgs args)
         {
-          
+
         }
 
         private void TitleOfNewNote_LostFocus(object sender, RoutedEventArgs e)
         {
-          //  ContentOfNewNote.Focus(FocusState.Programmatic);
+            //  ContentOfNewNote.Focus(FocusState.Programmatic);
         }
 
 
 
         public async void NotesInPopOutWindow(Note selectedNote)
         {
-
-
+            selectedNoteFromDisplay = null;
+            selectedNoteFromDisplay = selectedNote;
             if (NoteApplicationView.ContainsKey(selectedNote.noteId))
             {
                 await ApplicationViewSwitcher.SwitchAsync(NoteApplicationView[selectedNote.noteId]);
@@ -840,9 +843,30 @@ namespace UWPYourNote.View
                 Window.Current.Activate();
 
                 newViewId = ApplicationView.GetForCurrentView().Id;
+                newView.CoreWindow.Closed += CoreWindow_Closed;
+
             });
             bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId, ViewSizePreference.UseLess);
             NoteApplicationView[selectedNote.noteId] = newViewId;
+
+
+        }
+
+        private void CoreWindow_Closed(CoreWindow sender, CoreWindowEventArgs args)
+        {
+            CoreWindow coreWindow = sender as CoreWindow;
+            // coreWindow.UsersToShare = null;
+
+            if (NoteContentPopUp._dispatcherTimer != null)
+            {
+                NoteContentPopUp.DispatcherTimer_Tick(sender, null);
+                NoteContentPopUp.DispatcherTimerStop();
+            }
+            NoteDisplayPopUpIsOpen = false;
+        }
+
+        private void NewView_HostedViewClosing(CoreApplicationView sender, HostedViewClosingEventArgs args)
+        {
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -851,7 +875,7 @@ namespace UWPYourNote.View
             NotificationManager.DeleteNoteSucceeded += NotificationManager_DeleteNoteSucceeded;
         }
 
-      
+
 
         private void OnPageExited()
         {
@@ -869,6 +893,11 @@ namespace UWPYourNote.View
         {
             homePageVM.homePageView = this;
             homePageVM.NoteDeletion(selectedNoteFromDisplay);
+        }
+
+        private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+
         }
     }
 }

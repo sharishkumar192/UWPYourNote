@@ -171,14 +171,17 @@ namespace UWPYourNote.ViewModels
         {
             try 
             {
-                int i = NotesDataItemSource.IndexOf(selectedNote);
-                if(i != -1)
+                Page page = (Page)homePageView;
+                _ = page?.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Low, () =>
                 {
-                    NotesDataItemSource.RemoveAt(i);
-
-                    NotesDataItemSource.Insert(0, updateNote);
-                }
+                    int i = NotesDataItemSource.IndexOf(selectedNote);
+                    if (i != -1)
+                    {
+                        NotesDataItemSource[i] = updateNote;
+                    }
+                });
             }
+
             catch(Exception e)
             {
                 Logger.WriteLog(e.Message);
@@ -190,11 +193,15 @@ namespace UWPYourNote.ViewModels
         {
             try
             {
-                int i = NotesDataItemSource.IndexOf(deleteNote);
-                if (i != -1)
+                Page page = (Page)homePageView;
+                _ = page?.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Low, () =>
                 {
-                    NotesDataItemSource.RemoveAt(i);
-                }
+                    int i = NotesDataItemSource.IndexOf(deleteNote);
+                    if (i != -1)
+                    {
+                        NotesDataItemSource.RemoveAt(i);
+                    }
+                });
             }
             catch(Exception e)
             {
@@ -235,11 +242,9 @@ namespace UWPYourNote.ViewModels
             {
                 Presenter = presenter;
             }
-
             public void onFailure(CreateNewNoteUseCaseResponse result)
             {
             }
-
             public void onSuccess(CreateNewNoteUseCaseResponse result)
             {
                 Page page = (Page)Presenter?.homePageView;
